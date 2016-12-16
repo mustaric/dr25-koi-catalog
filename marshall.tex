@@ -1,0 +1,33 @@
+%%Text describing new Marshall algorithm
+
+\citet{Coughlin2016} used the Marshall method \citep{Mullally16} to identify and reject false alarm TCEs caused by short period transients in the data. Marshall fits the proposed transit with models of a transit and various transients and used a Bayesian Information Criterion to decide which model was the best explanation for the data. Simulations in \citet{Mullally16} showed that Marshall was 95\% complete for TCEs with periods $>150$\,days and correctly rejected 66\% of simulated artifact events. The limit on Marshall's effectiveness at eliminating false alarms was it used a parabola to describe the out-of-transit flux, which failed to capture much of the real observed stellar variability. To ensure high completeness, Marshall was tuned to prevent a variable continuum causing true transits to be rejected, at the cost of a lower than ideal effectiveness.
+
+For this catalog, we use a Gaussian Process approach \citep[GP][]{Rasmussen10} to provide an improved continuum model to improve our effectiveness while maintaining our high completeness. Briefly, our approach aims to model the covariance in the lightcurve to better fit the trends in our data.
+A similar approach was used by \citet{ForemanMackey16} to model single transits due to very long period planets ($P > 1000$\,days).
+
+Our procedure is as follows. For each individual proposed transit event, we select a snippet of PDC data 30 times the reported transit duration centred on the event. Where the event happens near the start (or end) of a quarter, we take a snippet of similar length anchored at the start (or end) of the quarter. We use the George package \citep{Ambikasaran14} to fit the covariance of the out-of-transit flux with an exponential squared function, $ {\mathrm{Cov(\delta t})} = A \exp{ (\delta t/\ell)^2}$, where $A$ and $\ell$ are tunable parameters. 
+
+We next fit 4 models to the entire snippet.
+
+\begin{equation}
+\left.\begin{aligned}
+G(t | A, \ell) + y_0 \\
+G(t | A, \ell) + y_0 + S(t)\\
+G(t | A, \ell) + y_0 + S(t)(1 - \exp{\beta t})\\
+G(t | A, \ell) + y_0 + S(t - \tau/2) - S(t + \tau/2) 
+\end{aligned}\right.
+\end{equation}
+
+\noindent
+where $G$ is the Gaussian Process model with the tunable parameters held fixed to those found earlier, and $y_0$ is a constant offset. $S(t)$ is given by
+
+\begin{equation}
+S(t) = \frac{d}{1 - e^{-\gamma (t-t_0)} }
+\end{equation}
+
+\noindent
+where $d$ and $t_0$ are tunable parameters, while $\gamma$ is held constant. This function, known as a sigmoid (or logistic) function, has a value of 1 for $t<t_0$, 0 for $t>t_0$, and transitions quickly, but smoothly, between the two states. By using a sigmoid and avoiding the discontinuities in present in the models used by the original Marshall algorithm we can use the L-BFGS-B algorithm \citep{Byrd95} available in the Scipy package \footnote{\url{www.scipy.org}} instead of the less robust Neldar-Mead.
+
+The second function models a discrete jump in the data. We fit this model seeded with a negative-going dip at the predicted time of ingress, and also with a positive-going spike at the predicted egress, as we see both features in \Kepler\ data. The third model fits a Sudden Pixel Sensitivity Drop (SPSD) event, probably caused by a cosmic ray hit on the detection. The last model approximates a box transit. By varying the parameter $\gamma$ we could in principle model transit ingress and egress, but find that extra degree of freedom is not necessary to explain the low signal-to-noise events of most concern.
+
+{\bf Add some kind of discussion of performance}

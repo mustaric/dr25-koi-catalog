@@ -1,0 +1,253 @@
+% using aastex version 6
+\documentclass[onecolumn]{aastex6}
+% These are the available options:
+%   manuscript  : onecolumn, doublespace, 12pt fonts
+%   preprint    : onecolumn, single space, 10pt fonts
+%   preprint2   : twocolumn, single space, 10pt fonts
+%   twocolumn   : a two column article. Probably not needed, but here just in case.
+%   onecolumn   : a one column article; default option.
+%   twocolappendix: make 2 column appendix
+%   onecolappendix: make 1 column appendix is the default.
+%   astrosymb   : Loads Astrosymb font and define \astrocommands.
+%   tighten     : Makes baselineskip slightly smaller
+%   times       : uses times font instead of the default
+%   linenumbers : turn on lineno package.
+%   trackchanges : required to see the revision mark up and print output
+%   numberedappendix: Labels appendix sections A, B, ... This is the default.
+%   appendixfloats: Needed. Resets figure and table counters to zero
+
+%% these can be used in any combination, e.g.
+%%
+%% \documentclass[twocolumn,twocolappendix,linenumbers,trackchanges]{aastex6}
+
+\usepackage{amsmath}
+%% If you want to create your own macros, you can do so
+%% using \newcommand. Your macros should appear before
+%% the \begin{document} command.
+
+\newcommand{\vdag}{(v)^\dagger}
+\newcommand\aastex{AAS\TeX}
+\newcommand\latex{La\TeX}
+\newcommand\Kepler{\textit{Kepler}}
+\newcommand\red{\textcolor{red}}
+\newcommand\blue{\textcolor{blue}}
+%% You can insert a short comment on the title page using the command below.
+\slugcomment{Introductory Outline. \today}
+%%
+%% If you wish, you may supply running head information, although
+%% this information may be modified by the editorial offices.
+%%\shorttitle{\aastex sample article}
+\shortauthors{Thompson et al.}
+
+\begin{document}
+%% You can add a light gray and diagonal water-mark to the first page
+%% with this command:
+%%\watermark{\today}
+
+\title{Planetary Candidates Observed by \Kepler. VIII.\\
+A Fully Automated Catalog Based on Quarters 1 through 17, Data Release 25\\Tuned For High Completeness and Reliability. }
+
+%\author{Susan E. Thompson and others}
+\input{authors}
+
+\begin{abstract}
+Enlightening words about the purpose of this final Kepler Catalog and how it fits in with the other Kepler Planet Candidate catalogs. Then some details about how many KOIs we added and how many are planet candidates. 
+\end{abstract}
+
+\section{Scope}
+Overall, the purpose of this paper is to describe how we sifted through the DR25 TCE table and identified the planet candidates, the transiting candidates with significant secondaries, background eclipsing binaries, ephemeris matches and the false alarms. It also needs to describe how we arrive at the reported physical parameters of each planet, so that interesting populations for occurrence rates and follow-up can be identified.  Finally the Completeness and Reliablity of the catalog should be discussed.
+
+Here is a basic outline.
+\begin{itemize}
+\item Introduction  (Kepler is great blah, blah, KOI catalog blah blah, Cool Discoveries..)
+
+\item A description of the Q1-Q17 DR25 TCEs
+
+\item A description of Injection and Inversion as True Candidates and False Positives.
+
+\item A description of the Robovetter. Summarize the Robovetter, but lean heavily on Coughlin (2016). Discuss why we needed to improve the Robovetter.  Each metric that changed from DR24 Robovetter should be discussed. A list of all minor RoboVetter flags needs to be created and how they relate to the major flags. A discussion of the Robovetter Scores and how they were calculated.
+
+\item A discussion of how the Robovetter metrics were tuned, how were thresholds set? 
+
+\item Evaluate the Completeness of the catalog based on transit injection in MES vs. Period. Also discuss the Confirmed planets and the number that are missed. Give a sense as to where the robovetter is missing planets.
+
+\item Discuss the Effectiveness. Discuss the importance of reliability and how we can use Inversion to get an estimate (a bound?) of the reliability across MES and Period. Also discuss the False Positive table and the number of incorrect dispositions.  Give a sense as to where/when robovetter is ineffective and/or unreliable.
+
+\item Creating the Catalog: Federating to old KOIs, Transit model fits and comparision to DV, how the robovetter was run (inputs/outputs, a summary),  Catalog deliverables. 
+
+\item Analysis of the content of the catalog: Show Candidates on the radius vs. insolation flux labeled by stellar temperature (Coughlin Fig 7.), discuss Multi-planet systems, discuss new individual Rocky-HZ Planet Candidates, enumerate the number of new KOIs of different sizes.
+
+\item Discussion of how to use this catalog to do occurrence rates. i.e. what needs to be considered (Completeness and Reliability, suspicious areas of parameter space, are additional cuts required?), not an actual calculation. Indicate what information will be delivered to NExScI to help with these calculations. 
+
+\item Conclusion 
+
+
+\end{itemize}
+
+%\textcolor{red}
+%{
+Items we may want to discuss in the paper but I have decided to leave out.
+\begin{itemize}
+\item The effectiveness or completeness of the catalog as a function of planetary radius and semi-major axis. (ie derived from fits) 
+\item A specific list of confirmed planets that now have a reason to be doubted (if any exist)
+\item A comparison to EB catalog
+\item Analysis of the injected EBs (secondaries) in terms of effectiveness.
+\item Measurement of effectiveness or completeness based on hand vetting.
+\item Full analysis of completeness and reliability in terms of insolation flux and planet radius. 
+\end{itemize}
+
+Items that do not belong in this paper:
+\begin{itemize}
+\item An estimate of eta Earth or the occurrence rate for any type of planet.
+\item Autovetter Results
+\item Discussion of metrics not used by the Robovetter.
+\item Complete description of the logic of the Robvetter (i.e. see Coughlin et al.)
+\item A list of what was missed that are in other Kepler catalogs (Planet Hunters Catalog, Ojeda short period ones, previous KOI Tables, Confirmed planets.)
+\end{itemize}
+%}
+
+\section{Introduction}
+\begin{enumerate}
+\item What is Kepler and what is its mission?
+\item How have we made catalogs in the past and why did we switch to a robovetter. What is the robovetter?
+\item Introduce what is new in this paper, hint that the population of TCEs is different and that has created challenges in automatic vetting. Introduce how the goal is to get a sense of the completeness and the reliability of the catalog.
+\item Introduce the concepts injection and inversion to test the robovetter.
+\item Outline how the Robovetter creates Dispositions and the catalog also includes MCMC fits.
+\item Create a road map of what is in this paper?
+\end{enumerate}
+
+\section{The Q1--Q17 DR25 TCEs}
+
+\begin{enumerate}
+\item Summary of how this TCE population differed, especially compared to DR24 and Q1-Q16.
+\item Basic stats of the distribution of TCEs in Period and maybe MES.
+\item Describe what information comes from the pipeline.
+\item There are way more TCEs than expected KOIs, the task at hand is to filter out the transit-like, astrophysical events and turn them into KOIs. Amongst those, identify which of those are likely planet candidates.  
+
+\end{enumerate}
+
+\section{Tools for Evaluating Performance}
+ At our disposal we have two additional data sets with which to test our metrics, a population of signals we know to be real (Injection) and a population of signals we know to be false (inversion). We use these to gain a sense of the quality of our catalog.
+\subsection{Injection} 
+A Quick summary of how injection was done and what we produce with injection. Show a plot of the distribution of recovered injected things in terms of period and MES.
+\subsection{Inversion} 
+A summary of how inversion was done and what we get from it. Discuss where its limitations as a population of false positives, which ones do we know we are missing. If we have a way of ameliorating this issue, like with season scrambling, discuss that too.
+
+\subsection{Previous Catalogs}In addition we have confirmed planets and confirmed false positives. However, these are not great tests for low MES or long Period.
+
+
+\section{Vetting Methods and Metrics}
+
+\subsection{Robovetter Overview}
+Describe here the idea of not-transit-like and how we look for evidence that the signal is due to an eclipsing binary. Include an updated Figure 2 from the previous paper. Introduce the major flags.
+\subsubsection{Using the DR24 Robovetter}
+ We applied the DR24 robovetter to the DR25 TCEs. 
+ We found that we needed to do better in the following areas.
+ Don't forget to cite \citet{Tange2011a}.
+ \input{applydr24rv.tex}
+
+\begin{figure*}
+\centering
+\includegraphics[width=\linewidth]{RoboVetter-Diagram-V3-Overview.pdf}
+\caption{\red{An Overview of the Robovetter logic. This is from DR24, so needs to be updated}}
+\end{figure*}
+
+\subsection{Individual Metrics, updates and improvements}
+
+\paragraph{Not-Transit-Like Metrics} 
+Some metrics that determine if a TCE is not-transit-like operate on the individual transits. We define not-transit-like as anything that does not have three periodic, box- or v-shaped events. Primarily we try to eliminate TCEs caused by instrumental or data-reduction-pipeline effects (like Sudden Pixel Sensitivity Drop Outs or detrending artifacts) and smoothly varying variable stars (pulsators, contact binaries and ellipsoidal binaries) with this high level flag.   These individual metrics are as follows:
+\begin{enumerate}
+\item Marshall
+\input{marshall.tex}
+\item Skye
+\item ChASES
+\item Rubble
+\item Rocky
+\item Grouping single transit failures and recalculating MES and counting the number of transits.
+\end{enumerate}
+
+Other metrics operate on data gathered using all the photometric data to determine if the transit signal is transit-like.  These metrics are as follows:
+
+\begin{enumerate}
+\item LPP retrained
+\item Model Shift Uniqueness
+\item SWEET -- for N flag
+\item Grouped ChASES
+\item Model Shift DMM
+\item Model Shift Shape Metric
+\item MES/SES
+
+\end{enumerate}
+
+\paragraph{Significant Secondary Metrics}
+Some metrics look for evidence that a transit-like signal is actually due to an eclipsing binary (foreground or background).  It primarily looks for evidence of a secondary eclipse, but there are also metrics to look for ellipsoidal
+
+\begin{enumerate}
+\item Model Shift Secondary
+\item Model Shift Odd-Even
+\item Simple Odd-Even
+\item SWEET -- for S flag (we might need to combine N and S for this reason)
+\end{enumerate}
+
+
+\paragraph{Centroid Offset} We vet the catalog for evidence that the the target is a false positive because of a background eclipsing binary. The Centroid Robovetter us run on the pixel level data to determine if this is the case.  This is unchanged from the previous two catalogs.  The \textbf{Ghostbuster metric} is also used to determine if the TCE signal is from pixels other than the star.
+
+\paragraph{Ephemeris Matching} We also look for evidence that 
+
+
+\subsection{Optimization}
+How we tuned all the metrics to do the best we can.
+Discuss any weaknesses with our methodology.
+
+\section{Evaluate the Dispositions}
+
+\subsection{Catalog Completeness}
+\subsubsection{Evaluate recovery of Pixel-level Injected Transits}
+\subsubsection{Evaluate recovery of previous KOIs and Confirmed Planets}
+\subsubsection{Completeness in Period and MES}
+
+\subsection{Catalog Effectiveness at removing False Positives}
+We need a catalog highly effective at removing false positives and false alarms in order to have highly reliable PCs.
+\subsubsection{Centroid Robovetter Results for astrophysical FPs}
+\subsubsection{Inversion to evaluate Effectiveness for False Alarm removal}
+\subsubsection{Evaluate the PC rate of certified FPs}
+\subsection{Reliability Estimate}
+
+
+\section{Putting together the KOI Catalog}
+The robovetter vets all TCEs, but we only report those that we consider to be transit-like to the KOI table. We must federate our current list with those KOIs we have made before.
+\subsection{Federating to known KOIs}
+
+\subsection{Model Fits using MCMC}
+
+\subsubsection{Comparison between }
+\subsection{Deliverables}
+We deliver all of the metrics etc..
+
+\section{Overview of the DR25 KOI Catalog}
+\subsection{The physical parameters of the planets}
+\subsection{New Multi-planet systems}
+\subsection{Potentially Rocky Planets in the Habitable Zone}
+This is a closer look at some of our most interesting objects.
+\subsection{Obvious Problems}
+
+\section{Using This Catalog for Occurrence Rate Calculations}
+\subsection{State what the project is providing to make this possible.}
+
+
+\section{Conclusions}
+
+\acknowledgments
+Thanks to GNU parallel \citep{Tange2011a}.
+
+\appendix
+\section{List of Acronyms}
+
+\section{Robovetter Minor Flags}
+%\input{RV-minorFlags}
+\bibliographystyle{aasjournal}
+\bibliography{References.bib}
+
+\end{document}
+
+
