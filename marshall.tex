@@ -7,7 +7,7 @@ A similar approach was used by \citet{ForemanMackey16} to model single transits 
 
 Our procedure is as follows. For each individual proposed transit event, we select a snippet of PDC data 30 times the reported transit duration centred on the event. Where the event happens near the start (or end) of a quarter, we take a snippet of similar length anchored at the start (or end) of the quarter. We use the George package \citep{Ambikasaran14} to fit the covariance of the out-of-transit flux with an exponential squared function, $ {\mathrm{Cov(\delta t})} = A \exp{ (\delta t/\ell)^2}$, where $A$ and $\ell$ are tunable parameters. 
 
-We next fit 4 models to the entire snippet.
+We next fit four models to the entire snippet.
 
 \begin{equation}
 \left.\begin{aligned}
