@@ -1,3 +1,7 @@
+
+\subsection{Individual Transit Metrics}
+
+\subsubsection{Marshall -- Individual Transit Shape}
 %%Text describing new Marshall algorithm
 
 \citet{Coughlin2016} used the Marshall method \citep{Mullally16} to identify and reject false alarm TCEs caused by short period transients in the data. Marshall fits the proposed transit with models of a transit and various transients and used a Bayesian Information Criterion to decide which model was the best explanation for the data. Simulations in \citet{Mullally16} showed that Marshall was 95\% complete for TCEs with periods $>150$\,days and correctly rejected 66\% of simulated artifact events. The limit on Marshall's effectiveness at eliminating false alarms was it used a parabola to describe the out-of-transit flux, which failed to capture much of the real observed stellar variability. To ensure high completeness, Marshall was tuned to prevent a variable continuum causing true transits to be rejected, at the cost of a lower than ideal effectiveness.
@@ -38,3 +42,14 @@ For each transit the Marshall method returns the BIC score, the preferred model 
 {\bf Add some kind of discussion of performance}
 {\bf Add link to Source Forge code}
  
+ 
+\subsubsection{Skye -- Transits Clustered by Skygroup}
+
+The Skye metric searches for those transit times that have an unusual number of transits at the same time on the same skygroup.   One well known image artifact is called rolling band. \textbf{When two frequencies beat together they create something that is described in the instrument handbook it creates changes in the black level that are both time and spatial dependent.} This effect should cause many transit like events to occur at approximately the same time for all stars on that channel when rolling band occurs. Because the telescope rolls every once each quarter, these rolling band artifact conspire to create TCEs around 370\,d in period.  The Skye metric examines the skyline plot, see Figure\label{f:skyline} for an example, for each skygroup and identifies those times with an excess of transits in a one day bin.  All transits that fall in this bin are marked as an invalid transit.
+
+Skye chooses the threshold for each skygroup with the following logic.  For each skygroup the average rate of transits per time bin is found by taking the number of transits associated with TCEs with Periods less than 40?? days. One day bins are created running from 200?? to 1600??, skipping any bin which no transits exist using the entire population of OBS TCEs, this removes time bins for which no data exists for the majority of targets.  The average rate of transits per bin (R) is given by the number of transits (N) divided by the number of bins (B) and the scatter in that average would likely be governed by Poisson statistics.  We define a threshold as $R + S \times \sqrt{R}$ where S is an arbitrary value that is held constant for all skygroups.  Since some transits are known to be clustered, these transits will not contribute evenly to all the bins and create a high value for R. To adjust for this we iteratively remove the transits in bins that are above the threshold and then recalculate R using the new values for both the remaining number of transits and the remaining number of bins. We stop iterating when there are no more peaks and the values converge.
+
+\subsubsection{Chases -- Asymmetric SES}
+
+\subsubsection{Rubble -- Transits with little data}
+

@@ -164,16 +164,18 @@ Describe here the idea of not-transit-like and how we look for evidence that the
 \subsection{Individual Metrics, updates and improvements}
 
 \paragraph{Not-Transit-Like Metrics} 
-Some metrics that determine if a TCE is not-transit-like operate on the individual transits. We define not-transit-like as anything that does not have three periodic, box- or v-shaped events. Primarily we try to eliminate TCEs caused by instrumental or data-reduction-pipeline effects (like Sudden Pixel Sensitivity Drop Outs or detrending artifacts) and smoothly varying variable stars (pulsators, contact binaries and ellipsoidal binaries) with this high level flag.   These individual metrics are as follows:
-\begin{enumerate}
-\item Marshall
-\input{marshall.tex}
-\item Skye
-\item ChASES
-\item Rubble
-\item Rocky
-\item Grouping single transit failures and recalculating MES and counting the number of transits.
-\end{enumerate}
+Some metrics that determine if a TCE is not-transit-like operate on the individual transits. We define not-transit-like as anything that does not have three periodic, box- or v-shaped events. Primarily we try to eliminate TCEs caused by instrumental or data-reduction-pipeline effects (like Sudden Pixel Sensitivity Drop Outs or detrending artifacts) and smoothly varying variable stars (pulsators, contact binaries and ellipsoidal binaries) with this high level flag.   These individual metrics are as follows: Marshall, Skye, Chases, and Rubble. The Robovetter also recalculates the MES based on the good transits and counts the number of good transits to decide which TCEs should be considered False Positives. 
+
+\input{individualMetrics.tex}
+%\begin{enumerate}
+%\item Marshall
+%\input{marshall.tex}
+%\item Skye
+%\item ChASES
+%\item Rubble
+%\item Rocky
+%\item Grouping single transit failures and recalculating MES and counting the number of transits.
+%\end{enumerate}
 
 Other metrics operate on data gathered using all the photometric data to determine if the transit signal is transit-like.  These metrics are as follows:
 
