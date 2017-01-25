@@ -49,7 +49,15 @@ The Skye metric searches for those transit times that have an unusual number of 
 
 Skye chooses the threshold for each skygroup with the following logic.  For each skygroup the average rate of transits per time bin is found by taking the number of transits associated with TCEs with Periods less than 40?? days. One day bins are created running from 200?? to 1600??, skipping any bin which no transits exist using the entire population of OBS TCEs, this removes time bins for which no data exists for the majority of targets.  The average rate of transits per bin (R) is given by the number of transits (N) divided by the number of bins (B) and the scatter in that average would likely be governed by Poisson statistics.  We define a threshold as $R + S \times \sqrt{R}$ where S is an arbitrary value that is held constant for all skygroups.  Since some transits are known to be clustered, these transits will not contribute evenly to all the bins and create a high value for R. To adjust for this we iteratively remove the transits in bins that are above the threshold and then recalculate R using the new values for both the remaining number of transits and the remaining number of bins. We stop iterating when there are no more peaks and the values converge.
 
-\subsubsection{Chases -- Asymmetric SES}
+\subsubsection{Chases -- Asymmetric Transit Significance}
+Words from Chris about SES time series
 
-\subsubsection{Rubble -- Transits with little data}
+\subsubsection{Rubble -- Transits Lacking Data}
+Rubble simply counts the number of cadences expected in each transit compared to the number that the pipeline actually used when fitting the TCE.  The pipeline gaps cadences as it iteratively searches for multiple planet systems, i.e. the transits from the first planet are removed before searching for the second transit. These gapped cadences are not counted as observations.  The Rubble metric looks at 2 transit durations and counts the number of 30-minute cadences at were observed (after gapping) and divides it by the number of cadences that were expected given the regular cadence of the Kepler instrument.  If a transit has a Rubble value greater than XX?? it is considered valid. 
 
+
+
+  
+
+
+\subsubsection{Tracker -- Fitted Transit Time Disagreements}
