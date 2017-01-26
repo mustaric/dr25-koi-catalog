@@ -109,18 +109,21 @@ Items that do not belong in this paper:
 
 \section{Introduction}
 
-In 2004 the \Kepler\ space telescope was launched into an earth trailing orbit with the goal of finding the signal from rocky, habitable transiting exoplanets \citep{Koch2010} around sun-like stars. The telescope observed the brightness of over 150,000 stars for four years looking for a small decrease in the brightness of the star caused by a planet passing between the star and the \Kepler\ spacecraft. 
+In 2004 the \Kepler\ space telescope was launched into an Earth trailing orbit  with the goal of finding the signals of rocky, habitable transiting exoplanets \citep{Koch2010} around sun-like stars. The telescope observed the brightness of over 150,000 stars for four years looking for a small decrease in the brightness of the star caused by a planet passing between the star and the \Kepler\ spacecraft. 
 Since \Kepler's launch in 2009 it has succeeded in identifying X,XXX planet candidates \citep{Borucki2010,Coughlin20016}. 
 
 X,XXX of these exoplanets have gone on to be   \citep[e.g.][]{FOP?} or validated planets \citep[see most recently][]{Morton2016}. 
 
 Because of the \Kepler\ data, the landscape of known exoplanets has expanded, finding smaller planets in more distant orbits from their host stars.  To highlight a few examples,  \Kepler\ found terrestrial planets as small as Kepler-37b \citep{Barclay2013}, a moon sized planet in a 13.3 day period. \Kepler\ has even found small exoplanets in the habitable zone of their host star, e.g. Kepler-186f \citep{Quintana2014} and Kepler-452b \citep{Jenkins2015}.  The Kepler data has also shown how exoplanets are commonly found in exoplanetary systems. These systems can be compact like the system around Kepler-11, where there are six planets all with periods less than XX days. Also, because of the long continuous data set, exoplanets have been found orbiting binary stars, e.g. Kepler-16\citep{Doyle2011}.
 
+The impact of \Kepler\ on our understanding of exoplanets comes not only from these individual systems, but also from \Kepler's unique ability to understand the commonality of different exoplanets.  \Kepler\ has shown us that most stars have exoplanets and that super-Earth and small planets are more common than their larger cousins \citet{Burke2015}. Many have used the \Kepler\ exoplanets as a consistent, well understood set, from which to measure occurrence rates. For example, \citep{Dressing2015} have measured the frequency of small planets around M-dwarf stars, \citep{Kane2014} have measured the fequency of Venus-size planets?? and someone else.   However, a diffinitive answer for the frequency of earth-sized planets in 1-year orbits around sun-like stars has been difficult \citep{petigura2014;burke2015;Fressin2015}. \citet{Burke2015} demonstrated how changing a few reasonable assumptions regarding the completeness and reliability of the exoplanet sample causes drastic variations in the measurement.  They identified pipeline completeness, catalog reliability and errors in the stellar catalog as likely the largest systematic errors.
 
-The impact of \Kepler\ on our understanding of exoplanets comes not only from these individual systems, but from the plethora of planets of every type that it has found. Understanding how common different types of exoplanets are around different types of stars will be one of its lasting legacy. \Kepler\ has shown us that most stars have exoplanets and that super-Earth and small planets are more common than their larger cousins \citet{Burke2015}.   
+Early KOI catalogs \ciete{Bouruki2011;Batalha2012;Rowe2015} were created by vetting every signal individually by a team of people called TCERT (Threshold Crossing Event Review Team). Beginning with the \citet{Mullally2015} the KOI catalog generation has become increasingly automated, with the seventh catalog \citep[][DR24 KOI catalog]{Coughlin2016} being generated entirely via automated tools.  This was a necessary step for the ultimate goal of occurrence rate calculations in order to test this vetting process. TCERT could not be trusted to vet known true positives and known false positives in the same manner as they did the real data.  
 
+Each KOI catalog is based on a single search of the \Kepler\ lightcurves by the \Kepler\ pipeline.  In order to fully understand which types of exoplanets are likely to be found by this pipeline, and also vetted in to exoplanets in the catalog \citet{Christiansen2016} and \citet{Christiansen2015} has injected transit-like events in to the pixel-level data and identified which are available on the other end. In this way each step of the process, from choosing photometric apertures, to detrending the light curves and performing the search will be measured in the detection efficiency. Starting with DR24 KOI catalog, the first entirely automated KOI catalog, these same signals were used to measure the the detection efficiency of the vetting process. However, no true false positives were available, except for injected background eclipsing binaries, to measure the reliability of the exoplanet candidates.
 
-And for each of these unique systems, there are a plethora of exoplanets This plethora of planets \Kepler\ has shown that small planets are common 
+For this final DR25 Q1--Q17 KOI catalog we aim to measure both the completeness and the reliability of the catalog.  We do this by fully automating the vetting processes by improving the Robovetter introduced with the DR24 catalog (see \S\ref{s:robovetter}. With this robovetter we also vet injected transit signals (\S\ref{s:inj}) and simulated false positives. The simulated false positives are produced in two ways, by inverting the light curves (\S\ref{s:inv})and by scrambling (\S\ref{s:scr}) the order of the years of observation. For our stellar properties, we use the latest Q1--Q17 stellar catalog created by \citep{mathur2016}, which has used all available sources to create a consistent and accurate stellar catalog. We provide markov-chain Monte Carlo transit fits \citep{Rowe2015} with error bars created from the posterior distributions \S\ref{s:transitfits}). The effectiveness at removing false alarms is translated into an estimate of the catalog reliability as a function of period, mes and planet radius. Since occurrence rate measurements do not necessarily require a highly reliable catalog, we discuss cuts on the catalog that will yield a highly reliable set if one is required. For this purpose we introduce a disposition score which rates the confidence on all KOI dispositions (\S\ref{s:score}). Finally we discuss all the products available at NExScI with which to further tune and understand the KOI catalog.
+
 
 \begin{enumerate}
 \item What is Kepler and what is its mission?
@@ -138,15 +141,19 @@ And for each of these unique systems, there are a plethora of exoplanets This pl
 \section{Tools for Evaluating Performance}
  At our disposal we have two additional data sets with which to test our metrics, a population of signals we know to be real (Injection) and a population of signals we know to be false (inversion). We use these to gain a sense of the quality of our catalog.
 \subsection{Injection} 
+\label{s:inj}
 A Quick summary of how injection was done and what we produce with injection. Show a plot of the distribution of recovered injected things in terms of period and MES.
-\subsection{Inversion} 
+\subsection{Inversion}
+\label{s:inv} 
 A summary of how inversion was done and what we get from it. Discuss where its limitations as a population of false positives, which ones do we know we are missing. If we have a way of ameliorating this issue, like with season scrambling, discuss that too.
+\subsection{Scrambled}
+\label{s:scr}
 
 \subsection{Previous Catalogs}In addition we have confirmed planets and confirmed false positives. However, these are not great tests for low MES or long Period.
 
 
 \section{Vetting Methods and Metrics}
-
+\label{s:robovetter}
 \subsection{Robovetter Overview}
 Describe here the idea of not-transit-like and how we look for evidence that the signal is due to an eclipsing binary. Include an updated Figure 2 from the previous paper. Introduce the major flags.
 \subsubsection{Using the DR24 Robovetter}
@@ -210,7 +217,8 @@ Some metrics look for evidence that a transit-like signal is actually due to an 
 How we tuned all the metrics to do the best we can.
 Discuss any weaknesses with our methodology.
 
-\section{Evaluate the Dispositions}
+\section{Disposition Score}
+\label{s:score}
 
 \subsection{Catalog Completeness}
 \subsubsection{Evaluate recovery of Pixel-level Injected Transits}
@@ -230,6 +238,7 @@ The robovetter vets all TCEs, but we only report those that we consider to be tr
 \subsection{Federating to known KOIs}
 
 \subsection{Model Fits using MCMC}
+\label{s:transitfits}
 
 \subsubsection{Comparison between }
 \subsection{Deliverables}

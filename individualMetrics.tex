@@ -53,11 +53,8 @@ Skye chooses the threshold for each skygroup with the following logic.  For each
 Words from Chris about SES time series
 
 \subsubsection{Rubble -- Transits Lacking Data}
-Rubble simply counts the number of cadences expected in each transit compared to the number that the pipeline actually used when fitting the TCE.  The pipeline gaps cadences as it iteratively searches for multiple planet systems, i.e. the transits from the first planet are removed before searching for the second transit. These gapped cadences are not counted as observations.  The Rubble metric looks at 2 transit durations and counts the number of 30-minute cadences at were observed (after gapping) and divides it by the number of cadences that were expected given the regular cadence of the Kepler instrument.  If a transit has a Rubble value greater than XX?? it is considered valid. 
-
-
-
-  
+The intent of the Rubble metric is to remove TCEs that were detected despite being entirely composed of transits with only a few observations each. Rubble counts the number of cadences expected in each transit and compares them to the number that the pipeline actually had when it found the TCE.  The pipeline gaps cadences as it iteratively searches for multiple planet systems, i.e. the transits from the first planet are removed before searching for the second transit. Rubble does not count these gapped cadences as observations.  The Rubble metric looks at 2 transit durations and counts the number of 30-minute cadences at were observed (after gapping) and divides it by the number of cadences that were expected given the regular cadence of the Kepler instrument.  If a transit has a Rubble value greater than XX?? it is considered valid. Typically Rubble removes TCEs with high planet numbers on systems where the first TCE on that star had a period less than a couple of days. 
 
 
 \subsubsection{Tracker -- Fitted Transit Time Disagreements}
+Should we include Tracker?
