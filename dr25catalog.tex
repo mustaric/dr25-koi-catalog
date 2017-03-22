@@ -1,5 +1,50 @@
+% Common commands
+\def \logg {$\log{g}$}
+\def \rsun {$R_{\sun}$}
+\def \msun {$M_{\sun}$}
+\def \lsun {$L_{\sun}$}
+\def \rstar {$R_{\star}$}
+\def \mstar {$M_{\star}$}
+\def \tstar {$T_{\star}$}
+\def \rp {$R_{p}$}
+\def \mp {$M_{p}$}
+\def \sp {$S_{p}$}
+\def \teq {T$_{\rm eq}$}
+\def \rj {$R_{J}$}
+\def \mj {$M_{J}$}
+\def \re {$R_{\earth}$}
+\def \me {$M_{\earth}$}
+\def \se {$S_{\earth}$}
+\def \kepler {\emph{Kepler}}
+\def \KEPLER {\emph{KEPLER}}
+\def \keplers {\emph{Kepler's}}
+\def \th {$^{\rm th}$}
+
+% Important numbers
+\def \ntces {34,032}        % Number of DR25 TCEs, includes bogus
+\def \ntcesnobogus {32,534}        % Number of DR25 TCEs, no bogus
+\def \npredrtwentyfourkois {7,348}  % Number of KOIS pre-DR24.
+\def \npredrtwentyfivekois {8,826}  % Number of KOIs pre-DR25
+\def \nkebs {2,605}         % Number of EBWG True EBs used in ephem matching.
+\def \nephemmatch {1,859}   % Number of TCEs ruled as FPs due to ephemeris matching in DR24.
+\def \nonlyephemmatch {106} % Number of TCEs ruled as FPs ONLY due to ephemeris matching in DR24.
+
+\hyphenation{injTCE}  % Makes it so that "injTCE" is never hyphenated to break a line
+\hyphenation{injTCEs}   % Makes it so that "injTCEs" is never hyphenated to break a line
+
+
 % using aastex version 6
-\documentclass[onecolumn]{aastex6}
+
+% \documentclass[onecolumn]{aastex6}
+
+\documentclass[apj,twocolappendix,numberedappendix]{emulateapj}
+
+\setcounter{secnumdepth}{4}  % Required to get section headers like  4.1.2.1 as required by AAS journal style guide
+
+\let\underscore\_
+\renewcommand{\_}{\discretionary{\underscore}{}{\underscore}}  % This and the previous line lets the mneonic flags gracefully line wrap
+
+
 % These are the available options:
 %   manuscript  : onecolumn, doublespace, 12pt fonts
 %   preprint    : onecolumn, single space, 10pt fonts
@@ -37,7 +82,11 @@
 %% If you wish, you may supply running head information, although
 %% this information may be modified by the editorial offices.
 %%\shorttitle{\aastex sample article}
+
 \shortauthors{Thompson et al.}
+
+
+
 
 \begin{document}
 %% You can add a light gray and diagonal water-mark to the first page
@@ -52,11 +101,8 @@ A Fully Automated Catalog Based on Quarters 1 through 17, Data Release 25\\Tuned
 
 \begin{abstract}
 Enlightening words about the purpose of this final Kepler Catalog and how it fits in with the other Kepler Planet Candidate catalogs. Then some details about how many KOIs we added and how many are planet candidates. 
-\end{abstract}
-
-
-\section{Scope}
 Overall, the purpose of this paper is to describe how we sifted through the DR25 TCE table and identified the planet candidates, the transiting candidates with significant secondaries, background eclipsing binaries, ephemeris matches and the false alarms. It also needs to describe how we arrive at the reported physical parameters of each planet, so that interesting populations for occurrence rates and follow-up can be identified.  Finally the Completeness and Reliablity of the catalog should be discussed.
+
 
 Here is a basic outline.
 \begin{itemize}
@@ -79,8 +125,6 @@ Here is a basic outline.
 \item Analysis of the content of the catalog: Show Candidates on the radius vs. insolation flux labeled by stellar temperature (Coughlin Fig 7.), discuss Multi-planet systems, discuss new individual Rocky-HZ Planet Candidates, enumerate the number of new KOIs of different sizes.
 
 \item Discussion of how to use this catalog to do occurrence rates. i.e. what needs to be considered (Completeness and Reliability, suspicious areas of parameter space, are additional cuts required?), not an actual calculation. Indicate what information will be delivered to NExScI to help with these calculations. 
-
-\item Conclusion 
 
 
 \end{itemize}
@@ -107,110 +151,35 @@ Items that do not belong in this paper:
 \end{itemize}
 %}
 
+\end{abstract}
+
+\keywords{catalogs --- planetary systems --- planets and satellites: detection --- stars: statistics --- surveys --- techniques: photometric}
+
 \section{Introduction}
-
-In 2004 the \Kepler\ space telescope was launched into an earth trailing orbit with the goal of finding the signal from rocky, habitable transiting exoplanets \citep{Koch2010} around sun-like stars. The telescope observed the brightness of over 150,000 stars for four years looking for a small decrease in the brightness of the star caused by a planet passing between the star and the \Kepler\ spacecraft. 
-Since \Kepler's launch in 2009 it has succeeded in identifying X,XXX planet candidates \citep{Borucki2010,Coughlin20016}. 
-
-X,XXX of these exoplanets have gone on to be   \citep[e.g.][]{FOP?} or validated planets \citep[see most recently][]{Morton2016}. 
-
-Because of the \Kepler\ data, the landscape of known exoplanets has expanded, finding smaller planets in more distant orbits from their host stars.  To highlight a few examples,  \Kepler\ found terrestrial planets as small as Kepler-37b \citep{Barclay2013}, a moon sized planet in a 13.3 day period. \Kepler\ has even found small exoplanets in the habitable zone of their host star, e.g. Kepler-186f \citep{Quintana2014} and Kepler-452b \citep{Jenkins2015}.  The Kepler data has also shown how exoplanets are commonly found in exoplanetary systems. These systems can be compact like the system around Kepler-11, where there are six planets all with periods less than XX days. Also, because of the long continuous data set, exoplanets have been found orbiting binary stars, e.g. Kepler-16\citep{Doyle2011}.
-
-
-The impact of \Kepler\ on our understanding of exoplanets comes not only from these individual systems, but from the plethora of planets of every type that it has found. Understanding how common different types of exoplanets are around different types of stars will be one of its lasting legacy. \Kepler\ has shown us that most stars have exoplanets and that super-Earth and small planets are more common than their larger cousins \citet{Burke2015}.  
-
-
-And for each of these unique systems, there are a plethora of exoplanets This plethora of planets \Kepler\ has shown that small planets are common 
-
-\begin{enumerate}
-\item What is Kepler and what is its mission?
-\item How have we made catalogs in the past and why did we switch to a robovetter. What is the robovetter?
-\item Introduce what is new in this paper, hint that the population of TCEs is different and that has created challenges in automatic vetting. Introduce how the goal is to get a sense of the completeness and the reliability of the catalog.
-\item Introduce the concepts injection and inversion to test the robovetter.
-\item Outline how the Robovetter creates Dispositions and the catalog also includes MCMC fits.
-\item Create a road map of what is in this paper?
-\end{enumerate}
+\input{section-introduction.tex}
 
 \section{The Q1--Q17 DR25 TCEs}
-\input{dr25TCEs.tex}
+\label{tcesec}
+\input{section-dr25TCEs.tex}
 
 
 \section{Tools for Evaluating Performance}
- At our disposal we have two additional data sets with which to test our metrics, a population of signals we know to be real (Injection) and a population of signals we know to be false (inversion). We use these to gain a sense of the quality of our catalog.
-\subsection{Injection} 
-A Quick summary of how injection was done and what we produce with injection. Show a plot of the distribution of recovered injected things in terms of period and MES.
-\subsection{Inversion} 
-A summary of how inversion was done and what we get from it. Discuss where its limitations as a population of false positives, which ones do we know we are missing. If we have a way of ameliorating this issue, like with season scrambling, discuss that too.
 
-\subsection{Previous Catalogs}In addition we have confirmed planets and confirmed false positives. However, these are not great tests for low MES or long Period.
+\input{section-InjInvSS1Tces.tex}
+
 
 
 \section{Vetting Methods and Metrics}
-
-\subsection{Robovetter Overview}
-Describe here the idea of not-transit-like and how we look for evidence that the signal is due to an eclipsing binary. Include an updated Figure 2 from the previous paper. Introduce the major flags.
-\subsubsection{Using the DR24 Robovetter}
- We applied the DR24 robovetter to the DR25 TCEs. 
- We found that we needed to do better in the following areas.
- Don't forget to cite \citet{Tange2011a}.
- \input{applydr24rv.tex}
-
-\begin{figure*}
-\centering
-\includegraphics[width=\linewidth]{RoboVetter-Diagram-V3-Overview.pdf}
-\caption{\red{An Overview of the Robovetter logic. This is from DR24, so needs to be updated}}
-\end{figure*}
-
-\subsection{Individual Metrics, updates and improvements}
-
-\paragraph{Not-Transit-Like Metrics} 
-Some metrics that determine if a TCE is not-transit-like operate on the individual transits. We define not-transit-like as anything that does not have three periodic, box- or v-shaped events. Primarily we try to eliminate TCEs caused by instrumental or data-reduction-pipeline effects (like Sudden Pixel Sensitivity Drop Outs or detrending artifacts) and smoothly varying variable stars (pulsators, contact binaries and ellipsoidal binaries) with this high level flag.   These individual metrics are as follows: Marshall, Skye, Chases, and Rubble. The Robovetter also recalculates the MES based on the good transits and counts the number of good transits to decide which TCEs should be considered False Positives. 
-
-\input{individualMetrics.tex}
-%\begin{enumerate}
-%\item Marshall
-%\input{marshall.tex}
-%\item Skye
-%\item ChASES
-%\item Rubble
-%\item Rocky
-%\item Grouping single transit failures and recalculating MES and counting the number of transits.
-%\end{enumerate}
-
-Other metrics operate on data gathered using all the photometric data to determine if the transit signal is transit-like.  These metrics are as follows:
-
-\begin{enumerate}
-\item LPP retrained
-\item Model Shift Uniqueness
-\item SWEET -- for N flag
-\item Grouped ChASES
-\item Model Shift DMM
-\item Model Shift Shape Metric
-\item MES/SES
-
-\end{enumerate}
-
-\paragraph{Significant Secondary Metrics}
-Some metrics look for evidence that a transit-like signal is actually due to an eclipsing binary (foreground or background).  It primarily looks for evidence of a secondary eclipse, but there are also metrics to look for ellipsoidal
-
-\begin{enumerate}
-\item Model Shift Secondary
-\item Model Shift Odd-Even
-\item Simple Odd-Even
-\item SWEET -- for S flag (we might need to combine N and S for this reason)
-\end{enumerate}
+\input{robovetter-section.tex}
 
 
-\paragraph{Centroid Offset} We vet the catalog for evidence that the the target is a false positive because of a background eclipsing binary. The Centroid Robovetter us run on the pixel level data to determine if this is the case.  This is unchanged from the previous two catalogs.  The \textbf{Ghostbuster metric} is also used to determine if the TCE signal is from pixels other than the star.
 
-\paragraph{Ephemeris Matching} We also look for evidence that 
-
-
-\subsection{Optimization}
+%\subsection{Optimization}
 How we tuned all the metrics to do the best we can.
 Discuss any weaknesses with our methodology.
 
-\section{Evaluate the Dispositions}
+\section{Completeness and Reliability}
+
 
 \subsection{Catalog Completeness}
 \subsubsection{Evaluate recovery of Pixel-level Injected Transits}
@@ -222,12 +191,14 @@ We need a catalog highly effective at removing false positives and false alarms 
 \subsubsection{Centroid Robovetter Results for astrophysical FPs}
 \subsubsection{Inversion to evaluate Effectiveness for False Alarm removal}
 \subsubsection{Evaluate the PC rate of certified FPs}
-\subsection{Reliability Estimate}
+\subsection{Reliability}
 
 
 \section{Putting together the KOI Catalog}
+
 The robovetter vets all TCEs, but we only report those that we consider to be transit-like to the KOI table. We must federate our current list with those KOIs we have made before.
 \subsection{Federating to known KOIs}
+\label{koisec}
 
 \subsection{Model Fits using MCMC}
 
@@ -262,3 +233,48 @@ Thanks to GNU parallel \citep{Tange2011a}.
 \end{document}
 
 
+%\subsection{Individual Metrics, updates and improvements}
+
+%\paragraph{Not-Transit-Like Metrics} 
+%Some metrics that determine if a TCE is not-transit-like operate on the individual transits. We define not-transit-like as anything that does not have three periodic, box- or v-shaped events. Primarily we try to eliminate TCEs caused by instrumental or data-reduction-pipeline effects (like Sudden Pixel Sensitivity Drop Outs or detrending artifacts) and smoothly varying variable stars (pulsators, contact binaries and ellipsoidal binaries) with this high level flag.   These individual metrics are as follows: Marshall, Skye, Chases, and Rubble. The Robovetter also recalculates the MES based on the good transits and counts the number of good transits to decide which TCEs should be considered False Positives. 
+
+%\input{individualMetrics.tex}
+
+
+%\begin{enumerate}
+%\item Marshall
+%\input{marshall.tex}
+%\item Skye
+%\item ChASES
+%\item Rubble
+%\item Rocky
+%\item Grouping single transit failures and recalculating MES and counting the number of transits.
+%\end{enumerate}
+
+%Other metrics operate on data gathered using all the photometric data to determine if the transit signal is transit-like.  These metrics are as follows:
+
+%\begin{enumerate}
+%\item LPP retrained
+%\item Model Shift Uniqueness
+%\item SWEET -- for N flag
+%\item Grouped ChASES
+%\item Model Shift DMM
+%\item Model Shift Shape Metric
+%\item MES/SES
+
+%\end{enumerate}
+
+%\paragraph{Significant Secondary Metrics}
+%Some metrics look for evidence that a transit-like signal is actually due to %an eclipsing binary (foreground or background).  It primarily looks for %evidence of a secondary eclipse, but there are also metrics to look for %ellipsoidal
+
+%\begin{enumerate}
+%\item Model Shift Secondary
+%\item Model Shift Odd-Even
+%\item Simple Odd-Even
+%\item SWEET -- for S flag (we might need to combine N and S for this reason)
+%\end{enumerate}
+
+
+%\paragraph{Centroid Offset} We vet the catalog for evidence that the the target is a false positive because of a background eclipsing binary. The Centroid Robovetter us run on the pixel level data to determine if this is the case.  This is unchanged from the previous two catalogs.  The \textbf{Ghostbuster metric} is also used to determine if the TCE signal is from pixels other than the star.
+
+%\paragraph{Ephemeris Matching} We also look for evidence that 
