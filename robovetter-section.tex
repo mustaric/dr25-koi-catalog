@@ -593,3 +593,54 @@ TALK ABOUT SCORE DISTRIBUTION HERE, OR LATER ON IN ANALYSIS?
 \caption{A plot of how we calculated errors for the robovetter score.}
 \label{score-fig-2}
 \end{figure}
+
+
+\subsection{Individual Transit Metrics}
+
+\subsubsection{Marshall -- Individual Transit Shape}
+%%Text describing new Marshall algorithm
+
+\citet{Coughlin2016} used the Marshall method \citep{Mullally16} to identify and reject false alarm TCEs caused by short period transients in the data. Marshall fits the proposed transit with models of a transit and various transients and used a Bayesian Information Criterion to decide which model was the best explanation for the data. Simulations in \citet{Mullally16} showed that Marshall was 95\% complete for TCEs with periods $>150$\,days and correctly rejected 66\% of simulated artifact events. The limit on Marshall's effectiveness at eliminating false alarms was it used a parabola to describe the out-of-transit flux, which failed to capture much of the real observed stellar variability. To ensure high completeness, Marshall was tuned to prevent a variable continuum causing true transits to be rejected, at the cost of a lower than ideal effectiveness.
+
+For this catalog, we use a Gaussian Process approach \citep[GP][]{Rasmussen10} to provide an improved continuum model to improve our effectiveness while maintaining our high completeness. Briefly, our approach aims to model the covariance in the lightcurve to better fit the trends in our data.
+A similar approach was used by \citet{ForemanMackey16} to model single transits due to very long period planets ($P > 1000$\,days).
+
+Our procedure is as follows. For each individual proposed transit event, we select a snippet of PDC data 30 times the reported transit duration centred on the event. Where the event happens near the start (or end) of a quarter, we take a snippet of similar length anchored at the start (or end) of the quarter. We use the George package \citep{Ambikasaran14} to fit the covariance of the out-of-transit flux with an exponential squared function, $ {\mathrm{Cov(\delta t})} = A \exp{ (\delta t/\ell)^2}$, where $A$ and $\ell$ are tunable parameters. 
+
+We next fit four models to the entire snippet.
+
+\begin{equation}
+\left.\begin{aligned}
+G(t | A, \ell) + y_0 \\
+G(t | A, \ell) + y_0 + S(t)\\
+G(t | A, \ell) + y_0 + S(t)(1 - \exp{\beta t})\\
+G(t | A, \ell) + y_0 + S(t - \tau/2) - S(t + \tau/2) 
+\end{aligned}\right.
+\end{equation}
+
+\noindent
+where $G$ is the Gaussian Process model with the tunable parameters held fixed to those found earlier, and $y_0$ is a constant offset. $S(t)$ is given by
+
+\begin{equation}
+S(t) = \frac{d}{1 - e^{-\gamma (t-t_0)} }
+\end{equation}
+
+\noindent
+where $d$ and $t_0$ are tunable parameters, while $\gamma$ is held constant. This function, known as a sigmoid (or logistic) function, has a value of 1 for $t<t_0$, 0 for $t>t_0$, and transitions quickly, but smoothly, between the two states. By using a sigmoid and avoiding the discontinuities in present in the models used by the original Marshall algorithm we can use the L-BFGS-B algorithm \citep{Byrd95} available in the Scipy package \footnote{\url{www.scipy.org}} instead of the less robust Neldar-Mead.
+
+The second function models a discrete jump in the data. We fit this model seeded with a negative-going dip at the predicted time of ingress, and also with a positive-going spike at the predicted egress, as we see both features in \Kepler\ data. The third model fits a Sudden Pixel Sensitivity Drop (SPSD) event, probably caused by a cosmic ray hit on the detection. The last model approximates a box transit. By varying the parameter $\gamma$ we could in principle model transit ingress and egress, but find that extra degree of freedom is not necessary to explain the low signal-to-noise events of most concern.
+
+For each transit the Marshall method returns the BIC score, the preferred model and the difference between the preferred model and the sigmoid box fit.  A transit is considered sufficiently bad when the marshall score exceeds a particular threshold, as with the original Marshall algorithm.  However, in a few cases the Gaussian processes fails, yield extremely large, unbelievable BIC values. In these cases the trasit is set to always pass.  Also, for low MES transits, the expected SES of a transit is sufficiently low that Marshall will be unable to distinguish between the ``no transit" model and a low signal-to-noise transit.  Because of this the robovetter uses the following logic when deciding whether a specific transit is not valid :
+\begin{equation}
+
+\end{equation}
+
+{\bf Add some kind of discussion of performance}
+{\bf Add link to Source Forge code}
+ 
+ 
+\subsubsection{Skye -- Transits Clustered by Skygroup}
+
+The Skye metric searches for those transit times that have an unusual number of transits at the same time on the same skygroup.   One well known image artifact is called rolling band. \textbf{When two frequencies beat together they create something that is described in the instrument handbook it creates changes in the black level that are both time and spatial dependent.} This effect should cause many transit like events to occur at approximately the same time for all stars on that channel when rolling band occurs. Because the telescope rolls every once each quarter, these rolling band artifact conspire to create TCEs around 370\,d in period.  The Skye metric examines the skyline plot, see Figure\label{f:skyline} for an example, for each skygroup and identifies those times with an excess of transits in a one day bin.  All transits that fall in this bin are marked as an invalid transit.
+
+Skye chooses the threshold for each skygroup with the following logic. For each skygroup the average rate of transits per time bin is found by taking the number of transits associated with TCEs with Periods less than 40?? days. One day bins are created running from 200?? to 1600??, skipping any bin which no transits exist using the entire population of OBS TCEs, this removes time bins for which no data exists for the majority of targets. The average rate of transits per bin (R) is given by the number of transits (N) divided by the number of bins (B) and the scatter in that average would likely be governed by Poisson statistics. We define a threshold as $R + S \times \sqrt{R}$ where S is an arbitrary value that is held constant for all skygroups. Since some transits are known to be clustered, these transits will not contribute evenly to all the bins and create a high value for R. To adjust for this we iteratively remove the transits in bins that are above the threshold and then recalculate R using the new values for both the remaining number of transits and the remaining number of bins. We stop iterating when there are no more peaks and the values converge.
