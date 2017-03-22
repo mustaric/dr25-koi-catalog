@@ -22,7 +22,7 @@ Similar to \citet{Rowe2015a}, \citep{Mullally2015cat}, and \citet{Coughlin2016},
 
 \begin{itemize}
   \item ``Not Transit-Like'': a TCE whose light curve is not consistent with that of a transiting planet or eclipsing binary, such as instrumental artifacts and non-eclipsing variable stars.
-  \item ``Stellar'': a TCE that is observed to have a significant secondary event, transit shape, or out-of-eclipse variability that indicates the transit-like event is most likely caused by an eclipsing binary. (Self-luminous, hot Jupiters with a visible secondary eclipse are also in this category, but are still given a disposition of PC.)
+  \item ``Stellar Binaries'': a TCE that is observed to have a significant secondary event, transit shape, or out-of-eclipse variability that indicates the transit-like event is most likely caused by an eclipsing binary. (Self-luminous, hot Jupiters with a visible secondary eclipse are also in this category, but are still given a disposition of PC.)
   \item ``Centroid Offset'': a TCE whose signal is observed to originate on a nearby star, rather than the target star, based on examination of the pixel-level data.
   \item ``Ephemeris Match Indicates Contamination'': a TCE that has the same period and epoch as another object, and is not the true source of the signal given the relative magnitudes, locations, and signal amplitudes of the two objects.
 \end{itemize}
@@ -98,12 +98,19 @@ One of the most common false positives in the data set are quasi-sinusoidal shap
 \paragraph{The LPP Metric}
 \label{lppsec}
 
-Many short-period false positives are due to variable stars that exhibit a quasi-sinusoidal phased light curve. \citet{Matijevic2012} used a technique known as Local Linear Embedding (LLE), a dimensionality reduction algorithm, to classify the ``detachedness'' of \kepler{} eclipsing binary light curves on a scale of 0 to 1, where 0 represented fully detached systems with well-separated, narrow eclipses and 1 represented contact binaries with completely sinusoidal light curves. We use a similar technique, known as Local Preserving Projections \citep[][LPP]{He2004}, to distinguish transit-like signals from not transit-like signals \citep{Thompson2015b}. LPP returns a single number that represents the similarity of a TCE's shape to that of known transits. Unlike LLE, LPP can be applied to any TCE, not just those that lie within the parameter space of the training set. Thus, LPP is more suitable for separating transit-like TCEs from all other not transit-like TCEs, and can be run on artificially injected transits.
+Many short-period false positives are due to variable stars that exhibit a quasi-sinusoidal phased light curve. We implemented the LPP transit-like metric described by \citet{Thompson2015b} to separate those TCEs that show a transit shape from those that do not. This technique bins the TCE's folded light curve and then applies a dimensionality reduction algorithm called Locality Preserving Projections (LPP) \citep{}.  It then measures the average Euclidean distance to the nearest known transit-like TCEs to yield a single number that represents the similarity of a TCE's shape to that of known transits. 
+
+For the DR25 KOI catalog, we deviated slightly from the method described by \citet{Thompson2015b}.  This was done to solve the problem that the LPP metric was highly dependent on both period and MES. The empirical LPP metric threshold increases at periods less than a few days. This is caused by the fact these TCEs transit for a large fraction of the orbital period and thus have a different transit shape. Because transit injection does not include a large number of this type of event, the LPP values for good transits can be larger.  The trend with MES is routed in the fact that when the binned light curve has a lower signal to noise, it is less likely for two folded light curves to be similar to each other, creating more scatter in the final metric. 
+
+To calculate the LPP metric we start with detrended \kepler{} light curves. (Note we calculated the metric for both detrendings discussed above.)  When training the LPP algorithm, we used the set of recovered transit injection TCEs and those planet candidates from the DR24 catalog \citep{Coughlin2016cat} that were found as TCEs in DR25.  Because we injected very few short period transits, including the short period DR24 candidates helped reduce the dependence of the LPP metric on period.  Also, we changed how the folded light curve was binned. To remove some of the MES dependence, TCEs with lower MES are given wider bins for those near the transit center; note, this does not change the number of bins. Because it yielded better performance, we used 97?? bins in total to represent the shape of the light curve.  Finally, we divided the raw LPP values by the 75$^{th}$ percentile of the N?? TCEs that are closest in period. (Did we also do this in MES?) In this way we further remove the period dependence on the LPP metric.  The resulting LPP metric values lie near a value of one where values greater than $\approx$ 2 do not appear transit-like.  
+
+%Begin Jeff's words.
+%Many short-period false positives are due to variable stars that exhibit a quasi-sinusoidal phased light curve. \citet{Matijevic2012} used a technique known as Local Linear Embedding (LLE), a dimensionality reduction algorithm, to classify the ``detachedness'' of \kepler{} eclipsing binary light curves on a scale of 0 to 1, where 0 represented fully detached systems with well-separated, narrow eclipses and 1 represented contact binaries with completely sinusoidal light curves. We use a similar technique, known as Local Preserving Projections \citep[][LPP]{He2004}, to distinguish transit-like signals from not transit-like signals \citep{Thompson2015b}. LPP returns a single number that represents the similarity of a TCE's shape to that of known transits. Unlike LLE, LPP can be applied to any TCE, not just those that lie within the parameter space of the training set. Thus, LPP is more suitable for separating transit-like TCEs from all other not transit-like TCEs, and can be run on artificially injected transits.
 
 
-To calculate the LPP metric we start with detrended \kepler{} light curves. We then fold and bin each light curve into 141 points, ensuring adequate coverage of both the in- and out-of-transit portions of the light curve. We exclude points near a phase of 0.5, as the presence of a secondary eclipse in a short-period binary may unduly influence the LPP value, and we seek to classify detached eclipsing binaries as transit-like. These 141 points act as the initial number of dimensions that describe each TCE. Using a subset of known transit-like TCEs, we create a map from the initial 141 dimensions down to 20 dimensions. We apply this map to all TCEs and measure the average Euclidean distance of each to the 15 nearest known transit-like TCEs. This average distance is the value of the LPP metric. When small, it means other transit-like TCEs are nearby in the 20 dimensional space and thus is likely to be shaped like a transit. We calculate this LPP transit metric for all TCEs using both the DV and the alternate detrending, as described in \S\ref{nottransitlikesec}.
+%We then fold and bin each light curve into 141 points, ensuring adequate coverage of both the in- and out-of-transit portions of the light curve. We exclude points near a phase of 0.5, as the presence of a secondary eclipse in a short-period binary may unduly influence the LPP value, and we seek to classify detached eclipsing binaries as transit-like. These 141 points act as the initial number of dimensions that describe each TCE. Using a subset of known transit-like TCEs, we create a map from the initial 141 dimensions down to 20 dimensions. We apply this map to all TCEs and measure the average Euclidean distance of each to the 15 nearest known transit-like TCEs. This average distance is the value of the LPP metric. When small, it means other transit-like TCEs are nearby in the 20 dimensional space and thus is likely to be shaped like a transit. We calculate this LPP transit metric for all TCEs using both the DV and the alternate detrending, as described in \S\ref{nottransitlikesec}.
 
-SUSAN - DESCRIBE HERE HOW YOU NORMALIZED THE LPP VALUES W.R.T. PERIOD, etc. 
+%SUSAN - DESCRIBE HERE HOW YOU NORMALIZED THE LPP VALUES W.R.T. PERIOD, etc. 
 
 % OLD TEXT DESCRIBING THE CHOICE OF THRESHOLD. Now we just adjust.
 %
@@ -212,22 +219,53 @@ A new approach implemented in DR25 is to identify individual transit events for 
 \noindent If either of these conditions are met, then the TCE is failed as not transit-like This is in line with the \kepler{} mission requirement of at least three valid transit events with a MES~$\ge$~7.1 in order to generate a TCE. In the following subsections we list the various tests we apply to each individual transit event.
 
 
-\paragraph{Rubble}
+\paragraph{Rubble -- Missing Data}
 
-A number of TCEs from the \kepler{} pipeline are based on transit events that are missing a significant amount of data either in-transit or just before and/or after. These tend to be false positives that are triggering on edges of gaps, or cases were a large amount of data has been removed and a TCE is being created from the residuals of previous TCEs in the system. We thus devised the ``Rubble'' metric to compute the fraction of data that is actually present for each individual transit.
-
-SUSAN I NEED THE RUBBLE TECH SPECS HERE IN WHAT IS COUNTED IN AND OUT, NUMBER OF DURATIONS INCLUDED, ETC.
+A number of TCEs from the \kepler{} pipeline are based on transit events that are missing a significant amount of data either in-transit or just before and/or after. These tend to be false positives that are triggering on edges of gaps, or cases were a large amount of data has been removed and a TCE is being created from the residuals of previous TCEs in the system. We thus devised the ``Rubble'' metric to clean-up these remains from the TCE list. The Rubble value for each individual transit is computed by dividing the number of \Kepler\ cadences that are actually available by the number of cadences expected given \Kepler's regular 29.42\,min cadence.  We calculated Rubble across two transit durations centered on the epoch for each transit given the TCE's original linear ephemeris. 
 
 
-
-\paragraph{Marshall}
+\paragraph{Marshall -- Transit Shape}
 \label{marshsec}
+\citet{Coughlin2016} used the Marshall method \citep{Mullally16} to identify and reject false alarm TCEs caused by short period transients in the data. Marshall fits the proposed transit with models of a transit and various transients and used a Bayesian Information Criterion to decide which model was the best explanation for the data. Simulations in \citet{Mullally16} showed that Marshall was 95\% complete for TCEs with periods $>150$\,days and correctly rejected 66\% of simulated artifact events. The limit on Marshall's effectiveness at eliminating false alarms was it used a parabola to describe the out-of-transit flux, which failed to capture much of the real observed stellar variability. To ensure high completeness, Marshall was tuned to prevent a variable continuum causing true transits to be rejected, at the cost of a lower than ideal effectiveness.
 
-A number of long-period false positives are a result of three or more systematic events that happen to be equidistant in time and produce a TCE. There are two prominent types of systematic events in \kepler{} data: sudden pixel sensitivity dropouots (SPSDs) and step-wise discontinuities. SPSDs are due to cosmic ray impacts that temporarily reduce the detection sensitivity of the impacted pixels, resulting in a sudden drop in flux followed by an asymptotic rise back to the baseline flux level over a timescale of a few hours \citep{VanCleve2009}. Step-wise discontinuities are sudden jumps in the baseline flux level, in either the positive or negative flux direction, and are typically due to imperfect detrending, but may have other causes. If a TCE is due to several of these events that are of similar SNR, they will not be flagged as false positives without examining the shape of their individual events.
+For this catalog, we use a Gaussian Process approach \citep[GP][]{Rasmussen10} to provide an improved continuum model to improve our effectiveness while maintaining our high completeness. Briefly, our approach aims to model the covariance in the lightcurve to better fit the trends in our data.
+A similar approach was used by \citet{ForemanMackey16} to model single transits due to very long period planets ($P > 1000$\,days).
 
-ARE THERE MORE MODELS THAN JUST STEPWISE AND SPSD? WERE ANY ADDED IN DR25??  WHATS OFFSET ONLY - WE NEED TO DESCRIBE
+Our procedure is as follows. For each individual proposed transit event, we select a snippet of PDC data 30 times the reported transit duration centered on the event. Where the event happens near the start (or end) of a quarter, we take a snippet of similar length anchored at the start (or end) of the quarter. We use the George package \citep{Ambikasaran14} to fit the covariance of the out-of-transit flux with an exponential squared function, $ {\mathrm{Cov(\delta t})} = A \exp{ (\delta t/\ell)^2}$, where $A$ and $\ell$ are tunable parameters. 
 
-In order to detect TCEs due to SPSDs and step-wise discontinuities, we developed the ``Marshall'' metric \citep{Mullally2015b}. Marshall fits a transit, SPSD, and step-wise discontinuity model to each individual event of a long-period TCE. The Bayesian Information Criterion \citep[BIC;][]{Schwarz1978} is then used to select which model best fits each individual transit event given each model's number of degrees of freedom. 
+We next fit four models to the entire snippet.
+
+\begin{equation}
+\left.\begin{aligned}
+G(t | A, \ell) + y_0 \\
+G(t | A, \ell) + y_0 + S(t)\\
+G(t | A, \ell) + y_0 + S(t)(1 - \exp{\beta t})\\
+G(t | A, \ell) + y_0 + S(t - \tau/2) - S(t + \tau/2) 
+\end{aligned}\right.
+\end{equation}
+
+\noindent
+where $G$ is the Gaussian Process model with the tunable parameters held fixed to those found earlier, and $y_0$ is a constant offset. $S(t)$ is given by
+
+\begin{equation}
+S(t) = \frac{d}{1 - e^{-\gamma (t-t_0)} }
+\end{equation}
+
+\noindent
+where $d$ and $t_0$ are tunable parameters, while $\gamma$ is held constant. This function, known as a sigmoid (or logistic) function, has a value of 1 for $t<t_0$, 0 for $t>t_0$, and transitions quickly, but smoothly, between the two states. By using a sigmoid and avoiding the discontinuities in present in the models used by the original Marshall algorithm we can use the L-BFGS-B algorithm \citep{Byrd95} available in the Scipy package \footnote{\url{www.scipy.org}} instead of the less robust Neldar-Mead.
+
+The second function models a discrete jump in the data. We fit this model seeded with a negative-going dip at the predicted time of ingress, and also with a positive-going spike at the predicted egress, as we see both features in \Kepler\ data. The third model fits a Sudden Pixel Sensitivity Drop (SPSD) event, probably caused by a cosmic ray hit on the detection. The last model approximates a box transit. By varying the parameter $\gamma$ we could in principle model transit ingress and egress, but find that extra degree of freedom is not necessary to explain the low signal-to-noise events of most concern.
+
+For each transit the Marshall method returns the BIC score, the preferred model and the difference between the preferred model and the sigmoid box fit.  A transit is considered sufficiently bad when the Marshall score exceeds a particular threshold, as with the original Marshall algorithm.  However, in a few cases the Gaussian processes fails, yield extremely large, unbelievable BIC values. In these cases the transit is set to always pass.  Also, for low MES transits, the expected SES of a transit is sufficiently low that Marshall will be unable to distinguish between the ``no transit" model and a low signal-to-noise transit.  Because of this the Robovetter uses the following logic when deciding whether a specific transit is not valid:
+
+
+
+%Jeff's words.
+%A number of long-period false positives are a result of three or more systematic events that happen to be equidistant in time and produce a TCE. There are two prominent types of systematic events in \kepler{} data: sudden pixel sensitivity dropouots (SPSDs) and step-wise discontinuities. SPSDs are due to cosmic ray impacts that temporarily reduce the detection sensitivity of the impacted pixels, resulting in a sudden drop in flux followed by an asymptotic rise back to the baseline flux level over a timescale of a few hours \citep{VanCleve2009}. Step-wise discontinuities are sudden jumps in the baseline flux level, in either the positive or negative flux direction, and are typically due to imperfect detrending, but may have other causes. If a TCE is due to several of these events that are of similar SNR, they will not be flagged as false positives without examining the shape of their individual events.
+
+%ARE THERE MORE MODELS THAN JUST STEPWISE AND SPSD? WERE ANY ADDED IN DR25??  WHATS OFFSET ONLY - WE NEED TO DESCRIBE
+
+%In order to detect TCEs due to SPSDs and step-wise discontinuities, we developed the ``Marshall'' metric \citep{Mullally2015b}. Marshall fits a transit, SPSD, and step-wise discontinuity model to each individual event of a long-period TCE. The Bayesian Information Criterion \citep[BIC;][]{Schwarz1978} is then used to select which model best fits each individual transit event given each model's number of degrees of freedom. 
 
 If all of the following criteria are met
 
@@ -239,11 +277,14 @@ If all of the following criteria are met
 
 \noindent then that event is determined to be due to a systematic rather than a transit, and labeled as a ``bad'' event. 
 
-NEED TO MAKE SURE "NREALTRANS" IS DEFINED SOMEWHERE, AND OFFSET ONLY
+{\bf NEED TO MAKE SURE "NREALTRANS" IS DEFINED SOMEWHERE, AND OFFSET ONLY}
 
 
+{\bf Add some kind of discussion of performance}
+{\bf Add link to Source Forge code}
 
-\paragraph{Chases}
+
+\paragraph{Chases -- SES artifacts}
 
 NEED TEXT FROM CHRIS
 
@@ -253,7 +294,7 @@ Chris on KSO-447: I have only included events where an absolute value of the SES
 
 
 
-\paragraph{Skye}
+\paragraph{Skye -- Image Artifacts}
 
 As discussed in \ref{marshsec}, there are a number of TCEs caused due to rolling-band systematics. Since these systematics are due to imperfections in particular CCDs, they are seen on different targets on the same CCD at about the same time. Thus, if a number of individual transit events from TCEs on different targets, but the same skygroup, occur at the same time, they are very likely systematic in origin. We thus invented a metric called ``Skye'' that looks for excess numbers of individual events occurring at the same time in the same skygroup, such that we can identify these individual transit events as systematic in origin.
 
@@ -276,19 +317,21 @@ For each skygroup and its threshold, we identify the individual times of transit
 \label{skyefig}
 \end{figure}
 
+%Susan's words
+%The Skye metric searches for those transit times that have an unusual number of transits at the same time on the same skygroup.   One well known image artifact is called rolling band. \textbf{When two frequencies beat together they create something that is described in the instrument handbook it creates changes in the black level that are both time and spatial dependent.} This effect should cause many transit like events to occur at approximately the same time for all stars on that channel when rolling band occurs. Because the telescope rolls every once each quarter, these rolling band artifact conspire to create TCEs around 370\,d in period.  The Skye metric examines the skyline plot, see Figure\label{f:skyline} for an example, for each skygroup and identifies those times with an excess of transits in a one day bin.  All transits that fall in this bin are marked as an invalid transit.
 
+%Skye chooses the threshold for each skygroup with the following logic.  For each skygroup the average rate of transits per time bin is found by taking the number of transits associated with TCEs with Periods less than 40?? days. One day bins are created running from 200?? to 1600??, skipping any bin which no transits exist using the entire population of OBS TCEs, this removes time bins for which no data exists for the majority of targets.  The average rate of transits per bin (R) is given by the number of transits (N) divided by the number of bins (B) and the scatter in that average would likely be governed by Poisson statistics.  We define a threshold as $R + S \times \sqrt{R}$ where S is an arbitrary value that is held constant for all skygroups.  Since some transits are known to be clustered, these transits will not contribute evenly to all the bins and create a high value for R. To adjust for this we iteratively remove the transits in bins that are above the threshold and then recalculate R using the new values for both the remaining number of transits and the remaining number of bins. We stop iterating when there are no more peaks and the values converge.
 
-
-\paragraph{Zuma}
+\paragraph{Zuma -- Negative Significance}
 
 A valid transit-like TCE should be comprised of individual events that correspond to flux decrements. If any event instead shows an increase of flux then that event is suspect. We thus designate any individual event with SES~$<$~0 as `bad'.
 
 
-\paragraph{Tracker}
+\paragraph{Tracker -- Ephemeris Slip}
 
 After the TPS module of the \kepler{} pipline detects a TCE, it is sent to to DV to be fit with a full transit model. DV allows the period and epoch to vary when fitting in order to provide as accurate a fit as possible. Sometimes the TPS ephemeris and DV ephemeris can end up significantly different though. When this occurs it indicates that the underlying data is not transit-like and the TCE is likely due to quasi-sinusoidal systematics, which case the ephemeris to wander when fitting.
 
-``Tracker'' measures the time difference between the TPS and DV linear ephemerides in units of the TCE's duration. When Tracker $>$ 0.5 for any event we designate the event as 'bad'.
+``Tracker'' keeps track of the time difference between the TPS and DV linear ephemerides in units of the TCE's duration. When Tracker $>$ 0.5 for any event we designate the event as 'bad'.
 
 
 % The metric formally known as Rocky
