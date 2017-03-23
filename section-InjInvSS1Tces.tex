@@ -10,6 +10,8 @@ The pixel-level transit injection is similar to that used by DR24 \citep{Christi
 
 \subsection{True False Alarms -- Inverted and Scrambled} 
 
+To create false alarms, the simplest thing to do was to take the detrended, harmonic-removed flux time series and multiply it by $-1$.  This flips the light curve upside down before it is whitened and searched for exoplanets. This process produced.
+
 
 
 A summary of how inversion was done and what we get from it. Discuss where its limitations as a population of false positives, which ones do we know we are missing. If we have a way of ameliorating this issue, like with season scrambling, discuss that too.
@@ -17,3 +19,4 @@ A summary of how inversion was done and what we get from it. Discuss where its l
 
 \subsection{Other Simulated sets}
 We also simulated other types of false positives, such as those caused by eclipsing binaries through the injection work. However because the majority of our false positives are caused by instrumental noise, and because the size of the astrophysical false positive reliaiblity has been well characterized for \Kepler\ \citep[e.g.][]{Morton2016}, we limit our reliability discussion to those caused by instrumental and stellar noise.
+
