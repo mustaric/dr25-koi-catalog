@@ -19,10 +19,14 @@
 \def \KEPLER {\emph{KEPLER}}
 \def \keplers {\emph{Kepler's}}
 \def \th {$^{\rm th}$}
+\def \injtce {INJ-TCE}
+\def \ss1tce {SCR-TCE}
+\def \invtce {INV-TCE}
+\def \opstce {OBS-TCE}
 
 % Important numbers
-\def \ntces {34,032}        % Number of DR25 TCEs, includes bogus
-\def \ntcesnobogus {32,534}        % Number of DR25 TCEs, no bogus
+\def \ntces {34,032}        % Number of DR25 TCEs, includes rogue
+\def \ntcesnorogue {32,534}        % Number of DR25 TCEs, no rogue
 \def \npredrtwentyfourkois {7,348}  % Number of KOIS pre-DR24.
 \def \npredrtwentyfivekois {8,826}  % Number of KOIs pre-DR25
 \def \nkebs {2,605}         % Number of EBWG True EBs used in ephem matching.
@@ -155,23 +159,23 @@ Items that do not belong in this paper:
 
 \keywords{catalogs --- planetary systems --- planets and satellites: detection --- stars: statistics --- surveys --- techniques: photometric}
 
+%INTRODUCTION
 \section{Introduction}
 \input{section-introduction.tex}
+\input{abbrev.tex}
 
+%TCE Description
 \section{The Q1--Q17 DR25 TCEs}
 \label{tcesec}
 \input{section-dr25TCEs.tex}
-
-
-\section{Tools for Evaluating Performance}
-
 \input{section-InjInvSS1Tces.tex}
 
 
-
+%The ROBOVETTER
 \section{Vetting Methods and Metrics}
 \input{section-robovetter.tex}
 
+%Evaluating Completeness and Reliability
 \section{Completeness and Reliability}
 
 \subsection{Catalog Completeness}

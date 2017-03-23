@@ -1,11 +1,19 @@
- At our disposal we have two additional data sets with which to test our metrics, a population of signals we know to be real (Injection) and a population of signals we know to be false (inversion). We use these to gain a sense of the quality of our catalog.
+\section{Simulated TCEs}
 
-\subsection{Injection}
+Because we needed a way to identify when the Robovetter was not performing well, and because we wanted to be able to measure the performance of the Robovetter, we created simulated transits and simulated false alarms. The simulated transits are created by the injecting transit signals onto the pixels of our original data.  The simulated false alarms caused by instrumental and stellar noise were created in two ways, 1) by inverting our light curve and 2) by scrambling the time order of the time series.  
+
+
+\subsection{True Transits -- Injection}
 \label{injectsec}
+The pixel-level transit injection is similar to that used by DR24 \citep{Christiansen2016} and is described in detail for DR25 in \citep{Christiansen2017}. The pixel-level injection study provides several types of injections: those on the target star, those offset from the location of the target star, two injections on the same star to emulate an eclipsing binary, and a special period range for the M-dwarf stars.  For our purposes in this paper, we will focus on the on-target injections of all type.  These injected singals were placed on the calibrated pixel data and sent through the same \Kepler{} pipeline as the \obstces.
 
-A Quick summary of how injection was done and what we produce with injection. Show a plot of the distribution of recovered injected things in terms of period and MES.
 
-\subsection{Inversion} 
+\subsection{True False Alarms -- Inverted and Scrambled} 
+
+
+
 A summary of how inversion was done and what we get from it. Discuss where its limitations as a population of false positives, which ones do we know we are missing. If we have a way of ameliorating this issue, like with season scrambling, discuss that too.
 
-\subsection{Previous Catalogs}In addition we have confirmed planets and confirmed false positives. However, these are not great tests for low MES or long Period.
+
+\subsection{Other Simulated sets}
+We also simulated other types of false positives, such as those caused by eclipsing binaries through the injection work. However because the majority of our false positives are caused by instrumental noise, and because the size of the astrophysical false positive reliaiblity has been well characterized for \Kepler\ \citep[e.g.][]{Morton2016}, we limit our reliability discussion to those caused by instrumental and stellar noise.

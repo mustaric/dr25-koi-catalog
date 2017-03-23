@@ -345,7 +345,7 @@ We thus developed a metric that measures the number of individual transit events
 
 
 
-\subsection{Stellar System}
+\subsection{Stellar Binary Systems}
 \label{sigsecsec}
 
 If a TCE is deemed transit-like by passing all of the tests presented in \S\ref{nottransitlikesec} on both detrendings, it is given a KOI number. However, many of these KOIs are FPs due to eclipsing binaries and contamination from nearby variable stars. We employ a series of robotic tests to detect systems that are due to stellar companions, as shown by the flowchart in Figure~\ref{robovetter-sigsec-fig}.
@@ -450,9 +450,14 @@ For the difference images that are determined to contain a discernible stellar i
 
 If no centroid offset is identified by the previous method, we then look for contamination from sources that are unresolved from the target. We measure the PRF-fit centroid of the difference images and search for statistically significant shifts with respect to the PRF centroid of both the out-of-transit images, as well as the catalog position of the source. Following \citet{Bryson2013}, a TCE is marked as a FP due to a centroid offset if there are at least three difference images with a discernible stellar image, and a 3$\sigma$ significant offset larger than 2$\arcsec$, or a 4$\sigma$ offset larger than 1$\arcsec$ is measured.
 
-Finally, the last method we use to detect a centroid offset is by the use of an optical ghost diagnostic that was added to the DR25 \kepler{} pipeline \citep{Twicken2016}. The test essentially measures the correlation of the TCE signal with two separate light curves --- one created using the average of the pixels inside the target's optimal aperture minus the average of the pixels in an annulus surrounding the target aperture (core aperture correlation statistic), and the other using the average of the pixels in the annulus surrounding the target aperture (halo aperture correlation statistic). If the ratio of the out- to in-aperture statistic is greater than 4.0, the TCE is marked as a FP due to a centorid offset.
+Finally, the last method we use to detect a centroid offset the ghost diagnostic, which was added to the DR25 \kepler{} pipeline \citep{Twicken2016}. It determines whether a transit signal is likely to be contaminated from a ghost image of a star located away from the target star in the focal plane. Ghost reflections occur when light from a bright star is reflected from the CCD reflects again from the field flattener plate and back onto the CCD as a diffuse, out-of-focus image of the pupil of
+the telescope. A similar type of false positive results from direct PRF (Pixel Response Function) contamination, when flux from the broad wings of the PRF of a bright star near the target star on the CCD overlaps the target star's PRF.  If a ghost reflection (or the PRF of a nearby star) containing a transit-like signature (e.g. an eclipsing binary signal) overlaps the PRF of a target star, then the contaminating transit signal will be significantly stronger relative to the target's flux in the periphery of the target star's PRF than in its core.
 
 
+To detect this type of false alarm, the ghost diagnostic essentially measures the strength of the TCE signal in two separate light curves --- one created using the average of the pixels inside the target's optimal aperture minus the average of the pixels in an annulus surrounding the target aperture (core aperture correlation statistic), and the other using the average of the pixels in the annulus surrounding the target aperture (halo aperture correlation statistic). If the ratio of the out- to in-aperture statistic is greater than 4.0, the TCE is marked as a FP due to a centorid offset. This ghost diagnostic is not available for vetting the Scrambled TCEs.  
+
+%Joe's words
+% It produces a detection statistic measuring correlation between a whitened timeseries and a whitened transit model, as well as a statistic measuring the signicance of the correlation, assuming the detection statistic is a chi-squared variable.
 
 \subsection{Ephemeris Matching}
 \label{ephemmatchsec}
