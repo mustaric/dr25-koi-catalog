@@ -1,0 +1,66 @@
+%% using aastex version 6
+
+
+\newcommand{\opsfp}{N$_{FP_{obs}}$}
+\newcommand{\opspc}{N$_{PC_{obs}}$}
+\newcommand{\opsN}{N$_{obs}$}
+\newcommand{\trueopspc}{T$_{PC_{obs}}$}
+\newcommand{\missedfp}{T$_{FP_{obs}}$ - N$_{FP_{obs}}$}
+\newcommand{\invfp}{N$_{FP_{inv}}$}
+\newcommand{\invpc}{N$_{PC_{inv}}$}
+\newcommand{\invN}{N$_{inv}$}
+\newcommand{\sfatce}{SFA-TCE}
+
+
+\subsection{Calculating Reliability}
+For the assessment of reliability for this paper, we will assume that the \scrtce s and \invtce s are similar to those we see in the \opstce\ set. Close visual inspection of many in the sample validates that assumption.  One way to calculate the reliability of the catalog from our false alarm sets is to first calculate our effectiveness at correctly identifying a known false alarm as such.  Then given the number of false alarms we identify in the \opstce\ set, we can determine the reliability of the catalog against the type of false alarms present in the the simulated sets (\invtce\ and \scrtce). This method assumes the frequency of the different types of false alarms is well emulated by the simulated data sets. 
+
+\subsubsection{Derivation}
+
+Effectiveness ($E$) is defined as the fraction of false positives correctly identified as false positives in the \opstce\ data set. 
+\begin{equation}
+\label{effect1}
+E \equiv \frac{N_{FP_{obs}}}{T_{FP_{obs}}}
+\end{equation}
+Notice we are using N to indicate a measurable number, and T to indicate the ''True" number, assuming $E\leq 1 $.  If the simulated false alarm TCEs (e.g. \invtce) accurately reflects the \opstce\ false positives, $E$ can be calculated as the number of simulated false alarm TCEs identified as false positives (\invfp) divided by the number of inverted TCEs (\invN). 
+
+\begin{equation}
+\label{effect2}
+E = \frac{N_{FP_{inv}}}{N_{inv}}
+\end{equation}
+
+Reliability, $R$, is defined as the ratio of the true observed PCs,\trueopspc, to the total number of observed PCs,\opspc. At this point we can drop the \textit{obs} and \textit{inv} designation as all the inversion values are wrapped up in $E$, and the $N$ values shown below refer entirely to the number of candidates (PC) or false positives (FP) determined to be the \opstce set so that $N=N_{PC} + N_{FP}$. From the definition for reliability, we rewrite in terms of the number of true false positives.
+
+\begin{equation}
+R \equiv \frac{T_{PC}}{N_{PC}} =  1 + \frac{T_{PC}-N_{PC}}{N_{PC}} 
+= 1 + \frac{N_{ops} - T_{FP} - N_{PC}}{N_{PC}}
+\end{equation}
+Substitute $N_{FP}=N-N_{PC}$ and you get another useful way to think about reliability, as the number of unidentified false positives relative to the number of candidates.
+
+\begin{equation}
+\label{rel}
+R = 1 - \frac{T_{FP}-N_{FP}}{N_{PC}}
+\end{equation}
+
+However, the true number of observed FPs is not known. Using the effectiveness value measured from inversion (or scrambling) (equation \ref{effect2}) and combining it with our definition for effectiveness (equation \ref{effect2}), we get (T$_{FP}$):
+\begin{equation}
+T_{FP} = \frac{N_{FP}}{E} 
+\end{equation}
+
+Substituting into equation \ref{rel},
+\textbf{
+\begin{equation}
+R= 1 - \frac{N_{FP}}{N_{PC}}(\frac{1-E}{E})
+\end{equation}
+}.
+
+%or, in terms of the unreliability ($U= 1-R$) and the Ineffectiveness ($I=1-E$)
+%\begin{equation}
+%U=\frac{N_{FP}}{N_{PC}}(\frac{I}{E})
+%\end{equation}
+
+%\subsubsection{Example}
+
+%If you choose one MES/Period bin, you can use the inversion effectiveness to calculate the reliability of the catalog for this bin. We show one example of the robovetter run below. If we consider the MES range of 10-20 and the Period range of 10-200 days, we find that the robovetter has $E=97.7\%$. The number of false positives in that bin is 2613 and the number of PCs is 730.  Thus the reliability is $1 - \frac{2613}{730} \times \frac{1-.977}{.977} = 91.7\% $.  This means that of the 730 reported PCs, 60 are actually false positives.
+
+If the number of observed false positives is much larger than the number of false positives identified in the inversion run, it is possible to get a negative reliability. This likely means that we do not have a good measure of the effectiveness.  Given the number of observed false positives, we should have found more planet candidates than we did. Or, given the measure of the effectiveness we have, the number of FPs that were missed is greater than the number of PCs that we have left to draw from.  This can happen if the effectiveness measured by inversion is lower than the true value. For example, if the number of hard-to-identify false alarms is larger in the \invtce\ data set than in the \opstce\ data set.   
