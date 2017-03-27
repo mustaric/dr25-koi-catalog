@@ -12,10 +12,14 @@
 \newcommand{\sfatce}{SFA-TCE}
 
 
-\subsection{Calculating Reliability}
-For the assessment of reliability for this paper, we will assume that the \scrtce s and \invtce s are similar to those we see in the \opstce\ set. Close visual inspection of many in the sample validates that assumption.  One way to calculate the reliability of the catalog from our false alarm sets is to first calculate our effectiveness at correctly identifying a known false alarm as such.  Then given the number of false alarms we identify in the \opstce\ set, we can determine the reliability of the catalog against the type of false alarms present in the the simulated sets (\invtce\ and \scrtce). This method assumes the frequency of the different types of false alarms is well emulated by the simulated data sets. 
+\subsection{Calculating Completeness and Reliability}
+We use the \injtce\, \scrtce\ and \invtce\ data sets to determine how effective the Robovetter, \S\ref{s:robovetter}, is at identifying false alarms while not removing true transits. Ultimately we would like a measure of the Robovetter completeness, the fraction of true transits that are created into PCs, and the Robovetter reliability, the fraction of PCs that are truly PCs.   Completeness is easily measured by simply measuring the fraction of on-target \injtce s that are turned PCs. In the next section we will describe how we calculate reliability using a set of simulated false alarms.
 
-\subsubsection{Derivation}
+\subsubsection{Derivation of Reliability}
+
+To assess the catalog reliability, we will assume that the \scrtce s and \invtce s are similar to those we see in the \opstce\ set. Close visual inspection of many in the sample validates that assumption.  One way to calculate the reliability of the catalog from our false alarm sets is to first calculate our effectiveness at correctly identifying a known false alarm as such.  Then given the number of false alarms we identify in the \opstce\ set, we can determine the reliability of the catalog against the type of false alarms present in the the simulated sets (\invtce\ and \scrtce). This method assumes the frequency of the different types of false alarms is well emulated by the simulated data sets. 
+
+
 
 Effectiveness ($E$) is defined as the fraction of false positives correctly identified as false positives in the \opstce\ data set. 
 \begin{equation}

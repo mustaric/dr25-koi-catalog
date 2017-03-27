@@ -20,7 +20,7 @@
 \def \keplers {\emph{Kepler's}}
 \def \th {$^{\rm th}$}
 \def \injtce {INJ-TCE}
-\def \ss1tce {SCR-TCE}
+\def \scrtce {SCR-TCE}
 \def \invtce {INV-TCE}
 \def \opstce {OBS-TCE}
 
@@ -171,47 +171,25 @@ Items that do not belong in this paper:
 \label{tcesec}
 \input{section-dr25TCEs.tex}
 \input{section-InjInvSS1Tces.tex}
-
+\input{section-reliability-calc.tex}
 
 %The ROBOVETTER
 \section{Vetting Methods and Metrics}
 \input{section-robovetter.tex}
 
 %Evaluating Completeness and Reliability
-\section{Completeness and Reliability}
-\input{section-reliability-calc.tex}
-\subsection{Catalog Completeness}
-\subsubsection{Evaluate recovery of Pixel-level Injected Transits}
-\subsubsection{Evaluate recovery of previous KOIs and Confirmed Planets}
-\subsubsection{Completeness in Period and MES}
-
-\subsection{Catalog Effectiveness at removing False Positives}
-We need a catalog highly effective at removing false positives and false alarms in order to have highly reliable PCs.
-\subsubsection{Centroid Robovetter Results for astrophysical FPs}
-\subsubsection{Inversion to evaluate Effectiveness for False Alarm removal}
-\subsubsection{Evaluate the PC rate of certified FPs}
-\subsection{Reliability}
+\section{The Completeness and Reliability Balance}
+\input{section-CompAndReliability.tex}
 
 
-\section{Putting together the KOI Catalog}
+%All the pieces that need to be brought together to make the catalog.
+\section{The DR25 KOI Catalog}
+\input{section-assembleCatalog.tex}
 
-The robovetter vets all TCEs, but we only report those that we consider to be transit-like to the KOI table. We must federate our current list with those KOIs we have made before.
-\subsection{Federating to known KOIs}
-\label{koisec}
 
-\subsection{Model Fits using MCMC}
-\label{s:transitfits}
+%Analysis of the Catalog
+\section{Analysis of the DR25 KOI Catalog}
 
-\subsubsection{Comparison between }
-\subsection{Deliverables}
-We deliver all of the metrics etc..
-
-\section{Overview of the DR25 KOI Catalog}
-\subsection{The physical parameters of the planets}
-\subsection{New Multi-planet systems}
-\subsection{Potentially Rocky Planets in the Habitable Zone}
-This is a closer look at some of our most interesting objects.
-\subsection{Obvious Problems}
 
 \section{Using This Catalog for Occurrence Rate Calculations}
 \subsection{State what the project is providing to make this possible.}
