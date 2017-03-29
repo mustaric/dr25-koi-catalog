@@ -24,6 +24,7 @@
 \def \invtce {INV-TCE}
 \def \opstce {OBS-TCE}
 
+
 % Important numbers
 \def \ntces {34,032}        % Number of DR25 TCEs, includes rogue
 \def \ntcesnorogue {32,534}        % Number of DR25 TCEs, no rogue
@@ -32,11 +33,11 @@
 \def \nkebs {2,605}         % Number of EBWG True EBs used in ephem matching.
 \def \nephemmatch {1,859}   % Number of TCEs ruled as FPs due to ephemeris matching in DR24.
 \def \nonlyephemmatch {106} % Number of TCEs ruled as FPs ONLY due to ephemeris matching in DR24.
-\def \nscrtces {13932} %number of scrambled TCEs after cleaning and no rogue
-\def \ninvtces {15271} %number of inverted TCEs after cleaning and no rogue.
+\def \nscrtces {13782} %number of scrambled TCEs after cleaning and no rogue (SET)
+\def \ninvtces {14953} %number of inverted TCEs after cleaning and no rogue. (SET)
 
-\hyphenation{injTCE}  % Makes it so that "injTCE" is never hyphenated to break a line
-\hyphenation{injTCEs}   % Makes it so that "injTCEs" is never hyphenated to break a line
+\hyphenation{INJ-TCE}  % Makes it so that "INJ-TCE" is never hyphenated to break a line
+\hyphenation{SCR-TCEs}   % Makes it so that "SCR-TCEs" is never hyphenated to break a line
 
 
 % using aastex version 6
@@ -177,19 +178,23 @@ Items that do not belong in this paper:
 \section{Vetting Methods and Metrics}
 \input{section-robovetter.tex}
 
-%Evaluating Completeness and Reliability
-\section{The Completeness and Reliability Balance}
-\input{section-CompAndReliability.tex}
+%Tuning the Robovetter for Completeness and reliability
+\section{Tuning the Robovetter for High Completeness and Reliablity}
+\input{section-tuning.tex}
 
 
 %All the pieces that need to be brought together to make the catalog.
-\section{The DR25 KOI Catalog}
+\section{Assemble the DR25 KOI Catalog}
 \input{section-assembleCatalog.tex}
 
 
 %Analysis of the Catalog
 \section{Analysis of the DR25 KOI Catalog}
-
+\subsection{Summary of the catalog in numbers and distributions}
+\input{section-CompAndReliability.tex}
+\subsection{HZ objects}
+\subsection{Analysis of Multis}
+\subsection{Places we have gone wrong}
 
 \section{Using This Catalog for Occurrence Rate Calculations}
 \subsection{State what the project is providing to make this possible.}

@@ -1,0 +1,12 @@
+%Section Balancing Completeness and Reliability
+
+As described in the previous section, the Robovetter makes decisions on which TCEs are FPs and PCs based on a collection of metrics and thresholds.  For each metric we apply a threshold and if the TCE's metric's value lies above (or below, depending on the metric) the TCE is called a false positive.  No metric is perfect.  The metrics we use in the Robovetter are those that were identified to remove a significant number of FPs while only throwing away a small number of PCs.  As a result the set of potential thresholds to use is infinite and there is no perfect way to tune the Robovetter.
+
+Our tuning of the Robovetter relied heavily on the simulated data sets described \S\ref{s:simulated}. The \injtce\ set gives us a population of true transit signals and the completeness of the Robovetter is given by the fraction of these that are created into PCs.  The \scrtce\ and \invtce\ set gives us a way to measure the effectiveness ($E$) of the Robovetter at removing those types of false positives that are emulated by these sets. As discussed in \S\ref{s:relcalc} with both $E$ and the number of \opstce s that are turned into PCs with those same metrics, we can measure the reliability of those observed PCs.  
+
+We tuned the Robovetter primarily by measuring the reliability and completeness measured from these simulated data sets. 
+
+\subsection{Full Optimization -- STEVE}
+
+\subsection{Picking a Robovetter}
+Here we describe how we went about deciding on the thresholds we use in this DR25 catalog
