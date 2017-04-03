@@ -1,13 +1,27 @@
 %\section{The DR25 Catalog}
-The robovetter vets all TCEs, but we only report those that we consider to be transit-like to the KOI table. We must federate our current list with those KOIs we have made before.
-\subsection{Federating to known KOIs}
+The KOI catalog contains all objects that the Robovetter found to have some chance of being transit shaped. All of these KOIs are fit with a Monte Carlo approach. We describe here how we assemble the catalog using the information from the \opstce\ list, the Robovetter results and the transit fits. Finally we describe all the data that was delivered to the NASA Exoplanet Archive for public access.
 \label{koisec}
 
 \subsection{Dispositions}
+The Robovetter gives every \opstce\ a disposition, a reason for the disposition and a score.  However only those that are transit-like, i.e. have some possibility of being an exoplanet or binary system, are intended to be placed in the KOI catalog. For scheduling reasons, we created the majority of KOIs before we completed the Robovetter, so quite a few not-transit-like KOIs have been added to the KOI catalog. However, for the final run of the Robovetter we ensured that we included the following \opstce s in the KOI table: 1) all KOIs that are "transit-like", i.e. are not marked with the N-flag and 2) KOIs marked with the N-flag which have a score value larger than 0.1.  This last group were included to ensure that \opstce s that marginally failed one Robovetter metric were easily accessible via the KOI catalog. 
+
+
+\subsection{Federating to known KOIs}
+All \opstce s that that we decided to include in the KOI catalog were either federated to known KOIs or given a new KOI number. Since KOIs have been identified before, federating the known KOIs to the TCE list is a necessary step to ensure that we do not create a new KOI out of an event previously identified by the \Kepler\ pipeline.  The process has not changed from the  DR24 KOI catalog \citep{Coughlin2016}, so we simply summarize it here.  For each \opstce\ we use the ephemeris to determine what fraction of in-transit cadences overlap between all known KOIs on the same KIC.  Those which match with a fraction above XX are considered federated.  Also, those that are found at double or half the period are also considered matches.  
+
+In some cases our automated tools want to create a new KOI on a system where a known KOI was not federated.  In these cases we inspect the new system by hand and ensure that it truly warrants a new KOI number. If it is a new event we create a new KOI, if not we ban the event from the KOI list.  For instance, events that are caused by an image artifact known as cross-talk \citet{Coughlin2014a} can cause short-period transit events to appear in only one quarter each year. As a result the \Kepler\ pipeline finds several one-year period events for an astrophysical event that is truly closer to a few days.  In these cases we federate the one found that most closely matches the KOI that was created and we ban any other \opstce\ and do not create a new KOI.  In Table\,\ref{tab:bannedlist} report the entire list of stars on which we did not create a new KOI despite the Robovetter and Federation telling us that one was appropriate.
+
 
 \subsection{Model Fits using MCMC approach}
 \label{s:transitfits}
+Kelsey will write these words.
 
-\subsection{Deliverables}
-We deliver all of the metrics etc..
+%\subsection{Deliverables}
+%\begin{itemize}
+%\item[] KOI Table: Ephemeris, Dispositions, scores and Transit Fits
+%\item[] Full set of TCEs their supplemental fits and the metric %values
+%\item[] Robovetter Code
+%\item[] 
+%\end{itemize}
+
 
