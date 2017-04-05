@@ -102,7 +102,7 @@
 %%\watermark{\today}
 
 \title{Planetary Candidates Observed by \Kepler. VIII.\\
-A Fully Automated Catalog Based on Quarters 1 through 17, Data Release 25\\Tuned For High Completeness and Reliability. }
+A Fully Automated Catalog Based on Data Release 25\\Tuned For High Completeness and Reliability. }
 
 %\author{Susan E. Thompson and others}
 \input{authors}
@@ -178,6 +178,7 @@ Items that do not belong in this paper:
 %The ROBOVETTER
 \section{Vetting Methods and Metrics}
 \input{section-robovetter.tex}
+\section{Robovetter Minor Flags}
 
 \section{Calculating Reliability}
 \input{section-reliability-calc.tex}
@@ -218,10 +219,12 @@ Thanks to GNU parallel \citep{Tange2011a}.
 %\appendix
 %\section{List of Acronyms}
 
-\section{Robovetter Minor Flags}
 %\input{RV-minorFlags}
 \bibliographystyle{aasjournal}
 \bibliography{References.bib}
+
+\clearpage
+\tableofcontents
 
 \end{document}
 

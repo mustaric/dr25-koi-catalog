@@ -10,7 +10,7 @@ Using the 4544 \invtce s and \scrtce s that have periods greater than 200\,d and
 
 The reliability is measured according to the method described in \S\ref{s:relcalc} using the effectiveness number and the number of observed PCs and FPs.  The overall reliability of the catalog is 97 per cent. However, as Figure~\ref{f:1dcompare} demonstrates, the reliability for long period, and especially low MES planets is significantly lower.  For periods longer than 200\,d and MES less than 10, the reliability of the catalog is approximately 39 per cent.
 
-To summarize these results, we include Figure~\ref{f:score} which provides the completeness and reliability values for a 9x9 grid across period and MES. In the same figure we also show summary these results for only the FGK dwarf type stars (log(g)$,4.0$, $4000 \leq T_{eff} > 7000$\,K). Giant stars are inherently noisy causing more false positives and also causing more real transits to be distorted by the noise.  By using only the FGK dwarf stars, for the long period and low mes, we improve the reliability by 13 percentage points while also improving the completeness by 3 percentage points.
+To summarize these results, we include Figure~\ref{f:score} which provides the completeness and reliability values for a 9x9 grid across period and MES. In the same figure we also show summary these results for only the FGK dwarf type stars (log(g)$\leq4.0$ and $4000 \leq T_{eff} > 7000$\,K). Giant stars are inherently noisy causing more false positives and also causing more real transits to be distorted by the noise.  By using only the FGK dwarf stars, for the long period and low mes, the reliability is improved by 13 percentage points  and the completeness increases by 3 percentage points.
 
 
 \begin{figure*}[h!]
@@ -23,20 +23,25 @@ To summarize these results, we include Figure~\ref{f:score} which provides the c
 
 \begin{figure*}[h!]
 \begin{center}
-\includegraphics[width=0.9\linewidth]{fig-completeReliabilityCard.png}
+\includegraphics[width=0.95\linewidth]{fig-completeReliabilityCard.png}
 \caption{\label{f:score} A coarse binning of the completeness and reliability across period and MES. On the left, the percentage for reliability is given in each box with the number of OPS-PCs and the number of OPS-FPs written below it.  On the right, the percentage for the completeness and the number of \injtce s for that box is given. The bottom two plots give the reliability and completeness just based on the FGK dwarf stars. }
 \end{center}
 \end{figure*}
 
-\subsubsection{Use of the Scores}
-We balanced the completeness and reliability
-Include plot of changing score and how it changes C&R.
 
-Plots we need to include here:
-\begin{itemize}
-\item[-] Completeness and reliability as a function of period, mes and number of transits. Bin the mes one by different period ranges. Bin the Period one by different MES (<15, 15-30, >30). Do number of transits by MES as well (<15, 15-30,>30.  
+\subsubsection{Disposition Scores}
 
-\item[-] Completeness and Reliability grids as MES and Period. very coarse. Might belong in the tuning section.
+The disposition scores discussed in \S\ref{s:scores} can be used to select a more reliable, though more incomplete, sample of planet candidates.  How the completeness and reliability of the catalog vary for different cuts on the disposition score is shown in Figure~\ref{f:adjscore} for MES<10 and Period >200\,d. Notice that the effectiveness of the Robovetter increases as expected as the score threshold is increased.  The reliability values also depend on the number of OBS-PCs that remain, which is why it does not change in step with the effectiveness.  Selecting PCs by choosing those with a disposition score above 0.6 will yield a 85 per cent reliability with a completeness that is still above 50 per cent. Doing a score cut in this way causes a few \opstce s that are formally called an FP to be promoted to a PC. An FP with a high score occurs when a TCE marginally fails a single metric.
+
+\begin{figure}[h!]
+ \begin{center}
+  \includegraphics[width=1.0\linewidth]{fig-CRadjustScore-DR25.png}
+  \caption{\label{f:adjscore}The reliability (red) and effectiveness (blue) of the MES<10 and periods between 200 and 500\,d planet candidate list that results from determining the candidates by allowing all \opstce s with score values greater than the number shown in black.}
+ \end{center}
+ \end{figure}
+
+\paragraph{Missing Analysis and Plots}:
+\begin{itemize} 
 
 \item[-] Completeness and Reliabiltiy for the derived values.
 Do 2d grids o Period vs radius, stellar temp vs radius and insolation flux vs radius.  The grids for completeness can be much finer than for reliability.  Either we show both as an interpolated contour, or we show completeness as just over resolved from the reliability. 
