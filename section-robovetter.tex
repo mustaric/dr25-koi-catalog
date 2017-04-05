@@ -1,4 +1,4 @@
-In the first five \Kepler{} planet candidate catalogs \citep{Borucki2011a,Borucki2011b,Batalha2013,Burke2014,Rowe2015a}, various plots and diagnostics for each TCE were visually examined by members of the Threshold Crossing Event Review Team (TCERT), which consists of professional scientists who have a thorough understanding of \kepler{} data systematics and the various types of false positive scenarios. In the sixth catalog, \citet{Mullally2015cat} employed partial automation through the use of three simple parameter cuts, principally to cull out a large number of long-period false positives, as well as a robotic procedure to identify a particular subset of centroid offsets \citep[see \S5.2 of][]{Mullally2015cat}. In the seventh catalog, \citet{Coughlin2016} fully automated the dispositioning of TCEs, a long-standing objective of the \kepler{} mission in order to enable the accurate computation of planet occurence rates.
+In the first five \Kepler{} planet candidate catalogs \citep{Borucki2011a,Borucki2011b,Batalha2013,Burke2014,Rowe2015a}, various plots and diagnostics for each TCE were visually examined by members of the Threshold Crossing Event Review Team (TCERT), which consists of professional scientists who have a thorough understanding of \kepler{} data systematics and the various types of false positive scenarios. In the sixth catalog, \citet{Mullally2015cat} employed partial automation through the use of three simple parameter cuts, principally to cull out a large number of long-period false positives, as well as a robotic procedure to identify a particular subset of centroid offsets \citep[see \S5.2 of][]{Mullally2015cat}. In the seventh catalog, \citet{Coughlin2016} fully automated the dispositioning of TCEs in order to enable the accurate computation of planet occurrence rates.
 
 
 % TALK ABOUT THE vDR24 ROBOVETTER RESULTS??
@@ -30,7 +30,7 @@ Similar to \citet{Rowe2015a}, \citep{Mullally2015cat}, and \citet{Coughlin2016},
 \noindent In Figure~\ref{robovetter-overview-fig} we present a flowchart that outlines our robotic vetting procedure. As can be seen, each TCE is subjected to a series of ``yes'' or ``no'' questions (represented by diamonds) that either disposition it into one or more of the four FP categories, or else disposition it as a PC. Behind each question is a series of more specific questions, each answered by quantitative tests. 
 
 
-TALK ABOUT USE OF OPTIMIZATION HERE AND COMPLENESS/RELIABILITY TRADEOFF IN ORDER TO ESTABLISH THRESHOLDS??
+%TALK ABOUT USE OF OPTIMIZATION HERE AND COMPLENESS/RELIABILITY TRADEOFF IN ORDER TO ESTABLISH THRESHOLDS??  This has been placed after the robovetter section.
 
 
 % These tests are designed with the same ``innocent until proven guilty'' approach that was used by TCERT members in previous catalogs, such that no TCE is dispositioned as a FP without substantial evidence. Quantitatively we are aiming to preserve at least $\sim$95\% of injected transits while rejecting as many false positives as possible.
@@ -44,10 +44,11 @@ TALK ABOUT USE OF OPTIMIZATION HERE AND COMPLENESS/RELIABILITY TRADEOFF IN ORDER
 \end{figure*}
 
 
-We note that for all of the robovetter tests that require a phased light curve and model fit, we utilize two different detrendings and model fits. In the \kepler{} pipeline, the Data Validation (DV) module produces a harmonic-removed, median-detrended, phased flux light curve, along with a transit model fit \citep{Wu2010}. However, the harmonic remover is known to suppress short-period ($\lesssim$ 3 days) signals such that short-period eclipsing binaries with visible secondaries can appear as transiting planets with no visible secondary \citep{Christiansen2013b}. It can also make variable stars with semi-coherent variability, such as starspots or pulsations, appear as transit-like signals. Thus, we create phased flux light curves via an alternate detrending method that utilizes the pre-search data conditioned (PDC) time-series light curves and the non-parametric penalized least squares detrending method of \citet{Garcia2010}, which includes only the out-of-transit points when computing the filter. These alternately detrended light curves are then phased and fit with a simple trapezoidal transit model. This alternate detrending technique is effective at accurately detrending short-period eclipsing binaries and variable stars, i.e., preserving their astrophysical signal. Every test that is applied to the DV phased light curves is also applied to the alternate detrending --- failing a test using either detrending results in the TCE being classified as a FP.
-
 The robovetter first checks if the TCE corresponds to a secondary eclipse associated with an already examined system. If not, the robovetter then checks if the TCE is transit-like or not. If it is transit-like, the robovetter then looks for the presence of a secondary eclipse. In parallel, the robovetter also looks for evidence of a centroid offset and an ephemeris match to other TCEs and variable stars in the \kepler{} field. In the following subsections we describe in detail each of these tests in the order in which they are performed by the robovetter. Finally, we explain the creation of a ``disposition score'' that conveys the confidence in the Robovetter's disposition.
 
+
+\subsection{Two Robovetter Detrendings}
+We note that for all of the robovetter tests that require a phased light curve and model fit, we utilize two different detrendings and model fits. In the \kepler{} pipeline, the Data Validation (DV) module produces a harmonic-removed, median-detrended, phased flux light curve, along with a transit model fit \citep{Wu2010}. However, the harmonic remover is known to suppress short-period ($\lesssim$ 3 days) signals such that short-period eclipsing binaries with visible secondaries can appear as transiting planets with no visible secondary \citep{Christiansen2013b}. It can also make variable stars with semi-coherent variability, such as starspots or pulsations, appear as transit-like signals. Thus, we create phased flux light curves via an alternate detrending method that utilizes the pre-search data conditioned (PDC) time-series light curves and the non-parametric penalized least squares detrending method of \citet{Garcia2010}, which includes only the out-of-transit points when computing the filter. These alternately (ALT) detrended light curves are then phased and fit with a simple trapezoidal transit model. This alternate detrending technique is effective at accurately detrending short-period eclipsing binaries and variable stars, i.e., preserving their astrophysical signal. Every test that is applied to the DV phased light curves is also applied to the alternate detrending --- failing a test using either detrending results in the TCE being classified as a FP.
 
 \subsection{The TCE is the Secondary of an Eclipsing Binary}
 
@@ -95,7 +96,7 @@ A very large fraction of false positive TCEs have light curves that do not resem
 One of the most common false positives in the data set are quasi-sinusoidal shaped light curves, compared to those that are more detached due to a transit or eclipse. Also, individual events can often be due a systematic feature, such as a sudden discontinuity in the light curve. As such, the robovetter employs tests that detect quasi-sinusoidal light curves and systematics.
 
 
-\paragraph{The LPP Metric}
+\subsubsection{The LPP Metric}
 \label{lppsec}
 
 Many short-period false positives are due to variable stars that exhibit a quasi-sinusoidal phased light curve. We implemented the LPP transit-like metric described by \citet{Thompson2015b} to separate those TCEs that show a transit shape from those that do not. This technique bins the TCE's folded light curve and then applies a dimensionality reduction algorithm called Locality Preserving Projections (LPP) \citep{}.  It then measures the average Euclidean distance to the nearest known transit-like TCEs to yield a single number that represents the similarity of a TCE's shape to that of known transits. 
@@ -124,7 +125,7 @@ To calculate the LPP metric we start with detrended \kepler{} light curves. (Not
 
 
 
-\paragraph{Sine Wave Event Evaluation Test}
+\subsubsection{Sine Wave Event Evaluation Test}
 \label{sweetntlsec}
 
 On occasion, a quasi-sinusoidal variable star will appear as transit-like in both the DV and ALT detrendings. In these cases, the only way to detect that the TCE is a FP is by examining the PDC data and looking for a strong quasi-sinusoidal signal at the TCE's period. We thus invented the Sine Wave Event Evaluation Test (SWEET) to identify these types of FPs.
@@ -138,11 +139,6 @@ SWEET takes the PDC data and normalizes each quarter by dividing by the median f
 \paragraph{Per-TCE CHASES}
 
 NEED TEXT FROM CHRIS
-
-
-
-
-
 
 
 

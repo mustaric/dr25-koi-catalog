@@ -35,6 +35,7 @@
 \def \nonlyephemmatch {106} % Number of TCEs ruled as FPs ONLY due to ephemeris matching in DR24.
 \def \nscrtces {13782} %number of scrambled TCEs after cleaning and no rogue (SET)
 \def \ninvtces {14953} %number of inverted TCEs after cleaning and no rogue. (SET)
+\def \ninjtces {45377} %number of injected and recovered TCEs, no rogue
 
 \hyphenation{INJ-TCE}  % Makes it so that "INJ-TCE" is never hyphenated to break a line
 \hyphenation{SCR-TCEs}   % Makes it so that "SCR-TCEs" is never hyphenated to break a line
@@ -193,10 +194,13 @@ Items that do not belong in this paper:
 
 %Analysis of the Catalog
 \section{Analysis of the DR25 KOI Catalog}
+
 \subsection{Summary of the catalog in numbers and distributions}
 \input{section-CompAndReliability.tex}
+
 \subsection{HZ objects}
 The intent is for this to cover any HZ objects that are new, or changed from DR24
+
 \subsection{Analysis of Multis}
 
 \subsection{Places we have gone wrong}
