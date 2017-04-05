@@ -1,16 +1,28 @@
 \subsection{DR25 KOI Catalog Completeness and Reliability}
-The Robovetter is mostly agnostic to the transit fit and stellar parameters and so measuring the completeness and reliability of the resulting catalog is best understood in terms of parameters that are similarly blind to that process.  Here we discuss the performance of the robovetter and the measured completeness and reliability of the catalog in terms of raw parameters such as MES and period, as well as derived parameters such as planet radius and insolation flux. 
+The Robovetter is mostly agnostic to the transit fit and stellar parameters and so measuring the completeness and reliability of the resulting catalog is best understood in terms of parameters that are similarly blind to that process.  Here we discuss the performance of the robovetter and the measured completeness and reliability of the catalog in terms of raw parameters such as MES and period, as well as derived parameters such as planet radius and insolation flux.  We perform this analysis using the parameters as measured using the supplemental DV fits.  \citet{Christiansen2017} shows that the radii based on the MCMC fits match those of the supplemental DV fits. We do not provided MCMC fits of the entire set of false positives in the \opstce\ set and so cannot use them for our analysis here.
 
 \subsubsection{}subsection{Completeness}
 Figure 6 from Coughlin needs to be redone here.
 
 
+
 \subsubsection{Effectiveness}
 
-\subsubsection{Reliability}
+\subsubsection{Effectiveness and Reliability}
 Create a coarser Coughlin, Figure 6 for Reliability 
-
 
 \subsubsection{Use of the Scores}
 We balanced the completeness and reliability
+Include plot of changing score and how it changes C&R.
 
+Plots we need to include here:
+\begin{itemize}
+\item[-] Completeness and reliability as a function of period, mes and number of transits. Bin the mes one by different period ranges. Bin the Period one by different MES (<15, 15-30, >30). Do number of transits by MES as well (<15, 15-30,>30.  
+
+\item[-] Completeness and Reliability grids as MES and Period. very coarse. Might belong in the tuning section.
+
+\item[-] Completeness and Reliabiltiy for the derived values.
+Do 2d grids o Period vs radius, stellar temp vs radius and insolation flux vs radius.  The grids for completeness can be much finer than for reliability.  Either we show both as an interpolated contour, or we show completeness as just overresolved from the reliability. 
+
+\item[-] Need to show how you can use the scores to adjust the completeness and reliability of the catalog. We have this plot.
+\end{itemize}
