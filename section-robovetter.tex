@@ -97,7 +97,7 @@ One of the most common false positives in the data set are quasi-sinusoidal shap
 
 
 \subsubsection{The LPP Metric}
-\label{lppsec}
+\label{s:lpp}
 
 Many short-period false positives are due to variable stars that exhibit a quasi-sinusoidal phased light curve. We implemented the LPP transit-like metric described by \citet{Thompson2015b} to separate those TCEs that show a transit shape from those that do not. This technique bins the TCE's folded light curve and then applies a dimensionality reduction algorithm called Locality Preserving Projections (LPP) \citep{}.  It then measures the average Euclidean distance to the nearest known transit-like TCEs to yield a single number that represents the similarity of a TCE's shape to that of known transits. 
 
@@ -126,7 +126,7 @@ To calculate the LPP metric we start with detrended \kepler{} light curves. (Not
 
 
 \subsubsection{Sine Wave Event Evaluation Test}
-\label{sweetntlsec}
+\label{s:sweetntl}
 
 On occasion, a quasi-sinusoidal variable star will appear as transit-like in both the DV and ALT detrendings. In these cases, the only way to detect that the TCE is a FP is by examining the PDC data and looking for a strong quasi-sinusoidal signal at the TCE's period. We thus invented the Sine Wave Event Evaluation Test (SWEET) to identify these types of FPs.
 
@@ -137,14 +137,15 @@ SWEET takes the PDC data and normalizes each quarter by dividing by the median f
 
 
 \paragraph{Per-TCE CHASES}
-
+\label{s:tcechases}
 NEED TEXT FROM CHRIS
 
 
 
 
 \subsubsection{The Model-Shift Uniqueness Test}
-\label{notuniquetcesec}
+%\label{notuniquetcesec}
+\label{s:ms}
 
 If a TCE under investigation is truly a PC, there should not be any other transit-like events in the light curve with a depth, duration, and period similar to the primary signal, in either the positive or negative flux directions, i.e., the transit event should be unique in the phased light curve. Many false positives are due to quasi-sinusoidal signals (see \S\ref{tcesec}) and thus are not unique in the phased light curve. In order to identify these cases, TCERT developed a ``model-shift uniqueness test'' and used it extensively for identifying false positives in the Q1--Q12 \citep{Rowe2015a}, Q1--Q16 \citep{Mullally2015cat}, and DR24 \citep{Coughlin2016} planet candidate catalogs.
 
@@ -176,11 +177,12 @@ When examining all events among all TCEs, assuming Gaussian noise, the minimum t
     MS_{3} = FA_{2} - (\sigma_{\rm Pri} - \sigma_{\rm Pos})
 \end{equation}
 
-
+[JEFF: CHECK THE MS subscript NUMBERS BELOW, they SEEM WRONG]
 In the robovetter, we disposition a TCE as a not transit-like FP if either $MS_{1}$~$>$~1.0, $MS_{1}$~$>$~2.0, or $MS_{1}$~$>$~4.0 in the DV detrending, or if either $MS_{1}$~$>$~-3.0, $MS_{1}$~$>$~1.0, or $MS_{1}$~$>$~1.0 in the alternate detrending. These criteria ensure that the primary event is statistically significant when compared to the systematic noise level of the light curve, the tertiary event, and the positive event, respectively. We also fail as not transit-like if $\sigma_{\rm Pri}$~==~0.0 in both the DV and alternate detrendings, i.e., their default values, which indicates a lack of fit in both detrendings, and thus something fundamentally flawed with the TCE.
 
 
 \subsubsection{Dominated by Single Event}
+\label{s:sesmes}
 
 The depths of individual transits of planet candidates should be equal to each other, and thus assuming constant noise levels, the SNR of individual transits should be nearly equivalent as well. In contrast, most of the long-period FPs that result from three or more equidistant systematic events are dominated in SNR by one of those events. The \kepler{} pipeline measures detection significance via the Multiple Event Statistic (MES), which is calculated by combining the Single Event Statistic (SES) of all the individual events that comprise the TCE --- both the MES and SES are measures of SNR. Assuming all individual events have equal SES values,
 
@@ -196,7 +198,7 @@ In the robovetter, for TCEs with periods greater than 90 days, if ${{\rm SES}_{\
 
 
 \subsubsection{Previous TCE With Same Period}
-
+\label{s:sameperiod}
 Most quasi-sinusoidal false positives produce multiple TCEs at the same period, or at integer ratios of each other. If a TCE in a system has been declared as not transit-like due to another test, it is logical that all subsequent TCEs in that system at the same period, or ratios thereof, should also be dispositioned not transit-like. Thus, we match the period of a given TCE to all previous not transit-like FPs via equations~\ref{peq1}-\ref{peq3}. If the current TCE has a period match with $\sigma_{P}$ $>$ 3.25 to a prior not transit-like FP, it is also dispositioned as a not transit-like FP.
 
 Similarly, some TCEs are produced that correspond to the edge of a previously identified transit-like TCE in the system. This often results when the previous TCE corresponding to a transit or eclipse is not completely removed prior to searching the light curve for another TCE. Thus, we match the period of a given TCE to all previous transit-like TCEs via equations~\ref{peq1}-\ref{peq3}.  If the current TCE has a period match with $\sigma_{P}$ $>$ 3.25 to a prior transit-like FP, and the two epochs are separated in phase by less than 2.5 transit durations, the current TCE is dispositioned as a not transit-like FP. For clarity, we note that it is sometimes possible that the periods of two TCEs will meet the period matching criteria, but be different enough to have their epochs shift significantly in phase over the $\sim$4 year mission duration. Thus, if they are separated in phase by less than 2.5 transit durations at any point in the mission time frame, the current TCE is dispositioned as a not transit-like FP.
@@ -204,7 +206,7 @@ Similarly, some TCEs are produced that correspond to the edge of a previously id
 
 
 \subsubsection{Individual Transit Metrics}
-
+\label{s:indivtrans}
 A new approach implemented in DR25 is to identify individual transit events for each TCE that are not actually due to a transit. After rejecting these `bad' transit events, we check if either
 
 \begin{itemize}
@@ -612,7 +614,9 @@ Since \kepler{} does not observe every star in its field of view, it can often b
 % \noindent Combining these details leads to our conjecture that the column anomaly is due to decreasing charge transfer efficiency over time, likely due to cosmic ray impacts. When the CCD is read out, some charge from the parent is left behind due to charge transfer inefficiency. As the child is read out, and its electrons pass through the pixels where the parent was, the child picks up some of the parent's left-behind electrons. Thus, the variable signal from the parent is induced in the child. As more cosmic ray impacts accumulate over time, the amount of charge left behind by the parent increases, resulting in an increase in contamination, and thus an increase in the observed depth of the child. Seasonal variation is seen as the parent and child rotate between 4 CCDs with season, and the amount of degradation varies with CCD. The average depth ratio, along with the delta magnitudes observed, indicate that a charge transfer efficiency of $\sim$99.99\% is consistent with the observed contamination, i.e., a degradation of $\sim$0.01\%. This is well within the range observed on Hubble's Advanced Camera for Surveys and other spaceborne detectors  \citep[see \S3.7 of][and references therein]{Sirianni2005}.
 
 
-
+\subsection{Summarize Metrics}
+All the metrics, the major and minor flags they create and the thresholds used are available in Table~\ref{t:metrics}.
+\input{metrics-table}
 
 \subsection{Disposition Scores}
 \label{s:scores}

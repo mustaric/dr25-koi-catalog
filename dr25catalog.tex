@@ -77,6 +77,8 @@
 %% If you want to create your own macros, you can do so
 %% using \newcommand. Your macros should appear before
 %% the \begin{document} command.
+\newcommand{\spcell}[2][c]{%
+  \begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}  %Creates line breaks in tables with left justification. 
 
 \newcommand{\vdag}{(v)^\dagger}
 \newcommand\aastex{AAS\TeX}
@@ -109,53 +111,43 @@ A Fully Automated Catalog Based on Data Release 25\\Tuned For High Completeness 
 
 \begin{abstract}
 Enlightening words about the purpose of this final Kepler Catalog and how it fits in with the other Kepler Planet Candidate catalogs. Then some details about how many KOIs we added and how many are planet candidates. 
-Overall, the purpose of this paper is to describe how we sifted through the DR25 TCE table and identified the planet candidates, the transiting candidates with significant secondaries, background eclipsing binaries, ephemeris matches and the false alarms. It also needs to describe how we arrive at the reported physical parameters of each planet, so that interesting populations for occurrence rates and follow-up can be identified.  Finally the Completeness and Reliablity of the catalog should be discussed.
+Overall, the purpose of this paper is to describe how we sifted through the DR25 TCE table and identified the planet candidates, the transiting candidates with significant secondaries, background eclipsing binaries, ephemeris matches and the false alarms. It also needs to describe how we arrive at the reported physical parameters of each planet, so that interesting populations for occurrence rates and follow-up can be identified.  Finally the completeness and reliablity of the catalog should be discussed.
 
-
-Here is a basic outline.
+To Do List:
 \begin{itemize}
-\item Introduction  (Kepler is great blah, blah, KOI catalog blah blah, Cool Discoveries..)
-
-\item A description of the Q1-Q17 DR25 TCEs
-
-\item A description of Injection and Inversion as True Candidates and False Positives.
-
-\item A description of the Robovetter. Summarize the Robovetter, but lean heavily on Coughlin (2016). Discuss why we needed to improve the Robovetter.  Each metric that changed from DR24 Robovetter should be discussed. A list of all minor RoboVetter flags needs to be created and how they relate to the major flags. A discussion of the Robovetter Scores and how they were calculated.
-
-\item A discussion of how the Robovetter metrics were tuned, how were thresholds set? 
-
-\item Evaluate the Completeness of the catalog based on transit injection in MES vs. Period. Also discuss the Confirmed planets and the number that are missed. Give a sense as to where the robovetter is missing planets.
-
-\item Discuss the Effectiveness. Discuss the importance of reliability and how we can use Inversion to get an estimate (a bound?) of the reliability across MES and Period. Also discuss the False Positive table and the number of incorrect dispositions.  Give a sense as to where/when robovetter is ineffective and/or unreliable.
-
-\item Creating the Catalog: Federating to old KOIs, Transit model fits and comparision to DV, how the robovetter was run (inputs/outputs, a summary),  Catalog deliverables. 
-
-\item Analysis of the content of the catalog: Show Candidates on the radius vs. insolation flux labeled by stellar temperature (Coughlin Fig 7.), discuss Multi-planet systems, discuss new individual Rocky-HZ Planet Candidates, enumerate the number of new KOIs of different sizes.
-
-\item Discussion of how to use this catalog to do occurrence rates. i.e. what needs to be considered (Completeness and Reliability, suspicious areas of parameter space, are additional cuts required?), not an actual calculation. Indicate what information will be delivered to NExScI to help with these calculations. 
-
+\item Introduction including a summary of what's new here
+\item Table of our results
+\item Table of INV/SCR cleaned objects
+\item Discussion of where Robovetter needs improvements -- specific known failures.
+\item optimization of the catalog [STEVE and JEFF]
+\item INJ-TCEs in more detail [JESSIE]
+\item CHASES description
+\item Discussion/List of Confirmed that Failed.
+\item Multi-Planet Systems
+\item How to use all this information to do occurrence rates (basically)
+\item The Catalog using the derived fitted information, completeness, reliability especially.
 
 \end{itemize}
+
+
+
 
 %\textcolor{red}
 %{
 Items we may want to discuss in the paper but I have decided to leave out.
 \begin{itemize}
-\item The effectiveness or completeness of the catalog as a function of planetary radius and semi-major axis. (ie derived from fits) 
-\item A specific list of confirmed planets that now have a reason to be doubted (if any exist)
+\item exact reasons each confirmed planet failed the robovetter.[just see NExScI]
 \item A comparison to EB catalog
 \item Analysis of the injected EBs (secondaries) in terms of effectiveness.
 \item Measurement of effectiveness or completeness based on hand vetting.
 \item Full analysis of completeness and reliability in terms of insolation flux and planet radius. 
+\item A list of what was missed that are in other Kepler catalogs (Planet Hunters Catalog, Ojeda short period ones, previous KOI Tables, Confirmed planets.)
 \end{itemize}
 
 Items that do not belong in this paper:
 \begin{itemize}
 \item An estimate of eta Earth or the occurrence rate for any type of planet.
-\item Autovetter Results
 \item Discussion of metrics not used by the Robovetter.
-\item Complete description of the logic of the Robvetter (i.e. see Coughlin et al.)
-\item A list of what was missed that are in other Kepler catalogs (Planet Hunters Catalog, Ojeda short period ones, previous KOI Tables, Confirmed planets.)
 \end{itemize}
 %}
 
@@ -173,12 +165,13 @@ Items that do not belong in this paper:
 \label{tcesec}
 \input{section-dr25TCEs.tex}
 \input{section-InjInvSS1Tces.tex}
+\input{section-DVTransitFits.tex}
 
 
 %The ROBOVETTER
 \section{Vetting Methods and Metrics}
 \input{section-robovetter.tex}
-\section{Robovetter Minor Flags}
+\subsection{Robovetter Minor Flags}
 
 \section{Calculating Reliability}
 \input{section-reliability-calc.tex}
@@ -196,7 +189,7 @@ Items that do not belong in this paper:
 %Analysis of the Catalog
 \section{Analysis of the DR25 KOI Catalog}
 
-\subsection{Summary of the catalog in numbers and distributions}
+\input{section-catalogsummary.tex}
 \input{section-CompAndReliability.tex}
 
 \subsection{HZ objects}
@@ -212,6 +205,8 @@ Give common failure mechanism (TTVs, Detrending problems).  Give the list of con
 
 
 \section{Conclusions}
+\appendix
+\section{Minor False Positive Flag Definitions}
 
 \acknowledgments
 Thanks to GNU parallel \citep{Tange2011a}.

@@ -1,0 +1,33 @@
+\begin{deluxetable*}{lcllcl}
+\tablecolumns{11}
+\tabletypesize{\scriptsize}
+\tablewidth{\linewidth}
+\tablecaption{Summary of the DR25 Metrics, flags and thresholds.}
+\tablehead{Metric Name & Major Flags & Section & Minor Flags & Threshold & Notes }
+
+LPP Metric & N & \ref{s:lpp} & \spcell{LPP\_DV\\LPP\_ALT} & \spcell{2.2\\3.2} & Two Detrendings\\
+\hline\\
+SWEET NTL& N & \ref{s:sweetntl} & SWEET\_NTL  & 50 & \\[2pt]
+\hline\\
+TCE CHASES & N & \ref{s:tcechases} & ALL\_TRANS\_CHASES & 0.8 & \\[2pt]
+\hline\\
+MS$_1$ & N & \ref{s:ms} & \spcell{MOD\_NONUNIQ\_DV\\MOD\_NONUNIQ\_ALT} & \spcell{1.0\\-3.0} &  Two Detrendings\\
+\hline\\
+MS$_2$ & N & \ref{s:ms} & \spcell{MOD\_TER\_DV\\MOD\_ TER\_ ALT} & \spcell{2.0\\1.0} &  Two Detrendings\\
+\hline\\
+MS$_3$ & N & \ref{s:ms} &  \spcell{MOD\_POS\_DV\\MOD\_POS\_ALT} & \spcell{4.0\\1.0} & Two Detrendings\\
+\hline\\
+SES$_{Max}$/MES & N & \ref{s:sesmes} & INCONSISTENT\_TRANS & 0.8 & for Period $>$ 90 \\[2pt]
+\hline\\
+Same Period & N & \ref{s:sameperiod} & SAME\_NTL\_PERIOD & - &
+\hline\\
+Individual Transits & N & \ref{s:indivtrans} & \spcell{INDIV\_TRANS\_CHASES,MARSHALL\\SKYE,ZUMA,TRACKER,RUBBLE} & - & Removes indiv. transits\\
+\hline\\
+More Lines...
+
+
+
+\enddata
+\tablecomments{Only metrics with tunable thresholds are listed above.}
+\label{t:metrics}
+\end{deluxetable*}
