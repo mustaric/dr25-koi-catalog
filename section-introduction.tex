@@ -20,4 +20,14 @@ And for each of these unique systems, there are a plethora of exoplanets This pl
 \item Create a road map of what is in this paper?
 \end{enumerate}
 
-\subsection{Summarize the catalog talking about what is new/different This could act as the outline.}
+\subsection{Motivation and Summary of the DR25 catalog}
+
+The DR25 catalog was designed so that it can be used to measure the occurrence rates of exoplanets. To do that the catalog needs a measure of the fraction of planets that were found and a measure of the fraction of identified planet candidates that are truly real.  
+
+The measurement of completeness has been split into two parts. The first studies the completeness of the \Kepler\ pipeline, which searches the \Kepler\ light curves and then creates a catalog of TCES (specifically, \opstce s).  The completeness of the various parts of the \Kepler\ pipeline has been studied by \citep{Christiansen2015b,Christiansen2013a}[CHECK THESE REFS]. The final completeness contours were applied to an occurrence rate study by \citep{Burke2015} of the 50--300\,d period planets in the Q1--Q16 KOI catalog \citep{Mullally2015cat}. While this accounts for the majority of the lost planets, it does not account for those lost during the \opstce\ vetting process. This catalog uses transit injection to measure the completeness of the catalog.  
+
+\citet{Burke2015} pointed out the importance of the understanding the reliability of the catalog when measuring the occurrence rate of the smallest planets in the habitable zone.  In this catalog we endeavor to measure the reliability of the candidate catalog against instrumental and stellar noise (false alarms).  Note, this is separate from the reliability against astrophysical false positives, such as background eclipsing binaries, which has been well studied by \citep{Morton2016} and \citet{Torres2012} by considering the likelihood that the observed signal was created by a planet orbiting the observed star and not some other astrophysical scenario.  The reliability we measure here is the possibility that the measured signal is actually caused by a transit or eclipse.
+
+For this catalog we measure the completeness and the reliability of the catalog by feeding known transit signals and known false alarms through the exact same process that we feed the signals found by searching the \Kepler\ data.  This requirement caused us to shift the vetting procedures from a manual process to one that is entirely automated.  This idea was introduced in the Q1--Q16 catalog and then fully implemented in the DR24 KOI Catalog \citep{Coughlin2016}. The DR25 catalog, using this Robovetter, was able to measure the completeness of the catalog using planet injection. This DR25 catalog takes this one step further by measuring both the completeness and the reliability of the DR25 catalog.
+
+\subsection{Summary of the Paper}
