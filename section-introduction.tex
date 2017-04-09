@@ -1,3 +1,4 @@
+[THIS SECTION NOT DONE]
 In 2004 the \Kepler\ space telescope was launched into an earth trailing orbit with the goal of finding the signal from rocky, habitable transiting exoplanets \citep{Koch2010} around sun-like stars. The telescope observed the brightness of over 150,000 stars for four years looking for a small decrease in the brightness of the star caused by a planet passing between the star and the \Kepler\ spacecraft. 
 Since \Kepler's launch in 2009 it has succeeded in identifying X,XXX planet candidates \citep{Borucki2010a,Coughlin2016}. 
 
@@ -8,19 +9,12 @@ Because of the \Kepler\ data, the landscape of known exoplanets has expanded, fi
 
 The impact of \Kepler\ on our understanding of exoplanets comes not only from these individual systems, but from the plethora of planets of every type that it has found. Understanding how common different types of exoplanets are around different types of stars will be one of its lasting legacy. \Kepler\ has shown us that most stars have exoplanets and that super-Earth and small planets are more common than their larger cousins \citet{Burke2015}.  
 
-
 And for each of these unique systems, there are a plethora of exoplanets This plethora of planets \Kepler\ has shown that small planets are common 
 
-\begin{enumerate}
-\item What is Kepler and what is its mission?
-\item How have we made catalogs in the past and why did we switch to a robovetter. What is the robovetter?
-\item Introduce what is new in this paper, hint that the population of TCEs is different and that has created challenges in automatic vetting. Introduce how the goal is to get a sense of the completeness and the reliability of the catalog.
-\item Introduce the concepts injection and inversion to test the robovetter.
-\item Outline how the Robovetter creates Dispositions and the catalog also includes MCMC fits.
-\item Create a road map of what is in this paper?
-\end{enumerate}
 
-\subsection{Motivation of the DR25 catalog}
+[NEED MORE History here to set up our work. Volunteers??]
+
+\subsection{Motivation for the DR25 catalog}
 
 The DR25 catalog was designed so that it can be used to measure the occurrence rates of exoplanets. To do that the catalog needs to measure the completeness, or the fraction of planets that were found, and and the reliability, the fraction of identified planet candidates that are truly real.  
 
@@ -35,4 +29,16 @@ To create this catalog in a timely manner (Hah!) with the tools at our disposal,
 
 The DR25 KOI catalog brings together the results of running many pieces of software that search for and evaluate potential planet transits. It then uses simulated data sets to measure the completeness and reliability of the resulting exoplanet catalog.  In this quick outline of the paper we attempt to highlight how the catalog was assembled, emphsizing those pieces of the process that were different from the DR24 KOI catalog.
 
-In \S\ref{s:tces}
+In \S\ref{s:tces} we describe the observed TCEs, \opstce s, which are the signals found by the \Kepler\ pipeline. To create the simulated data sets that we require to measure the completeness and reliability, we also run the \Kepler\ pipeline on light curves which contain injected transits, were inverted, and were scrambled. This creates \injtce s, \invtce s, and \scrtce s, respectively (see \S\ref{s:simulated}.  
+
+We then created and tuned a Robovetter to vet the entire set of TCEs. \S\ref{s:robovetter} describes the metrics and the logic used to disposition TCEs into categories of planet candidates (PCs) or false positives (FPs). Because the DR25 \opstce\ population was significantly different than the DR24 \opstce s, we had to invent new metrics. One type of new metric examines the individual transits for evidence of being due to instrumental noise, see \S\ref{s:indivtrans}.  All of the metrics used by the Robovetter are available at the NASA Exoplanet Archive (NExScI). As in the DR24 KOI catalog we group false positives into four categories and provide false positive flags (\S\ref{s:minorflags} to indicate why the Robovetter decided to pass or fail a TCE.  New to this catalog is the addition of a disposition score, see \S\ref{s:scores}, which gives users a measure of our confidence in the KOI disposition. Finally, we perform a full Markov chain Monte Carlo (MCMC) fit to each KOI, see \S\ref{s:mcmc} in order to provide improved individual planet parameters and reliable error bars.
+
+We fit and report to the KOI table all previously known KOIs that match the ephemeris of an \opstce s. Also, any \opstce s that does not fail the Robovetter due to the not-transit-like flag is made into a KOI, either one that already exists if the ephemerides match, or into a new KOI. New to this catalog, we also include KOIs that marginally fail the Robovetter.   This catalog of KOIs with dispositions, disposition scores and MCMC transit fits is available at NExScI alongside the previous KOI catalogs.
+
+Unlike previous catalog, this DR25 KOI catalog is no longer based on the philosophy of ``innocent until proven guilty"; we accepted certain amounts of collateral damage in order to achieve a catalog that had acceptable levels of both completeness and reliability, especially for the long periods and low signal-to-noise PCs. In \S\ref{s:optimize} we discuss how we tuned the Robovetter using the simulated TCEs as true planet candidates and true false alarms. We provide the Robovetter and all the Robovetter metrics for all of the TCEs (\opstce, \injtce, \invtce, and \scrtce) to enable users to create a catalog tuned for other regions of parameter space if their scientific goals require it. 
+
+We then proceed to analyze the catalog.  We examine the completeness and reliability using the \injtce, \invtce and \scrtce\ sets in \S\ref{s:candr}. These both decrease significantly as the number of transits decreases, the period increases and the significance of the transit drops-off.  We then discuss how one may use the disposition scores to achieve a higher reliability, lower completeness catalog for the weakest, long-period signals in \S\ref{s:crscores}.  We conclude that not all planet candidates in our catalog are truly planet candidates. To emphasize this point and because of the interest in the terrestrial, temperate region of this catalog, we examine those candidates identified in \S\ref{s:hz}. Finally, in \S\ref{s:occrates}, we give an overview of how this catalog can be used to measure occurrence rates.
+
+
+
+

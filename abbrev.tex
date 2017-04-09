@@ -14,7 +14,8 @@ We try to avoid unnecessary acronyms and abbreviations, but are a few are requir
 \item[] \textbf{PC}: Planet Candidate. A TCE that passed all of the Robovetter tests and metrics.
 \item[] \textbf{FP}: False Positive. A TCE that failed one or many of the Robovetter tests and metrics.
 \item[] \textbf{MES}: Multiple Event Statistic. A statistic that measures the significance of the observed transits in the TPS detrended, whitened light curve, see \citep{Jenkins2002a}.
-\item[] \textbf{DV}: Data Validation. The module of the \Kepler\ pipeline which characterizes the transits. This module evaluates each TCE and provides a detrended light curves on which other metrics are based.
-\item[] \textbf{ALT}: Alternate. An alternate detrending, based on the methods of \citet{Garcia2010}, are utilized by several metrics discussed in this paper.
+\item[] \textbf{DV}: Data Validation. The module of the \Kepler\ pipeline which characterizes the transits. This module evaluates each TCE and provides a detrended light curves on which other metrics are based. The DV module also provided two sets of transit fits: original and supplemental.
+\item[] \textbf{ALT}: Alternate. An alternate detrending, based on the methods of \citet{Garcia2010}, are utilized by several metrics discussed in this paper. A trapezoidal fit to the transit is performed on this alternate detrending.
+\item[] \textbf{MCMC}: Markov Chain Monte Carlo. This refers to the transit fits that are provided for most KOIs that was performed as described in \S\ref{s:mcmc}.
 
 \end{itemize}
