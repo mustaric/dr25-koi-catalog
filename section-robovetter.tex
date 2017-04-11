@@ -386,7 +386,7 @@ Occasionally the \kepler{} pipeline will detect the secondary eclipse of an EB a
 \paragraph{Secondary Detected in Light Curve}
 \label{secdetectsec}
 
-There are many cases when a secondary eclipse does not produce its own TCE, most often when its MES is below the \kepler{} pipeline detection threshold of 7.1. The model-shift uniqueness test, discussed in \S\ref{notuniquetcesec}, is well-suited to automatically detect secondary eclipses in the phased light curve, as it searches for the next two deepest events aside from the primary event. It is thus able to detect the best-candidate secondary eclipse in the light curve and assess its significance. We thus compute the following quantities to use as secondary deteection metrics
+There are many cases when a secondary eclipse does not produce its own TCE, most often when its MES is below the \kepler{} pipeline detection threshold of 7.1. The model-shift uniqueness test, discussed in \S\ref{s:ms}, is well-suited to automatically detect secondary eclipses in the phased light curve, as it searches for the next two deepest events aside from the primary event. It is thus able to detect the best-candidate secondary eclipse in the light curve and assess its significance. We thus compute the following quantities to use as secondary deteection metrics
 
 \begin{equation}
     MS_{4} = \sigma_{\rm Sec}/F_{\rm Red} - FA_{1}
