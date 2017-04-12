@@ -1,5 +1,5 @@
 \label{s:robovetter}
-The dispositioning of the TCEs into the categories of PC and FP  is entirely automated and is performed by a piece of code called the Robovetter\fottnote{GITHUB link}. This code takes as input a variety of metrics that all evaluate the TCE in different ways.  In this section we describe the different metrics as well as the logic the Robovetter uses to make its decisions. 
+The dispositioning of the TCEs into the categories of PC and FP  is entirely automated and is performed by a piece of code called the Robovetter\footnote{GITHUB link}. This code takes as input a variety of metrics that all evaluate the TCE in different ways.  In this section we describe the different metrics as well as the logic the Robovetter uses to make its decisions. 
 
 Because the TCE population changed significantly between DR24 and DR25, the Robovetter had to be improved in order to obtain an acceptable performance.  Also, because we now have a population of known false alarms (\invtce\ and \scrtce), the Robovetter could be tuned by balancing its completeness against its effectiveness at removing known false alarms. This is change from previous KOI catalogs that prioritized completeness above all else.  In order to sufficiently remove the long period excess of false alarms, this Robovetter introduces new metrics that evaluate individual transits. This expands the work that the code Marshall \citep{Mullally2015c} performed for the DR24 KOI catalog. 
 
@@ -429,7 +429,7 @@ If the primary and secondary eclipses of an EB are similar in depth, and the sec
 
 Short-period eclipsing binaries will often show out-of-eclipse variability due to tidal forces that deform the star from a perfect spheroid. The variability manifests as quasi-sinusoidal variations at either the period, or half the period, of the binary.
 
-We use the information from SWEET (see~\S\ref{sweetntlsec}) to detect these cases. If a transit-like TCE has a SWEET SNR greater than 50, an amplitude less than the TCE transit depth in either the DV and ALT detrendings, an amplitude greater than 5,000~ppm, and a period less than 10 days, we fail it as a stellar system.
+We use the information from SWEET (see~\S\ref{s:sweetntl}) to detect these cases. If a transit-like TCE has a SWEET SNR greater than 50, an amplitude less than the TCE transit depth in either the DV and ALT detrendings, an amplitude greater than 5,000~ppm, and a period less than 10 days, we fail it as a stellar system.
 
 
 
