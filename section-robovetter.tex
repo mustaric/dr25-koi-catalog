@@ -1,5 +1,13 @@
 \label{s:robovetter}
-In the first five \Kepler{} planet candidate catalogs \citep{Borucki2011a,Borucki2011b,Batalha2013,Burke2014,Rowe2015a}, various plots and diagnostics for each TCE were visually examined by members of the Threshold Crossing Event Review Team (TCERT), which consists of professional scientists who have a thorough understanding of \kepler{} data systematics and the various types of false positive scenarios. In the sixth catalog, \citet{Mullally2015cat} employed partial automation through the use of three simple parameter cuts, principally to cull out a large number of long-period false positives, as well as a robotic procedure to identify a particular subset of centroid offsets \citep[see \S5.2 of][]{Mullally2015cat}. In the seventh catalog, \citet{Coughlin2016} fully automated the dispositioning of TCEs in order to enable the accurate computation of planet occurrence rates.
+The dispositioning of the TCEs into the categories of PC and FP  is entirely automated and is performed by a piece of code called the Robovetter\fottnote{GITHUB link}. This code takes as input a variety of metrics that all evaluate the TCE in different ways.  In this section we describe the different metrics as well as the logic the Robovetter uses to make its decisions. 
+
+Because the TCE population changed significantly between DR24 and DR25, the Robovetter had to be improved in order to obtain an acceptable performance.  Also, because we now have a population of known false alarms (\invtce\ and \scrtce), the Robovetter could be tuned by balancing its completeness against its effectiveness at removing known false alarms. This is change from previous KOI catalogs that prioritized completeness above all else.  In order to sufficiently remove the long period excess of false alarms, this Robovetter introduces new metrics that evaluate individual transits. This expands the work that the code Marshall \citep{Mullally2015c} performed for the DR24 KOI catalog. 
+
+While many metrics did not change between the DR24 Robovetter and the DR25 Robovetter, to be sure our descriptions are complete we give a thorough description of them all here. 
+
+
+%Move to the introduction
+%In the first five \Kepler{} planet candidate catalogs \citep{Borucki2011a,Borucki2011b,Batalha2013,Burke2014,Rowe2015a}, various plots and diagnostics for each TCE were visually examined by members of the Threshold Crossing Event Review Team (TCERT), which consists of professional scientists who have a thorough understanding of \kepler{} data systematics and the various types of false positive scenarios. In the sixth catalog, \citet{Mullally2015cat} employed partial automation through the use of three simple parameter cuts, principally to cull out a large number of long-period false positives, as well as a robotic procedure to identify a particular subset of centroid offsets \citep[see \S5.2 of][]{Mullally2015cat}. In the seventh catalog, \citet{Coughlin2016} fully automated the dispositioning of TCEs in order to enable the accurate computation of planet occurrence rates.
 
 
 % TALK ABOUT THE vDR24 ROBOVETTER RESULTS??
@@ -17,7 +25,7 @@ In the first five \Kepler{} planet candidate catalogs \citep{Borucki2011a,Boruck
 %
 % Thus, for automating the TCE dispositioning process, we have specifically chosen a robotic vetting procedure that operates via a series of simple decision trees. Hereafter referred to as the ``robovetter'', it attempts to mimic the well-known human vetting process, providing a specific reason for dispositioning any TCE as a false positive. The robovetter was initially developed based on the results of the Q1--Q16 catalog \citep{Mullally2015cat} and then further refined based on the results of manual checks on the the Q1--Q17~DR24 dataset by TCERT members.
 
-
+\subsection{Major False Positive Flags}
 Similar to \citet{Rowe2015a}, \citep{Mullally2015cat}, and \citet{Coughlin2016}, we assign FP TCEs to one or more of the following false positive categories:
 
 
@@ -436,6 +444,8 @@ In this catalog, we attempt to strike a balance between identifying these binary
 
 
 \subsection{Centroid Offset}
+\subsubsection{Centroid Robovetter}
+The Robovetter relies on a piece of code called the Centroid Robovetter \footnote{REPOSITORY}\citep{KSCI}[CITE a KSCI] to detect when a transit signal originates from a background or nearby star instead of from the target star. This Centroid Robovetter has not changed since DR24. We summarize its importance here and describe its performance
 
 Given that \keplers{} pixels are 3.98\arcsec{} square \citep{Koch2010}, and the typical photometric aperture has a radius of 4--7 pixels \citep{Bryson2010b}, it is quite common for a given target star to be contaminated by light from another star. If that other star is variable, then that variability will be visible in the target aperture at a reduced amplitude. If the variability due to contamination results in a TCE, then it is a false positive, whether the contaminator is an eclipsing binary, planet, or other type of variable star \citep{Bryson2013}. For example, if a transit or an eclipse occurs on a bright star, a shallower event will be observed on a nearby, fainter star. Similarly, a star can be mistakenly identified as experiencing a shallow transit if a deep eclipse occurs on a fainter, nearby source.
 
@@ -453,7 +463,10 @@ For the difference images that are determined to contain a discernible stellar i
 
 If no centroid offset is identified by the previous method, we then look for contamination from sources that are unresolved from the target. We measure the PRF-fit centroid of the difference images and search for statistically significant shifts with respect to the PRF centroid of both the out-of-transit images, as well as the catalog position of the source. Following \citet{Bryson2013}, a TCE is marked as a FP due to a centroid offset if there are at least three difference images with a discernible stellar image, and a 3$\sigma$ significant offset larger than 2$\arcsec$, or a 4$\sigma$ offset larger than 1$\arcsec$ is measured.
 
-Finally, the last method we use to detect a centroid offset the ghost diagnostic, which was added to the DR25 \kepler{} pipeline \citep{Twicken2016}. It determines whether a transit signal is likely to be contaminated from a ghost image of a star located away from the target star in the focal plane. Ghost reflections occur when light from a bright star is reflected from the CCD reflects again from the field flattener plate and back onto the CCD as a diffuse, out-of-focus image of the pupil of
+We use the the pixel-level injected TCEs that were injected with an offset to understand the performance of the Centroid Robovetter.  [FERGAL IT WOULD BE NICE IF I COULD GET YOU TO WRITE THIS PART and include a figure. BUT it is a nice to have.]
+
+\subsubsection{Ghost Diagnostic}
+The last method we use to detect a centroid offset is the ghost diagnostic, which was added to the DR25 \kepler{} pipeline \citep{Twicken2016}. It determines whether a transit signal is likely to be contaminated from a ghost image of a star located away from the target star in the focal plane. Ghost reflections occur when light from a bright star is reflected from the CCD reflects again from the field flattener plate and back onto the CCD as a diffuse, out-of-focus image of the pupil of
 the telescope. A similar type of false positive results from direct PRF (Pixel Response Function) contamination, when flux from the broad wings of the PRF of a bright star near the target star on the CCD overlaps the target star's PRF.  If a ghost reflection (or the PRF of a nearby star) containing a transit-like signature (e.g. an eclipsing binary signal) overlaps the PRF of a target star, then the contaminating transit signal will be significantly stronger relative to the target's flux in the periphery of the target star's PRF than in its core.
 
 
@@ -617,26 +630,25 @@ Since \kepler{} does not observe every star in its field of view, it can often b
 % \noindent Combining these details leads to our conjecture that the column anomaly is due to decreasing charge transfer efficiency over time, likely due to cosmic ray impacts. When the CCD is read out, some charge from the parent is left behind due to charge transfer inefficiency. As the child is read out, and its electrons pass through the pixels where the parent was, the child picks up some of the parent's left-behind electrons. Thus, the variable signal from the parent is induced in the child. As more cosmic ray impacts accumulate over time, the amount of charge left behind by the parent increases, resulting in an increase in contamination, and thus an increase in the observed depth of the child. Seasonal variation is seen as the parent and child rotate between 4 CCDs with season, and the amount of degradation varies with CCD. The average depth ratio, along with the delta magnitudes observed, indicate that a charge transfer efficiency of $\sim$99.99\% is consistent with the observed contamination, i.e., a degradation of $\sim$0.01\%. This is well within the range observed on Hubble's Advanced Camera for Surveys and other spaceborne detectors  \citep[see \S3.7 of][and references therein]{Sirianni2005}.
 
 
-\subsection{Summarize Metrics}
-All the metrics, the major and minor flags they create and the thresholds used are available in Table~\ref{t:metrics}.
-\input{metrics-table}
-
 \subsection{Disposition Scores}
 \label{s:scores}
-A new feature we introduce in this catalog is the disposition score --- a value between 0 and 1 that indicates the confidence in disposition provided by the Robovetter. For PCs, a higher value indicates more confidence in its disposition. For FPs, a higher value indicates less confidence in its disposition. This feature is desirable to calculate accurate occurrence rates, as users can rank the PC and FP populations by their score and weight them appropriately for their statistics.
+A new feature we introduce in this catalog is the disposition score --- a value between 0 and 1 that indicates the confidence in disposition provided by the Robovetter. A higher valued indicates more confidence that an objects is a PC, regardless of the disposition it was given.  This feature is desirable to select the highest quality PCs, as users can easily rank KOIs by the disposition score. 
+%This statistics argument hasn't been proven. We could discuss this, but it belongs in the disucssion "and weight them appropriately for their statistics."
 
-The disposition score was calculated by wrapping the Robovetter in a Monte Carlo routine. In each of 10,000 iterations the input metrics for the Robovetter are perturbed from their nominal values by drawing from an asymmetric Gaussian distribution centered on the nominal value. In each iteration the robovetter dispositions each TCE given the new values for each metric. The disposition score is simply the fraction of iterations that result in a disposition of PC. For example, if a PC KOI has a few metrics that are near the Robovetter's thresholds, it will frequently have at least one that is perturbed across a threshold. As a result, many of the iterations will produce a false positive and the candidate will have a low score.  Similarly, if a FALSE POSITIVE KOI barely fails a single metric, the score may be near 0.5, indicating that it was deemed a planet candidate in half of the iterations.
+The disposition score was calculated by wrapping the Robovetter in a Monte Carlo routine. In each of 10,000 iterations the input metrics for the Robovetter are perturbed from their nominal values by drawing from an asymmetric Gaussian distribution centered on the nominal value. In each iteration the robovetter dispositions each TCE given the new values for each metric. The disposition score is simply the fraction of iterations that result in a disposition of PC. For example, if a PC KOI has a few metrics that are near the Robovetter's thresholds, it will frequently have at least one that is perturbed across a threshold. As a result, many of the iterations will produce a false positive and the candidate will have a low score.  Similarly, if a FALSE POSITIVE KOI barely fails a single metric, the score may be near 0.5, indicating that it was deemed a PCin half of the iterations.
 
-To compute the asymmetric sigma values for the Gaussian distribution, we examine the distribution of the robovetter metric for the injected on-target population. We calculate the positive and negative MAD values for each metric as a function of MES and period. These MAD values are then multiplied by a conversion factor of 1.4826 (ADD REF) to put the variability on the same scale as a standard deviation.
+To compute the asymmetric sigma values for the Gaussian distribution, we examine the distribution of the robovetter metric for the injected on-target population. We calculate the positive and negative median absolute deviation (MAD) values for each metric as a function of MES and period. These MAD values are then multiplied by a conversion factor of 1.4826 (ADD REF) to put the variability on the same scale as a standard deviation.
 
 NEED TO MENTION AND CLEAN UP FIGURES
+
+NEED TO LIST WHICIH METRICS actually GO INTO THe TUNING
 
 TALK ABOUT SCORE DISTRIBUTION HERE, OR LATER ON IN ANALYSIS?
 
 \begin{figure}
 \centering
 \includegraphics[width=\linewidth]{Metric-StDev-1.pdf}
-\caption{A plot of how we calculated errors for the robovetter score.}
+\caption{A plot of how we calculated errors for the robovetter score.[NEEDS MORE WORK]}
 \label{score-fig-1}
 \end{figure}
 
@@ -647,3 +659,8 @@ TALK ABOUT SCORE DISTRIBUTION HERE, OR LATER ON IN ANALYSIS?
 \label{score-fig-2}
 \end{figure}
 
+\subsection{Summarize Metrics}
+All the metrics, the major and minor flags they create and the thresholds used are summarized in Table~\ref{t:metrics}. For those with tunable thresholds, the value used to create the DR25 KOI catalog are listed.  [Jeff: Would this go nicely in the Table?  Those that are used to create the disposition score are also indicated.]
+
+
+\input{metrics-table}

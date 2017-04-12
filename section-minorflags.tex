@@ -1,0 +1,10 @@
+%List of the Minor Flags and their definitions
+\label{s:minorflags}
+The Robovetter produces a flag each time it gives a disposition of FP, and sometimes when it gives a disposition of PC.  Here we give a definition for each flag.  These flags are available for the KOIs through the comment column in the KOI table. See the Robovetter input files at github for the flags for all the TCEs.
+
+
+\textbf{MOD\_POS\_ALT}: The $MS_1$ value for the alternate detrending is below the Robovetter's threshold. $MS_1$ is the difference between the primary and positive-going event significances and is computed by the model-shift test. This flag indicates the primary event is not unique in the phased light curve, and thus the TCE is dispositioned as a FP with the not transit-like major flag set. 
+
+\textbf{MOD\_POS\_DV}: The $MS_1$ value for the DV detrending is below the Robovetter's threshold. This flag indicates the primary event is not unique in the phased light curve, and thus the TCE is dispositioned as a FP with the not transit-like major flag set. 
+
+[MANY more need to be added here]
