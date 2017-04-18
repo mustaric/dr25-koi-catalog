@@ -1,5 +1,5 @@
 \label{s:robovetter}
-The dispositioning of the TCEs into the categories of PC and FP  is entirely automated and is performed by a piece of code called the Robovetter\footnote{GITHUB link}. This code takes as input a variety of metrics that all evaluate the TCE in different ways.  In this section we describe the different metrics as well as the logic the Robovetter uses to make its decisions. 
+The dispositioning of the TCEs into the categories of PC and FP  is entirely automated and is performed by a piece of code called the Robovetter\footnote{GITHUB link}. This code takes as input a variety of metrics that evaluate the TCEs in different ways and then imposes a set of logic to disposition the TCEs.  In this section we describe the different metrics as well as the logic the Robovetter uses to make its decisions. 
 
 Because the TCE population changed significantly between DR24 and DR25, the Robovetter had to be improved in order to obtain an acceptable performance.  Also, because we now have a population of known false alarms (\invtce\ and \scrtce), the Robovetter could be tuned by balancing its completeness against its effectiveness at removing known false alarms. This is change from previous KOI catalogs that prioritized completeness above all else.  In order to sufficiently remove the long period excess of false alarms, this Robovetter introduces new metrics that evaluate individual transits. This expands the work that the code Marshall \citep{Mullally2015c} performed for the DR24 KOI catalog. 
 
@@ -26,6 +26,7 @@ While many metrics did not change between the DR24 Robovetter and the DR25 Robov
 % Thus, for automating the TCE dispositioning process, we have specifically chosen a robotic vetting procedure that operates via a series of simple decision trees. Hereafter referred to as the ``robovetter'', it attempts to mimic the well-known human vetting process, providing a specific reason for dispositioning any TCE as a false positive. The robovetter was initially developed based on the results of the Q1--Q16 catalog \citep{Mullally2015cat} and then further refined based on the results of manual checks on the the Q1--Q17~DR24 dataset by TCERT members.
 
 \subsection{Major False Positive Flags}
+\label{s:majorflags}
 Similar to \citet{Rowe2015a}, \citep{Mullally2015cat}, and \citet{Coughlin2016}, we assign FP TCEs to one or more of the following false positive categories:
 
 
@@ -415,7 +416,7 @@ There are two exceptions when the above-mentioned conditions are met, but the ro
 
 
 \paragraph{Odd/Even Depth Difference}
-
+\label{s:oddeven}
 If the primary and secondary eclipses of an EB are similar in depth, and the secondary is located near phase 0.5, the \kepler{} pipeline may detect them as a single TCE at half the true orbital period of the EB. In these cases, if the primary and secondary depths are dissimilar enough, it is possible to detect it as a FP by comparing the depths of the odd- and even-numbered transit events. Thus, we compute the following statistic, for both the DV and alternate detrending,
 
 \begin{equation}
@@ -445,14 +446,14 @@ In this catalog, we attempt to strike a balance between identifying these binary
 
 \subsection{Centroid Offset}
 \subsubsection{Centroid Robovetter}
-The Robovetter relies on a piece of code called the Centroid Robovetter \footnote{REPOSITORY}\citep{KSCI}[CITE a KSCI] to detect when a transit signal originates from a background or nearby star instead of from the target star. This Centroid Robovetter has not changed since DR24. We summarize its importance here and describe its performance
+The Robovetter relies on a piece of code called the Centroid Robovetter \footnote{REPOSITORY}\citep{KSCI}[CITE the CRV KSCI] to detect when a transit signal originates from a background or nearby star instead of from the target star. This Centroid Robovetter has not changed since its implementation for the DR24 KOI catalog. We summarize it here. 
 
-Given that \keplers{} pixels are 3.98\arcsec{} square \citep{Koch2010}, and the typical photometric aperture has a radius of 4--7 pixels \citep{Bryson2010b}, it is quite common for a given target star to be contaminated by light from another star. If that other star is variable, then that variability will be visible in the target aperture at a reduced amplitude. If the variability due to contamination results in a TCE, then it is a false positive, whether the contaminator is an eclipsing binary, planet, or other type of variable star \citep{Bryson2013}. For example, if a transit or an eclipse occurs on a bright star, a shallower event will be observed on a nearby, fainter star. Similarly, a star can be mistakenly identified as experiencing a shallow transit if a deep eclipse occurs on a fainter, nearby source.
+Given that \kepler 's pixels are 3.98\arcsec{} square \citep{Koch2010}, and the typical photometric aperture has a radius of 4--7 pixels \citep{Bryson2010b}, it is quite common for a given target star to be contaminated by light from another star. If that other star is variable, then that variability will be visible in the target aperture at a reduced amplitude. If the variability due to contamination results in a TCE, then it is a false positive, whether the contaminator is an eclipsing binary, planet, or other type of variable star \citep{Bryson2013}. For example, if a transit or an eclipse occurs on a bright star, a shallower event will be observed on a nearby, fainter star. Similarly, a star can be mistakenly identified as experiencing a shallow transit if a deep eclipse occurs on a fainter, nearby source.
 
 % There are two ways we robotically detect centroid offsets, by examining the differnce 
 
 
-The DV module of the \kepler{} pipeline produces ``difference images'' for each quarter, which are made by subtracting the average flux in each pixel during each transit from the flux in each pixel just before and after each transit \citep{Bryson2013}. If the resulting difference image shows significant flux change at a location (centroid) other than the target, then the TCE is likely a FP due to a centroid offset.
+The DV module of the \kepler{} pipeline produces ``difference images'' for each quarter, which are made by subtracting the average flux in each pixel during each transit from the flux in each pixel just before and after each transit \citep{Bryson2013}. If the resulting difference image shows significant flux at a location (centroid) other than the target, then the TCE is likely an FP due to a centroid offset.
 
 
 % In prior catalogs, TCERT members manually examined the difference images to look for evidence of a centroid offset, as fully described in \citet{Bryson2013} and \S3.2.3--3.2.6 of \citet{Rowe2015a}. In this catalog, the search for centroid offsets was fully robotized and confirmed to reproduce the results earlier catalogs using human vetting \citep{Mullally2015c}.
@@ -463,14 +464,16 @@ For the difference images that are determined to contain a discernible stellar i
 
 If no centroid offset is identified by the previous method, we then look for contamination from sources that are unresolved from the target. We measure the PRF-fit centroid of the difference images and search for statistically significant shifts with respect to the PRF centroid of both the out-of-transit images, as well as the catalog position of the source. Following \citet{Bryson2013}, a TCE is marked as a FP due to a centroid offset if there are at least three difference images with a discernible stellar image, and a 3$\sigma$ significant offset larger than 2$\arcsec$, or a 4$\sigma$ offset larger than 1$\arcsec$ is measured.
 
-We use the the pixel-level injected TCEs that were injected with an offset to understand the performance of the Centroid Robovetter.  [FERGAL IT WOULD BE NICE IF I COULD GET YOU TO WRITE THIS PART and include a figure. BUT it is a nice to have.]
+The Centroid Robovetter gives the \kepler\ Robovetter several flags to indicate whether a centroid offset was detected and if that detection can be trusted. The reasons for the centroid robovetter are passed along in the minor flags defined in \S\ref{s:minorflags}.
+
+%We use the the pixel-level injected TCEs that were injected with an offset to understand the performance of the Centroid Robovetter.  [FERGAL IT WOULD BE NICE IF I COULD GET YOU TO WRITE THIS PART and include a figure. BUT it is a nice to have.]
 
 \subsubsection{Ghost Diagnostic}
 The last method we use to detect a centroid offset is the ghost diagnostic, which was added to the DR25 \kepler{} pipeline \citep{Twicken2016}. It determines whether a transit signal is likely to be contaminated from a ghost image of a star located away from the target star in the focal plane. Ghost reflections occur when light from a bright star is reflected from the CCD reflects again from the field flattener plate and back onto the CCD as a diffuse, out-of-focus image of the pupil of
 the telescope. A similar type of false positive results from direct PRF (Pixel Response Function) contamination, when flux from the broad wings of the PRF of a bright star near the target star on the CCD overlaps the target star's PRF.  If a ghost reflection (or the PRF of a nearby star) containing a transit-like signature (e.g. an eclipsing binary signal) overlaps the PRF of a target star, then the contaminating transit signal will be significantly stronger relative to the target's flux in the periphery of the target star's PRF than in its core.
 
 
-To detect this type of false alarm, the ghost diagnostic essentially measures the strength of the TCE signal in two separate light curves --- one created using the average of the pixels inside the target's optimal aperture minus the average of the pixels in an annulus surrounding the target aperture (core aperture correlation statistic), and the other using the average of the pixels in the annulus surrounding the target aperture (halo aperture correlation statistic). If the ratio of the out- to in-aperture statistic is greater than 4.0, the TCE is marked as a FP due to a centorid offset. This ghost diagnostic is not available for vetting the Scrambled TCEs.  
+To detect this type of false alarm, the ghost diagnostic essentially measures the strength of the TCE signal in two separate light curves --- one created using the average of the pixels inside the target's optimal aperture minus the average of the pixels in an annulus surrounding the target aperture (core aperture correlation statistic), and the other using the average of the pixels in the annulus surrounding the target aperture (halo aperture correlation statistic). If the ratio of the out- to in-aperture statistic is greater than 4.0, the TCE is marked as a FP due to a centroid offset. This ghost diagnostic is not available for vetting the \scrtce s. 
 
 %Joe's words
 % It produces a detection statistic measuring correlation between a whitened timeseries and a whitened transit model, as well as a statistic measuring the signicance of the correlation, assuming the detection statistic is a chi-squared variable.
@@ -480,7 +483,7 @@ To detect this type of false alarm, the ghost diagnostic essentially measures th
 
 Another method for detecting FPs due to contamination is to compare the ephemerides (periods and epochs) of TCEs to each other, as well as other known variable sources in the \kepler{} field. If two targets have the same ephemeris within a specified tolerance, then at least one of them is a FP due to contamination. \citet{Coughlin2014a} used Q1--Q12 data to compare the ephemerides of KOIs to each other and eclipsing binaries known from both \kepler{}- and ground-based observations. They identified over 600 FPs via ephemeris matching, of which over 100 were not known as FPs via other methods. They also identified four main mechanisms of contamination. The results of \citet{Coughlin2014a} were incorporated in \citet[][see \S3.3]{Rowe2015a}. \citet[][see \S5.3]{Mullally2015cat} slightly modified the ephemeris matching process of \citet{Coughlin2014a}, and applied it to all of the Q1--Q16 TCEs, as well as known KOIs and EBs, identifying nearly 1,000 TCEs as FPs. The same process was again used in the \citet{Coughlin2016} catalog.
 
-We modify the matching criteria used in previous catalogs to obtain more accurate matches, due especially to the very large number of long-period TCEs encountered in DR25 compared to previous activities. We utilize the results of the transit injection run (REF INJECTION SEC) to measure the ability of the \kepler{} pipeline to recover period and epoch as a function of period. In Figure~\ref{injephemfig} we show, in the top two panels, the difference in the injected and recovered period and epoch, as a function of the injected period. The middle and bottom panels show the measured standard deviation of the difference as a function of panel, in linear and logarithmic space respectively. The red line is the result of a best-fit power law.
+We modify the matching criteria used in previous catalogs to obtain more accurate matches, due especially to the very large number of long-period TCEs encountered in DR25 compared to previous activities. We utilize the results of the transit injection run (\S\ref{s:injectsec}) to measure the ability of the \kepler{} pipeline to recover period and epoch as a function of period. In Figure~\ref{injephemfig} we show, in the top two panels, the difference in the injected and recovered period and epoch, as a function of the injected period. The middle and bottom panels show the measured standard deviation of the difference as a function of panel, in linear and logarithmic space respectively. The red line is the result of a best-fit power law.
 
 \begin{figure}[h]
 \centering
@@ -641,7 +644,7 @@ To compute the asymmetric sigma values for the Gaussian distribution, we examine
 
 NEED TO MENTION AND CLEAN UP FIGURES
 
-NEED TO LIST WHICIH METRICS actually GO INTO THe TUNING
+NEED TO LIST WHICH METRICS actually GO INTO THE TUNING
 
 TALK ABOUT SCORE DISTRIBUTION HERE, OR LATER ON IN ANALYSIS?
 
