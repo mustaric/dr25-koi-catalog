@@ -1,9 +1,10 @@
 \label{s:robovetter}
-The dispositioning of the TCEs into the categories of PC and FP  is entirely automated and is performed by a piece of code called the Robovetter\footnote{GITHUB link}. This code takes as input a variety of metrics that evaluate the TCEs in different ways and then imposes a set of logic to disposition the TCEs.  In this section we describe the different metrics as well as the logic the Robovetter uses to make its decisions. 
+The dispositioning of the TCEs into the categories of PC and FP is entirely automated and is performed by a piece of code called the Robovetter\footnote{GITHUB link}. This code takes as input a variety of metrics that evaluate the TCEs in different ways and then imposes a set of logic to disposition the TCEs.  In this section we describe the different metrics as well as the logic the Robovetter uses to make its decisions. 
 
 Because the TCE population changed significantly between DR24 and DR25, the Robovetter had to be improved in order to obtain an acceptable performance.  Also, because we now have a population of known false alarms (\invtce\ and \scrtce), the Robovetter could be tuned by balancing its completeness against its effectiveness at removing known false alarms. This is change from previous KOI catalogs that prioritized completeness above all else.  In order to sufficiently remove the long period excess of false alarms, this Robovetter introduces new metrics that evaluate individual transits. This expands the work that the code Marshall \citep{Mullally2015c} performed for the DR24 KOI catalog. 
 
-While many metrics did not change between the DR24 Robovetter and the DR25 Robovetter, to be sure our descriptions are complete we give a thorough description of them all here. 
+While many metrics did not change between the DR24 Robovetter and the DR25 Robovetter, we discuss all the metrics used by the DR25 Robovetter below in order to be complete and prevent unnecessary confusion. 
+
 
 
 %Move to the introduction
@@ -54,15 +55,15 @@ Similar to \citet{Rowe2015a}, \citep{Mullally2015cat}, and \citet{Coughlin2016},
 \end{figure*}
 
 
-The robovetter first checks if the TCE corresponds to a secondary eclipse associated with an already examined system. If not, the robovetter then checks if the TCE is transit-like or not. If it is transit-like, the robovetter then looks for the presence of a secondary eclipse. In parallel, the robovetter also looks for evidence of a centroid offset and an ephemeris match to other TCEs and variable stars in the \kepler{} field. In the following subsections we describe in detail each of these tests in the order in which they are performed by the robovetter. Finally, we explain the creation of a ``disposition score'' that conveys the confidence in the Robovetter's disposition.
+The Robovetter first checks if the TCE corresponds to a secondary eclipse associated with an already examined system. If not, the Robovetter then checks if the TCE is transit-like or not. If it is transit-like, the Robovetter then looks for the presence of a secondary eclipse. In parallel, the Robovetter also looks for evidence of a centroid offset and an ephemeris match to other TCEs and variable stars in the \kepler{} field. In the following subsections we describe in detail each of these tests in the order in which they are performed by the robovetter. Finally, we explain the creation of a ``disposition score'' that conveys the confidence in the Robovetter's disposition.
 
 
 \subsection{Two Robovetter Detrendings}
-We note that for all of the robovetter tests that require a phased light curve and model fit, we utilize two different detrendings and model fits. In the \kepler{} pipeline, the Data Validation (DV) module produces a harmonic-removed, median-detrended, phased flux light curve, along with a transit model fit \citep{Wu2010}. However, the harmonic remover is known to suppress short-period ($\lesssim$ 3 days) signals such that short-period eclipsing binaries with visible secondaries can appear as transiting planets with no visible secondary \citep{Christiansen2013b}. It can also make variable stars with semi-coherent variability, such as starspots or pulsations, appear as transit-like signals. Thus, we create phased flux light curves via an alternate detrending method that utilizes the pre-search data conditioned (PDC) time-series light curves and the non-parametric penalized least squares detrending method of \citet{Garcia2010}, which includes only the out-of-transit points when computing the filter. These alternately (ALT) detrended light curves are then phased and fit with a simple trapezoidal transit model. This alternate detrending technique is effective at accurately detrending short-period eclipsing binaries and variable stars, i.e., preserving their astrophysical signal. Every test that is applied to the DV phased light curves is also applied to the alternate detrending --- failing a test using either detrending results in the TCE being classified as a FP.
+We note that for all of the Robovetter tests that require a phased light curve and model fit, we utilize two different detrendings and model fits. In the \kepler{} pipeline, the Data Validation (DV) module produces a harmonic-removed, median-detrended, phased flux light curve, along with a transit model fit \citep{Wu2010}. However, the harmonic remover is known to suppress short-period ($\lesssim$ 3 days) signals such that short-period eclipsing binaries with visible secondaries can appear as transiting planets with no visible secondary \citep{Christiansen2013b}. It can also make variable stars with semi-coherent variability, such as starspots or pulsations, appear as transit-like signals. Thus, we create phased flux light curves via an alternate detrending method that utilizes the pre-search data conditioned (PDC) time-series light curves and the non-parametric penalized least squares detrending method of \citet{Garcia2010}, which includes only the out-of-transit points when computing the filter. These alternately (ALT) detrended light curves are then phased and fit with a simple trapezoidal transit model. This alternate detrending technique is effective at accurately detrending short-period eclipsing binaries and variable stars, i.e., preserving their astrophysical signal. Every test that is applied to the DV phased light curves is also applied to the alternate detrending --- failing a test using either detrending results in the TCE being classified as a FP.
 
 \subsection{The TCE is the Secondary of an Eclipsing Binary}
 
-If a TCE under examination is not the first one in a system, the robovetter checks if there exists a previous TCE with a similar period that was designated as a FP due to a significant secondary (see~\S\ref{sigsecsec}). To compute whether two TCEs have the same period within a given statistical threshold, we employ the period matching criteria of \citet[][see equations 1-3]{Coughlin2014a}, $\sigma_{P}$, where higher values of $\sigma_{P}$ indicate more significant period matches. We re-state the equations here as:
+If a TCE under examination is not the first one in a system, the Robovetter checks if there exists a previous TCE with a similar period that was designated as a FP due to a significant secondary (see~\S\ref{sigsecsec}). To compute whether two TCEs have the same period within a given statistical threshold, we employ the period matching criteria of \citet[][see equations 1-3]{Coughlin2014a}, $\sigma_{P}$, where higher values of $\sigma_{P}$ indicate more significant period matches. We re-state the equations here as:
 
 \begin{equation}
 \label{peq1}
@@ -103,7 +104,7 @@ A very large fraction of false positive TCEs have light curves that do not resem
 
 \subsubsection{Not Transit-Shaped}
 
-One of the most common false positives in the data set are quasi-sinusoidal shaped light curves, compared to those that are more detached due to a transit or eclipse. Also, individual events can often be due a systematic feature, such as a sudden discontinuity in the light curve. As such, the robovetter employs tests that detect quasi-sinusoidal light curves and systematics.
+One of the most common false positives in the data set are quasi-sinusoidal shaped light curves, compared to those that are more detached due to a transit or eclipse. Also, individual events can often be due a systematic feature, such as a sudden discontinuity in the light curve. As such, the Robovetter employs tests that detect quasi-sinusoidal light curves and systematics.
 
 
 \subsubsection{The LPP Metric}
@@ -113,9 +114,9 @@ Many short-period false positives are due to variable stars that exhibit a quasi
 
 For the DR25 KOI catalog, we deviated slightly from the method described by \citet{Thompson2015b}.  This was done because the original metric was highly dependent on both period and MES. The empirical LPP metric threshold increases at periods less than a few days. This is caused by the fact these TCEs transit for a large fraction of the orbital period and thus have a different transit shape. Because transit injection does not include a large number of this type of event, the LPP values for good transits can be larger. The trend with MES is routed in the fact that when the binned light curve has a lower signal to noise, it is less likely for two folded light curves to be similar to each other, creating more scatter in the final metric. 
 
-To calculate the LPP metric we start with detrended \kepler{} light curves. (Note we calculated the metric for both the DV and alternate detrendings.)  When training the LPP algorithm, we used the set of recovered transit injection TCEs and those planet candidates from the DR24 catalog \citep{Coughlin2016cat} that were found as TCEs in DR25.  Because we injected very few short period transits, including the short period DR24 candidates helped reduce the dependence of the LPP metric on period.  Also, we changed how the folded light curve was binned. To remove some of the MES dependence, TCEs with lower MES are given wider bins for those near the transit center; note, this does not change the number of bins. Because it yielded better performance, we used 99 bins in total to represent the shape of the folded light curve (41 bins emphasizing the in-transit portion), used the LPP algorithm to reduce the dimensions down to 12 and compared to the 5 nearest neighbors in the training set.  Finally, we divided these raw LPP values by the 75$^{th}$ percentile of the 100 TCEs that are closest in period. 
+To calculate the LPP metric we start with detrended \kepler{} light curves. Note, we calculated the metric for both the DV and ALT detrendings. When training the LPP algorithm, we used the set of recovered transit injection TCEs and those planet candidates from the DR24 KOI catalog \citep{Coughlin2016} that were found as TCEs in DR25.  Because we injected very few short period transits, including the short period DR24 candidates helped reduce the dependence of the LPP metric on period.  Also, we changed how the folded light curve was binned. To remove some of the MES dependence, TCEs with lower MES are given wider bins for those near the transit center; note, this does not change the number of bins. Because it yielded better performance, we used 99 bins in total to represent the shape of the folded light curve (41 bins emphasizing the in-transit portion), used the LPP algorithm to reduce the dimensions down to 12 and compared to the 5 nearest neighbors in the training set.  Finally, we divided these raw LPP values by the 75$^{th}$ percentile of the 100 TCEs that are closest in period. 
 %(Did we also do this in MES? -- No. just Period) 
-In this way we further remove the period dependence on the LPP metric.  The resulting LPP metric values lie near to a value of one where values greater than $\approx$ 2 do not appear to be transit shaped.  To create the DR25 catalog the Robovetter used a threshold of 2.2 for the DV detrending and 3.2 for the alternate detrending.
+In this way we further remove the period dependence on the LPP metric.  The resulting LPP metric values lie near to a value of one where values greater than $\approx$ 2 do not appear to be transit shaped.  To create the DR25 catalog the Robovetter used a threshold of 2.2 for the DV detrending and 3.2 for the ALT detrending.
 
 %Begin Jeff's words.
 %Many short-period false positives are due to variable stars that exhibit a quasi-sinusoidal phased light curve. \citet{Matijevic2012} used a technique known as Local Linear Embedding (LLE), a dimensionality reduction algorithm, to classify the ``detachedness'' of \kepler{} eclipsing binary light curves on a scale of 0 to 1, where 0 represented fully detached systems with well-separated, narrow eclipses and 1 represented contact binaries with completely sinusoidal light curves. We use a similar technique, known as Local Preserving Projections \citep[][LPP]{He2004}, to distinguish transit-like signals from not transit-like signals \citep{Thompson2015b}. LPP returns a single number that represents the similarity of a TCE's shape to that of known transits. Unlike LLE, LPP can be applied to any TCE, not just those that lie within the parameter space of the training set. Thus, LPP is more suitable for separating transit-like TCEs from all other not transit-like TCEs, and can be run on artificially injected transits.
@@ -189,8 +190,7 @@ When examining all events among all TCEs, assuming Gaussian noise, the minimum t
     MS_{3} = FA_{2} - (\sigma_{\rm Pri} - \sigma_{\rm Pos})
 \end{equation}
 
-[JEFF: CHECK THE MS subscript NUMBERS BELOW, they SEEM WRONG]
-In the robovetter, we disposition a TCE as a not transit-like FP if either $MS_{1}$~$>$~1.0, $MS_{1}$~$>$~2.0, or $MS_{1}$~$>$~4.0 in the DV detrending, or if either $MS_{1}$~$>$~-3.0, $MS_{1}$~$>$~1.0, or $MS_{1}$~$>$~1.0 in the alternate detrending. These criteria ensure that the primary event is statistically significant when compared to the systematic noise level of the light curve, the tertiary event, and the positive event, respectively. We also fail as not transit-like if $\sigma_{\rm Pri}$~==~0.0 in both the DV and alternate detrendings, i.e., their default values, which indicates a lack of fit in both detrendings, and thus something fundamentally flawed with the TCE.
+In the robovetter, we disposition a TCE as a not transit-like FP if either $MS_{1}$~$>$~1.0, $MS_{2}$~$>$~2.0, or $MS_{3}$~$>$~4.0 in the DV detrending, or if either $MS_{1}$~$>$~-3.0, $MS_{2}$~$>$~1.0, or $MS_{3}$~$>$~1.0 in the alternate detrending. These criteria ensure that the primary event is statistically significant when compared to the systematic noise level of the light curve, the tertiary event, and the positive event, respectively. We also fail as not transit-like if $\sigma_{\rm Pri}$ exactly equals zero in both the DV and ALT detrendings, i.e., their default values, which indicates a lack of fit in both detrendings, and thus something fundamentally flawed with the TCE.
 
 
 \subsubsection{Dominated by Single Event}
@@ -236,9 +236,9 @@ A number of TCEs from the \kepler{} pipeline are based on transit events that ar
 
 \paragraph{Marshall -- Transit Shape}
 \label{marshsec}
-\citet{Coughlin2016} used the Marshall method \citep{Mullally16} to identify and reject false alarm TCEs caused by short period transients in the data. Marshall fits the proposed transit with models of a transit and various transients and used a Bayesian Information Criterion to decide which model was the best explanation for the data. Simulations in \citet{Mullally16} showed that Marshall was 95\% complete for TCEs with periods $>150$\,days and correctly rejected 66\% of simulated artifact events. The limit on Marshall's effectiveness at eliminating false alarms was it used a parabola to describe the out-of-transit flux, which failed to capture much of the real observed stellar variability. To ensure high completeness, Marshall was tuned to prevent a variable continuum causing true transits to be rejected, at the cost of a lower than ideal effectiveness.
+\citet{Coughlin2016} used the Marshall method \citep{Mullally2016} to identify and reject false alarm TCEs caused by short period transients in the data. Marshall fits the proposed transit with models of a transit and various transients and used a Bayesian Information Criterion to decide which model was the best explanation for the data. Simulations in \citet{Mullally2016} showed that Marshall was 95\% complete for TCEs with periods $>150$\,days and correctly rejected 66\% of simulated artifact events. The limit on Marshall's effectiveness at eliminating false alarms was it used a parabola to describe the out-of-transit flux, which failed to capture much of the real observed stellar variability. To ensure high completeness, Marshall was tuned to prevent a variable continuum causing true transits to be rejected, at the cost of a lower than ideal effectiveness.
 
-For this catalog, we use a Gaussian Process approach \citep[GP][]{Rasmussen10} to provide an improved continuum model to improve our effectiveness while maintaining our high completeness. Briefly, our approach aims to model the covariance in the lightcurve to better fit the trends in our data.
+For this catalog, we use a Gaussian Process approach \citep[GP][]{Rasmussen10} to provide an improved continuum model to improve our effectiveness while maintaining our high completeness. Briefly, our approach aims to model the covariance in the light curve to better fit the trends in our data.
 A similar approach was used by \citet{ForemanMackey16} to model single transits due to very long period planets ($P > 1000$\,days).
 
 Our procedure is as follows. For each individual proposed transit event, we select a snippet of PDC data 30 times the reported transit duration centered on the event. Where the event happens near the start (or end) of a quarter, we take a snippet of similar length anchored at the start (or end) of the quarter. We use the George package \citep{Ambikasaran14} to fit the covariance of the out-of-transit flux with an exponential squared function, $ {\mathrm{Cov(\delta t})} = A \exp{ (\delta t/\ell)^2}$, where $A$ and $\ell$ are tunable parameters. 
@@ -262,11 +262,11 @@ S(t) = \frac{d}{1 - e^{-\gamma (t-t_0)} }
 \end{equation}
 
 \noindent
-where $d$ and $t_0$ are tunable parameters, while $\gamma$ is held constant. This function, known as a sigmoid (or logistic) function, has a value of 1 for $t<t_0$, 0 for $t>t_0$, and transitions quickly, but smoothly, between the two states. By using a sigmoid and avoiding the discontinuities in present in the models used by the original Marshall algorithm we can use the L-BFGS-B algorithm \citep{Byrd95} available in the Scipy package \footnote{\url{www.scipy.org}} instead of the less robust Neldar-Mead.
+where $d$ and $t_0$ are tunable parameters, while $\gamma$ is held constant. This function, known as a sigmoid (or logistic) function, has a value of 1 for $t<t_0$, 0 for $t>t_0$, and transitions quickly, but smoothly, between the two states. By using a sigmoid and avoiding the discontinuities in present in the models used by the original Marshall algorithm \citet{Mullally2016} we can use the L-BFGS-B algorithm \citep{Byrd95} available in the Scipy package \footnote{\url{www.scipy.org}} instead of the less robust Neldar-Mead.
 
 The second function models a discrete jump in the data. We fit this model seeded with a negative-going dip at the predicted time of ingress, and also with a positive-going spike at the predicted egress, as we see both features in \Kepler\ data. The third model fits a Sudden Pixel Sensitivity Drop (SPSD) event, probably caused by a cosmic ray hit on the detection. The last model approximates a box transit. By varying the parameter $\gamma$ we could in principle model transit ingress and egress, but find that extra degree of freedom is not necessary to explain the low signal-to-noise events of most concern.
 
-For each transit the Marshall method returns the BIC score, the preferred model and the difference between the preferred model and the sigmoid box fit.  A transit is considered sufficiently bad when the Marshall score exceeds a particular threshold, as with the original Marshall algorithm.  However, in a few cases the Gaussian processes fails, yield extremely large, unbelievable BIC values. In these cases the transit is set to always pass.  Also, for low MES transits, the expected SES of a transit is sufficiently low that Marshall will be unable to distinguish between the ``no transit" model and a low signal-to-noise transit.  Because of this the Robovetter uses the following logic when deciding whether a specific transit is not valid:
+For each transit the Marshall method returns the BIC (Bayesian Information Criterion) score, the preferred model and the difference between the preferred model and the sigmoid box fit.  A transit is considered sufficiently bad when the Marshall score exceeds a particular threshold, as with the original Marshall algorithm.  However, in a few cases the Gaussian processes fails, yield extremely large, unbelievable BIC values. In these cases the transit is set to always pass.  Also, for low MES transits, the expected SES of a transit is sufficiently low that Marshall will be unable to distinguish between the ``no transit" model and a low signal-to-noise transit.  Because of this the Robovetter uses the following logic when deciding whether a specific transit is not valid:
 
 
 
@@ -277,20 +277,19 @@ For each transit the Marshall method returns the BIC score, the preferred model 
 
 %In order to detect TCEs due to SPSDs and step-wise discontinuities, we developed the ``Marshall'' metric \citep{Mullally2015b}. Marshall fits a transit, SPSD, and step-wise discontinuity model to each individual event of a long-period TCE. The Bayesian Information Criterion \citep[BIC;][]{Schwarz1978} is then used to select which model best fits each individual transit event given each model's number of degrees of freedom. 
 
-If all of the following criteria are met
+If all of the following criteria are met:
 
 \begin{itemize}
-\item The BIC of the best-fitting non-transit model is 10 lower than the BIC of the transit-model
+\item The BIC score of the best-fitting non-transit model is at least 10 lower than the BIC of the transit-model
 \item The BIC of the best-fitting non-transit model is less than 1.0E6
-\item Either MES/NREALTRANS $>$ 4.0 or the lowest BIC model is OffsetOnly.
+\item Either MES/NREALTRANS $>$ 4.0 or the lowest BIC model is for the constant offset model, 
 \end{itemize}
 
-\noindent then that event is determined to be due to a systematic rather than a transit, and labeled as a ``bad'' event. 
+\noindent then that event is determined to be due to a systematic rather than a transit, and labeled as a ``bad'' event. (NREALTRANS is the number of transit events for the TCE.)
 
-{\bf NEED TO MAKE SURE "NREALTRANS" IS DEFINED SOMEWHERE, AND OFFSET ONLY}
+%{\bf NEED TO MAKE SURE "NREALTRANS" IS DEFINED SOMEWHERE, AND OFFSET ONLY}
 
-
-{\bf Add some kind of discussion of performance}
+%{\bf Add some kind of discussion of performance}
 {\bf Add link to Source Forge code}
 
 
@@ -300,7 +299,7 @@ NEED TEXT FROM CHRIS
 
 Chris on KSO-447: I have only included events where an absolute value of the SES peak within 0.8 of the transit event SES is within 30\% of the analysis window. The analysis window is set to Porb/10.0.
 
-``Chases'' looks at the TPS convolved light curve and measures the amount of ayssmetry in the SES time serires...=
+``Chases'' looks at the TPS convolved light curve and measures the amount of ayssmetry in the SES time serires...
 
 
 
@@ -308,12 +307,11 @@ Chris on KSO-447: I have only included events where an absolute value of the SES
 
 % CHECK IF THE TERM 'SKYGROUP' HAS BEEN DEFINED PREVIOUSLY. IF NOT, DEFINE IT HERE.
 
-As discussed in \ref{marshsec}, there are a number of TCEs caused due to rolling-band systematics. Since these systematics are due to imperfections in particular CCDs, they are seen on different targets on the same CCD at about the same time. Thus, if a number of individual transit events from TCEs on different targets, but the same skygroup, occur at the same time, they are very likely systematic in origin. The metric called ``Skye'' looks for an excess in the number of individual events occurring at the same time in the same skygroup. If an excess is identified we consider these events to be caused by artifacts. 
+As discussed in \ref{marshsec}, there are a number of TCEs caused by rolling-band image artifacts. These artifacts appears as reduction in flux that moves across the CCD and therefore affects different targets on the same CCD at about the same time. Thus, if a number of individual transit events from TCEs on different targets, but the same skygroup (region of the sky that falls on the same CCD each quarter), occur at the same time, they are very likely systematic in origin. The metric called ``Skye'' looks for an excess in the number of individual events occurring at the same time in the same skygroup. If an excess is identified we consider these events to be caused by artifacts. 
 
+More specifically, for each skygroup we bin the individual events into 1.0\,d bins. We only use those \opstce\ with periods greater than 45 days ($\sim$half a \Kepler\ quarter) for each skygroup. The reason for the period cut is that the long-period \opstce s are likely to be affected by rolling-band systematics, but the short-period ones are not.  Including shorter period TCEs would dramatically increase the number of individual transits and would reduce the significance of the anomalous peaks.  See Figure~\ref{skyefig} for an example of the anomalous peaks seen when the data is binned in this way.
 
-More specifically, for each skygroup we bin the individual events into 1.0\,d bins. We only use those \opstce\ with periods greater than 45 days ($\sim$half a \Kepler\ quarter) for each skygroup. The reason for the period cut is that the long-period \opstce s are likely to be affected by rolling-band systematics, but the short-period ones are not.  Including shorter period TCEs would dramatically increase the number of individual transits and would reduce the significance of the anomalous peaks. For skygroup XX see Figure~\ref{skyefig} for an example of the anamalous peaks seen when the data is binned in this way.
-
-To determine which events are anamalous, for each skygroup, we compute the average rate ($R$) of transits, by dividing the overall number of transit times in the skygroup by the number of 1.0\,d bins. Assuming the majority of transits are randomly distributed in time, and utilizing Poisson counting statistics, any peaks greater than:
+To determine which events are anomalous, for each skygroup, we compute the average rate ($R$) of transits, by dividing the overall number of transit times in the skygroup by the number of 1.0\,d bins. Assuming the majority of transits are randomly distributed in time, and utilizing Poisson counting statistics, any peaks greater than:
 
 \begin{equation}
 threshold = R + N*\sqrt{R}
@@ -321,17 +319,16 @@ threshold = R + N*\sqrt{R}
 
 \noindent are statistically significant and indicative of temporal clustering, given a chosen value for $N$. We choose a value of $N = 3.0$, and robustly determine the rate for each skygroup by first computing the \emph{threshold} using all the bins, then iteratively rejecting all bins with a height greater than \emph{threshold} and re-computing \emph{threshold} until it converges and does not change with further iterations.
 
-For each skygroup and its threshold, we identify the individual times of transit for TCEs belonging to the skygroup that fall in bins that are above the threshold. We assign Skye values of 1 to these individual events to indicate they are 'bad'. The Skye value for all other transit times are set to 0.  
+For each skygroup and its threshold, we identify the individual times-of-transit for TCEs belonging to the skygroup that fall in bins that are above the threshold. We assign Skye values of 1 to these individual events to indicate they are 'bad'. The Skye value for all other transit times are set to 0.  
 
-DO WE WANT A PLOT SHowing HOW SUCCESSFULL SKyE is? 
+
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=\linewidth]{Skye-Paper-Plot.png}
-\caption{Skye Example. Will need to update a some point.}
+\caption{Skye Example. WE WILL need to update a some point.}
 \label{skyefig}
 \end{figure}
-
 
 
 \paragraph{Zuma -- Negative Significance}
@@ -347,13 +344,11 @@ After the TPS module of the \kepler{} pipline detects a TCE, it is sent to to DV
 
 
 % The metric formally known as Rocky
-\subsubsection{TCE Dominated by Gapped Events}
+\subsubsection{Fraction of Gapped Events}
 
-Due to the method of data gapping employed in TPS, sometimes the \kepler{} pipeline can create a TCE that has a majority of its individual events occur where there is no actual in-transit data. This tends to happen particularly in multi-TCE systems, as once the \kepler{} pipline detects a TCE in a given system, it removes the data corresponding to the in-transit cadences of that TCE, and re-searches the light curve. 
+Due to the method of data gapping employed in TPS, sometimes the \kepler{} pipeline can create a TCE that has a majority of its individual events occur where there is no actual in-transit data. This tends to happen particularly in multi-TCE systems, because once the \kepler{} Pipeline detects a TCE in a given system, it removes the data corresponding to the in-transit cadences of that TCE, and re-searches the light curve. 
 
 We thus developed a metric that measures the number of individual transit events that actually contain data. Specifically we compute the fraction of individual events with either SES~$\ne$~0 or Rubble~$>$~0.75, which indicate there is sufficient in-cadence data present. If the fraction of transits with data is~$\le$~0.5, then we fail the TCE as not transit-like.
-
-
 
 
 
@@ -462,16 +457,15 @@ In our robotic procedure to detect FPs due to centroid offsets, we first check t
 
 For the difference images that are determined to contain a discernible stellar image, we first search for evidence of contamination from sources that are resolved from the target. Since resolved sources near the edge of the image may not be fully captured, Pixel Response Function (PRF --- \keplers{} point spread function convolved with the image motion and the intra-pixel CCD sensitivity) fitting approaches do not often work well to detect them. Instead, we check if the location of the brightest pixel in the difference image is more than 1.5 pixels from the location of the target star. If at least two-thirds of the quarterly difference images show evidence of an offset by this criterion, we disposition the TCE as a FP due to a centroid offset. % Note that FPs due to stars located many pixels from the target, i.e., far outside the target's image, are not detected by this approach, but rather through ephemeris matching (see \S\ref{ephemmatchsec}).
 
-If no centroid offset is identified by the previous method, we then look for contamination from sources that are unresolved from the target. We measure the PRF-fit centroid of the difference images and search for statistically significant shifts with respect to the PRF centroid of both the out-of-transit images, as well as the catalog position of the source. Following \citet{Bryson2013}, a TCE is marked as a FP due to a centroid offset if there are at least three difference images with a discernible stellar image, and a 3$\sigma$ significant offset larger than 2$\arcsec$, or a 4$\sigma$ offset larger than 1$\arcsec$ is measured.
+If no centroid offset is identified by the previous method, we then look for contamination from sources that are unresolved from the target. We measure the PRF-fit centroid of the difference images and search for statistically significant shifts with respect to the PRF centroid of both the out-of-transit images, as well as the catalog position of the source. Following \citet{Bryson2013}, a TCE is marked as a FP due to a centroid offset if there are at least three difference images with a discernible stellar image, and a 3$\sigma$ significant offset larger than 2$\arcsec$, or a 4$\sigma$ offset larger than 1$\arcsec$ is measured.  If any of these are not true, a flag is set indicating that fact.
 
-The Centroid Robovetter gives the \kepler\ Robovetter several flags to indicate whether a centroid offset was detected and if that detection can be trusted. The reasons for the centroid robovetter are passed along in the minor flags defined in \S\ref{s:minorflags}.
+The Centroid Robovetter gives the \kepler\ Robovetter several flags to indicate whether a centroid offset was detected and whether that detection can be trusted. The names of those flags have been changed to be consistent with our minor flag naming scheme. A list of the minor flags are available in Appendix~\ref{s:minorflags}.
 
 %We use the the pixel-level injected TCEs that were injected with an offset to understand the performance of the Centroid Robovetter.  [FERGAL IT WOULD BE NICE IF I COULD GET YOU TO WRITE THIS PART and include a figure. BUT it is a nice to have.]
 
 \subsubsection{Ghost Diagnostic}
-The last method we use to detect a centroid offset is the ghost diagnostic, which was added to the DR25 \kepler{} pipeline \citep{Twicken2016}. It determines whether a transit signal is likely to be contaminated from a ghost image of a star located away from the target star in the focal plane. Ghost reflections occur when light from a bright star is reflected from the CCD reflects again from the field flattener plate and back onto the CCD as a diffuse, out-of-focus image of the pupil of
+The last method we use to detect a centroid offset is the ghost diagnostic, which was added to the DR25 \kepler{} Pipeline. It determines whether a transit signal is likely to be contaminated from a ghost image of a star located away from the target star in the focal plane. Ghost reflections occur when light from a bright star is reflected from the CCD reflects again from the field flattener plate and back onto the CCD as a diffuse, out-of-focus image of the pupil of
 the telescope. A similar type of false positive results from direct PRF (Pixel Response Function) contamination, when flux from the broad wings of the PRF of a bright star near the target star on the CCD overlaps the target star's PRF.  If a ghost reflection (or the PRF of a nearby star) containing a transit-like signature (e.g. an eclipsing binary signal) overlaps the PRF of a target star, then the contaminating transit signal will be significantly stronger relative to the target's flux in the periphery of the target star's PRF than in its core.
-
 
 To detect this type of false alarm, the ghost diagnostic essentially measures the strength of the TCE signal in two separate light curves --- one created using the average of the pixels inside the target's optimal aperture minus the average of the pixels in an annulus surrounding the target aperture (core aperture correlation statistic), and the other using the average of the pixels in the annulus surrounding the target aperture (halo aperture correlation statistic). If the ratio of the out- to in-aperture statistic is greater than 4.0, the TCE is marked as a FP due to a centroid offset. This ghost diagnostic is not available for vetting the \scrtce s. 
 
@@ -635,7 +629,7 @@ Since \kepler{} does not observe every star in its field of view, it can often b
 
 \subsection{Disposition Scores}
 \label{s:scores}
-A new feature we introduce in this catalog is the disposition score --- a value between 0 and 1 that indicates the confidence in disposition provided by the Robovetter. A higher valued indicates more confidence that an objects is a PC, regardless of the disposition it was given.  This feature is desirable to select the highest quality PCs, as users can easily rank KOIs by the disposition score. 
+A new feature we introduce in this catalog is the disposition score --- a value between 0 and 1 that indicates the confidence in disposition provided by the Robovetter. A higher valued indicates more confidence that an objects is a PC, regardless of the disposition it was given.  This feature allows one to select the highest quality PCs by ranking KOIs by the disposition score. 
 %This statistics argument hasn't been proven. We could discuss this, but it belongs in the disucssion "and weight them appropriately for their statistics."
 
 The disposition score was calculated by wrapping the Robovetter in a Monte Carlo routine. In each of 10,000 iterations the input metrics for the Robovetter are perturbed from their nominal values by drawing from an asymmetric Gaussian distribution centered on the nominal value. In each iteration the robovetter dispositions each TCE given the new values for each metric. The disposition score is simply the fraction of iterations that result in a disposition of PC. For example, if a PC KOI has a few metrics that are near the Robovetter's thresholds, it will frequently have at least one that is perturbed across a threshold. As a result, many of the iterations will produce a false positive and the candidate will have a low score.  Similarly, if a FALSE POSITIVE KOI barely fails a single metric, the score may be near 0.5, indicating that it was deemed a PCin half of the iterations.
@@ -644,7 +638,7 @@ To compute the asymmetric sigma values for the Gaussian distribution, we examine
 
 NEED TO MENTION AND CLEAN UP FIGURES
 
-NEED TO LIST WHICH METRICS actually GO INTO THE TUNING
+NEED TO LIST WHICH METRICS actually GO INTO THE Score CALCULATION
 
 TALK ABOUT SCORE DISTRIBUTION HERE, OR LATER ON IN ANALYSIS?
 
@@ -663,7 +657,7 @@ TALK ABOUT SCORE DISTRIBUTION HERE, OR LATER ON IN ANALYSIS?
 \end{figure}
 
 \subsection{Summarize Metrics}
-All the metrics, the major and minor flags they create and the thresholds used are summarized in Table~\ref{t:metrics}. For those with tunable thresholds, the value used to create the DR25 KOI catalog are listed.  [Jeff: Would this go nicely in the Table?  Those that are used to create the disposition score are also indicated.]
+All the metrics, the major and minor flags they create and the thresholds used are summarized in Table~\ref{t:metrics}. For those with easily tunable thresholds, the value used to create the DR25 KOI catalog are listed.
 
 
 \input{metrics-table}
