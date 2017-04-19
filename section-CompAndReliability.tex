@@ -1,9 +1,9 @@
-\subsection{Catalog Completeness, Effectivness and Reliability}
+\subsection{Catalog Completeness, Effectiveness and Reliability}
 \label{s:candr}
 
-Here we discuss the performance of the Robovetter and the measured completeness and reliability of the catalog in terms of raw parameters such as MES and period, as well as derived parameters such as planet radius and insolation flux.  
+To evaluate the performance of the Robovetter and to measure the catalog completeness and reliability, we run the Robovetter on the \injtce{s}, \invtce{s} and \scrtce{s}. 
 
-To summarize the completeness and reliability results, we include Figure~\ref{f:scoregrid} which provides the completeness and reliability values for a 9x9 grid across period and MES. In the same figure we also show these results for only the FGK dwarf type stars (log(g)$\leq4.0$ and $4000 \leq T_{eff} > 7000$\,K). Giant stars are inherently noisy causing more false positives and also causing more real transits to be distorted by the noise.  By using only the FGK dwarf stars, for the long period and low mes, the reliability is improved by 13 percentage points and the completeness increases by 3 percentage points.
+Many details of these investigations are shown below. As a high lieve summary, we include Figure~\ref{f:scoregrid} which provides the completeness and reliability values for a 3x3 grid across period and MES. In the same figure we also show these results for only the FGK dwarf type stars (log(g)$\leq4.0$ and $4000 \leq T_{eff} > 7000$\,K). Giant stars are inherently noisy causing more false positives and also causing more real transits to be distorted by the noise.  By using only the FGK dwarf stars, for the longest period and lowest mes candidates, the reliability is improved by 13 percentage points and the completeness increases by 3 percentage points.
 
 \begin{figure*}[h!]
 \begin{center}
@@ -48,7 +48,10 @@ The reliability is measured according to the method described in \S\ref{s:relcal
 
 \subsubsection{Adjusted with Disposition Scores}
 \label{s:crscores}
-The disposition scores discussed in \S\ref{s:scores} can be used to select a more reliable, though more incomplete, sample of planet candidates.  How the completeness and reliability of the catalog vary for different cuts on the disposition score is shown in Figure~\ref{f:adjscore} for MES<10 and Period >200\,d. Notice that the effectiveness of the Robovetter increases as expected as the score threshold is increased.  The reliability values also depend on the number of OBS-PCs that remain, which is why it does not change in step with the effectiveness.  Selecting PCs by choosing those with a disposition score above 0.6 will yield an 85 per cent reliability with a completeness that is still above 50 per cent. Doing a score cut in this way causes a few \opstce s that are formally called an FP to be promoted to a PC. An FP with a high score occurs when a TCE marginally fails a single metric.
+The disposition scores discussed in \S\ref{s:scores} can be used to select a more reliable, though more incomplete, sample of planet candidates.  How the completeness and reliability of the catalog vary for different cuts on the disposition score is shown in Figure~\ref{f:adjscore} for MES$<$10 and Period$>$200\,d. 
+Notice that the effectiveness of the Robovetter increases as expected as the score threshold is increased.  
+The reliability values also depend on the number of OBS-PCs that remain, which is why it does not change in step with the effectiveness.
+Selecting PCs by choosing those with a disposition score above 0.6 will yield an 85 per cent reliability with a completeness that is still above 50 per cent. Doing a score cut in this way causes a few \opstce s that are formally called an FP to be promoted to a PC. An FP with a high score occurs when a TCE marginally fails a single metric.
 
 \begin{figure}[h!]
  \begin{center}
