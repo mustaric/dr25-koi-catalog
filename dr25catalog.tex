@@ -19,10 +19,10 @@
 \def \KEPLER {\emph{KEPLER}}
 \def \keplers {\emph{Kepler's}}
 \def \th {$^{\rm th}$}
-\def \injtce {INJ-TCE}
-\def \scrtce {SCR-TCE}
-\def \invtce {INV-TCE}
-\def \opstce {OBS-TCE}
+\def \injtce {inj-TCE}
+\def \scrtce {scr-TCE}
+\def \invtce {inv-TCE}
+\def \opstce {obs-TCE}
 
 
 % Important numbers
@@ -39,6 +39,7 @@
 
 \hyphenation{INJ-TCE}  % Makes it so that "INJ-TCE" is never hyphenated to break a line
 \hyphenation{SCR-TCEs}   % Makes it so that "SCR-TCEs" is never hyphenated to break a line
+
 
 
 % using aastex version 6
@@ -75,6 +76,7 @@
 
 \usepackage{amsmath}
 \usepackage{url}
+\usepackage{color}
 %% If you want to create your own macros, you can do so
 %% using \newcommand. Your macros should appear before
 %% the \begin{document} command.
@@ -112,7 +114,7 @@ A Fully Automated Catalog Based on Data Release 25\\Tuned For High Completeness 
 
 \begin{abstract}
 Enlightening words about the purpose of this final Kepler Catalog and how it fits in with the other Kepler Planet Candidate catalogs. Then some details about how many KOIs we added and how many are planet candidates. 
-Overall, the purpose of this paper is to describe how we sifted through the DR25 TCE table and identified the planet candidates, the transiting candidates with significant secondaries, background eclipsing binaries, ephemeris matches and the false alarms. It also needs to describe how we arrive at the reported physical parameters of each planet, so that interesting populations for occurrence rates and follow-up can be identified.  Finally the completeness and reliablity of the catalog should be discussed.
+Overall, the purpose of this paper is to describe how we sifted through the DR25 TCE table and identified the planet candidates, the transiting candidates with significant secondaries, background eclipsing binaries, ephemeris matches and the false alarms. It also needs to describe how we arrive at the reported physical parameters of each planet, so that interesting populations for occurrence rates and follow-up can be identified.  Finally the completeness and reliability of the catalog should be discussed.
 
 To Do List:
 \begin{itemize}
@@ -126,7 +128,7 @@ To Do List:
 \item CHASES description [Chris]
 \item are there new Multi-Planet Systems to discuss
 \item Discussion of the HZ Zone objects...are there new ones?
-\item How to use all this information to do occurrence rates (basically)
+\item How this information will inform occurrence rates (basically)
 \item description of how the number of planets does not change with score cut vs just using dispositions for occurrence rates.
 \item The Catalog using the derived fitted information, completeness, reliability especially.
 \item what is new in this catalog. What fraction of previous KOIs recovered.
@@ -136,15 +138,14 @@ To Do List:
 
 
 
-\textcolor{red}
-{
+{\color{red}
+
 Items we may want to discuss in the paper but for now I have decided to leave out.
 \begin{itemize}
-\item exact reasons each confirmed planet failed the robovetter.[just see NExScI]
-\item A comparison to EB catalog
+\item exact reasons each confirmed planet failed the robovetter. [see the tables]
+\item A comparison  of EBs between us and the EB catalog
 \item Analysis of the injected EBs (secondaries) in terms of effectiveness.
 \item Measurement of effectiveness or completeness based on hand vetting.
-\item Full analysis of completeness and reliability in terms of insolation flux and planet radius. 
 \item A list of what was missed that are in other Kepler catalogs (Planet Hunters Catalog, Ojeda short period ones, previous KOI Tables, Confirmed planets.)
 \end{itemize}
 
