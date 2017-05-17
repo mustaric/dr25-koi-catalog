@@ -1,21 +1,24 @@
 %%List Acronyms Here
-\subsection{Terms and Abbreviations}
+\subsection{Terms and Acronyms}
 \label{abbrev}
-We try to avoid unnecessary acronyms and abbreviations, but are a few are required to efficiently discuss this catalog.  Here we itemize those terms and abbreviations that are specific to this paper and are repeatedly used:
+We try to avoid unnecessary acronyms and abbreviations, but a few are required to efficiently discuss this catalog.  Here we itemize those terms and abbreviations that are specific to this paper and are used repeatedly. The list is short enough that we choose to group them by meaning instead of alphabetically. 
 
 \begin{itemize}
-%\item[] \textbf{KOI}: Kepler Object of Interest. A particular ephemeris on an object that was given a KOI number. The intent is to create KOIs out of all identified events that could possibly be planet candidates or eclipsing binaries.  
-\item[] \textbf{TCE}: Threshold Crossing Event. Periodic signals identified by the Kepler Pipeline.
+
+\item[] \textbf{TCE}: Threshold Crossing Event. Periodic signals identified by the Kepler Pipeline. See Transit Planet Search in \citep{JenkinsKDPH}.
 \item[] \textbf{\opstce}: Observed TCEs. TCEs found by searching the observed DR25 \Kepler\ data and reported in \citet{Twicken2016}.
-\item[] \textbf{\injtce}: Injected TCE. TCEs found that match a known, injected transit signal.
-\item[] \textbf{\invtce}: Inverted TCE. TCEs found when searching the inverted data set in order to simulate instrumental false alarms.
-\item[] \textbf{\scrtce}: Scrambled TCE. TCEs found when searching the scrambled data set in order to simulate instrumental false alarms.
-\item[] \textbf{KOI}: Kepler Object of Interest. Periodic, transit-like, events that were significant enough to warrant further review. 
-\item[] \textbf{PC}: Planet Candidate. A TCE that passed all of the Robovetter tests and metrics.
-\item[] \textbf{FP}: False Positive. A TCE that failed one or many of the Robovetter tests and metrics.
-\item[] \textbf{MES}: Multiple Event Statistic. A statistic that measures the significance of the observed transits in the TPS detrended, whitened light curve \citep{Jenkins2002a}.
-\item[] \textbf{DV}: Data Validation. The module of the \Kepler\ Pipeline which characterizes the transits. This module evaluates each TCE and provides a detrended light curves on which other metrics are based. The DV module also provided two sets of transit fits: original and supplemental.
-\item[] \textbf{ALT}: Alternate detrending. An alternate detrending, based on the methods of \citet{Garcia2010}, which is utilized by several Robovetter metrics. A trapezoidal fit to the transit is performed on the light curves that results from this detrending.
-\item[] \textbf{MCMC}: Markov chain Monte Carlo. This refers to the transit fits that are provided for all KOIs. See \S\ref{s:mcmc}.
+\item[] \textbf{\injtce}: Injected TCE. TCEs found that match a known, injected transit signal \citet{Christiansen2017}.
+\item[] \textbf{\invtce}: Inverted TCE. TCEs found when searching the inverted data set in order to simulate instrumental false alarms \citet{Coughlin2017}.
+\item[] \textbf{\scrtce}: Scrambled TCE. TCEs found when searching the scrambled data set in order to simulate instrumental false alarms \citet{Coughlin2017}.
+\item[] \textbf{MES}: Multiple Event Statistic. A statistic that measures the significance of the observed transits in the detrended, whitened light curve \citep{Jenkins2002a}.
+\item[] \textbf{KOI}: Kepler Object of Interest. Periodic, transit-like, events that were significant enough to warrant further review. A KOI is identified with a KOI number.
+\item[] \textbf{PC}: Planet Candidate. A TCE that passed all of the Robovetter tests and metrics.  
+\item[] \textbf{FP}: False Positive. A TCE that failed one or more of the Robovetter tests and metrics.
+\item[] \textbf{DV}: Data Validation. Named after the module of the \Kepler\ Pipeline which characterizes the transits and outputs the \Kepler\ Pipeline's light curve detrending. DV is also used to refer to two sets of transit fits: original and supplemental \citet{JenkinsKDPH}.
+\item[] \textbf{ALT}: Alternative. An alternative detrending, based on the methods of \citet{Garcia2010}, is utilized by several Robovetter metrics. A trapezoidal fit to the transit is performed on the ALT detrended light curves.
+\item[] \textbf{MCMC}: Markov chain Monte Carlo. This refers to the transit fits that are provided for all KOIs \citep{Hoffman2017}.
 
 \end{itemize}
+
+Missing 
+SPSD,TPS
