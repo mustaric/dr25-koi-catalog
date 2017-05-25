@@ -37,10 +37,28 @@
 \def \ninvtces {14953} %number of inverted TCEs after cleaning and no rogue. (SET)
 \def \ninjtces {45377} %number of injected and recovered TCEs, no rogue
 
-\hyphenation{INJ-TCE}  % Makes it so that "INJ-TCE" is never hyphenated to break a line
-\hyphenation{SCR-TCEs}   % Makes it so that "SCR-TCEs" is never hyphenated to break a line
 
+\lccode`1=`1
+\lccode`2=`2
+\lccode`3=`3
 
+\hyphenation{obsTCE}   % Makes it so that "obsTCE" is never hyphenated to break a line
+\hyphenation{invTCE}   % Makes it so that "invTCE" is never hyphenated to break a line
+\hyphenation{scrTCE}   % Makes it so that "scrTCE" is never hyphenated to break a line
+\hyphenation{scr1TCE}   % Makes it so that "scr1TCE" is never hyphenated to break a line
+\hyphenation{injTCE}   % Makes it so that "injTCE" is never hyphenated to break a line
+\hyphenation{inj1TCE}   % Makes it so that "inj1TCE" is never hyphenated to break a line
+\hyphenation{inj2TCE}   % Makes it so that "inj2TCE" is never hyphenated to break a line
+\hyphenation{inj3TCE}   % Makes it so that "inj3TCE" is never hyphenated to break a line
+
+\hyphenation{obsTCEs}   % Makes it so that "obsTCEs" is never hyphenated to break a line
+\hyphenation{invTCEs}   % Makes it so that "invTCEs" is never hyphenated to break a line
+\hyphenation{scrTCEs}   % Makes it so that "scrTCEs" is never hyphenated to break a line
+\hyphenation{scr1TCEs}   % Makes it so that "scr1TCEs" is never hyphenated to break a line
+\hyphenation{injTCEs}   % Makes it so that "injTCEs" is never hyphenated to break a line
+\hyphenation{inj1TCEs}   % Makes it so that "inj1TCEs" is never hyphenated to break a line
+\hyphenation{inj2TCEs}   % Makes it so that "inj2TCEs" is never hyphenated to break a line
+\hyphenation{inj3TCEs}   % Makes it so that "inj3TCEs" is never hyphenated to break a line
 
 % using aastex version 6
 
@@ -124,11 +142,9 @@ To Do List:
 \item Table of INV/SCR cleaned KICs
 \item Discussion of where Robovetter needs improvements -- specific known failures. State that some confirmed planets failed.
 \item tuning the catalog [JEFF]
-\item Table of parameters for Steve's optimization.
+\item Table of parameters for Steve's optimization (possibly for 3 versions)
 \item INJTCEs in more detail [JESSIE]
-\item CHASES description [Chris]
-\item are there new Multi-Planet Systems to discuss
-\item Discussion of the HZ Zone objects...are there new ones?
+\item Discussion of the HZ Zone with a final table of objects.
 \item How this information will inform occurrence rates (basically)
 \item description of how the number of planets does not change with score cut vs just using dispositions for occurrence rates.
 \item The Catalog using the derived fitted information, completeness, reliability especially.
@@ -215,7 +231,7 @@ Give common failure mechanism (TTVs, Detrending problems).  Give the list of con
 Thanks to GNU parallel \citep{Tange2011a}.
 Thank you to Paw Patrol.
 Thank you to Kepler.
-
+Thanks to \citet{Turbo-King2017} for a spirited discussion.
 
 
 
@@ -228,7 +244,8 @@ Thank you to Kepler.
 
 \clearpage
 \appendix
-\section{Minor False Positive Flag Definitions}
+\input{section-robovetterMetrics.tex}
+
 \input{section-minorflags.tex}
 
 
