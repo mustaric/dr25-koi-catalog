@@ -3,7 +3,7 @@
 
 To evaluate the performance of the Robovetter and to measure the catalog completeness and reliability, we run the Robovetter on the \injtce{s}, \invtce{s} and \scrtce{s}. 
 
-Many details of these investigations are shown below. As a high lieve summary, we include Figure~\ref{f:scoregrid} which provides the completeness and reliability values for a 3x3 grid across period and MES. In the same figure we also show these results for only the FGK dwarf type stars (log(g)$\leq4.0$ and $4000 \leq T_{eff} > 7000$\,K). Giant stars are inherently noisy causing more false positives and also causing more real transits to be distorted by the noise.  By using only the FGK dwarf stars, for the longest period and lowest mes candidates, the reliability is improved by 13 percentage points and the completeness increases by 3 percentage points.
+As a high level summary, we include Figure~\ref{f:scoregrid} which provides the completeness and reliability values for a 3x3 grid across period and MES. In the same figure we also show these results for only the FGK dwarf type stars (log(g)$\geq4.0$ and $4000 \leq T_{eff} > 7000$\,K). Giant stars are inherently noisy causing more false positives and also causing more real transits to be distorted by the noise.  By using only the FGK dwarf stars, for the longest period and lowest mes candidates, the reliability is improved by 13 percentage points and the completeness increases by 3 percentage points.
 
 \begin{figure*}[h!]
 \begin{center}
@@ -17,9 +17,9 @@ Many details of these investigations are shown below. As a high lieve summary, w
 %For the later, we use the parameters provided by the supplemental DV fits.  \citet{Christiansen2017} shows that the radii based on the MCMC fits match those of the supplemental DV fits. We do not provided MCMC fits of the entire set of false positives in the \opstce\ set and so cannot use them for our analysis here.
 
 \subsubsection{Completeness}
-The completeness of the Robovetter is the fraction of true transiting events that are determined to be planet candidates, see \S\ref{injectsec}.  
+The completeness of the Robovetter is the fraction of \opstce{s} that are turned into PCs.  We calculate the completeness using the \injtce{s} as explained in \S\ref{injectsec}.  
 %We are only measuring the completeness of the Robovetter. If a true transit was not returned by the \Kepler\ pipeline as a TCE, the Robovetter never saw it and it is not part of our completeness measurements. To understand the completeness of the \Kepler\ pipeline see \citet{Christiansen2017} and \citet{Burke2017} [ REFERENCE PAPERS or KSCI's here].  The completeness is calculated using the \ninjtces\ \injtce\ events recovered by the pipeline and discussed in \S\ref{injectsec}.  
-Across the entire set of injections, periods ranging from 0.5--500\,d, the completeness is 85.2 per cent. As expected the completeness of the catalog is higher for transits at shorter periods and higher significance and lower for longer periods and less significant planets. Figure~\ref{f:1dcompare} shows how the completeness varies with Period, MES and number of transits. The small drop in completeness just short of 90\,days is real and is caused by the odd-even metric (\S\ref{s:oddeven})confusing true transits for eclipsing binaries.  
+Across the entire set of injections, periods ranging from 0.5--500\,d, the completeness is \completeness{} per cent. As expected the completeness of the catalog is higher for transits at shorter periods and higher significance and lower for longer periods and less significant planets. Figure~\ref{f:1dcompare} shows how the completeness varies with Period, MES and number of transits. The small drop in completeness just short of 90\,days is real and is caused by the odd-even metric (\S\ref{s:oddeven})confusing true transits for eclipsing binaries.  
 
 [NEED to include the more detailed grid that Jeff has made.]
 
