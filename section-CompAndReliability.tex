@@ -21,7 +21,11 @@ The completeness of the Robovetter is the fraction of \opstce{s} that are turned
 %We are only measuring the completeness of the Robovetter. If a true transit was not returned by the \Kepler\ pipeline as a TCE, the Robovetter never saw it and it is not part of our completeness measurements. To understand the completeness of the \Kepler\ pipeline see \citet{Christiansen2017} and \citet{Burke2017} [ REFERENCE PAPERS or KSCI's here].  The completeness is calculated using the \ninjtces\ \injtce\ events recovered by the pipeline and discussed in \S\ref{injectsec}.  
 Across the entire set of injections, periods ranging from 0.5--500\,d, the completeness is \completeness{} per cent. As expected the completeness of the catalog is higher for transits at shorter periods and higher significance and lower for longer periods and less significant planets. Figure~\ref{f:1dcompare} shows how the completeness varies with Period, MES and number of transits. The small drop in completeness just short of 90\,days is real and is caused by the odd-even metric (\S\ref{s:oddeven})confusing true transits for eclipsing binaries.  
 
+Long period, large radii planets are less complete than the small radii ones, though there is a reduction in completeness as the period increases.  The reason the larger planets appear to be removed at a more efficient rate is because more large planets have long durations and several of our metrics perform less well for long durations. For example, Marshall [something about how the fit works] and the probability of overlapping a cadence impacted by Rolling Band is higher (see Skye). 
+
 [NEED to include the more detailed grid that Jeff has made.]
+
+
 
 \subsubsection{Effectiveness}
 The effectiveness of the Robovetter at identifying instrumental and stellar noise is calculated as discussed in \S\ref{s:relcalc} using the union of the \invtce s and the \scrtce s. Overall the effectiveness is 99.6 per cent.  Only 119 of the 28,735 simulated false positives are dispositioned by the Robovetter incorrectly (i.e. as a PC).  Unfortunately most of these INV/SCR-PCs fall at long periods and low MES.
@@ -44,6 +48,23 @@ The reliability is measured according to the method described in \S\ref{s:relcal
  \end{center}
  \end{figure*}
 
+\begin{figure*}[h!]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{fig-AllCompletePR.png}
+\includegraphics[width=0.45\linewidth]{fig-FgkCompletePR.png}
+\caption{A 2D binning of the catalog completeness (this does not include pipeline completeness) of the DR25 candidate catalog for period and planet radius for all stars (left) and for FGK dwarf stars (right). Bins with fewer than 10 recovered \injtce{s} are not plotted.}
+\label{f:prCompleteness}
+\end{center}
+\end{figure*}
+
+\begin{figure*}[h!]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{fig-AllReliabilityPR.png}
+\includegraphics[width=0.45\linewidth]{fig-FgkReliabilityPR.png}
+\caption{A 2D binning of the candidate catalog reliability for period and planet radius for all stars (left) and for the FGK dwarf stars (right). Bins with fewer than 3 candidates or fewer than 20 simulated false alarms (from \invtce{} and \scrtce{}) are not plotted.}
+\label{f:prReliability}
+\end{center}
+\end{figure*}
 
 
 

@@ -125,53 +125,63 @@
 %%\watermark{\today}
 
 \title{Planetary Candidates Observed by \Kepler. VIII.\\
-A Fully Automated Catalog Based on Data Release 25\\That Balances Completeness and Reliability. }
+A Fully Automated Catalog Based on Data Release 25\\With Measured Completeness and Reliability. }
 
 %\author{Susan E. Thompson and others}
 \input{authors}
 
 \begin{abstract}
-The final KOI catalog produced by the project has been created by balancing both the completeness and the final reliability of the candidates in the catalog. This is no longer innocent until proven guilty because we have a measure of the noise properties of the light curves in respect to how they can simulate transits.
+We present the DR25 Kepler Object of Interest catalogs, created by balancing both the completeness and the final reliability of the candidates in the catalog. This is no longer innocent until proven guilty because we have a measure of the noise properties of the light curves in respect to how they can simulate transits.
 Enlightening words about the purpose of this final Kepler Catalog and how it fits in with the other Kepler Planet Candidate catalogs. Then some details about how many KOIs we added and how many are planet candidates. 
 Overall, the purpose of this paper is to describe how we sifted through the DR25 TCE table and identified the planet candidates, the transiting candidates with significant secondaries, background eclipsing binaries, ephemeris matches and the false alarms. It also needs to describe how we arrive at the reported physical parameters of each planet, so that interesting populations for occurrence rates and follow-up can be identified.  Finally the completeness and reliability of the catalog should be discussed.
 
 To Do List:
 \begin{itemize}
-\item History of Kepler and Exoplanets, context
-\item Table of our results
-\item Table of INV/SCR cleaned KICs
-\item Discussion of where Robovetter needs improvements -- specific known failures. State that some confirmed planets failed.
-\item tuning the catalog [JEFF]
-\item Table of parameters for Steve's optimization (possibly for 3 versions)
-\item INJTCEs in more detail [JESSIE]
-\item Discussion of the HZ Zone with a final table of objects.
-\item How this information will inform occurrence rates (basically)
-\item description of how the number of planets does not change with score cut vs just using dispositions for occurrence rates.
-\item The Catalog using the derived fitted information, completeness, reliability especially.
-\item what is new in this catalog. What fraction of previous KOIs recovered.
+
+\item Create KOI Table, machine table and stub
+\item Create Table of cleaned INV and SCR, machine and stub
+\item Better description/plot of how the errors for the score calculation was done. List which metrics were used to calculate the score. [JEFF]
+\item Change words about tuning to completeness and effectiveness instead of True positive fraction and FP fraction.
+\item Words describing the Injections [JESSIE]
+\item Show how a score cut does not change the number of candidates for a parameter space [SUSAN]
+\item Describe the ballpark difference in reliability between inversion and scrambling. [SUSAN]
+\item Injection3 - EBs / Significant Secondary analysis [JEFF]
+\item One sentence on the FPWG and how we disagree at time and that they use follow-up -- Combine with Confirmed planet able.
+\item Better plot describing Skye. Basic histogram exists right now. [JEFF?]
+\item Robovetter needs a description of the 2 ways we pass KOIs with significant secondary. Also, Add to summary table. [JEFF WILL DOUBLE-CHECK, ADD TO TABLE 1]
+\item Describe the Completeness and Reliability of the catalog as a function of period and radius. [SUSAN]
+\item Consider the D.2 plots for Injection, Inversion, Scrambling. for effectiveness/completeness.
+\item Finalize the HZ Table. [NATALIE]
+\item List and give details of the new HZ candidates.[NATALIE]
+\item Fix/review references in the Introduction.  
+\item Give an overview about how this fits into occurrence rate calculations and what other products are available for that work. [Started, JESSIE]
+\item Write a conclusions Section
+\item Mention the Robovetter GITHUB
+\item Create Table of parameters and those that were optimally tuned. [JEFF]
+\item Describe how the actual tuning values were chosen after automated tuning [JEFF]
+
 
 \end{itemize}
 
 
 
+%{\color{red}
 
-{\color{red}
+%Items we may want to discuss in the paper but for now I have decided to leave out.
+%\begin{itemize}
+%\item exact reasons each confirmed planet failed the robovetter. [see the tables]
+%\item A comparison  of EBs between us and the EB catalog
+%\item Analysis of the injected EBs (secondaries) in terms of effectiveness.
+%\item Measurement of effectiveness or completeness based on hand vetting.
+%\item A list of what was missed that are in other Kepler catalogs (Planet Hunters Catalog, Ojeda short period %ones, previous KOI Tables, Confirmed planets.)
+%\end{itemize}
 
-Items we may want to discuss in the paper but for now I have decided to leave out.
-\begin{itemize}
-\item exact reasons each confirmed planet failed the robovetter. [see the tables]
-\item A comparison  of EBs between us and the EB catalog
-\item Analysis of the injected EBs (secondaries) in terms of effectiveness.
-\item Measurement of effectiveness or completeness based on hand vetting.
-\item A list of what was missed that are in other Kepler catalogs (Planet Hunters Catalog, Ojeda short period ones, previous KOI Tables, Confirmed planets.)
-\end{itemize}
-
-Items that do not belong in this paper:
-\begin{itemize}
-\item An estimate of eta Earth or the occurrence rate for any type of planet.
-\item Discussion of metrics not used by the Robovetter.
-\end{itemize}
-}
+%Items that do not belong in this paper:
+%\begin{itemize}
+%\item An estimate of eta Earth or the occurrence rate for any type of planet.
+%\item Discussion of metrics not used by the Robovetter.
+%\end{itemize}
+%}
 
 \end{abstract}
 
@@ -218,11 +228,12 @@ Items that do not belong in this paper:
 \input{section-HabitableZone.tex}
 
 
-\subsection{Places we have gone wrong}
-Give common failure mechanism (TTVs, Detrending problems).  Give the list of confirmed planets that are now called false positives.  State why this all falls under the completeness argument that we made above.
+%\subsection{Places we have gone wrong}
+%Give common failure mechanism (TTVs, Detrending problems).  Give the list of confirmed %planets that are now called false positives.  State why this all falls under the completeness argument that we made above.
 
-\section{Using This Catalog for Occurrence Rate Calculations}
-\subsection{State what the project is providing to make this possible.}
+\input{section-occurRateCalc}
+
+
 
 
 \section{Conclusions}
