@@ -37,7 +37,7 @@ The new KOIs with a disposition of PC are found at all periods. The overwhelming
 
 
 \subsection{Compare Dispositions to Other Catalogs}
-There are two set of \Kepler\ exoplanets that have been thoroughly vetted by hand, the confirmed exoplanets and the certified false positives.  In both of these cases, additional observations are used to fully validate the signal as either an exoplanet or a False Positive.  It is worth comparing the Robovetter to these data as a sanity check.  
+There are two set of \Kepler\ exoplanets that have been thoroughly vetted by hand, the confirmed exoplanets and the certified false positives.  In both of these cases, additional observations are used to fully validate the signal as either an exoplanet or a False Positive.  It is worth comparing the Robovetter to these catalogs as a sanity check.  
 
 \subsubsection{Confirmed Exoplanets}
 We use the confirmed exoplanet list from NExScI\footnote{https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=planets} on 2017-05-24.  2279 confirmed planets are in the DR25 KOI catalog.  The DR25 Robovetter fails 44 confirmed planets, less than 2 per cent. Half of these FPs are not transit-like fails, 16 are stellar eclipse fails, six are centroid offsets and one is an ephemeris match. Twelve fail due to the LPP metric, all have periods less than 50 days.  The LPP metric threshold was set to improve the reliability of the long period KOIs, an act which sacrificed some of the short period KOIs.  The reason the Robovetter failed each confirmed planet is given in Table~\ref{t:koitable} and in the ``koi\_comment" column at NExScI (see \S\ref{s:minorflags}). 
@@ -46,7 +46,7 @@ For the vast majority of these confirmed FPs, careful inspection reveals that th
 
 In some cases the Robovetter may be giving the correct disposition.  Many of the confirmed planets are actually validated \citep{Morton2016,Rowe2014}. This means that if a transit exists in the light curve and there is no evidence of a secondary event or a centroid offset then there is a high probability that the transits are caused by an exoplanet. In these cases no data additional data exists proving the existence of a planet outside of the transits observed by \Kepler. It is possible that the DR25 light curves and metrics have now revealed evidence that the periodic events are caused by noise or a binary star. For example, Kepler-367c \citep{Rowe2014}, Kepler-1507b \citep{Morton2016} and Kepler-1561b \citep{Morton2016}, (K02173.02, K3465.01 and K04169.01 respectively) were all confirmed by validation and have now failed the Robovetter because of the new ghost metric \S\ref{s:ghost}, indicating that the events are caused by a contaminating source not localized to the target star.  These validations should be reconsidered in the presence of these new validations.
 
-\subsection{Comparison to the FPWG false positives}
+\subsubsection{FPWG False Positives}
 
 
 
