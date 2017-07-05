@@ -7,21 +7,9 @@ The Robovetter gives every \opstce\ a disposition, a reason for the disposition 
 
 
 \subsection{Federating to known KOIs}
-All \opstce s that that we decided to include in the KOI catalog were either federated to known KOIs or given a new KOI number. Since KOIs have been identified before, federating the known KOIs to the TCE list is a necessary step to ensure that we do not create new KOIs out of events previously identified by the \Kepler\ pipeline.  The process has not changed from the  DR24 KOI catalog \citep{Coughlin2016}, so we simply summarize it here.  For each \opstce\ we use the ephemeris to determine what fraction of in-transit cadences overlap between all known KOIs on the same KIC.  Those with a significant overlap are considered federated.     Also, those that are found at double or half the period are also considered matches.  [CHRIS CAN I be more precise here?].
+All \opstce s that that we decided to include in the KOI catalog were either federated to known KOIs or given a new KOI number. Since KOIs have been identified before, federating the known KOIs to the TCE list is a necessary step to ensure that we do not create new KOIs out of events previously identified by the \Kepler\ pipeline.  The process has not changed from the  DR24 KOI catalog \citep{Coughlin2016}, so we simply summarize it here.  For each \opstce\ we use the ephemeris to determine what fraction of in-transit cadences overlap between all known KOIs on the same KIC.  Those with a significant overlap are considered federated.  Also, those that are found at double or half the period are also considered matches.  
+%[CHRIS CAN I be more precise here?].
 
-In some cases our automated tools want to create a new KOI on a system where one of the KOIs was not federated.  In these cases we inspect the new system by hand and ensure that it truly warrants a new KOI number. If it is a new event we create a new KOI. If not, we ban the event from the KOI list.  For instance, events that are caused by an image artifact known as cross-talk \citet{Coughlin2014a} can cause short-period transit events to appear in only one quarter each year. As a result the \Kepler\ pipeline finds several one-year period events for an astrophysical event that is truly closer to a few days.  In these cases we federate the one found that most closely matches the known KOI and we ban any other \opstce\ from creating a new KOI around this star. In Table\,\ref{tab:bannedlist} we report the entire list of stars on which we did not create a new KOI despite the federation telling us that one was appropriate.
+In some cases our automated tools want to create a new KOI on a system where one of the KOIs was not federated.  In these cases we inspect the new system by hand and ensure that it truly warrants a new KOI number. If it is a new event we create a new KOI. If not, we ban the event from the KOI list.  For instance, events that are caused by an image artifact known as cross-talk \citet{Coughlin2014a} can cause short-period transit events to appear in only one quarter each year. As a result the \Kepler\ pipeline finds several one-year period events for an astrophysical event that is truly closer to a few days.  In these cases we federate the one found that most closely matches the known KOI and we ban any other \opstce\ from creating a new KOI around this star. In Table\,\ref{t:banned} we report the entire list of \opstce{s} that were not made into KOIs despite the federation telling us that one was appropriate.
 
-
-%\subsection{Model Fits using MCMC approach}
-%\label{s:mcmc}
-%Kelsey will write these words.
-
-%\subsection{Deliverables}
-%\begin{itemize}
-%\item[] KOI Table: Ephemeris, Dispositions, scores and Transit Fits
-%\item[] Full set of TCEs their supplemental fits and the metric %values
-%\item[] Robovetter Code
-%\item[] 
-%\end{itemize}
-
-
+\input{Table-banned.tex}

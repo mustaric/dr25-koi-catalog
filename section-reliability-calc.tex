@@ -1,5 +1,6 @@
 %% using aastex version 6
-
+%Write that Einv == Eobs for equation 8 to be true. [conversation with Steve]
+%
 
 \newcommand{\opsfp}{N$_{FP_{obs}}$}
 \newcommand{\opspc}{N$_{PC_{obs}}$}
@@ -47,7 +48,7 @@ Notice we are using N to indicate a measurable number, and T to indicate the ``T
 E = \frac{N_{FP_{inv}}}{N_{inv}}
 \end{equation}
 
-At this point we can drop the \textit{obs} and \textit{inv} designation as all the inversion values are wrapped up in $E$, and the $N$ values shown below refer entirely to the number of candidates (PC) or false positives (FP) in the \opstce\ set so that $N=N_{PC} + N_{FP}$. From the definition for reliability, we rewrite in terms of the number of true false positives in \opstce, $T_{FP}$.
+At this point we can drop the \textit{obs} and \textit{inv} designation as all the inversion values are used to calculate $E$. The $N$ values shown below refer entirely to the number of candidates (PC) or false positives (FP) in the \opstce\ set so that $N=N_{PC} + N_{FP}$. From the definition for reliability, we rewrite in terms of the number of true false positives in \opstce, $T_{FP}$.
 
 \begin{equation}
 R \equiv \frac{T_{PC}}{N_{PC}} =  1 + \frac{T_{PC}-N_{PC}}{N_{PC}} 

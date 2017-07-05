@@ -95,6 +95,8 @@
 \usepackage{amsmath}
 \usepackage{url}
 \usepackage{color}
+\usepackage{soul}
+\usepackage{marginnote}
 %% If you want to create your own macros, you can do so
 %% using \newcommand. Your macros should appear before
 %% the \begin{document} command.
@@ -108,7 +110,7 @@
 \newcommand\red{\textcolor{red}}
 \newcommand\blue{\textcolor{blue}}
 %% You can insert a short comment on the title page using the command below.
-\slugcomment{Introductory Outline. \today}
+\slugcomment{Second Draft. \today}
 %%
 %% If you wish, you may supply running head information, although
 %% this information may be modified by the editorial offices.
@@ -138,29 +140,36 @@ Overall, the purpose of this paper is to describe how we sifted through the DR25
 To Do List:
 \begin{itemize}
 
-\item Create KOI Table, machine table and stub
-\item Create Table of cleaned INV and SCR, machine and stub
+\item Create KOI Table, machine table and stub [IS THIS NECESSARY?]
+\item Create Table of cleaned INV and SCR, machine and stub [Susan]
 \item Better description/plot of how the errors for the score calculation was done. List which metrics were used to calculate the score. [JEFF]
-\item Change words about tuning to completeness and effectiveness instead of True positive fraction and FP fraction.
-\item Words describing the Injections [JESSIE]
-\item Show how a score cut does not change the number of candidates for a parameter space [SUSAN]
-\item Describe the ballpark difference in reliability between inversion and scrambling. [SUSAN]
-\item Injection3 - EBs / Significant Secondary analysis [JEFF]
+\item rework Abstract
+\item Write a conclusions Section [Susan]
+\item Mention the Robovetter GITHUB
+\item Robovetter Flag definitions in Appendix B
+\item Fix/review references in the Introduction. [SUSAN started] 
+\item DONE -- \st{Create Table of Banned List} [ SUSAN]
+\item DONE -- \st{Words describing the Injections [JESSIE]}
+\item DONE -- \st{Show how a score cut does not change the number of candidates for a parameter space} [SUSAN]
+\item DONE -- \st{Describe the ballpark difference in reliability between inversion and scrambling.} [SUSAN]
+\item Robovetter needs a description of the 2 ways we pass KOIs with significant secondary. Also, Add to summary table. [JEFF WILL DOUBLE-CHECK, ADD TO TABLE 1]
 \item One sentence on the FPWG and how we disagree at time and that they use follow-up -- Combine with Confirmed planet table.
 \item Better plot describing Skye. Basic histogram exists right now. [JEFF?]
-\item Robovetter needs a description of the 2 ways we pass KOIs with significant secondary. Also, Add to summary table. [JEFF WILL DOUBLE-CHECK, ADD TO TABLE 1]
-\item Describe the Completeness and Reliability of the catalog as a function of period and radius. [SUSAN]
-\item Consider the D.2 plots for Injection, Inversion, Scrambling. for effectiveness/completeness.
-\item Finalize the HZ Table. [NATALIE]
+
+\item DONE -- \st{Describe the Completeness and Reliability of the catalog as a function of period and radius.} [SUSAN]
+\item DONE -- \st{Plot Effectiveness in Period/MES} [SUSAN]
+\item DONE -- \st{Consider the D.2 plots for Injection, Inversion, Scrambling. for effectiveness/completeness. - I put in references to the KSCI, I don't see the need to repeat here.} [SUSAN]
+\item DONE -- \st{Finalize the HZ Table. [NATALIE]}
 \item List and give details of the new HZ candidates.[NATALIE]
-\item Fix/review references in the Introduction.  
+\item Fix HZ plot. Remove the error bar in radius. Candidates are rings, confirmed are solid. 
 \item Give an overview about how this fits into occurrence rate calculations and what other products are available for that work. [Started, JESSIE]
-\item Write a conclusions Section
-\item Mention the Robovetter GITHUB
+\item Change words about tuning to completeness and effectiveness instead of True positive fraction and FP fraction.
+\item DONE -- \st{Fix figure 9...period/mes reliability. That is an old plot and has too many numbers on it.}
+\item Injection3 - EBs / Significant Secondary analysis [JEFF]
 \item Create Table of parameters and those that were optimally tuned. [JEFF]
 \item Describe how the actual tuning values were chosen after automated tuning [JEFF]
-\item Fix HZ plot. Remove the error bar in radius. Candidates are rings, confirmed are solid. 
-\item Robovetter Flag definitions in Appendix B
+
+
 
 \end{itemize}
 
@@ -235,9 +244,8 @@ To Do List:
 \input{section-occurRateCalc}
 
 
+\input{section-conclusions}
 
-
-\section{Conclusions}
 
 \acknowledgments
 Thanks to GNU parallel \citep{Tange2011a}.
