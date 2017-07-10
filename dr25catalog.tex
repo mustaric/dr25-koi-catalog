@@ -13,6 +13,7 @@
 \def \rj {$R_{J}$}
 \def \mj {$M_{J}$}
 \def \re {$R_{\earth}$}
+\def \Rearth {$R_{\earth}$}
 \def \me {$M_{\earth}$}
 \def \se {$S_{\earth}$}
 \def \kepler {\emph{Kepler}}
@@ -97,10 +98,11 @@
 \usepackage{color}
 \usepackage{soul}
 \usepackage{marginnote}
+\usepackage[T1]{fontenc}  %Gives you pipes for minor flags
 %% If you want to create your own macros, you can do so
 %% using \newcommand. Your macros should appear before
 %% the \begin{document} command.
-\newcommand{\spcell}[2][c]{%
+\newcommand{\spcell}[2][c]{
   \begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}  %Creates line breaks in tables with left justification. 
 
 \newcommand{\vdag}{(v)^\dagger}
@@ -127,33 +129,37 @@
 %%\watermark{\today}
 
 \title{Planetary Candidates Observed by \Kepler. VIII.\\
-A Fully Automated Catalog Based on Data Release 25\\With Measured Completeness and Reliability. }
+A Fully Automated Catalog With Measured Completeness and Reliability\\Based on Data Release 25 }
 
 %\author{Susan E. Thompson and others}
 \input{authors}
 
 \begin{abstract}
-We present the DR25 Kepler Object of Interest catalogs, created by balancing both the completeness and the final reliability of the candidates in the catalog. This is no longer innocent until proven guilty because we have a measure of the noise properties of the light curves in respect to how they can simulate transits.
-Enlightening words about the purpose of this final Kepler Catalog and how it fits in with the other Kepler Planet Candidate catalogs. Then some details about how many KOIs we added and how many are planet candidates. 
-Overall, the purpose of this paper is to describe how we sifted through the DR25 TCE table and identified the planet candidates, the transiting candidates with significant secondaries, background eclipsing binaries, ephemeris matches and the false alarms. It also needs to describe how we arrive at the reported physical parameters of each planet, so that interesting populations for occurrence rates and follow-up can be identified.  Finally the completeness and reliability of the catalog should be discussed.
+We discuss the Kepler Object of Interest catalog based on searching data release 25, Q1--Q17, \Kepler{} time series photometry for transiting exoplanets.  This catalog builds on the knowledge and tools of its predecessors and provides a uniformly vetted catalog of 4034 planet candidates with a measurement of the catalog's completeness and reliability against instrumental and stellar noise. Calculations of planetary occurrence rate can use this information to get accurate measurements of the frequency of small planets in orbital periods of hundreds of days, right at the detection limit for \Kepler{} data.  This paper discusses the vetting methods used by a tool called the Robovetter to determine which of the \ntces{} signals found by the \Kepler{} Pipeline are truly transiting exoplanets.  The Robovetter was also applied to simulated transits signals and simulated noise signals in order to test its performance and to characterize the properties of the final catalog. In addition to the disposition, each of the 8054 KOIs in the catalog is provided with a Markov chain Monte Carlo fit that provides a robust set of planetary parameters with error bars based on the posteriors. This final search of the four years of \Kepler{} data yielded 219 new planet candidates, 10 of which are high reliability, super-Earth-sized planets in the wide habitable zone of their star. For periods less than 100\,d the Robovetter found more than 85 per cent of planet candidates and $>$98 per cent of those candidates are true astrophysical events.   However, for low signal-to-noise candidates found between 200 and 500 \,d the catalog is only 73 per cent complete and 37 per cent reliable. We describe how the completeness and reliability of the catalog varies with period, signal-to-noise, and stellar type. We also provide several ways to select a more reliable, albeit less complete, sample of candidates, using the disposition score that indicates the confidence in the disposition. All of the signals found in the \Kepler{} data used to create and characterize this catalog are available at the NASA Exoplanet Archive.
+
 
 To Do List:
 \begin{itemize}
 
 \item Create KOI Table, machine table and stub [IS THIS NECESSARY?]
-\item Create Table of cleaned INV and SCR, machine and stub [Susan]
+
 \item Better description/plot of how the errors for the score calculation was done. List which metrics were used to calculate the score. [JEFF]
 \item rework Abstract
 \item Write a conclusions Section [Susan started..opinions on topics to cover are welcome]
-\item Mention the Robovetter GITHUB
+
 \item Robovetter Flag definitions in Appendix B
-\item Fix/review references in the Introduction. [SUSAN started] 
+ 
 \item Robovetter needs a description of the 2 ways we pass KOIs with significant secondary. Also, Add to summary table. [JEFF WILL DOUBLE-CHECK, ADD TO TABLE 1]
 \item One sentence on the FPWG and how we disagree at time and that they use follow-up -- Combine with Confirmed planet table.
 \item Better plot describing Skye. Basic histogram exists right now. [JEFF?]
 \item Give an overview about how this fits into occurrence rate calculations and what other products are available for that work. [Started, JESSIE]
 \item Combine Completeness of pipeline and the Robovetter [JESSIE]
 \item Describe where to find products used in this paper. [SUSAN]
+\item acknowledgements
+
+\item DONE -- \st{Create Table of cleaned INV and SCR, machine and stub} [Susan]
+\item DONE == \st{Fix/review references in the Introduction.} [SUSAN]
+\item DONE -- \st{Mention the Robovetter GITHUB}
 \item DONE -- \st{Create Table of Banned List} [ SUSAN]
 \item DONE -- \st{Words describing the Injections [JESSIE]}
 \item DONE -- \st{Show how a score cut does not change the number of candidates for a parameter space} [SUSAN]
@@ -255,7 +261,7 @@ Thanks to GNU parallel \citep{Tange2011a}.
 Thank you to Paw Patrol.
 Thank you to Kepler.
 Thanks to \citet{Turbo-King2017} for a spirited discussion.
-
+Some of the data presented in this paper were obtained from the Mikulski Archive for Space Telescopes (MAST). STScI is operated by the Association of Universities for Research in Astronomy, Inc., under NASA contract NAS5-26555. Support for MAST for non-HST data is provided by the NASA Office of Space Science via grant NNX09AF08G and by other grants and contracts.
 
 
 %\appendix

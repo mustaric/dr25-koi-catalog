@@ -1,5 +1,5 @@
 \label{s:robovetter}
-The dispositioning of the TCEs into the categories of PC and FP is entirely automated and is performed by a piece of code called the Robovetter\footnote{GITHUB link}. This code uses a variety of metrics to evaluate the TCEs and disposition them into PCs and FPs.  
+The dispositioning of the TCEs into the categories of PC and FP is entirely automated and is performed by a piece of code called the Robovetter\footnote{https://github.com/nasa/kepler-robovetter}. This code uses a variety of metrics to evaluate the TCEs and disposition them into PCs and FPs.  
 
 %In this section we describe the different metrics as well as the logic the Robovetter uses to make its decisions. 
 
@@ -44,7 +44,7 @@ Another note-worth change to the DR25 Robovetter is the introduction of the v-sh
 
 \subsection{Disposition Scores}
 \label{s:scores}
-A new feature we introduce in this catalog is the disposition score --- a value between 0 and 1 that indicates the confidence in disposition provided by the Robovetter. A higher valued indicates more confidence that an objects is a PC, regardless of the disposition it was given.  This feature allows one to select the highest quality PCs by ranking KOIs by the disposition score. 
+We introduce a new feature to this catalog, compared to DR24, called the "Disposition Score". Esentially the disposition score is a value between 0 and 1 that indicates the confidence in a disposition provided by the Robovetter. A higher value indicates more confidence that a TCE is a PC, regardless of the disposition it was given. This feature allows one to select the highest quality PCs by ranking KOIs by the disposition score, for both statstical studies and prioritizing individual objects for follow-up.
 %This statistics argument hasn't been proven. We could discuss this, but it belongs in the disucssion "and weight them appropriately for their statistics."
 
 The disposition score was calculated by wrapping the Robovetter in a Monte Carlo routine. In each of 10,000 iterations the input metrics for the Robovetter are perturbed from their nominal values by drawing from an asymmetric Gaussian distribution centered on the nominal value. In each iteration the robovetter dispositions each TCE given the new values for each metric. The disposition score is simply the fraction of iterations that result in a disposition of PC. For example, if a PC KOI has a few metrics that are near the Robovetter's thresholds, it will frequently have at least one that is perturbed across a threshold. As a result, many of the iterations will produce a false positive and the candidate will have a low score.  Similarly, if a FALSE POSITIVE KOI barely fails a single metric, the score may be near 0.5, indicating that it was deemed a PCin half of the iterations.
