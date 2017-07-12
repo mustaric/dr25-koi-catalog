@@ -2,10 +2,10 @@
 \tablecolumns{11}
 \tabletypesize{\scriptsize}
 \tablewidth{\linewidth}
-\tablecaption{Summary of the DR25 Robovetter tests.}
+\tablecaption{Summary of the DR25 Robovetter tests}
 \tablehead{Test Name & Section & \spcell{Major\\Flags} & \spcell{Minor\\Flags} & \spcell{Brief\\Description} }
 
-Is Secondary  & \ref{s:issecond} & \spcell{NT\\SS}  & IS\_SEC\_TCE & The TCE is a secondary eclipse\\
+Is Secondary  & \ref{s:issecond} & \spcell{NT\\SS} & IS\_SEC\_TCE & The TCE is a secondary eclipse\\
 \hline\\
 LPP Metric    & \ref{s:lpp}      & NT   & \spcell{LPP\_DV\\LPP\_ALT} & The folded event is transit-shaped. \\
 \hline\\
@@ -43,6 +43,10 @@ SWEET EB & \ref{s:sweeteb} & SS & SWEET\_EB & Out-of-phase tidal deformation was
 \hline\\
 V Shape Metric & \ref{s:shapemetric} & SS & DEEP\_V\_SHAPE & The transit is v-shaped.\\
 \hline\\
+Planet Occultation & \ref{s:sscand} & SS \tablenotemark{\tiny{PC}} & \spcell{PLANET\_OCCULT\_DV\\PLANET\_OCCULT\_ALT} & Significant secondary could be caused by planet occultation.\\
+\hline\\
+Planet At Half Period & \ref{s:sscand} & - \tablenotemark{\tiny{PC}} & \spcell{PLANET\_PERIOD\_IS\_HALF\_DV\\PLANET\_PERIOD\_IS\_HALF\_ALT} & Planet scenario possible at half the DV period.\\
+\hline\\
 Resolved Offset & \ref{s:centroidrv} & CO & CENT\_RESOLVED\_OFFSET & The transit occurs on a spatially resolved target.\\
 \hline\\
 Unresolved Offset & \ref{s:centroidrv} & CO & CENT\_UNRESOLVED\_OFFSET & A shift in the centroid position occurs during transit.\\
@@ -52,6 +56,7 @@ Ghost Diagnostic & \ref{s:ghost} & CO & HALO\_GHOST & The transit strength in th
 Ephemeris Match & \ref{s:ephemmatch} & EC & EPHEM\_MATCH & The ephemeris matches that of another source.
 
 \enddata
-\tablecomments{\textbf{Do we need to include the two tests that cause things to PASS here? I also don't see a description of them in the Robovetter Appendix.} }
+\tablecomments{More details about all of these tests and how they are used by the Robovetter can be found in \S\ref{s:metrics} }
 \label{t:metrics}
+\tablenotetext{PC}{These tests override previous tests and will cause the TCE to become a planet candidate.}
 \end{deluxetable*}

@@ -207,7 +207,7 @@ S(t) = \frac{d}{1 + e^{-\gamma (t-t_0)} }
 \end{equation}
 
 \noindent
-where $d$ and $t_0$ are tunable parameters, while $\gamma$ is a positive constant. This function, known as a sigmoid (or logistic) function, has asymptotic values of 0 for $t<<t_0$, and d for $t>>t_0$. The function transitions quickly, but smoothly, between the two states near $t=t_0$, where it takes on a value of d/2. 
+where $d$ and $t_0$ are tunable parameters, while $\gamma$ is a positive constant. This function, known as a sigmoid (or logistic) function, has asympotes of 0 for $t<<t_0$, and d for $t>>t_0$. The function transitions quickly, but smoothly, between the two states near $t=t_0$, where it takes on a value of d/2. 
 
 % I think that gamma, as well as the sign of the exponential term in the  denominator should be positive. The function approaches zero as t - t0 approaches negative infinity, and approaches d as t - t0 approaches infinity.
 By using a sigmoid and avoiding the discontinuities in present in the models used by the original Marshall algorithm \citep{Mullally2016} we can use the L-BFGS-B algorithm \citep{Byrd95} available in the Scipy package \footnote{\url{www.scipy.org}} instead of the less robust Nelder-Mead.
@@ -216,14 +216,6 @@ The second function models a discrete jump in the data. We fit this model seeded
 
 For each transit the Marshall method returns the BIC (Bayesian Information Criterion) score, the preferred model, and the difference between the BIC scores of the preferred model and the sigmoid box fit.  A transit is considered sufficiently bad when this difference (also known as the Marshall score) exceeds a particular threshold, as with the original Marshall algorithm.  However, in a few cases the Gaussian processes fails and yields extremely large, unbelievable BIC values. In these cases the transit is set to always pass.  Also, for low MES transits, the expected SES of a transit is sufficiently low that Marshall will be unable to distinguish between the ``no transit" model and a low signal-to-noise transit.  Because of this the Robovetter uses the following logic when deciding whether a specific transit is not valid:
 
-
-
-%Jeff's words.
-%A number of long-period false positives are a result of three or more systematic events that happen to be equidistant in time and produce a TCE. There are two prominent types of systematic events in \kepler{} data: sudden pixel sensitivity dropouots (SPSDs) and step-wise discontinuities. SPSDs are due to cosmic ray impacts that temporarily reduce the detection sensitivity of the impacted pixels, resulting in a sudden drop in flux followed by an asymptotic rise back to the baseline flux level over a timescale of a few hours \citep{VanCleve2009}. Step-wise discontinuities are sudden jumps in the baseline flux level, in either the positive or negative flux direction, and are typically due to imperfect detrending, but may have other causes. If a TCE is due to several of these events that are of similar SNR, they will not be flagged as false positives without examining the shape of their individual events.
-
-%ARE THERE MORE MODELS THAN JUST STEPWISE AND SPSD? WERE ANY ADDED IN DR25??  WHATS OFFSET ONLY - WE NEED TO DESCRIBE
-
-%In order to detect TCEs due to SPSDs and step-wise discontinuities, we developed the ``Marshall'' metric \citep{Mullally2015b}. Marshall fits a transit, SPSD, and step-wise discontinuity model to each individual event of a long-period TCE. The Bayesian Information Criterion \citep[BIC;][]{Schwarz1978} is then used to select which model best fits each individual transit event given each model's number of degrees of freedom. 
 
 If all of the following criteria are met:
 
@@ -385,6 +377,8 @@ There are many cases when a secondary eclipse does not produce its own TCE, most
 
 If $MS_{4}$~$>$1, $MS_{5}$~$>$0, and $MS_{6}$~$>$0, in either the DV or alternate detrendings, the robovetter dispositions the TCE as a stellar system FP. These criteria ensure that the secondary event is statistically significant when compared to the systematic noise level of the light curve, the tertiary event, and the positive event, respectively.
 
+\paragraph{Candidates with Significant Secondaries}
+\label{s:sscand}
 There are two exceptions when the above-mentioned conditions are met, but the robovetter does not designate the TCE a false positive. First, if the primary and secondary depths are statistically indistinguishable, and the secondary is located at phase 0.5, then it is possible that the TCE is a PC that has been detected at twice the true orbital period. Thus, the robovetter labels a TCE with a significant secondary as a PC when ${\sigma_{\rm Pri} - \sigma_{\rm Sec} < FA_{2}}$ and the phase of the secondary is within 1/4 of the primary transit's duration of phase 0.5. Second, hot Jupiter PCs can have detectable secondary eclipses due to planetary occultations via reflected light and thermal emission \citep{Coughlin2012}. Thus, a TCE with a detected significant secondary is labeled as a PC with the significant secondary flag (in order to facilitate the identification of hot Jupiter occultations) when the geometric albedo is less than 1.0, the planetary radius is less than 30~\re{}, the depth of the secondary is less than 10\% of the primary, and the impact parameter is less than 0.95. The additional criteria beyond the albedo criterion are needed to ensure that this test is only applied to potentially valid planets and not grazing eclipsing binaries. We calculate the geometric albedo by using the stellar mass, radius, and effective temperature from \citet{Huber2014a}, and the values of the period and radius ratio from the DV module of the \kepler{} pipeline.
 
 
@@ -421,17 +415,11 @@ In this catalog, we attempt to strike a balance between identifying these binary
 \subsection{Centroid Offset}
 \subsubsection{Centroid Robovetter}
 \label{s:centroidrv}
-The Robovetter relies on a piece of code called the Centroid Robovetter \footnote{REPOSITORY}\citep{Mullally2017}[CITE the CRV KSCI] to detect when a transit signal originates from a background or nearby star instead of from the target star. This Centroid Robovetter has not changed since its implementation for the DR24 KOI catalog. We summarize it here. 
+The Robovetter relies on a piece of code called the Centroid Robovetter \footnote{\url{https://sourceforge.net/projects/keplercentroidrobovetter/}}\citep{Mullally2017} to detect when a transit signal originates from a background or nearby star instead of from the target star. The Centroid Robovetter has not changed since its implementation for the DR24 KOI catalog; we summarize it below for completeness. 
 
 Given that \kepler 's pixels are 3.98\arcsec{} square \citep{Koch2010}, and the typical photometric aperture has a radius of 4--7 pixels \citep{Bryson2010b}, it is quite common for a given target star to be contaminated by light from another star. If that other star is variable, then that variability will be visible in the target aperture at a reduced amplitude. If the variability due to contamination results in a TCE, then it is a false positive, whether the contaminator is an eclipsing binary, planet, or other type of variable star \citep{Bryson2013}. For example, if a transit or an eclipse occurs on a bright star, a shallower event may be observed on a nearby, fainter star. Similarly, a star can be mistakenly identified as experiencing a shallow transit if a deep eclipse occurs on a fainter, nearby source.
 
-% There are two ways we robotically detect centroid offsets, by examining the differnce 
-
-
 The DV module of the \kepler{} pipeline produces ``difference images'' for each quarter, which are made by subtracting the average flux in each pixel during each transit from the flux in each pixel just before and after each transit \citep{Bryson2013}. If the resulting difference image shows significant flux at a location (centroid) other than the target, then the TCE is likely an FP due to a centroid offset.
-
-
-% In prior catalogs, TCERT members manually examined the difference images to look for evidence of a centroid offset, as fully described in \citet{Bryson2013} and \S3.2.3--3.2.6 of \citet{Rowe2015a}. In this catalog, the search for centroid offsets was fully robotized and confirmed to reproduce the results earlier catalogs using human vetting \citep{Mullally2015c}.
 
 In our robotic procedure to detect FPs due to centroid offsets, we first check that the difference image for each quarter contains a discernible stellar image and is not dominated by background noise. This is done by searching for at least 3 pixels that are adjacent to each other and brighter than a given threshold, which is set by the noise properties of the image. We use an iterative sigma clipping approach to eliminate bright pixels when calculating the background noise, as the star often dominates the flux budget of a substantial number of pixels in the aperture.
 
@@ -441,7 +429,6 @@ If no centroid offset is identified by the previous method, we then look for con
 
 The Centroid Robovetter gives the \kepler\ Robovetter several flags to indicate whether a centroid offset was detected and whether that detection can be trusted. The names of those flags have been changed to be consistent with our minor flag naming scheme. A list of the minor flags are available in Appendix~\ref{s:minorflags}.
 
-%We use the the pixel-level injected TCEs that were injected with an offset to understand the performance of the Centroid Robovetter.  [FERGAL IT WOULD BE NICE IF I COULD GET YOU TO WRITE THIS PART and include a figure. BUT it is a nice to have.]
 
 \subsubsection{Ghost Diagnostic}
 \label{s:ghost}
@@ -450,8 +437,7 @@ the telescope. A similar type of false positive results from direct PRF (Pixel R
 
 To detect this type of false alarm, the ghost diagnostic essentially measures the strength of the TCE signal in two separate light curves --- one created using the average of the pixels inside the target's optimal aperture minus the average of the pixels in an annulus surrounding the target aperture (core aperture correlation statistic), and the other using the average of the pixels in the annulus surrounding the target aperture (halo aperture correlation statistic). If the ratio of the halo aperture to core aperture statistic is greater than 4.0, the TCE is marked as a FP due to a centroid offset. This ghost diagnostic is not available for vetting the \scrtce s. 
 
-%Joe's words
-% It produces a detection statistic measuring correlation between a whitened timeseries and a whitened transit model, as well as a statistic measuring the signicance of the correlation, assuming the detection statistic is a chi-squared variable.
+
 
 \subsection{Ephemeris Matching}
 \label{ephemmatchsec}
@@ -459,7 +445,7 @@ To detect this type of false alarm, the ghost diagnostic essentially measures th
 
 Another method for detecting FPs due to contamination is to compare the ephemerides (periods and epochs) of TCEs to each other, as well as other known variable sources in the \kepler{} field. If two targets have the same ephemeris within a specified tolerance, then at least one of them is a FP due to contamination. \citet{Coughlin2014a} used Q1--Q12 data to compare the ephemerides of KOIs to each other and eclipsing binaries known from both \kepler{}- and ground-based observations. They identified over 600 FPs via ephemeris matching, of which over 100 were not known as FPs via other methods. They also identified four main mechanisms of contamination. The results of \citet{Coughlin2014a} were incorporated in \citet[][see \S3.3]{Rowe2015a}. \citet[][see \S5.3]{Mullally2015cat} slightly modified the ephemeris matching process of \citet{Coughlin2014a}, and applied it to all of the Q1--Q16 TCEs, as well as known KOIs and EBs, identifying nearly 1,000 TCEs as FPs. The same process was again used in the \citet{Coughlin2016} catalog.
 
-We modify the matching criteria used in previous catalogs to obtain more accurate matches, due especially to the very large number of long-period TCEs encountered in DR25 compared to previous activities. We utilize the results of the transit injection run (\S\ref{s:injectsec}) to measure the ability of the \kepler{} pipeline to recover period and epoch as a function of period. In Figure~\ref{injephemfig} we show, in the top two panels, the difference in the injected and recovered period and epoch, as a function of the injected period. The middle and bottom panels show the measured standard deviation of the difference as a function of period, in linear and logarithmic space respectively. The red line is the result of a best-fit power law.
+We modify the matching criteria used in previous catalogs to obtain more accurate matches, due especially to the very large number of long-period TCEs encountered in DR25 compared to previous activities. We utilize the results of the transit injection run (\S\ref{s:simulated}) to measure the ability of the \kepler{} pipeline to recover period and epoch as a function of period. In Figure~\ref{injephemfig} we show, in the top two panels, the difference in the injected and recovered period and epoch, as a function of the injected period. The middle and bottom panels show the measured standard deviation of the difference as a function of period, in linear and logarithmic space respectively. The red line is the result of a best-fit power law.
 
 \begin{figure}[h]
 \centering
@@ -607,3 +593,12 @@ Since \kepler{} does not observe every star in its field of view, it can often b
 % \end{itemize}
 
 % \noindent Combining these details leads to our conjecture that the column anomaly is due to decreasing charge transfer efficiency over time, likely due to cosmic ray impacts. When the CCD is read out, some charge from the parent is left behind due to charge transfer inefficiency. As the child is read out, and its electrons pass through the pixels where the parent was, the child picks up some of the parent's left-behind electrons. Thus, the variable signal from the parent is induced in the child. As more cosmic ray impacts accumulate over time, the amount of charge left behind by the parent increases, resulting in an increase in contamination, and thus an increase in the observed depth of the child. Seasonal variation is seen as the parent and child rotate between 4 CCDs with season, and the amount of degradation varies with CCD. The average depth ratio, along with the delta magnitudes observed, indicate that a charge transfer efficiency of $\sim$99.99\% is consistent with the observed contamination, i.e., a degradation of $\sim$0.01\%. This is well within the range observed on Hubble's Advanced Camera for Surveys and other spaceborne detectors  \citep[see \S3.7 of][and references therein]{Sirianni2005}.
+
+
+
+%Jeff's words.
+%A number of long-period false positives are a result of three or more systematic events that happen to be equidistant in time and produce a TCE. There are two prominent types of systematic events in \kepler{} data: sudden pixel sensitivity dropouots (SPSDs) and step-wise discontinuities. SPSDs are due to cosmic ray impacts that temporarily reduce the detection sensitivity of the impacted pixels, resulting in a sudden drop in flux followed by an asymptotic rise back to the baseline flux level over a timescale of a few hours \citep{VanCleve2009}. Step-wise discontinuities are sudden jumps in the baseline flux level, in either the positive or negative flux direction, and are typically due to imperfect detrending, but may have other causes. If a TCE is due to several of these events that are of similar SNR, they will not be flagged as false positives without examining the shape of their individual events.
+
+%ARE THERE MORE MODELS THAN JUST STEPWISE AND SPSD? WERE ANY ADDED IN DR25??  WHATS OFFSET ONLY - WE NEED TO DESCRIBE
+
+%In order to detect TCEs due to SPSDs and step-wise discontinuities, we developed the ``Marshall'' metric \citep{Mullally2015b}. Marshall fits a transit, SPSD, and step-wise discontinuity model to each individual event of a long-period TCE. The Bayesian Information Criterion \citep[BIC;][]{Schwarz1978} is then used to select which model best fits each individual transit event given each model's number of degrees of freedom. 
