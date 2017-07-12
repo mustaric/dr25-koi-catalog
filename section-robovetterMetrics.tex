@@ -325,22 +325,21 @@ After the TPS module of the \kepler{} pipline detects a TCE, it is sent to to DV
 Due to the method of data gapping employed in TPS, sometimes the \kepler{} pipeline can create a TCE that has a majority of its individual events occur where there is no actual in-transit data. This tends to happen particularly in multi-TCE systems, because once the \kepler{} Pipeline detects a TCE in a given system, it removes the data corresponding to the in-transit cadences of that TCE, and re-searches the light curve. 
 
 We thus developed a metric that measures the number of individual transit events that actually contain data. Specifically we compute the fraction of individual events with either SES~$\ne$~0 or Rubble~$>$~0.75, which indicate there is sufficient in-cadence data present. If the fraction of transits with data is~$\le$~0.5, then we fail the TCE as not transit-like.
-[If there are 3 transits and one of them has insufficient data, this metric would not fail the TCE. Is there another metric that would?]
+%[If there are 3 transits and one of them has insufficient data, this metric would not fail the TCE. Is there another metric that would? -- YES See prev section.]
 
 
 
 \subsection{Stellar Eclipse}
 \label{sigsecsec}
 
-If a TCE is deemed transit-like by passing all of the tests presented in \S\ref{nottransitlikesec} on both detrendings, it is given a KOI number.
-[Refer to the flowchart in Figure 15]
+If a TCE is deemed transit-like by passing all of the tests presented in \S\ref{nottransitlikesec} on both detrendings, it is given a KOI number (see Figure~\ref{robovetter-transitlike-fig}.
 However, many of these KOIs are FPs due to eclipsing binaries and contamination from nearby variable stars. We employ a series of robotic tests to detect systems that are due to stellar companions, as shown by the flowchart in Figure~\ref{robovetter-sigsec-fig}.
 
 %In order to produce a uniform catalog, we do not designate any TCE a FP on the basis of its transit depth or inferred radius --- see \S7 item 6 of \citet{Mullally2015cat} for more detail. 
 
 % us, being agnostic to stellar parameters, the only way to definitively detect an EB via a \kepler{} light curve is by detecting a significant secondary eclipse. 
 
-MENTION THE WHOLE SECONDARY -> STELLAR CHANGE, OR NOT?
+%MENTION THE WHOLE FLAG SECONDARY -> STELLAR CHANGE, OR NOT? (Jeff translation: We used to call the S flag 'Significant Secondary' but now S is 'Stellar Eclipse', so do we want to explicitly mention that we made this change?)
 
 
 
@@ -386,7 +385,7 @@ There are many cases when a secondary eclipse does not produce its own TCE, most
 
 If $MS_{4}$~$>$1, $MS_{5}$~$>$0, and $MS_{6}$~$>$0, in either the DV or alternate detrendings, the robovetter dispositions the TCE as a stellar system FP. These criteria ensure that the secondary event is statistically significant when compared to the systematic noise level of the light curve, the tertiary event, and the positive event, respectively.
 
-There are two exceptions when the above-mentioned conditions are met, but the robovetter does not designate the TCE a false positive. First, if the primary and secondary are statistically indistinguishable, [What does this mean? Does it refer to the odd and even depths?] and the secondary is located at phase 0.5, then it is possible that the TCE is a PC that has been detected at twice the true orbital period. Thus, the robovetter labels a TCE with a significant secondary as a PC when ${\sigma_{\rm Pri} - \sigma_{\rm Sec} < FA_{2}}$ and the phase of the secondary is within 1/4 of the primary transit's duration of phase 0.5. Second, hot Jupiter PCs can have detectable secondary eclipses due to planetary occultations via reflected light and thermal emission \citep{Coughlin2012}. Thus, a TCE with a detected significant secondary is labeled as a PC with the significant secondary flag (in order to facilitate the identification of hot Jupiter occultations) when the geometric albedo is less than 1.0, the planetary radius is less than 30~\re{}, the depth of the secondary is less than 10\% of the primary, and the impact parameter is less than 0.95. The additional criteria beyond the albedo criterion are needed to ensure that this test is only applied to potentially valid planets and not grazing eclipsing binaries. We calculate the geometric albedo by using the stellar mass, radius, and effective temperature from \citet{Huber2014a}, and the values of the period and radius ratio from the DV module of the \kepler{} pipeline.
+There are two exceptions when the above-mentioned conditions are met, but the robovetter does not designate the TCE a false positive. First, if the primary and secondary depths are statistically indistinguishable, and the secondary is located at phase 0.5, then it is possible that the TCE is a PC that has been detected at twice the true orbital period. Thus, the robovetter labels a TCE with a significant secondary as a PC when ${\sigma_{\rm Pri} - \sigma_{\rm Sec} < FA_{2}}$ and the phase of the secondary is within 1/4 of the primary transit's duration of phase 0.5. Second, hot Jupiter PCs can have detectable secondary eclipses due to planetary occultations via reflected light and thermal emission \citep{Coughlin2012}. Thus, a TCE with a detected significant secondary is labeled as a PC with the significant secondary flag (in order to facilitate the identification of hot Jupiter occultations) when the geometric albedo is less than 1.0, the planetary radius is less than 30~\re{}, the depth of the secondary is less than 10\% of the primary, and the impact parameter is less than 0.95. The additional criteria beyond the albedo criterion are needed to ensure that this test is only applied to potentially valid planets and not grazing eclipsing binaries. We calculate the geometric albedo by using the stellar mass, radius, and effective temperature from \citet{Huber2014a}, and the values of the period and radius ratio from the DV module of the \kepler{} pipeline.
 
 
 
@@ -483,10 +482,8 @@ When comparing two objects, A and B, where A is defined to have the shorter peri
 \noindent where $P_{A}$ and $P_{B}$ are the periods of objects A and B, $T_{A}$ and $T_{B}$ are similarly the epochs of objects A and B, $\sigma_{P}(P_{A})$ and $\sigma_{T}(P_{A})$ are the errors in period and epoch, given period $P_{A}$, derived from the best-fit power law to the standard deviation of the injected vs recovered periods and epochs, respectively, and the period ratio, $P_{r}$, and epoch ratio, $T_{r}$, are defined by:
 
 \begin{equation}
-P_{r} = \textrm{rint}\left(\frac{P_{A}}{P_{B}}\right)
+P_{r} = \textrm{rint}\left(\frac{P_{B}}{P_{A}}\right)
 \end{equation}
-
-[Should Pr be rint(Pb/Pa) instead of rint(Pa/Pb)?]
 
 \begin{equation}
 T_{r} = \textrm{rint}\left(\frac{T_{A} - T_{B}}{P_{A}}\right)

@@ -1,15 +1,26 @@
-\begin{deluxetable}{lllll}
+\begin{deluxetable*}{lllll}
 \tablecolumns{5}
 \tablewidth{\linewidth}
-\tablecaption{Robovetter thresholds}
+\tablecaption{Robovetter Metric Thresholds \label{t:thresholds}}
 \tablehead{
-\colhead{RV test name} &
-\colhead{RV variable name} &
-\colhead{Robovetter Threshold_DR25} &
-\colhead{Robovetter Threshold_high completeness} &
-\colhead{Robovetter Threshold_high reliability} &
+\colhead{Test Name} &
+\colhead{Variable Name} &
+\colhead{DR25} &
+\colhead{High C} &
+\colhead{High R} \\
 }
 \startdata
+SWEET & SWEET\_THRESH & 50 & 50 & 50\\
+Max SES to MES & SES\_TO\_MES\_THRESH & 0.8 & 0.9 & 0.75\\
+TCE CHASES & ALL\_TRAN\_CHASES\_THRESH & 0.8 & 1.0 & 0.55 \\ 
+MS$_{1}$ DV & MOD\_VAL1\_DV\_THRESH & 1 & 2.4 & -1\\
+MS$_{2}$ DV & MOD\_VAL2\_DV\_THRESH & 2 & 5.0 & -0.7\\
+MS$_{3}$ DV & MOD\_VAL2\_DV\_THRESH & 4 & 7.5 & -1.6\\
+MS$_{1}$ ALT & MOD\_VAL1\_ALT\_THRESH & -3 & -2.5 & -4.3 \\
+MS$_{2}$ ALT & MOD\_VAL2\_ALT\_THRESH & 1 & -0.5 & 2.5 \\
+MS$_{3}$ ALT & MOD\_VAL3\_ALT\_THRESH & 1 & 0.5 & 0.2 \\
+LPP DV & LPP\_DV\_THRESH & 2.2 & 2.8 & 2.7\\
+LPP ALT & LPP\_ALT\_THRESH & 3.2 & 3.2 & 3.2 \\
 
 
-\end{deluxetable}
+\end{deluxetable*}

@@ -1,6 +1,6 @@
 \subsection{Simulated TCEs}
 \label{s:simulated}
-In order to measure the performance of the Robovetter and the \Kepler\ Pipeline, we created simulated transits and simulated false alarms. The simulated transits are created by injecting transit signals onto the pixels of our original data. The simulated false alarms were created in two separate ways: by inverting the light curves, and by scrambling the sequence of cadences in the time series. 
+In order to measure the performance of the Robovetter and the \Kepler\ Pipeline, we created simulated transits and simulated false alarms. The simulated transits are created by injecting transit signals onto the pixels of our original data. The simulated false alarms were created in two separate ways: by inverting the light curves, and by scrambling the sequence of cadences in the time series. The TCEs that resulted from these simulated data are available at NExScI on the Kepler simulated data page.\footnote{\url{https://exoplanetarchive.ipac.caltech.edu/docs/KeplerSimulated.html}}
 
 %For both the \invtce{s} and the \scrtce{s} we needed to remove true astrophysical events, as explained in \S\ref{s:clean} below, in order to match the false alarms found in the \opstce data set.
 %JLC1: I think the final sentence is confusing extra detail in the intro paragraph to this section. % SEM Agreed.
@@ -18,7 +18,7 @@ To create realistic false alarms which have noise properties similar to our \ops
 Another method to create false alarms is to scramble the order of the data. The requirement is to scramble the data enough to lose the coherency of the binary stars and exoplanet transits, but to keep the coherency of the instrumental and stellar red noise that plagues the \Kepler\ data set. Our final solution was to scramble the data in coherent chunks of one year. The fourth year of data (Q13--Q16) was moved to the start of the light curve, followed by the third year (Q9--Q12), the second (Q5--Q8), and the first (Q1--Q4). Q17 remained at the end of the light curve. Within each year, the order of the data did not change. Notice that in this configuration each quarter remains in the correct \Kepler\ season preserving the yearly artifacts produced by the spacecraft.
 
 
-\begin{figure}[h!]
+\begin{figure}[ht]
  \begin{center}
   \includegraphics[width=1.0\linewidth]{fig-simulTcePeriods.png}
   \caption{Histogram of the log$_{10}$(period) in days of the \invtce{s} (top, red), the \scrtce{s} (middle, green) and \injtce{s} (bottom, black). The DR25 \opstce{s} are shown for comparison on the top two figures in black.  At shorter periods ($< 30$\,days), the difference between the simulated false alarm sets and the observed data represents the number of transit-like KOIs, at longer periods we primarily expect false alarms.  Notice that the \invtce{s} do a better job of reproducing the one-year spike, but the \scrtce{s} reproduce the long period hump better. Also, notice that the recovered \injtce{s} are dominated by long period events. }
@@ -34,19 +34,8 @@ As described in \S\ref{s:relcalc}, we want to use the \invtce\ and \scrtce\ sets
 
 For season scrambling, we do not have to worry about the astrophysical events that emulate inverted transits, but we do have to worry about triggering on true transits that have been rearranged to line up with noise. For this reason we remove from the \scrtce\ population all that were found on a star with a known eclipsing binary \citep{Kirk2016}, or on a previously identified KOI. The result is \nscrtces\ \scrtce s; their distribution is plotted in Figure~\ref{f:simtces}. 
 
-After cleaning the \invtce s and \scrtce s of the eclipsing binary and KOI systems, the number of \scrtce s at periods longer than 200\,d closely matches the size and shape of the same period range in the \opstce s, except for the one-year spike.  The one-year spike is well represented by the \invtce s.  Combining the two sets appears to give us a good handle on the type and relative frequency of false alarms present in our \opstce\ population. Table\,\ref{t:invclean} and \ref{t:scrclean} lists those \invtce{s} and \scrtce{s} that we used when calculating the effectiveness and reliability of the catalog.
+After cleaning the \invtce s and \scrtce s of the eclipsing binary and KOI systems, the number of \scrtce s at periods longer than 200\,d closely matches the size and shape of the same period range in the \opstce s, except for the one-year spike.  [The relevant feature is the shape of the distribution. That the counts also nearly  match at periods longer than 200 days is a coincidence, right? because there are different numbers of scrTces and obsTces.] The one-year spike is well represented by the \invtce s.  Combining the two sets appears to give us a good handle on the type and relative frequency of false alarms present in our \opstce\ population. Table\,\ref{t:invclean} and \ref{t:scrclean} lists those \invtce{s} and \scrtce{s} that we used when calculating the effectiveness and reliability of the catalog.
 
 \input{Table-invclean.tex}
 \input{Table-scrclean.tex}
 
-%\subsection{How good are the simulated data sets}
-%We should show some evidence that the fraction of false alarms in the simulated data sets matches those in the actual OBS data.  Can we show that the fraction of fails by LPP, individual transits and sig-pri/Fred are approximately the same between the two sets.  Or how different are they.  Do this for low mes,
-
-
-
-
-%\subsubsection{Other Simulated sets}
-%We also simulated other types of false positives through transit injection \citep{Christiansen2017}. A portion of the injections were injected off the target by less than a pixel.  This is a way of testing our ability to find background eclipsing binaries by looking for small shifts in the location of the transit compared to the location of the target star.  Also, we injected two transits on some stars to emulate an eclipsing binary and test our tools to identify the presence of a significant secondary eclipse.  However because the majority of our false positives are caused by instrumental noise, and because the size of the astrophysical false positive reliability has been well characterized for \Kepler\ \citep[e.g.][]{Morton2016}, we limit our reliability discussion to those caused by instrumental and stellar noise. 
-
-
-%All of the data sets described above are available in their entirety at the NASA Exoplanet Archive.  All of the metrics described in \S\ref{s:robovetter} to evaluate the disposition of these TCEs are also available in the same table. 

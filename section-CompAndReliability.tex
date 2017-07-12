@@ -37,20 +37,20 @@ Using the 4544 \invtce s and \scrtce s that have periods between 200\,d and 500\
 \label{s:reliability}
 The reliability is measured according to the method described in \S\ref{s:relcalc} using the effectiveness measured from the combined \scrtce{} and \invtce{} data sets and the number of observed PCs.  If one bins over the entire data sets, the overall reliability of the catalog is 97 per cent. However, as Figure~\ref{f:1dcompare} demonstrates, the reliability for long period, and especially low MES planets is significantly lower.  For periods longer than 200\,d and MES less than 10, the reliability of the catalog is approximately 37 per cent, i.e. 6 out of 10 PCs are actually caused by noise. As with completeness, we plot the reliability as a function of period and planet radius, see Figure~\ref{f:prReliability}. As expected the least reliable planets are at long periods and have radii less than 4 earth radii. 
 
-The error in the reliability is likely dominated by how well the false alarms in the \scrtce{} and \invtce{} sets match the false alarms in the \opstce{} data set. See \S\ref{s:simulatrity} for further discussion on their similarity.  One way to get an handle on the uncertainty this creates, we calculate reliability in three different ways for the long period (200--500\,d), low MES ($<10$) \opstce{s}.  First, we use only the \invtce{s} to measure the effectiveness at removing false alarms. This results in a lower reliability, namely R$=24$~per cent and $E=98.5$~per cent. Second, we use only the \scrtce{s} to measure the effectiveness. This results in a higher reliability, R$=51$~percent and E=$99.1$~per cent. Third, we select, at random, half of the the combined population of false alarms (\scrtce{} and \invtce{}) and calculate the reliability. After doing this random selection 100 times, we obtained R$=38$per cent with a standard deviation of 8~percent and the distribution appears basically Gaussian in shape.  
+The error in the reliability is likely dominated by how well the false alarms in the \scrtce{} and \invtce{} sets match the false alarms in the \opstce{} data set. See \S\ref{s:simularity} for further discussion on their similarity.  One way to get an handle on the uncertainty this creates, we calculate reliability in three different ways for the long period (200--500\,d), low MES ($<10$) \opstce{s}.  First, we use only the \invtce{s} to measure the effectiveness at removing false alarms. This results in a lower reliability, namely R$=24$~per cent and $E=98.5$~per cent. Second, we use only the \scrtce{s} to measure the effectiveness. This results in a higher reliability, R$=51$~percent and E=$99.1$~per cent. Third, we select, at random, half of the the combined population of false alarms (\scrtce{} and \invtce{}) and calculate the reliability. After doing this random selection 100 times, we obtained R$=38$per cent with a standard deviation of 8~percent and the distribution appears basically Gaussian in shape.  
 
 The Robovetter is less effective at removing the false alarms produced by inversion than those by scrambling the data. The false alarms created by inversion are over populated by the 372~d false alarms frequently caused by image artifacts.  The scrambling is under-populated by these false alarms. And since these types of false alarms are the most difficult to eliminate, it is not surprising that the reliability measured by inversion is worse than when measured by scrambling.  The truth likely lies somewhere in between and is securely bounded by these two extremes. We encourage users of these data sets to consider ways to optimize this reliability measurements, and the error budget associated with them, when doing occurrence rate calculations. 
 
 
-\begin{figure*}[h!]
+\begin{figure*}[h]
  \begin{center}
-  \includegraphics[width=1.0\linewidth]{fig-compRel1D-PerMes.png}
+  \includegraphics[width=0.93\linewidth]{fig-compRel1D-PerMes.png}
   \caption{ The completeness (right) and reliability (left) of the DR25 catalog plotted for Period, MES, number of transits and duration. In each case the blue line is for those with MES$\leq$10 or periods $\leq$ 100\,d. The green line shows the completeness or reliability for the rest of the population. See the legend for each figure. }
   \label{f:1dcompare}
  \end{center}
  \end{figure*}
 
-\begin{figure*}[h!]
+\begin{figure*}[h]
 \begin{center}
 \includegraphics[width=0.45\linewidth]{fig-AllCompletePR.png}
 \includegraphics[width=0.45\linewidth]{fig-FgkCompletePR.png}
@@ -59,7 +59,7 @@ The Robovetter is less effective at removing the false alarms produced by invers
 \end{center}
 \end{figure*}
 
-\begin{figure*}[h!]
+\begin{figure*}[h]
 \begin{center}
 \includegraphics[width=0.45\linewidth]{fig-AllReliabilityPR.png}
 \includegraphics[width=0.45\linewidth]{fig-FgkReliabilityPR.png}
@@ -72,9 +72,22 @@ The Robovetter is less effective at removing the false alarms produced by invers
 
 \subsubsection{High Reliability Using the Disposition Score}
 \label{s:crscores}
-The disposition scores discussed in \S\ref{s:scores} can be used to select a more reliable, though more incomplete, sample of planet candidates.  How the completeness and reliability of the catalog vary for different cuts on the disposition score is shown at the top of Figure~\ref{f:adjscore} for MES$<$10 and periods between 200 and 500\,d. 
-Notice that the effectiveness of the Robovetter increases as expected as the score threshold is increased. The reliability values also depend on the number of observed PCs that remain, which is why reliability does not change in step with the effectiveness.
-Selecting PCs by choosing those with a disposition score above 0.6 will yield an 85 per cent reliability with a completeness that is still above 50 per cent. Doing a score cut in this way causes a few \opstce{s} which are formally called an FP to be promoted to a PC. An FP with a high score occurs when a TCE marginally fails a single metric.  
+
+The disposition scores discussed in \S\ref{s:scores} can be used to select a more reliable, though more incomplete, sample of planet candidates. In Figure~\ref{score-fig-2} we show the distribution of the score values for of the PCs and FPs for each of the observed, inverted, scrambled, and on-target planet injection populations. (Note that the inverted and scrambled populations have been cleaned as discussed in \S\ref{s:clean}). As can be seen, for all populations, the PC distribution tends to cluster near a score of 1.0 with a tail that extends towards lower score values. Lower MES values tend to have a greater distribution of lower score values. Similarly, the vast majority of FPs have a score of 0.0, with only a small fraction extending towards higher score values (note the y-axis for the FPs is logarithmic, while the y-axis for PCs is linear.) Comparing between the populations, the on-target planet injections have a greater concentration of score values towards 0.5 for both the PCs and FPs than other populations. Both the inverted and scrambled populations have very few PCs near high score values. We can exploit the relative distribution of PC and FP score values for the different populations to improve the completeness and reliability of the catalog.
+
+\begin{figure*}[h]
+\centering
+\begin{tabular}{cc}
+\includegraphics[width=0.5\linewidth]{Scores-OBS.png} &
+\includegraphics[width=0.5\linewidth]{Scores-INJ1.png} \\
+\includegraphics[width=0.5\linewidth]{Scores-INV.png} &
+\includegraphics[width=0.5\linewidth]{Scores-SCR1.png} \\
+\end{tabular}
+\caption{Plots of the score distribution of PCs (thick lines, right y-axis) and FPs (thin lines, left y-axis, logarithmic scaling) for the observed (top-right), on-target planet (top-left), inverted (bottom-left), and scrambled (bottom-right) TCEs.}
+\label{score-fig-2}
+\end{figure*}
+
+At the top of Figure~\ref{f:adjscore} we show how the completeness and reliability of the catalog vary for different cuts on the disposition score for MES$<$10 and periods between 200 and 500 days. Notice that the effectiveness of the Robovetter increases as expected as the score threshold is increased. The reliability values also depend on the number of observed PCs that remain, which is why reliability does not change in step with the effectiveness. Selecting PCs by choosing those with a disposition score above 0.6 will yield an 85 per cent reliability with a completeness that is still above 50 per cent. Doing a score cut in this way causes a few \opstce{s} which are formally called an FP to be promoted to a PC. An FP with a high score occurs when a TCE marginally fails a single metric.  
 
 It is interesting to note that the number of inferred candidates, i.e. the number of candidates after accounting for the Robovetter completeness and catalog reliability, does not change significantly with the score cut. In the bottom plot of Figure~\ref{f:adjscore} we plot both the observed number of PCs and the corrected number of PCs.  The correction is done by taking the number of PCs and multiplying by the reliability and dividing by the completeness.  The error bars only include the Poisson counting error in the number of observed PCs and does not include errors in the measure completeness or reliability. The corrected number of PCs only varies by approximately 1$sigma$ regardless of the score cut used.   
 

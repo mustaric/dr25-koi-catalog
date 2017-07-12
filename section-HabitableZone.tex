@@ -1,24 +1,18 @@
 \label{s:hz}
 \subsection{Potentially Rocky Planets in the Habitable Zone}
-In order for this catalog to be used to understand the occurrence of rocky exoplanets in the habitable zone of a sun-like stars, it needs to identify small, temperate candidates around G-dwarf stars.  In this section we highlight those candidates in that part of the DR25 KOI catalog and mention some of the issues related to using this catalog to calculate occurrence rates.
-
-The DR25 catalog uses the transit depth and the period, along with the DR25 stellar table \citet{Mathur2017ApJS}, to derive the planet radius and the semi-major axis of the planet's orbit.  From these we calculate the insolation flux relative to the insolation flux of the earth:
+In order for this catalog to be used to understand the occurrence of rocky exoplanets in the habitable zone of sun-like stars, it needs to identify small, temperate candidates around G-dwarf stars.  The DR25 catalog uses the transit depth and the period, along with the DR25 stellar table \citet{Mathur2017ApJS}, to derive the planet radius and the semi-major axis of the planet's orbit.  From these we calculate the insolation flux relative to the insolation flux of the earth:
 
 \begin{equation}
 S_{p} = \frac{R_{p}^{2} \cdot (T_{\star}/5777)^{4}}{a^{2}}
 \end{equation}
 
 \noindent where $a$ is the semi-major axis of the planet's orbit in AU, \tstar{} is in Kelvin, 5777~K is the effective temperature of the Sun, and \sp{} and \rp{} are in Earth units. The errors for both insolation flux and radii include the errors from the DR25 stellar catalog. 
-%See Figure~\ref{f:hzPlot} for a plot of planet radius against insolation flux at the small, cool end of the DR25 catalog. On this figure the color indicates the stellar temperature and the size of the point indicates the disposition score.  Notice that this part of the catalog is dominated by K and M stars despite the fact that the exoplanet search targets G stars \citet{Batalha2010}.
 
-%\begin{figure*}
-%    \centering
-%    \includegraphics[width=1.1\linewidth]{fig-CatalogRadiusInsolScore.png}
-%    \caption{DR25 Exoplanet Candidates plotted as planet radius against Insolation Flux, %in units of the flux that the Earth receives from the Sun. The stellar temperature is given by the color of the circle and the size of the circle indicates the Disposition Score. The planet radii are derived from the MCMC fits. }
-%    \label{f:hzPlot}
-%\end{figure*}
+In Table~\ref{t:hz} we highlight the DR25 catalog candidates that are potentially terrestrial and fall in or near the habitable zone of their star.  We select these stars to be any candidate whose one sigma error bars indicate the radius could be smaller than 1.8 \re, and the insolation flux is within the optimistic habitable zone defined by the wide habitable zone of \citet{Kopparapu2013}.  We also only show those with a disposition score above 0.5.  We chose this disposition score threshold because estimates of the reliability of these candidates, even for those around G dwarf stars, is greater than 80 per cent.  This produces XX46XX candidates in the DR25 catalog. Of these, 10 are new to the DR25 catalog. We plot these candidates in Figure~\ref{f:hzNarrow}.  A manual review of the 10 new high-score candidates indicates that they are primarily low signal-to-noise, with very few transits, but show no obvious reason to be called a false positive. In order to make Table~\ref{t:hz} complete we also include any terrestrial-sized confirmed planet that falls in the habitable zone of its star according to the confirmed planet table at NExScI, see the footnotes. The objects are included even if the DR25 catalog calls it a false positive or if the DR25 planetary parameters place it outside the habitable zone. Table~ref{t:hz} and Figure~\ref{f:hzNarrow} give the DR25 catalog planetary values.
 
-In Table~\ref{t:hz} we highlight the DR25 catalog candidates that are potentially terrestrial and fall in or near the habitable zone of their star.  We select these stars to be any candidate whose one sigma error bars indicate the radius could be smaller than 1.8 \re, and the insolation flux is within the optimistic habitable zone defined by \citet{Kopparapu2013} (i.e. the inner edge is the runaway greenhouse for Venus and the outer edge is given by early Mars [NEED A BETTER DESCRIPTION]). This produces 46 candidates in the DR25 catalog. Of these, 10 are new to the DR25 catalog. In Figure~\ref{f:hzNarrow} we plot those whose score lies above 0.5 because these are the ones with the highest measured reliability.  A manual review of these high score  candidates indicate they all are low signal-to-noise but there is no obvious reason to dismiss the signal.  The reliability measurements for this catalog indicate that for long period, low MES objects (which applies to all those on this plot found on a star with a temperature above 5000\,K) and a disposition score cut greater than 0.5, the reliability is $\approx$80XX per cent, see \S\ref{s:reliability}. 
+
+
+%The reliability measurements for this catalog indicate that for long period, low MES objects (which applies to all those on this plot found on a star with a temperature above 5000\,K) and a disposition score cut greater than 0.5, the reliability is $\approx$80XX per cent, see \S\ref{s:reliability}. 
 
 
 
@@ -31,3 +25,12 @@ In Table~\ref{t:hz} we highlight the DR25 catalog candidates that are potentiall
 
 
 \input{Table-hz4.tex}
+
+%See Figure~\ref{f:hzPlot} for a plot of planet radius against insolation flux at the small, cool end of the DR25 catalog. On this figure the color indicates the stellar temperature and the size of the point indicates the disposition score.  Notice that this part of the catalog is dominated by K and M stars despite the fact that the exoplanet search targets G stars \citet{Batalha2010}.
+
+%\begin{figure*}
+%    \centering
+%    \includegraphics[width=1.1\linewidth]{fig-CatalogRadiusInsolScore.png}
+%    \caption{DR25 Exoplanet Candidates plotted as planet radius against Insolation Flux, %in units of the flux that the Earth receives from the Sun. The stellar temperature is given by the color of the circle and the size of the circle indicates the Disposition Score. The planet radii are derived from the MCMC fits. }
+%    \label{f:hzPlot}
+%\end{figure*}

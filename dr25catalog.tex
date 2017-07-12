@@ -135,7 +135,7 @@ A Fully Automated Catalog With Measured Completeness and Reliability\\Based on D
 \input{authors}
 
 \begin{abstract}
-We discuss the Kepler Object of Interest catalog based on searching data release 25, Q1--Q17, \Kepler{} time series photometry for transiting exoplanets.  This catalog builds on the knowledge and tools of its predecessors and provides a uniformly vetted catalog of 4034 planet candidates with a measurement of the catalog's completeness and reliability against instrumental and stellar noise. Calculations of planetary occurrence rate can use this information to get accurate measurements of the frequency of small planets in orbital periods of hundreds of days, right at the detection limit for \Kepler{} data.  This paper discusses the vetting methods used by a tool called the Robovetter to determine which of the \ntces{} signals found by the \Kepler{} Pipeline are truly transiting exoplanets.  The Robovetter was also applied to simulated transits signals and simulated noise signals in order to test its performance and to characterize the properties of the final catalog. In addition to the disposition, each of the 8054 KOIs in the catalog is provided with a Markov chain Monte Carlo fit that provides a robust set of planetary parameters with error bars based on the posteriors. This final search of the four years of \Kepler{} data yielded 219 new planet candidates, 10 of which are high reliability, super-Earth-sized planets in the wide habitable zone of their star. For periods less than 100\,d the Robovetter found more than 85 per cent of planet candidates and $>$98 per cent of those candidates are true astrophysical events.   However, for low signal-to-noise candidates found between 200 and 500 \,d the catalog is only 73 per cent complete and 37 per cent reliable. We describe how the completeness and reliability of the catalog varies with period, signal-to-noise, and stellar type. We also provide several ways to select a more reliable, albeit less complete, sample of candidates, using the disposition score that indicates the confidence in the disposition. All of the signals found in the \Kepler{} data used to create and characterize this catalog are available at the NASA Exoplanet Archive.
+We discuss the Kepler Object of Interest (KOI) catalog based on searching data release 25, Q1--Q17, \Kepler{} time series photometry for transiting exoplanets.  This catalog of 4034 candidates builds on the knowledge and tools of previous KOI catalogs, is uniformly vetted, and provides a measurement of the catalog's completeness and reliability against instrumental and stellar noise. With this information, the catalog can be used to calculate planetary occurrence rates even for the terrestrial-sized planets in orbital periods of hundreds of days, right at the detection limit for \Kepler{} data.  This paper discusses the vetting methods used by a tool called the Robovetter to determine which of the \ntces{} signals found by the \Kepler{} Pipeline are truly transiting exoplanets.  The Robovetter was also used to vet simulated transits signals and simulated noise signals in order to test its performance and to characterize the properties of the final catalog. In addition to the disposition, each of the 8054 KOIs in the catalog is provided with a Markov chain Monte Carlo fit that provides a robust set of planetary parameters with error bars based on the posteriors. This final search of the four years of \Kepler{} data yielded 219 new planet candidates, 10 of which are high reliability, super-Earth-sized planets in the wide habitable zone of their star. For periods less than 100\,d the Robovetter found more than 85 per cent of the injected transits and $>$98 per cent of the catalog's candidates are true astrophysical events.   However, for low signal-to-noise candidates found between 200 and 500 \,d the catalog is only 73 per cent complete and 37 per cent reliable. We describe how the completeness and reliability of the catalog varies with period, signal-to-noise, and stellar type. We also provide several ways to select a more reliable, albeit less complete, sample of candidates, using a metric called the disposition. All of the signals found in the \Kepler{} data used to create and characterize this catalog are available at the NASA Exoplanet Archive.
 
 
 To Do List:
@@ -144,20 +144,33 @@ To Do List:
 \item Create KOI Table, machine table and stub [IS THIS NECESSARY?]
 
 \item Better description/plot of how the errors for the score calculation was done. List which metrics were used to calculate the score. [JEFF]
-\item rework Abstract
-\item Write a conclusions Section [Susan started..opinions on topics to cover are welcome]
 
-\item Robovetter Flag definitions in Appendix B
- 
+\item Injection3 - EBs / Significant Secondary analysis as Occur. Rate consideration [JEFF]
+
 \item Robovetter needs a description of the 2 ways we pass KOIs with significant secondary. Also, Add to summary table. [JEFF WILL DOUBLE-CHECK, ADD TO TABLE 1]
-\item One sentence on the FPWG and how we disagree at time and that they use follow-up -- Combine with Confirmed planet table.
+
+\item DONE -- \st{One sentence on the FPWG and how we disagree at time and that they use follow-up -- Combine with Confirmed planet table.} [ SUSAN]
+
+\item \st{Describe where to find products used in this paper.} [SUSAN]
+
 \item Better plot describing Skye. Basic histogram exists right now. [JEFF?]
-\item Give an overview about how this fits into occurrence rate calculations and what other products are available for that work. [Started, JESSIE]
+
+\item List and give details of the new HZ candidates.[NATALIE]
+
+\item DONE -- \st{rework Abstract} 
+
+\item DONE -- \st{Write a conclusions Section} [Should there be more?]
+
+\item DONE --\st{Robovetter Flag definitions in Appendix B}
+ 
+\item DONE -- \st{Give an overview about how this fits into occurrence rate calculations and what other products are available for that work.} [SUSAN -- Others PLEASE READ!]
+
 \item Combine Completeness of pipeline and the Robovetter [JESSIE]
-\item Describe where to find products used in this paper. [SUSAN]
-\item acknowledgements
+
+\item DONE -- \st{acknowledgements}
 
 \item DONE -- \st{Create Table of cleaned INV and SCR, machine and stub} [Susan]
+
 \item DONE == \st{Fix/review references in the Introduction.} [SUSAN]
 \item DONE -- \st{Mention the Robovetter GITHUB}
 \item DONE -- \st{Create Table of Banned List} [ SUSAN]
@@ -169,14 +182,13 @@ To Do List:
 \item DONE -- \st{Plot Effectiveness in Period/MES} [SUSAN]
 \item DONE -- \st{Consider the D.2 plots for Injection, Inversion, Scrambling. for effectiveness/completeness. - I put in references to the KSCI, I don't see the need to repeat here.} [SUSAN]
 \item DONE -- \st{Finalize the HZ Table. [NATALIE]}
-\item List and give details of the new HZ candidates.[NATALIE]
+
 \item DONE -- \st{Fix HZ plot. Remove the error bar in radius. Also removed the insolation flux vs radius plot.} [SUSAN]
 
 \item DONE -- \st{Change words about tuning to completeness and effectiveness instead of True positive fraction and FP fraction. It is traced back...so let's accept this.}
 
-\item Injection3 - EBs / Significant Secondary analysis [JEFF]
-\item Create Table of parameters and those that were optimally tuned. [JEFF]
-\item Describe how the actual tuning values were chosen after automated tuning [JEFF]
+\item DONE -- \st{Create Table of parameters and those that were optimally tuned.} [Joe]
+\item DONE -- \st{Describe how the actual tuning values were chosen after automated tuning} [JEFF,Susan]
 
 
 
@@ -257,11 +269,8 @@ To Do List:
 
 
 \acknowledgments
-Thanks to GNU parallel \citep{Tange2011a}.
-Thank you to Paw Patrol.
-Thank you to Kepler.
-Thanks to \citet{Turbo-King2017} for a spirited discussion.
-Some of the data presented in this paper were obtained from the Mikulski Archive for Space Telescopes (MAST). STScI is operated by the Association of Universities for Research in Astronomy, Inc., under NASA contract NAS5-26555. Support for MAST for non-HST data is provided by the NASA Office of Space Science via grant NNX09AF08G and by other grants and contracts.
+This paper includes data collected by the Kepler mission. Funding for the Kepler mission is provided by the NASA Science Mission directorate. The authors acknowledge the efforts of the Kepler Mission team for obtaining the calibrated pixel, light curve, and data validation reports used in this publication, which were generated by the Kepler Mission science pipeline through the efforts of the Kepler Science Operations Center and Science Office. The Kepler Mission is lead by the project office at NASA Ames Research Center. Ball Aerospace built the Kepler photometer and spacecraft which is operated by the mission operations center at LASP.  This research has made use of NASA's Astrophysics Data System.  Thanks to GNU parallel for enabling rapid running of the Robovetter \citep{Tange2011a}. We thank the Paw Patrol for inspiring our children. Thank you to \citet{Turbo-King2017} for a spirited discussion.
+These data products are archived at the NASA Exoplanet Science Institute, which is operated by the California Institute of Technology, under contract with the National Aeronautics and Space Administration under the Exoplanet Exploration Program. Some of the data presented in this paper were obtained from the Mikulski Archive for Space Telescopes (MAST). STScI is operated by the Association of Universities for Research in Astronomy, Inc., under NASA contract NAS5-26555. Support for MAST for non-HST data is provided by the NASA Office of Space Science via grant NNX09AF08G and by other grants and contracts.
 
 
 %\appendix
@@ -274,6 +283,7 @@ Some of the data presented in this paper were obtained from the Mikulski Archive
 \clearpage
 \appendix
 \input{section-robovetterMetrics.tex}
+
 
 \input{section-minorflags.tex}
 

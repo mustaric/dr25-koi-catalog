@@ -29,7 +29,7 @@ Similar to \citet{Rowe2015a}, \citep{Mullally2015cat}, and \citet{Coughlin2016},
 
 \begin{itemize}
   \item Not Transit-Like (NT): a TCE whose light curve is not consistent with that of a transiting planet or eclipsing binary, such as instrumental artifacts and non-eclipsing variable stars.
-  \item  Stellar Eclipse (SS): a TCE that is observed to have a significant secondary event, transit shape, or out-of-eclipse variability that indicates the transit-like event is most likely caused by an eclipsing binary. (Self-luminous, hot Jupiters with a visible secondary eclipse are also in this category, but are still given a disposition of PC.)
+  \item  Stellar Eclipse (SS): a TCE that is observed to have a significant secondary event, transit shape, or out-of-eclipse variability that indicates the transit-like event is most likely caused by an eclipsing binary. Self-luminous, hot Jupiters with a visible secondary eclipse are also in this category, but are still given a disposition of PC. (In previous KOI catalogs this flag was known as Significant Secondary.)
   \item Centroid Offset (CO): a TCE whose signal is observed to originate on a nearby star, rather than the target star, based on examination of the pixel-level data.
   \item Ephemeris Match Indicates Contamination (EC): a TCE that has the same period and epoch as another object, and is not the true source of the signal given the relative magnitudes, locations, and signal amplitudes of the two objects.
 \end{itemize}
@@ -44,30 +44,27 @@ Another note-worth change to the DR25 Robovetter is the introduction of the v-sh
 
 \subsection{Disposition Scores}
 \label{s:scores}
-We introduce a new feature to this catalog, compared to DR24, called the "Disposition Score". Esentially the disposition score is a value between 0 and 1 that indicates the confidence in a disposition provided by the Robovetter. A higher value indicates more confidence that a TCE is a PC, regardless of the disposition it was given. This feature allows one to select the highest quality PCs by ranking KOIs by the disposition score, for both statstical studies and prioritizing individual objects for follow-up.
+We introduce a new feature to this catalog, compared to DR24, called the "Disposition Score". Essentially the disposition score is a value between 0 and 1 that indicates the confidence in a disposition provided by the Robovetter. A higher value indicates more confidence that a TCE is a PC, regardless of the disposition it was given. This feature allows one to select the highest quality PCs by ranking KOIs via the disposition score, for both use in selecting samples for occurrence rate calculations and prioritizing individual objects for follow-up.
 %This statistics argument hasn't been proven. We could discuss this, but it belongs in the disucssion "and weight them appropriately for their statistics."
 
-The disposition score was calculated by wrapping the Robovetter in a Monte Carlo routine. In each of 10,000 iterations the input metrics for the Robovetter are perturbed from their nominal values by drawing from an asymmetric Gaussian distribution centered on the nominal value. In each iteration the robovetter dispositions each TCE given the new values for each metric. The disposition score is simply the fraction of iterations that result in a disposition of PC. For example, if a PC KOI has a few metrics that are near the Robovetter's thresholds, it will frequently have at least one that is perturbed across a threshold. As a result, many of the iterations will produce a false positive and the candidate will have a low score.  Similarly, if a FALSE POSITIVE KOI barely fails a single metric, the score may be near 0.5, indicating that it was deemed a PCin half of the iterations.
+The disposition score was calculated by wrapping the Robovetter in a Monte Carlo routine. In each Monte Carlo iteration, for each TCE, new values are chosen for most of the Robovetter input metrics by drawing from an asymmetric Gaussian distribution centered on the nominal value. The Robovetter then dispositions each TCE given the new values for each metric. The disposition score is simply the fraction of Monte Carlo iterations that result in a disposition of PC. For example, if a TCE that is initially dispositioned as a PC has several metrics that are just barely on the passing side of their Robovetter thresholds, in many iterations at least one will be perturbed across the threshold. As a result, many of the iterations will produce a false positive and the TCE will be dispositioned a PC with a low score.  Similarly, if a TCE that is dispositioned in the nominal run only failed due to a single metric that was barely on the failing side of a threshold, the score may be near 0.5, indicating that it was deemed a PC in half of the iterations.
 
-To compute the asymmetric sigma values for the Gaussian distribution, we examine the distribution of the robovetter metric for the injected on-target population. We calculate the positive and negative median absolute deviation (MAD) values for each metric as a function of MES and period. These MAD values are then multiplied by a conversion factor of 1.4826 (ADD REF) to put the variability on the same scale as a standard deviation.
+To compute the asymmetric Gaussian distribution for each metric, we examined the distribution of each metric for the injected on-target planet population on FGK dwarf targets. We calculated a positive and negative median absolute deviation (MAD) value for each metric in a 20 by 20 grid in linear period space (ranging from 0.5 to 500 days) and logarithmic MES space (ranging from 7.1 to 100). Use of the MAD was chosen to be robust to outliers, and MES and period were chosen as they are fundamental properties of a TCE that track each metric's variation well. The MAD values were then multiplied by a conversion factor of 1.4826 to put the variability on the same scale as a Gaussian standard deviation \citep{Hampel1974,Ruppert2010}. A two-dimensional power-law was then fit to the 20 by 20 grid of standard deviation values, separately for the positive and negative sigma directions. With this analytical approximation for a given metric, an asymmetrical Gaussian distribution can be generated for that metric for any TCE given it's MES and period.
 
-NEED TO MENTION AND CLEAN UP FIGURES
+An example is shown in Figure~\ref{score-fig-1} for the LPP metric using the DV detrending. The top-left plot shows the LPP values of all on-target injected planets on FGK dwarf targets as a function of period, and the top-right shows them as a function of MES. The middle-left plots shows the measured positive 1$\sigma$ deviation as a function of MES and period, and the middle-right plot shows the resulting best-fit model. The bottom plots show the same thing but for the negative 1$\sigma$ deviation. As can be seen, the scatter in the LPP metric has a weak period dependence, but a strong MES dependence, due to the fact it is easier to measure the overall shape of the light curve (LPP's goal) with higher MES (signal-to-noise). Also seen is that LPP tends to scatter towards higher values much more than lower values.
 
-NEED TO LIST WHICH METRICS actually GO INTO THE Score CALCULATION
+Most, but not all, of the Robovetter metrics were amenable to this approach. Specifically, the list of metrics that perturbed in the manner above to generate the score values were: LPP for both DV and ALT, all the Modelshift metrics for both DV and ALT, the all-transits CHASES value, the max SES to MES value, the depth- and Robovetter-based odd/even metrics for DV and ALT, the ghost diagnostic, and the recomputed MES using only `good' transits left after the individual transit metrics.
 
-TALK ABOUT SCORE DISTRIBUTION HERE, OR LATER ON IN ANALYSIS?
-
-\begin{figure}
+\begin{figure*}
 \centering
-\includegraphics[width=\linewidth]{Metric-StDev-1.pdf}
-\caption{A plot of how we calculated errors for the robovetter score.[NEEDS MORE WORK]}
+\begin{tabular}{cc}
+\includegraphics[width=0.5\linewidth]{ScoreFig-1.png} &
+\includegraphics[width=0.5\linewidth]{ScoreFig-2.png} \\
+\includegraphics[width=0.5\linewidth]{ScoreFig-3.png} &
+\includegraphics[width=0.5\linewidth]{ScoreFig-4.png} \\
+\includegraphics[width=0.5\linewidth]{ScoreFig-5.png} &
+\includegraphics[width=0.5\linewidth]{ScoreFig-6.png}
+\end{tabular}
+\caption{The top-left plot shows the LPP values of all on-target injected planets on FGK dwarf targets as a function of period, and the top-right shows them as a function of MES. The middle-left plots shows the measured positive 1$\sigma$ deviation as a function of MES and period, and the middle-right plot shows the resulting best-fit model. The bottom plots show the same thing but for the negative 1$\sigma$ deviation. These resulting model distributions are used when computing the Robovetter disposition score.}
 \label{score-fig-1}
-\end{figure}
-
-\begin{figure}
-\centering
-\includegraphics[width=\linewidth]{Scores-1.pdf}
-\caption{A plot of how we calculated errors for the robovetter score.}
-\label{score-fig-2}
-\end{figure}
-
+\end{figure*}
