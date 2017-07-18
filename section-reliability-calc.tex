@@ -83,7 +83,9 @@ R= 1 - \frac{N_{FP}}{N_{PC}}\left(\frac{1-E}{E}\right)
 
 %If you choose one MES/Period bin, you can use the inversion effectiveness to calculate the reliability of the catalog for this bin. We show one example of the robovetter run below. If we consider the MES range of 10-20 and the Period range of 10-200 days, we find that the robovetter has $E=97.7\%$. The number of false positives in that bin is 2613 and the number of PCs is 730.  Thus the reliability is $1 - \frac{2613}{730} \times \frac{1-.977}{.977} = 91.7\% $.  This means that of the 730 reported PCs, 60 are actually false positives.
 
-This estimate of reliability depends sensitively on the measured effectiveness. An underestimate of effectiveness can lead to negative reliability estimates.  For instance, if the number of observed false positives is much larger than the number of false positives identified in the false alarm set, then likely we do not have a good measure of the effectiveness. When we measure a negative reliability, either we should have found more planet candidates than we did, or the number of FPs that were missed (based on the effectiveness number) is greater than the number of PCs that we have left to draw from.  This can happen if the effectiveness measured by inversion is lower than the true value. For example, if the number of hard-to-identify false alarms is larger in the \invtce\ data set than in the \opstce\ data set.   
+This method to calculate reliability depends sensitively on the measured effectiveness which relies on how well the set of known false alarms match the false alarms in the \opstce{} data set. For example, a negative reliability can result if the measured effectiveness is lower than the true value. In these cases, it will appear that there should be more PCs so that the number unidentified FPs is not larger than the number of PCs that remain to draw from.  
+
+%For instance, if the number of observed FPs significantly larger than the number of FPs identified in the false alarm set, then likely we do not have a good measure of the effectiveness. When we measure a negative reliability, either we should have found more planet candidates than we did, or the number of FPs that were missed (based on the effectiveness number) is greater than the number of PCs that we have left to draw from.  This can happen if the effectiveness measured by inversion is lower than the true value. For example, if the number of hard-to-identify false alarms is larger in the \invtce\ data set than in the \opstce\ data set.   
 
 %-----------------------
 %-----------------------
@@ -103,7 +105,7 @@ For our discussion of the reliability estimate, we are satisfied with this basic
 %Both \scrtce\ and \invtce\ sets, their Robovetter dispositions and metrics are available at the NASA Exoplanet Archive.
 %users may chose to redo this analysis with a different set of simulated false alarms to improve upon our estimates or to get a handle on accurate error bars.   
 
-\begin{figure*}[h!]
+\begin{figure*}[ht]
     \centering
     \includegraphics[width=0.9\linewidth]{fig-fractionFailsByMetric.png}
     \includegraphics[width=0.9\linewidth]{fig-fractionFailsByMetricMes.png}

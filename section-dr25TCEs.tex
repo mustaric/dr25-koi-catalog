@@ -7,18 +7,18 @@ The DR25 \opstce s, their ephemerides, and the metrics calculated by the pipelin
 
 We have plotted the distribution of the \ntcesnorogue\ \opstce s in terms of period in Figure~\ref{f:obstces}. Notice that there is an excessive number of short and long period \opstce{s}. Also the number of \opstce{s} increases with decreasing MES. 
 
-As with previous catalogs, the short period ($<10$\,d) excess is dominated by true, sinusoidal variability of the star. The long period excess is dominated by instrumental noise. For example, a decrease in flux following a cosmic ray hit (a.k.a. SPSD, Sudden Pixel Sensitivity Drop-out \citep{KDCH}), can match up with stellar variability to produce a TCE. Also, image artifacts known as rolling-band is very strong on some channels \citep[see \S6.7 of][]{KIH}  and since the spacecraft rolls every $\approx$90\,days, causing a star to move on/off a \Kepler\ detector with significant rolling band, these variations can easily line up to produce TCEs at 372\,d. This is the reason for the spike in the \opstce\ population seen in Figure~\ref{f:obstces}. Generally, the excess of long period TCEs is significantly larger than it was in the DR24 TCE catalog \citep{Seader2015}. Most likely, this is because DR24 implemented an aggressive and irregular veto known as the bootstrap metric \citep{JenkinsBootstrap}.  For DR25 this metric was calculated, but was not used as a veto. Also other vetoes were made less strict causing more TCEs across all periods to be created. 
+As with previous catalogs, the short period ($<10$\,d) excess is dominated by true, sinusoidal variability of the star. The long period excess is dominated by instrumental noise. For example, a decrease in flux following a cosmic ray hit (a.k.a. SPSD, Sudden Pixel Sensitivity Drop-out \citep{KDCH}), can match up with stellar variability to produce a TCE. Also, image artifacts known as rolling-band is very strong on some channels \citep[see \S6.7 of][]{KIH}  and since the spacecraft rolls every $\approx$90\,days, causing a star to move on/off a \Kepler\ detector with significant rolling band, these variations can easily line up to produce TCEs at 372\,d. This is the reason for the spike in the \opstce\ population seen in Figure~\ref{f:obstces}. Generally, the excess of long period TCEs is significantly larger than it was in the DR24 TCE catalog \citep{Seader2015}. Most likely, this is because DR24 implemented an aggressive and irregular veto known as the bootstrap metric \citep{Seader2015}.  For DR25 this metric was calculated, but was not used as a veto. Also other vetoes were made less strict causing more TCEs across all periods to be created. 
 
 To summarize, for DR25 the number of false signals among the \opstce s  is dramatically larger than in any previous catalog. As a result, we expect the \opstce\ list to contain more true exoplanets than before.   
 
-\begin{figure}[h!]
+\begin{figure*}[ht]
  \begin{center}
-  \includegraphics[width=1.0\linewidth]{fig-obstcePeriods.png}
+  \includegraphics[width=0.85\linewidth]{fig-obstcePeriods.png}
   \caption{Histogram of the log$_{10}$(period) in days of the \opstce{s} (black). The DR24 catalog obsTCEs \citep{Seader2015} are shown in green for comparison. The number of long period TCEs is much larger for DR25, requiring a more effective Robovetter than in DR24.}
   %\caption{\ref{f:tces} A two dimensional histogram of the number of TCEs by log(period) and log(MES). The marginalized distributions for log(period) and log(MES) are projected along their respective axes and shown on the top and right respectively. }
   \label{f:obstces} 
  \end{center}
- \end{figure}
+ \end{figure*}
 
 
 

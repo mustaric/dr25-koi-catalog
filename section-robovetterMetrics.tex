@@ -57,7 +57,7 @@ A very large fraction of false positive TCEs have light curves that do not resem
 
 Many short-period false positives are due to variable stars that exhibit a quasi-sinusoidal phased light curve. We implemented the LPP transit-like metric described by \citet{Thompson2015b} to separate those TCEs that show a transit shape from those that do not. This technique bins the TCE's folded light curve and then applies a dimensionality reduction algorithm called Locality Preserving Projections (LPP) \citep{He2004}.  It then measures the average Euclidean distance to the nearest known transit-like TCEs to yield a single number that represents the similarity of a TCE's shape to that of known transits. 
 
-For the DR25 KOI catalog, we deviated slightly from the method described by \citet{Thompson2015b}.  This was done because the original metric was highly dependent on both period and MES. The empirical LPP metric threshold increases at periods less than a few days. This is caused by the fact these TCEs transit for a large fraction of the orbital period and thus have a different transit shape. Because transit injection does not include a large number of this type of event, the LPP values for good transits can be larger. The trend with MES is rooted in the fact that when the binned light curve has a lower signal to noise, it is less likely for two folded light curves to be similar to each other, creating more scatter in the final metric. 
+For the DR25 KOI catalog, we deviated slightly from the method described by \citet{Thompson2015b} \footnote{The code is available on sourceforge here https://sourceforge.net/p/lpptransitlikemetric/code/HEAD/tree/DR25Production/}.  This was done because the original metric was highly dependent on both period and MES. The empirical LPP metric threshold increases at periods less than a few days. This is caused by the fact these TCEs transit for a large fraction of the orbital period and thus have a different transit shape. Because transit injection does not include a large number of this type of event, the LPP values for good transits can be larger. The trend with MES is rooted in the fact that when the binned light curve has a lower signal to noise, it is less likely for two folded light curves to be similar to each other, creating more scatter in the final metric. 
 
 To calculate the LPP metric we start with detrended \kepler{} light curves. Note, we calculated the metric for both the DV and ALT detrendings. When training the LPP algorithm, we used the set of recovered transit injection TCEs and those planet candidates from the DR24 KOI catalog \citep{Coughlin2016} that were found as TCEs in DR25.  Because we injected very few short period transits, including the short period DR24 candidates helped reduce the dependence of the LPP metric on period.  Also, we changed how the folded light curve was binned. To remove some of the MES dependence, TCEs with lower MES are given wider bins for those near the transit center; note, this does not change the number of bins. Because it yielded better performance, we used 99 bins in total to represent the shape of the folded light curve (41 bins emphasizing the in-transit portion), used the LPP algorithm to reduce the dimensions down to 12 and compared to the 5 nearest neighbors in the training set.  Finally, we divided these raw LPP values by the  75$^{th}$ percentile of the LPP values for the 100 TCEs that are closest in period. 
 
@@ -121,7 +121,7 @@ When examining all events among all TCEs, assuming Gaussian noise, the minimum t
     FA_{2} = \sqrt{2}\cdot \textrm{erfcinv}\left(\frac{T_{\rm dur}}{P}\right)
 \end{equation}
 
-\noindent We thus compute the following quantities to use as decision metrics
+\noindent We compute the following quantities to use as decision metrics
 
 \begin{equation}
     MS_{1} = FA_{1} - \sigma_{\rm Pri}/F_{\rm Red}
@@ -227,7 +227,7 @@ If all of the following criteria are met:
 
 \noindent then that event is determined to be due to a systematic rather than a transit, and labeled as a ``bad'' event. Note, N$_{RealTrans}$ is the total number of observed transit events for the TCE.
 
-The Marshall code used for the DR25 KOI catalog is available on sourceforge, \url{https://sourceforge.net/projects/marshall/?source=directory}.
+The Marshall code used for the DR25 KOI catalog is available on sourceforge\footnote{ \url{https://sourceforge.net/projects/marshall/?source=directory}}.
 
 
 \paragraph{Chases -- SES artifacts}
@@ -257,42 +257,32 @@ For each TCE with five or fewer transit events contributing to the signal, $Ch_{
 \label{fig:chases3}
 \end{figure}
 
-%Chris on KSO-447: I have only included events where an absolute value of the SES peak within 0.8 of the transit event SES is within 30\% of the analysis window. The analysis window is set to Porb/10.0.
-
-%``Chases'' looks at the TPS convolved light curve and measures the amount of ayssmetry in the SES time serires...
-
-
 
 \paragraph{Skye -- Image Artifacts Clustered by Skygroup}
 \label{s:skye}
 
-% CHECK IF THE TERM 'SKYGROUP' HAS BEEN DEFINED PREVIOUSLY. IF NOT, DEFINE IT HERE.
-
 As discussed in \ref{s:marshall}, there are a number of TCEs caused by rolling-band image artifacts. These artifacts appear as a reduction in flux that moves across the CCD and therefore affects different targets on the same CCD at about the same time. Thus, if a number of individual transit events from TCEs on different targets, but the same skygroup (region of the sky that falls on the same CCD each quarter), occur at the same time, they are very likely systematic in origin. The metric called ``Skye'' looks for an excess in the number of individual events occurring at the same time in the same skygroup. If an excess is identified we consider these events to be caused by artifacts. 
 
-More specifically, for each skygroup we bin the individual events into 1.0\,d bins. We only use those \opstce\ with periods greater than 45 days ($\sim$half a \Kepler\ quarter) for each skygroup. The reason for the period cut is that the long-period \opstce s are likely to be affected by rolling-band systematics, but the short-period ones are not.  Including shorter period TCEs would dramatically increase the number of individual transits and would reduce the significance of the anomalous peaks.  See Figure~\ref{skyefig} for an example of the anomalous peaks seen when the data is binned in this way.
+More specifically, for each skygroup we bin the individual events into 1.0\,d bins. We only use those \opstce\ with periods greater than 45\,d ($\sim$half a \Kepler\ quarter) for each skygroup. The reason for the period cut is that the long-period \opstce{s} are likely to be affected by rolling-band systematics, but the short-period ones are not.  Including shorter period TCEs would dramatically increase the number of individual transits and would reduce the significance of the anomalous peaks.  See Figure~\ref{skyefig} for an example of the anomalous peaks seen in some skygroups when the data is binned in this way.
 
 To determine which events are anomalous, for each skygroup, we compute the average rate ($R$) of transits, by dividing the overall number of transit times in the skygroup by the number of 1.0\,d bins. Assuming the majority of transits are randomly distributed in time, and utilizing Poisson counting statistics, any peaks greater than:
 
 \begin{equation}
+\label{eq:skye}
 threshold = R + N*\sqrt{R}
 \end{equation}
 
 \noindent are statistically significant and indicative of temporal clustering, given a chosen value for $N$. We choose a value of $N = 3.0$, and robustly determine the rate for each skygroup by first computing the \emph{threshold} using all the bins, then iteratively rejecting all bins with a height greater than \emph{threshold} and re-computing \emph{threshold} until it converges and does not change with further iterations.
 
-For each skygroup and its threshold, we identify the individual times-of-transit for TCEs belonging to the skygroup that fall in bins that are above the threshold. We assign Skye values of 1 to these individual events to indicate they are 'bad'. The Skye value for all other transit times are set to 0.  
-
-["What figures should be added to show how it works?" The plot for skygroup 41 (Figure 19) illustrates the effect quite well. Caption should state that the horizontal line is the 3-sigma threshold. Perhaps add  plots for a few more skygroups?]
-
-["Do we need to prove how well it works?" Is it true that the periodicity of the main anomalous transit times corresponds to the rolling band period?  Are the skygroups with identified anomalous events known to be the skygroups associated with rolling bands? If so, that would be evidence that it works and could be stated in the text.]
-
-
-
+For each skygroup and its threshold, we identify the individual times-of-transit for TCEs belonging to the skygroup that fall in bins that are above the threshold. We assign Skye a value of one to these individual events to indicate they are ``bad". The Skye value for all other transit times are set to zero.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=\linewidth]{Skye-Paper-Plot.png}
-\caption{Skye Example. WE WILL need to update a some point.}
+\begin{tabular}{c}
+\includegraphics[width=\linewidth]{Skye-Paper-Plot-55.pdf}\\
+\includegraphics[width=\linewidth]{Skye-Paper-Plot-58.pdf}
+\end{tabular}
+\caption{An example of how the Skye metric flags individual transit events. The plots show the number of individual transit events (from TCEs with periods greater than 45 days) that occur in half-day time bins throughout the mission duration. Two of the 84 skygroups were chosen to be shown as examples, with skygroup 55 plotted on top, and skygroup 58 plotted on bottom. As can be seen, skygroup 58 has a strong clustering of transit events at times that correspond to the $\sim$372~day orbital period of the spacecraft, as the stars belonging to skygroup 58 fall on CCD channels with strong rolling-band signal. In contrast, skygroup 55 is nearly uniform. Individual transits that occur in a half-day time bin with a number of transit events above the threshold (shown by the blue horizontal line; see Equation~\ref{eq:skye}) are flagged as bad transits due to the Skye metric.}
 \label{skyefig}
 \end{figure}
 
@@ -305,7 +295,7 @@ A valid transit-like TCE should be comprised of individual events that correspon
 
 \paragraph{Tracker -- Ephemeris Slip}
 \label{s:tracker}
-After the TPS module of the \kepler{} pipline detects a TCE, it is sent to to DV to be fit with a full transit model. DV allows the period and epoch to vary when fitting in order to provide as accurate a fit as possible. Sometimes the TPS ephemeris and DV ephemeris can end up significantly different though. When this occurs it indicates that the underlying data is not transit-like and the TCE is likely due to quasi-sinusoidal systematics, which cause the ephemeris to wander when fitting.
+After the TPS module of the \kepler{} pipeline detects a TCE, it is sent to to DV to be fit with a full transit model. DV allows the period and epoch to vary when fitting in order to provide as accurate a fit as possible. Sometimes the TPS ephemeris and DV ephemeris can end up significantly different though. When this occurs it indicates that the underlying data is not transit-like and the TCE is likely due to quasi-sinusoidal systematics, which cause the ephemeris to wander when fitting.
 
 ``Tracker'' keeps track of the time difference between the TPS and DV linear ephemerides in units of the TCE's duration. When Tracker $>$ 0.5 for any transit event we designate the event as 'bad'.
 
@@ -317,8 +307,6 @@ After the TPS module of the \kepler{} pipline detects a TCE, it is sent to to DV
 Due to the method of data gapping employed in TPS, sometimes the \kepler{} pipeline can create a TCE that has a majority of its individual events occur where there is no actual in-transit data. This tends to happen particularly in multi-TCE systems, because once the \kepler{} Pipeline detects a TCE in a given system, it removes the data corresponding to the in-transit cadences of that TCE, and re-searches the light curve. 
 
 We thus developed a metric that measures the number of individual transit events that actually contain data. Specifically we compute the fraction of individual events with either SES~$\ne$~0 or Rubble~$>$~0.75, which indicate there is sufficient in-cadence data present. If the fraction of transits with data is~$\le$~0.5, then we fail the TCE as not transit-like.
-%[If there are 3 transits and one of them has insufficient data, this metric would not fail the TCE. Is there another metric that would? -- YES See prev section.]
-
 
 
 \subsection{Stellar Eclipse}
@@ -338,8 +326,8 @@ However, many of these KOIs are FPs due to eclipsing binaries and contamination 
 
 \begin{figure*}[ht]
 \centering
-\includegraphics[width=\linewidth]{RoboVetter-Diagram-V3-SigSec.pdf}
-\caption{Flowchart describing the stellar system tests of the robovetter. Diamonds represent ``yes'' or ``no'' decisions that are made with quantitative metrics. The multiple arrows originating from ``Start'' represent decisions that are made in parallel. NEED TO UPDATE!!}
+\includegraphics[width=\linewidth]{RoboVetter-Diagram-V4-SigSec.pdf}
+\caption{Flowchart describing the stellar eclipse tests of the robovetter. Diamonds represent ``yes'' or ``no'' decisions that are made with quantitative metrics. The multiple arrows originating from ``Start'' represent decisions that are made in parallel.}
 \label{robovetter-sigsec-fig}
 \end{figure*}
 
@@ -361,7 +349,7 @@ Occasionally the \kepler{} pipeline will detect the secondary eclipse of an EB a
 \label{secdetectsec}
 \label{s:second}
 
-There are many cases when a secondary eclipse does not produce its own TCE, most often when its MES is below the \kepler{} pipeline detection threshold of 7.1. The model-shift uniqueness test, discussed in \S\ref{s:ms}, is well-suited to automatically detect secondary eclipses in the phased light curve, as it searches for the next two deepest events aside from the primary event. It is thus able to detect the best-candidate secondary eclipse in the light curve and assess its significance. We thus compute the following quantities to use as secondary deteection metrics
+There are many cases when a secondary eclipse does not produce its own TCE, most often when its MES is below the \kepler{} pipeline detection threshold of 7.1. The model-shift uniqueness test, discussed in \S\ref{s:ms}, is well-suited to automatically detect secondary eclipses in the phased light curve, as it searches for the next two deepest events aside from the primary event. It is thus able to detect the best-candidate secondary eclipse in the light curve and assess its significance. We compute the following quantities to use as secondary detection metrics
 
 \begin{equation}
     MS_{4} = \sigma_{\rm Sec}/F_{\rm Red} - FA_{1}
@@ -379,7 +367,7 @@ If $MS_{4}$~$>$1, $MS_{5}$~$>$0, and $MS_{6}$~$>$0, in either the DV or alternat
 
 \paragraph{Candidates with Significant Secondaries}
 \label{s:sscand}
-There are two exceptions when the above-mentioned conditions are met, but the robovetter does not designate the TCE a false positive. First, if the primary and secondary depths are statistically indistinguishable, and the secondary is located at phase 0.5, then it is possible that the TCE is a PC that has been detected at twice the true orbital period. Thus, the robovetter labels a TCE with a significant secondary as a PC when ${\sigma_{\rm Pri} - \sigma_{\rm Sec} < FA_{2}}$ and the phase of the secondary is within 1/4 of the primary transit's duration of phase 0.5. Second, hot Jupiter PCs can have detectable secondary eclipses due to planetary occultations via reflected light and thermal emission \citep{Coughlin2012}. Thus, a TCE with a detected significant secondary is labeled as a PC with the significant secondary flag (in order to facilitate the identification of hot Jupiter occultations) when the geometric albedo is less than 1.0, the planetary radius is less than 30~\re{}, the depth of the secondary is less than 10\% of the primary, and the impact parameter is less than 0.95. The additional criteria beyond the albedo criterion are needed to ensure that this test is only applied to potentially valid planets and not grazing eclipsing binaries. We calculate the geometric albedo by using the stellar mass, radius, and effective temperature from \citet{Huber2014a}, and the values of the period and radius ratio from the DV module of the \kepler{} pipeline.
+There are two exceptions when the above-mentioned conditions are met, but the robovetter does not designate the TCE a false positive. First, if the primary and secondary widths and depths are statistically indistinguishable, and the secondary is located at phase 0.5, then it is possible that the TCE is a PC that has been detected at twice the true orbital period. Thus, the robovetter labels a TCE with a significant secondary as a PC when ${\sigma_{\rm Pri} - \sigma_{\rm Sec} < FA_{2}}$ and the phase of the secondary is within 1/4 of the primary transit's duration of phase 0.5. Second, hot Jupiter PCs can have detectable secondary eclipses due to planetary occultations via reflected light and thermal emission \citep{Coughlin2012}. Thus, a TCE with a detected significant secondary is labeled as a PC with the significant secondary flag (in order to facilitate the identification of hot Jupiter occultations) when the geometric albedo is less than 1.0, the planetary radius is less than 30~\re{}, the depth of the secondary is less than 10\% of the primary, and the impact parameter is less than 0.95. The additional criteria beyond the albedo criterion are needed to ensure that this test is only applied to potentially valid planets and not grazing eclipsing binaries. We calculate the geometric albedo by using the stellar mass, radius, and effective temperature from \citet{Huber2014a}, and the values of the period and radius ratio from the DV module of the \kepler{} pipeline.
 
 
 
@@ -432,8 +420,7 @@ The Centroid Robovetter gives the \kepler\ Robovetter several flags to indicate 
 
 \subsubsection{Ghost Diagnostic}
 \label{s:ghost}
-The last method we use to detect a centroid offset is the ghost diagnostic, which was added to the DR25 \kepler{} Pipeline. It determines whether a transit signal is likely to be contaminated from a ghost image of a star located away from the target star in the focal plane. Ghost reflections occur when light from a bright star is reflected from the CCD reflects again from the field flattener plate and back onto the CCD as a diffuse, out-of-focus image of the pupil of
-the telescope. A similar type of false positive results from direct PRF (Pixel Response Function) contamination, when flux from the broad wings of the PRF of a bright star near the target star on the CCD overlaps the target star's PRF.  If a ghost reflection (or the PRF of a nearby star) containing a transit-like signature (e.g. an eclipsing binary signal) overlaps the PRF of a target star, then the contaminating transit signal will be significantly stronger relative to the target's flux in the periphery of the target star's PRF than in its core.
+The last method we use to detect a centroid offset is the ghost diagnostic, which was added to the DR25 \kepler{} Pipeline. It determines whether a transit signal is likely to be contaminated from a ghost image of a star located away from the target star in the focal plane. Ghost reflections occur when light from a bright star is reflected from the CCD reflects again from the field flattener plate and back onto the CCD as a diffuse, out-of-focus image of the pupil of the telescope. A similar type of false positive results from direct PRF (Pixel Response Function) contamination, when flux from the broad wings of the PRF of a bright star near the target star on the CCD overlaps the target star's PRF.  If a ghost reflection (or the PRF of a nearby star) containing a transit-like signature (e.g. an eclipsing binary signal) overlaps the PRF of a target star, then the contaminating transit signal will be significantly stronger relative to the target's flux in the periphery of the target star's PRF than in its core.
 
 To detect this type of false alarm, the ghost diagnostic essentially measures the strength of the TCE signal in two separate light curves --- one created using the average of the pixels inside the target's optimal aperture minus the average of the pixels in an annulus surrounding the target aperture (core aperture correlation statistic), and the other using the average of the pixels in the annulus surrounding the target aperture (halo aperture correlation statistic). If the ratio of the halo aperture to core aperture statistic is greater than 4.0, the TCE is marked as a FP due to a centroid offset. This ghost diagnostic is not available for vetting the \scrtce s. 
 
@@ -445,14 +432,19 @@ To detect this type of false alarm, the ghost diagnostic essentially measures th
 
 Another method for detecting FPs due to contamination is to compare the ephemerides (periods and epochs) of TCEs to each other, as well as other known variable sources in the \kepler{} field. If two targets have the same ephemeris within a specified tolerance, then at least one of them is a FP due to contamination. \citet{Coughlin2014a} used Q1--Q12 data to compare the ephemerides of KOIs to each other and eclipsing binaries known from both \kepler{}- and ground-based observations. They identified over 600 FPs via ephemeris matching, of which over 100 were not known as FPs via other methods. They also identified four main mechanisms of contamination. The results of \citet{Coughlin2014a} were incorporated in \citet[][see \S3.3]{Rowe2015a}. \citet[][see \S5.3]{Mullally2015cat} slightly modified the ephemeris matching process of \citet{Coughlin2014a}, and applied it to all of the Q1--Q16 TCEs, as well as known KOIs and EBs, identifying nearly 1,000 TCEs as FPs. The same process was again used in the \citet{Coughlin2016} catalog.
 
-We modify the matching criteria used in previous catalogs to obtain more accurate matches, due especially to the very large number of long-period TCEs encountered in DR25 compared to previous activities. We utilize the results of the transit injection run (\S\ref{s:simulated}) to measure the ability of the \kepler{} pipeline to recover period and epoch as a function of period. In Figure~\ref{injephemfig} we show, in the top two panels, the difference in the injected and recovered period and epoch, as a function of the injected period. The middle and bottom panels show the measured standard deviation of the difference as a function of period, in linear and logarithmic space respectively. The red line is the result of a best-fit power law.
+We modify the matching criteria used in previous catalogs to obtain more accurate matches, due especially to the very large number of long-period TCEs encountered in DR25 compared to previous activities. We utilize the results of the transit injection run (\S\ref{s:simulated}) to measure the ability of the \kepler{} pipeline to recover period and epoch as a function of period. In Figure~\ref{injephemfig} we show, in the top two panels, the difference in the injected and recovered period and epoch, as a function of the injected period. The bottom panels show the measured standard deviation of the difference as a function of period, in linear and logarithmic space respectively. The red line is the result of a best-fit power law.
 
-\begin{figure}[h]
+\begin{figure*}[ht]
 \centering
-\includegraphics[width=\linewidth]{DR25-Injected-Vs-Recovered-Periods-And-Epochs.png}
-\caption{A plot of injected vs. recovered periods and epochs of injected on-target planets. MAYBE UPDATE TO JUST 2x2 WITH ALL LOG-SCALE - I.E. KEEP BOTTOM PLOTS, TAKE OUT MIDDLE, AND MAKE TOP LOGSCALE.}
+\begin{tabular}{cc}
+\includegraphics[width=0.5\linewidth]{INJ1-Ephem-Recovery-1.png} &
+\includegraphics[width=0.5\linewidth]{INJ1-Ephem-Recovery-2.png} \\
+\includegraphics[width=0.5\linewidth]{INJ1-Ephem-Recovery-3.png} &
+\includegraphics[width=0.5\linewidth]{INJ1-Ephem-Recovery-4.png}
+\end{tabular}
+\caption{A plot of injected vs. recovered periods and epochs of injected on-target planets. The top plots shows the difference between the injected and recovered periods (top) and epochs (right) as a function of period. The bottom plots show the measured standard deviation of the differences in period (left) and epoch (right) in logarithmic space. The red line shows the best-fit power-law in each case.}
 \label{injephemfig}
-\end{figure}
+\end{figure*}
 
 
 When comparing two objects, A and B, where A is defined to have the shorter period, the new matching metrics we use, $S_{P}$ and $S_{T}$ for period and epoch respectively, are:
@@ -526,30 +518,7 @@ In this Q1--Q17~DR25 catalog, we match the ephemerides of all Q1--Q17~DR25 TCEs 
 
 
 
-
-% - I better implemented bastard detection, when an object's best match (taking into account the deepest object it can possibly match to) results in a parent can't physically be the parent. I cleaned up the PRF model fit - see attached figure [dmag-dist-drat.png] - and to document for the paper later on, I did a 4.0 sigma outlier rejection for a robust fit. I also fully automated and improved the process to make sure all bastards and recorded in the final results file.
-
-
-% - Since we now better understand column anomalies and antipodal reflection, I've also added a bastard flag to column anomalies for objects that match with their depths within a factor of 100 (i.e., 0.01 < depth1/depth2 < 100). All the real column anomalies with definitively identified parents have depth reductions of 10^3 - 10^5.
-
-
-% - I made no effort to specifically detect ~370 day rolling band TCEs, but I didn't filter them out either. We end up picking up quite a few though, mostly from the worst rolling-band channels.
-
-
-% - Overall I fail 1,859 OPS, 471 INV, 459 SS1, and 29 planet injections (23 on-target, 6 off-target). INV and SS1 produce real matches mostly due to short-period things like RR-Lyr that still produce lots of TCEs in INV and SS1.
-
-
-% - There's only one confirmed planet that fails ephemeris matching: TCE 005175986-01/KOI 2708.01. It's a 0.868 day object with a depth of 90ppm that was confirmed due to Morton's FPP analysis. It has a 1:1 period match with TCE 005088308-03 due to direct PRF, which was classified as a bastard match. Upon inspection it is likely this is a coincidence match, as the shapes are different. It's possible with more tweaking I could eliminate this match, but it's pretty well within the matching criteria.
-
-
-
-
-
-
 Via ephemeris matching, we identify \nephemmatch{} Q1--Q17~DR25 TCEs as FPs. Of these, \nonlyephemmatch{} were identified as FPs only due to ephemeris matching. We list all \nephemmatch{} TCEs in Table~\ref{ephemmatchtab}, as this information is valuable for studying contamination in the \kepler{} field. (Note that each TCE identified consists of its KIC ID and planet number, separated by a dash.) We also list in Table~\ref{ephemmatchtab} each TCE's most likely parent, the period ratio between child and parent (P$_{\rm rat}$), the distance between the child and parent in arcseconds, the offset in row and column between the child and parent in pixels ($\Delta$Row and $\Delta$Col), the magnitude of the parent (m$_{\rm Kep}$), the difference in magnitude between the child and parent ($\Delta$Mag), the depth ratio of the child and parent (D$_{\rm rat}$), the mechanism of contamination, and a flag to designate unique situations. In Figure~\ref{ephemmatchfig} we plot the location of each false positive TCE and its most likely parent, connected by a solid line. TCEs are represented by solid black points, KOIs are represented by solid green points, EBs found by \kepler{} are represented by solid red points, EBs discovered from the ground are represented by solid blue points, and TCEs due to a common systematic are represented by open black points. The \kepler{} magnitude of each star is shown via a scaled point size. Note that most parent-child pairs are so close together that the line connecting them is not easily visible on the scale of the plot. 
-
-
-Since \kepler{} does not observe every star in its field of view, it can often be the case that a match is found between two objects, but given their relative magnitude, distance, and depths it is clear that neither is the parent of the other, and so are classified as bastards \citep{Coughlin2014a}. To identify these cases for the mechanism of direct PRF contamination, we performed a robust fit of the Kepler PRF model described by equations~9~and~10 of \citet{Coughlin2014a} to the depth ratio, magnitude difference, and distance between each object identified as due to direct PRF contamination and its most likely parent. After iteratively rejecting outliers greater than 4.0 times the standard deviation the fit converged with values of $\alpha$ = 6.93\arcsec and $\gamma$ = 0.358\arcsec. Outliers greater than 4.0 times the standard deviation of the final iteration, with these resulting fit parameters, were labeled as bastards, For the mechanism of column anomaly and reflection, if the depth ratio of the two objects is between 0.01 and 100, then it is labeled a bastard, as these mechanisms should produce depth ratios of at least 1E-3 or 1E3. All bastards are identified with a flag of 1 in Table~\ref{ephemmatchtab}. Additionally, it can sometimes be the case that objects are matched via the column anomlay, but are on different outputs of the same module --- these cases likely inovlve the column anomaly working in conjunction with cross-talk, and thus are complicated, and given a flag of 2 in Table~\ref{ephemmatchtab}. Finally, a flag of 3 indicates a combination of flags 1 and 2. 
 
 
 \begin{deluxetable*}{ccccccccccc}
@@ -564,7 +533,8 @@ Since \kepler{} does not observe every star in its field of view, it can often b
 \label{ephemmatchtab}
 \end{deluxetable*}
 
-\begin{figure*}[h]
+
+\begin{figure*}[ht]
 \centering
 \includegraphics[width=\linewidth]{CCDPlot.pdf}
 \caption{Distribution of ephemeris matches on the focal plane. Symbol size scales with magnitude, while color represents the catalog in which the contaminating source was found. Blue indicates that the true transit is from a variable star only known as a result of ground-based observations. Red circles are stars listed in the \kepler{} EBWG catalog, green are KOIs, and black are TCEs. Black lines connect false positive matches with the most likely contaminating parent. In most cases parent and child are so close that the connecting line is invisible.}
@@ -572,33 +542,5 @@ Since \kepler{} does not observe every star in its field of view, it can often b
 \end{figure*}
 
 
-% The larger number of matches compared to the Q1--Q12 and Q1--Q16 catalogs is predominately the result of a much larger short-period false positive population compared to Q1--Q16, and an extended baseline compared to Q1--Q12, coupled with matching all TCEs and not just KOIs. In Q1--Q17~DR24 we identify an additional contamination mechanism, which we label ``Common Systematic''. As mentioned in \S\ref{tcesec}, these are over 200 TCEs that are caused by 3 systematic events that are common to all \kepler{} CCDs and happen to be equidistant in time with a spacing of $\sim$459 days. 
 
-% We also identify 119 examples of ``Column Anomaly'', which is a previously identified mechanism where a parent is able to contaminate a child at large distances if they both lie on the same column of a CCD. This mechanism is particularly pernicious because it does not result in a visible centroid offset; the apparent location of the transit signal via the difference images coincides with the target. If the parent is not observed by \kepler{}, then the child could go undetected as a FP due to the column anomaly, as was recently the case for KOI~6705.01 \citep{Gaidos2015}. The large number of examples of column anomaly now available in the Q1--Q17~DR24 catalog reveals the following:
-
-% \begin{itemize}
-
-% \item Despite equally searching for matches in row and column, no instance of ``row-anomaly'' has been found to occur.
-
-% \item The CCDs are read out in the column direction.
-
-% \item In 91.6\% of cases, the child is at a higher row number than the parent, and thus the parent's pixels are read out before the child's. (The remaining 8.4\% of cases may not have the true parent identified, but rather a sibling, as only the most likely parent is listed, and many parents are unobserved by the spacecraft.)
-
-% \item Most cases show the depth of the child increases over time.
-
-% \item The effect appears to exhibit seasonal depth variations in most cases.
-
-% \item The average depth ratio between parent and child is a factor of $\sim$$10^{4}$, and typically the parent and child have similar magnitudes.
-
-% \end{itemize}
-
-% \noindent Combining these details leads to our conjecture that the column anomaly is due to decreasing charge transfer efficiency over time, likely due to cosmic ray impacts. When the CCD is read out, some charge from the parent is left behind due to charge transfer inefficiency. As the child is read out, and its electrons pass through the pixels where the parent was, the child picks up some of the parent's left-behind electrons. Thus, the variable signal from the parent is induced in the child. As more cosmic ray impacts accumulate over time, the amount of charge left behind by the parent increases, resulting in an increase in contamination, and thus an increase in the observed depth of the child. Seasonal variation is seen as the parent and child rotate between 4 CCDs with season, and the amount of degradation varies with CCD. The average depth ratio, along with the delta magnitudes observed, indicate that a charge transfer efficiency of $\sim$99.99\% is consistent with the observed contamination, i.e., a degradation of $\sim$0.01\%. This is well within the range observed on Hubble's Advanced Camera for Surveys and other spaceborne detectors  \citep[see \S3.7 of][and references therein]{Sirianni2005}.
-
-
-
-%Jeff's words.
-%A number of long-period false positives are a result of three or more systematic events that happen to be equidistant in time and produce a TCE. There are two prominent types of systematic events in \kepler{} data: sudden pixel sensitivity dropouots (SPSDs) and step-wise discontinuities. SPSDs are due to cosmic ray impacts that temporarily reduce the detection sensitivity of the impacted pixels, resulting in a sudden drop in flux followed by an asymptotic rise back to the baseline flux level over a timescale of a few hours \citep{VanCleve2009}. Step-wise discontinuities are sudden jumps in the baseline flux level, in either the positive or negative flux direction, and are typically due to imperfect detrending, but may have other causes. If a TCE is due to several of these events that are of similar SNR, they will not be flagged as false positives without examining the shape of their individual events.
-
-%ARE THERE MORE MODELS THAN JUST STEPWISE AND SPSD? WERE ANY ADDED IN DR25??  WHATS OFFSET ONLY - WE NEED TO DESCRIBE
-
-%In order to detect TCEs due to SPSDs and step-wise discontinuities, we developed the ``Marshall'' metric \citep{Mullally2015b}. Marshall fits a transit, SPSD, and step-wise discontinuity model to each individual event of a long-period TCE. The Bayesian Information Criterion \citep[BIC;][]{Schwarz1978} is then used to select which model best fits each individual transit event given each model's number of degrees of freedom. 
+Since \kepler{} does not observe every star in its field of view, it can often be the case that a match is found between two objects, but given their relative magnitude, distance, and depths it is clear that neither is the parent of the other, and so are classified as ``bastards'' \citep{Coughlin2014a}. To identify these cases for the mechanism of direct PRF contamination, we performed a robust fit of the Kepler PRF model described by equations~9~and~10 of \citet{Coughlin2014a} to the depth ratio, magnitude difference, and distance between each object identified as due to direct PRF contamination and its most likely parent. After iteratively rejecting outliers greater than 4.0 times the standard deviation the fit converged with values of $\alpha$ = 6.93\arcsec and $\gamma$ = 0.358\arcsec. Outliers greater than 4.0 times the standard deviation of the final iteration, with these resulting fit parameters, were labeled as bastards, For the mechanism of column anomaly and reflection, if the depth ratio of the two objects is between 0.01 and 100, then it is labeled a bastard, as these mechanisms should produce depth ratios of at least 1E-3 or 1E3. All bastards are identified with a flag of 1 in Table~\ref{ephemmatchtab}. Additionally, it can sometimes be the case that objects are matched via the column anomlay, but are on different outputs of the same module --- these cases likely inovlve the column anomaly working in conjunction with cross-talk, and thus are complicated, and given a flag of 2 in Table~\ref{ephemmatchtab}. Finally, a flag of 3 indicates a combination of flags 1 and 2. 
