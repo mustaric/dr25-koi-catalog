@@ -11,35 +11,35 @@ LPP Metric    & \ref{s:lpp}      & NT   & \spcell{LPP\_DV\\LPP\_ALT} & The folde
 \hline\\
 SWEET NTL     & \ref{s:sweetntl} & NT   &  SWEET\_NTL                & The folded event is sinusoidal. \\[2pt]
 \hline\\
-TCE CHASES    &  \ref{s:tcechases} & NT & ALL\_TRANS\_CHASES         & The transit detection statistic is unique. \\[2pt]
+TCE Chases    &  \ref{s:tcechases} & NT & ALL\_TRANS\_CHASES         & The indiv. transit detection statistics are unique. \\[2pt]
 \hline\\
-MS$_1$        &   \ref{s:ms}       & NT & \spcell{MOD\_NONUNIQ\_DV\\MOD\_NONUNIQ\_ALT} & The transit is not significant compared to red noise.  \\
+MS$_1$        &   \ref{s:ms}       & NT & \spcell{MOD\_NONUNIQ\_DV\\MOD\_NONUNIQ\_ALT} & The folded transit is significant compared to red noise.  \\
 \hline\\
 MS$_2$        &  \ref{s:ms}        & NT & \spcell{MOD\_TER\_DV\\MOD\_TER\_ALT} & Other phases are significant in the folded light curve. \\
 \hline\\
 MS$_3$        & \ref{s:ms}         & NT & \spcell{MOD\_POS\_DV\\MOD\_POS\_ALT} & Significant positive going event in the folded light curve.  \\
 \hline\\
-Max SES to MES &  \ref{s:sesmes}  & NT & INCONSISTENT\_TRANS          & TCE is dominated by a single transit. \\[2pt]
+Max SES to MES &  \ref{s:sesmes}  & NT & INCONSISTENT\_TRANS          & Dominated by a single transit. \\[2pt]
 \hline\\
-Same Period    & \ref{s:sameperiod} & NT &  SAME\_NTL\_PERIOD       & TCE has the same period as a previous not-transit-like TCE. \\[2pt]
+Same Period    & \ref{s:sameperiod} & NT &  SAME\_NTL\_PERIOD       & Same period as a previous not-transit-like TCE. \\[2pt]
 \hline\\
 Individual Transits & \ref{s:indivtrans} & NT & INDIV\_TRANS\_ & Three transits remain whose recalculated MES is $\geq$7.1.\\[2pt]
 \hspace{2em}Rubble         & \ref{s:rubble}    & - & INDIV\_TRANS\_RUBBLE    & Transit does not contain enough cadences.\\
-\hspace{2em}Marshall       & \ref{s:marshall}   & - & INDIV\_TRANS\_MARSHALL  & Transit more closely matches a known artifact. \\
+\hspace{2em}Marshall       & \ref{s:marshall}   & - & INDIV\_TRANS\_MARSHALL  & Transit shape more closely matches a known artifact. \\
 \hspace{2em}Chases         & \ref{s:chases}     & - & INDIV\_TRANS\_CHASES    & Transit event is not uniquely significant.\\
 \hspace{2em}Skye           & \ref{s:skye}       & - & INDIV\_TRANS\_SKYE      & Transit time is correlated with other TCE transits. \\
 \hspace{2em}Zuma           & \ref{s:zuma}       & - & INDIV\_TRANS\_ZUMA      & Transit is consistent with an increase in flux.\\
 \hspace{2em}Tracker        & \ref{s:tracker}   & - & INDIV\_TRANS\_TRACKER   & Fitted transit time does not match discovery transit time.\\
 \hline\\
-Gapped Transits& \ref{s:rocky}     & NT & TRANS\_GAPPED          &  The fraction of transits labeled as bad is large.\\
+Gapped Transits& \ref{s:rocky}     & NT & TRANS\_GAPPED          &  The fraction of transits identified as bad is large.\\
 \hline\\
 MS Secondary& \ref{s:second} & SS & \spcell{MOD\_SEC\_DV\\MOD\_SEC\_ALT} & A significant secondary event is detected. \\
 \hline\\
 Secondary TCE& \ref{s:secondTce} & SS & HAS\_SEC\_TCE & A subsequent TCE on the same star is the secondary.\\
 \hline\\
-Odd Even &  \ref{s:oddeven} & SS & \spcell{DEPTH\_ODDEVEN\_DV\\DEPTH\_ODDEVEN\_ALT} &  The depth of odd and even transits are different.\\
+Odd Even &  \ref{s:oddeven} & SS & \spcell{DEPTH\_ODDEVEN\_DV\\DEPTH\_ODDEVEN\_ALT\\MOD\_ODDEVEN\_DV\\MOD\_ODDEVEN\_ALT} &  The depth of odd and even transits is different.\\
 \hline\\
-SWEET EB & \ref{s:sweeteb} & SS & SWEET\_EB & Out-of-phase tidal deformation was detected.\\
+SWEET EB & \ref{s:sweeteb} & SS & SWEET\_EB & Out-of-phase tidal deformation is detected.\\
 \hline\\
 V Shape Metric & \ref{s:shapemetric} & SS & DEEP\_V\_SHAPE & The transit is v-shaped.\\
 \hline\\
@@ -51,12 +51,13 @@ Resolved Offset & \ref{s:centroidrv} & CO & CENT\_RESOLVED\_OFFSET & The transit
 \hline\\
 Unresolved Offset & \ref{s:centroidrv} & CO & CENT\_UNRESOLVED\_OFFSET & A shift in the centroid position occurs during transit.\\
 \hline\\
-Ghost Diagnostic & \ref{s:ghost} & CO & HALO\_GHOST & The transit strength in the halo pixels is too high.\\
+Ghost Diagnostic & \ref{s:ghost} & CO & HALO\_GHOST & The transit strength in the halo pixels is too large.\\
 \hline\\
 Ephemeris Match & \ref{s:ephemmatch} & EC & EPHEM\_MATCH & The ephemeris matches that of another source.
 
 \enddata
-\tablecomments{More details about all of these tests and how they are used by the Robovetter can be found in \S\ref{s:metrics} }
+\tablecomments{More details about all of these tests and how they are used by the Robovetter can be found in 
+Appendix \ref{s:metrics}. }
 \label{t:metrics}
 \tablenotetext{PC}{These tests override previous tests and will cause the TCE to become a planet candidate.}
 \end{deluxetable*}

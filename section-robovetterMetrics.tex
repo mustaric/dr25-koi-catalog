@@ -372,6 +372,7 @@ There are two exceptions when the above-mentioned conditions are met, but the ro
 
 
 \paragraph{Odd/Even Depth Difference}
+
 \label{s:oddeven}
 If the primary and secondary eclipses of an EB are similar in depth, and the secondary is located near phase 0.5, the \kepler{} pipeline may detect them as a single TCE at half the true orbital period of the EB. In these cases, if the primary and secondary depths are dissimilar enough, it is possible to detect it as a FP by comparing the depths of the odd- and even-numbered transit events. Thus, we compute the following statistic, for both the DV and alternate detrending,
 
@@ -380,6 +381,12 @@ If the primary and secondary eclipses of an EB are similar in depth, and the sec
 \end{equation}
 
 \noindent where $d_{\rm odd}$ is the median depth of the odd-numbered transits, $d_{\rm even}$ is the median depth of the even-numbered transits, $\sigma_{odd}$ is the standard deviation of the depths of the odd-numbered transits, and $\sigma_{even}$ is the standard deviation of the depths of the even-numbered transits. For the alternate detrending with a trapezoidal fit, we use all points that lie within $\pm$30 minutes of the central time of transit, as well as any other points within the in-transit flat portion of the trapezoidal fit. For the DV detrending, we use all points within $\pm$30 minutes of the central time of transit. (This threshold corresponds to the long-cadence integration time of the \kepler{} spacecraft. Including points farther away from the central time of transit degrades the accuracy and precision of the test.) If $\sigma_{\rm OE}$ $>$ 1.7 for either the DV or alternate detrending then the TCE is labeled as a FP due to a significant secondary. The value of 1.7 was empirically derived utilizing manual checks and transit injection.
+
+
+\subparagraph{Modshift Odd/Even}
+
+JEFF WRITE DESCRIPTION - USES MODSHIFT MODEL
+
 
 
 \subsubsection{Out of Eclipse Variability}
@@ -507,7 +514,7 @@ In this Q1--Q17~DR25 catalog, we match the ephemerides of all Q1--Q17~DR25 TCEs 
 \begin{itemize}
  \item Themselves.
  \item The list of \npredrtwentyfivekois{} KOIs from the NASA Exoplanet Archive cumulative KOI table after the closure of the Q1--Q17~DR24 table and publication of the last catalog \citep{Coughlin2016}.
- \item The \kepler{} EBWG of \nkebs{} “true” EBs found with \kepler{} data as of 2016 October 13 \citep{Prsa2011,Slawson2011,Kirk2016}.
+ \item The \kepler{} EBWG list of \nkebs{} ``true'' EBs found with \kepler{} data as of 2016 October 13 \citep{Prsa2011,Slawson2011,Kirk2016}.
  \item J.M. Kreiner's up-to-date database of ephemerides of ground-based eclipsing binaries as of 2016 October 13 \citep{Kreiner2004}.
  \item Ground-based eclipsing binaries found via the TrES survey \citep{Devor2008a}.
  \item The General Catalog of Variable Stars \citep[GCVS][]{Samus2015} list of all known ground-based variable stars, published 2016 October 05.
