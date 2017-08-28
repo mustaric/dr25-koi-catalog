@@ -181,9 +181,9 @@ A number of TCEs from the \kepler{} pipeline are based on transit events that ar
 
 \paragraph{Marshall -- Transit Shape}
 \label{s:marshall}
-\citet{Coughlin2016} used the Marshall method \citep{Mullally2016} to identify and reject false alarm TCEs caused by short period transients in the data. Marshall fits the proposed transit with models of a transit and various transients and used a Bayesian Information Criterion to decide which model was the best explanation for the data. Simulations in \citet{Mullally2016} showed that Marshall was 95\% complete for TCEs with periods $>150$\,days and correctly rejected 66\% of simulated artifact events. The limit on Marshall's effectiveness at eliminating false alarms was it used a parabola to describe the out-of-transit flux, which failed to capture much of the real observed stellar variability. To ensure high completeness, Marshall was tuned to prevent a variable continuum causing true transits to be rejected, at the cost of a lower than ideal effectiveness.
+\citet{Coughlin2016} used the Marshall method \citep{Mullally2016} to identify and reject false alarm TCEs caused by short period transients in the data. Marshall fits the proposed transit with models various transients and uses a Bayesian Information Criterion to decide which model is the best explanation for the data. Simulations in \citet{Mullally2016} showed that Marshall was 95\% complete for TCEs with periods $>150$\,days and correctly rejected 66\% of simulated artifact events. The limit on Marshall's effectiveness at eliminating false alarms was that it used a parabola to describe the out-of-transit flux, which failed to capture much of the real observed stellar variability. To ensure high completeness, Marshall was tuned to prevent a variable continuum from causing true transits to be rejected, at the cost of a lower than ideal effectiveness.
 
-For this catalog, we use a Gaussian Process approach \citep[GP][]{Rasmussen10} to provide an improved continuum model to improve our effectiveness while maintaining our high completeness. Briefly, our approach aims to model the covariance in the light curve to better fit the trends in our data.
+For this catalog, we use a Gaussian Process approach \citep[GP,][]{Rasmussen10} to provide an improved continuum model and increase our effectiveness, while maintaining our high completeness. Briefly, our approach aims to model the covariance in the light curve to better fit the trends in our data.
 A similar approach was used by \citet{ForemanMackey16} to model single transits due to very long period planets ($P > 1000$\,days).
 
 Our procedure is as follows. For each individual proposed transit event, we select a snippet of PDC data 30 times the reported transit duration centered on the event. Where the event happens near the start (or end) of a quarter, we take a snippet of similar length anchored at the start (or end) of the quarter. We use the George package \citep{Ambikasaran14} to fit the covariance of the out-of-transit flux with an exponential squared function, $ {\mathrm{Cov(\delta t})} = A \exp{ (\delta t/\ell)^2}$, where $A$ and $\ell$ are tunable parameters. 
@@ -197,6 +197,7 @@ G(t | A, \ell) + y_0 + S(t)\\
 G(t | A, \ell) + y_0 + S(t)(1 - \exp{\beta t})\\
 G(t | A, \ell) + y_0 + S(t - \tau/2) - S(t + \tau/2) 
 \end{aligned}\right.
+\label{e:marshall}
 \end{equation}
 
 \noindent
@@ -207,27 +208,22 @@ S(t) = \frac{d}{1 + e^{-\gamma (t-t_0)} }
 \end{equation}
 
 \noindent
-where $d$ and $t_0$ are tunable parameters, while $\gamma$ is a positive constant. This function, known as a sigmoid (or logistic) function, has asympotes of 0 for $t<<t_0$, and d for $t>>t_0$. The function transitions quickly, but smoothly, between the two states near $t=t_0$, where it takes on a value of d/2. 
+where $d$ and $t_0$ are tunable parameters and $\gamma$ is a positive constant. This function, known as a sigmoid (or logistic) function, has asympotes of 0 for $t<<t_0$, and d for $t>>t_0$. The function transitions quickly, but smoothly, between the two states near $t=t_0$, where it takes on a value of d/2. 
 
 % I think that gamma, as well as the sign of the exponential term in the  denominator should be positive. The function approaches zero as t - t0 approaches negative infinity, and approaches d as t - t0 approaches infinity.
-By using a sigmoid and avoiding the discontinuities in present in the models used by the original Marshall algorithm \citep{Mullally2016} we can use the L-BFGS-B algorithm \citep{Byrd95} available in the Scipy package \footnote{\url{www.scipy.org}} instead of the less robust Nelder-Mead.
+By using a sigmoid and avoiding the discontinuities present in the models used by the original Marshall algorithm \citep{Mullally2016} we can use the L-BFGS-B algorithm \citep{Byrd95} available in the Scipy package \footnote{\url{www.scipy.org}} instead of the less robust Nelder-Mead.
 
-The second function models a discrete jump in the data. We fit this model seeded with a negative-going dip at the predicted time of ingress, and also with a positive-going spike at the predicted egress, as we see both features in \Kepler\ data. The third model fits a Sudden Pixel Sensitivity Drop (SPSD) event, probably caused by a cosmic ray hit on the detector. The last model approximates a box transit. By varying the parameter $\gamma$ we could in principle model transit ingress and egress, but find that extra degree of freedom is not necessary to explain the low signal-to-noise events of most concern.
+The second function in equation \ref{e:marshall} models a discrete jump in the data. We fit this model seeded with a negative-going dip at the predicted time of ingress, and also with a positive-going spike at the predicted egress, as we see both types of features in \Kepler\ data. The third model fits a Sudden Pixel Sensitivity Drop (SPSD) event, probably caused by a cosmic ray hit on the detector. The last model approximates a box transit. By varying the parameter $\gamma$ we could in principle model transit ingress and egress, but find that extra degree of freedom is not necessary to fit the low signal-to-noise events of most concern.
 
-For each transit the Marshall method returns the BIC (Bayesian Information Criterion) score, the preferred model, and the difference between the BIC scores of the preferred model and the sigmoid box fit.  A transit is considered sufficiently bad when this difference (also known as the Marshall score) exceeds a particular threshold, as with the original Marshall algorithm.  However, in a few cases the Gaussian processes fails and yields extremely large, unbelievable BIC values. In these cases the transit is set to always pass.  Also, for low MES transits, the expected SES of a transit is sufficiently low that Marshall will be unable to distinguish between the ``no transit" model and a low signal-to-noise transit.  Because of this the Robovetter uses the following logic when deciding whether a specific transit is not valid:
-
-
-If all of the following criteria are met:
+For each transit the Marshall method returns the BIC (Bayesian Information Criterion) score, the preferred model, and the difference between the BIC scores of the preferred model and the sigmoid box fit.  A transit is considered sufficiently bad when this difference (also known as the Marshall score) exceeds a particular threshold, as with the original Marshall algorithm.  However, in a few cases the Gaussian process fails and yields extremely large, unbelievable BIC values. In these cases the transit is set to always pass.  Also, for low MES transits, the expected SES of a transit is sufficiently low that Marshall will be unable to distinguish between the ``no transit" model and a low signal-to-noise transit.  Because of this the Robovetter declares a specific transit is not valid if all of the following criteria are met:
 
 \begin{itemize}
 \item The BIC score of the best-fitting non-transit model is at least 10 lower than the BIC of the transit-model
 \item The BIC of the best-fitting non-transit model is less than 1.0E6
-\item Either MES/N$_{RealTrans}$ $>$ 4.0 or the lowest BIC model is for the constant offset model, [JEFF Check if a SQ Root Was USed for NRealTrans]
+\item Either MES/N$_{RealTrans}$ $>$ 4.0 or the lowest BIC model is for the constant offset model, 
 \end{itemize}
 
-\noindent then that event is determined to be due to a systematic rather than a transit, and labeled as a ``bad'' event. Note, N$_{RealTrans}$ is the total number of observed transit events for the TCE.
-
-The Marshall code used for the DR25 KOI catalog is available on sourceforge\footnote{ \url{https://sourceforge.net/projects/marshall/?source=directory}}.
+Note, N$_{RealTrans}$ is the total number of observed transit events for the TCE. The Marshall code used for the DR25 KOI catalog is available on sourceforge\footnote{ \url{https://sourceforge.net/projects/marshall/?source=directory}}.
 
 
 \paragraph{Chases -- SES artifacts}
@@ -374,19 +370,17 @@ There are two exceptions when the above-mentioned conditions are met, but the Ro
 \paragraph{Odd/Even Depth Difference}
 
 \label{s:oddeven}
-If the primary and secondary eclipses of an EB are similar in depth, and the secondary is located near phase 0.5, the \kepler{} pipeline may detect them as a single TCE at half the true orbital period of the EB. In these cases, if the primary and secondary depths are dissimilar enough, it is possible to detect it as a FP by comparing the depths of the odd- and even-numbered transit events. Thus, we compute the following statistic, for both the DV and alternate detrending,
+If the primary and secondary eclipses of an EB are similar in depth, and the secondary is located near phase 0.5, the \kepler{} pipeline may detect them as a single TCE at half the true orbital period of the EB. In these cases, if the primary and secondary depths are dissimilar enough, it is possible to detect it as a FP by comparing the depths of the odd- and even-numbered transit events and their associated uncertainties, via the following statistic,
 
 \begin{equation}
 \sigma_{\rm OE} = \frac{d_{\rm odd} - d_{\rm even}}{\sqrt{\sigma_{odd}^{2} + \sigma_{even}^{2}}} 
 \end{equation}
 
-\noindent where $d_{\rm odd}$ is the median depth of the odd-numbered transits, $d_{\rm even}$ is the median depth of the even-numbered transits, $\sigma_{odd}$ is the standard deviation of the depths of the odd-numbered transits, and $\sigma_{even}$ is the standard deviation of the depths of the even-numbered transits. For the alternate detrending with a trapezoidal fit, we use all points that lie within $\pm$30 minutes of the central time of transit, as well as any other points within the in-transit flat portion of the trapezoidal fit. For the DV detrending, we use all points within $\pm$30 minutes of the central time of transit. (This threshold corresponds to the long-cadence integration time of the \kepler{} spacecraft. Including points farther away from the central time of transit degrades the accuracy and precision of the test.) If $\sigma_{\rm OE}$ $>$ 1.7 for either the DV or alternate detrending then the TCE is labeled as a FP due to a significant secondary. The value of 1.7 was empirically derived utilizing manual checks and transit injection.
+where $d_{\rm odd}$ is the measured depth using the odd-numbered transits, with associated uncertainty $\sigma_{odd}$, and $d_{\rm even}$ is the measured depth using the even-numbered transits, with associated uncertainty $\sigma_{even}$.
 
+We use two different methods to compute $d_{\rm odd}$, $\sigma_{odd}$, $d_{\rm even}$, and $\sigma_{even}$, and thus $d_{\rm odd}$, for both for the DV and alternate detrending. For the first method, the depths are computed by taking the median of all the points near the center of all transits, and the uncertainty is the standard deviation of those points, both using only the odd- or even-numbered transits. For the alternate detrending with a trapezoidal fit, we use all points that lie within $\pm$30 minutes of the central time of transit, as well as any other points within the in-transit flat portion of the trapezoidal fit. For the DV detrending, we use all points within $\pm$30 minutes of the central time of transit. (This threshold corresponds to the long-cadence integration time of the \kepler{} spacecraft. Including points farther away from the central time of transit degrades the accuracy and precision of the test.) If $\sigma_{\rm OE}$ $>$ 1.7 for either the DV or alternate detrending then the TCE is labeled as a FP due to a significant secondary. The value of 1.7 was empirically derived utilizing manual checks and transit injection. This method is very robust to outliers and systematics, but not extremely sensitive as it does not take into account the full transit shape to measure the depth.
 
-\subparagraph{Modshift Odd/Even}
-
-JEFF WRITE DESCRIPTION - USES MODSHIFT MODEL
-
+The second method measures the depths and uncertainties by running the Modelshift test separately on the portions of the light curve within half a phase of the odd- and even-numbered transits. Modelshift measures the depths and associated uncertainties by utilizing the entire transit model and taking into account the measured noise level of the entire light curve. This method is more sensitive to small odd/even differences, but also more sensitive to outliers and light curve systematics compared to the above method.
 
 
 \subsubsection{Out of Eclipse Variability}
@@ -427,9 +421,9 @@ The Centroid Robovetter gives the \kepler\ Robovetter several flags to indicate 
 
 \subsubsection{Ghost Diagnostic}
 \label{s:ghost}
-The last method we use to detect a centroid offset is the ghost diagnostic, which was added to the DR25 \kepler{} Pipeline. It determines whether a transit signal is likely to be contaminated from a ghost image of a star located away from the target star in the focal plane. Ghost reflections occur when light from a bright star is reflected from the CCD reflects again from the field flattener plate and back onto the CCD as a diffuse, out-of-focus image of the pupil of the telescope. A similar type of false positive results from direct PRF (Pixel Response Function) contamination, when flux from the broad wings of the PRF of a bright star near the target star on the CCD overlaps the target star's PRF.  If a ghost reflection (or the PRF of a nearby star) containing a transit-like signature (e.g. an eclipsing binary signal) overlaps the PRF of a target star, then the contaminating transit signal will be significantly stronger relative to the target's flux in the periphery of the target star's PRF than in its core.
+The last method we use to detect a centroid offset is the ghost diagnostic, which was added to the DR25 \kepler{} Pipeline. It determines whether a transit signal is likely contamination from a ghost image of a star located away from the target star in the focal plane. Ghost reflections occur when light from a bright star is reflected off the CCD and again from the field flattener plate and back onto the CCD. It appears as a diffuse, out-of-focus image of the pupil of the telescope. A similar type of false positive results from direct PRF (Pixel Response Function) contamination, when flux from the broad wings of a bright star near the target star on the CCD overlaps the target star's PRF.  If a ghost reflection (or the PRF of a nearby star) containing a transit-like signature (e.g. an eclipsing binary signal) overlaps the PRF of the target star, then the contaminating transit signal will be equally strong in the periphery and the core of the target. 
 
-To detect this type of false alarm, the ghost diagnostic essentially measures the strength of the TCE signal in two separate light curves --- one created using the average of the pixels inside the target's optimal aperture minus the average of the pixels in an annulus surrounding the target aperture (core aperture correlation statistic), and the other using the average of the pixels in the annulus surrounding the target aperture (halo aperture correlation statistic). If the ratio of the halo aperture to core aperture statistic is greater than 4.0, the TCE is marked as a FP due to a centroid offset. This ghost diagnostic is not available for vetting the \scrtce s. 
+To detect this type of false alarm, the ghost diagnostic essentially measures the strength of the TCE signal in two separate light curves --- one created using the average of the pixels inside the target's optimal aperture minus the average of the pixels in an annulus surrounding the target aperture (core aperture correlation statistic), and the other using the average of the pixels in the annulus surrounding the target aperture (halo aperture correlation statistic). If the ratio of the halo aperture to core aperture statistic is greater than 4.0, the TCE is marked as a FP with the major flag set to Centroid Offset. This ghost diagnostic is not available to vet the \scrtce s. 
 
 
 
