@@ -136,7 +136,10 @@ A Fully Automated Catalog With Measured Completeness and Reliability\\Based on D
 \input{authors}
 
 \begin{abstract}
-We present the Kepler Object of Interest (KOI) catalog based on searching four years of \Kepler{} time series photometry (data release 25, Q1--Q17) for transiting exoplanets. This catalog contain 4034 candidates with periods between 0.25 and 632 days and is created using entirely automated methods. Additionally, using simulated transits and simulated noise, we measure the catalog's completeness and reliability in order to enable the catalog to be used to calculate planetary occurrence rates -- even for the terrestrial-sized planets with orbital periods of hundreds of days, which is right at the detection limit for \Kepler{} data.  This paper discusses the vetting methods used by a tool called the Robovetter to determine which of the \ntces{} signals found by the \Kepler{} Pipeline \citep{Twicken2016} are most likely exoplanet transits.  The Robovetter was also used to vet simulated transits, simulated systematic noise and simulated astrophysical false positives in order to measure its performance and to characterize the properties of the final catalog. In addition, each of the 8054 KOIs in the catalog is provided with a fit that provides a robust set of planetary parameters and Markov chain Monte Carlo error bars. This final search of the four years of \Kepler{} data yielded 219 new planet candidates, 10 of which are highly reliable, super-Earth-sized planets in the wide habitable zone of their star. For periods less than 100\,d the Robovetter completeness, or the fraction of injections that are determined to be planet candidates, is greater than 85\%. For the same period range the catalog reliability, or the fraction of candidates that are astrophysical events and are not due to systematic noise, is greater than 98\%.  However, for low signal-to-noise candidates found between 200 and 500 days our measurements indicate that the Robovetter is 73\% complete and 37\% reliable. We describe how the completeness and reliability of the catalog varies with period, signal-to-noise, number of transits and stellar type. We also calculate a value called the disposition score which provides an easy way to select a more reliable, albeit less complete, sample of candidates. The entire KOI catalog and all of the simulated data used to characterize this catalog are available at the NASA Exoplanet Archive.
+We present the Kepler Object of Interest (KOI) catalog based on searching four years of \Kepler{} time series photometry (Data Release 25, Q1--Q17) for transiting exoplanets. This catalog contains 4034 candidates with periods between 0.25 and 632 days and is created using entirely automated methods. Additionally, using simulated transits and simulated noise, we measure the vetting completeness and catalog reliability in order for the catalog to be used to calculate more accurate planetary occurrence rates --- even for the terrestrial-sized planets with orbital periods of hundreds of days, which is right at the detection limit for \Kepler{} data. At low signal-to-noise, instrumental and stellar noise are easily mistaken for astrophysical transits. By quantifying the reliability of declared candidates, this catalog can be used to accurately count the frequency of temperate, super-Earth planets around Sun-like stars in our Galaxy.
+
+
+This paper discusses the vetting methods used by a tool called the Robovetter to determine which of the \ntces{} Threshold Crossing Events (TCEs) found by the \Kepler{} Pipeline \citep{Twicken2016} are most likely caused by exoplanet transits.  The Robovetter was also used to vet simulated transits, simulated systematic noise, and simulated astrophysical false positives in order to measure its performance and to characterize the properties of the final catalog. In addition, each of the 8054 KOIs in the catalog is provided with a fit that provides a robust set of planetary parameters and Markov chain Monte Carlo error bars. This final search of the four years of \Kepler{} data yielded 219 new planet candidates, 10 of which are highly reliable, super-Earth-sized planets in a wide habitable zone of their star. For orbital periods less than 100\,d the Robovetter completeness across all observed stars, or the fraction of injections that are determined to be planet candidates, is greater than 85\%. For the same period range the catalog reliability, or the fraction of candidates that are not due to instrumental or stellar noise, is greater than 98\%.  However, for low signal-to-noise candidates found between 200 and 500 days our measurements indicate that the Robovetter is 73\% complete and 37\% reliable. We describe how the measured completeness and reliability varies with period, signal-to-noise, number of transits, and stellar type. We also discuss a value called the disposition score which provides an easy way to select a more reliable, albeit less complete, sample of candidates. The entire KOI catalog and all of the simulated data used to characterize this catalog are available at the NASA Exoplanet Archive.
 
 
 \end{abstract}
@@ -146,7 +149,7 @@ We present the Kepler Object of Interest (KOI) catalog based on searching four y
 %INTRODUCTION
 \section{Introduction}
 \input{section-introduction.tex}
-\input{abbrev.tex}
+%\input{abbrev.tex}
 
 %TCE Description
 \section{The Q1--Q17 DR25 TCEs}
@@ -220,48 +223,3 @@ Funding for the Stellar Astrophysics Centre is provided by The Danish National R
 \end{document}
 
 
-%\subsection{Individual Metrics, updates and improvements}
-
-%\paragraph{Not-Transit-Like Metrics} 
-%Some metrics that determine if a TCE is not-transit-like operate on the individual transits. We define not-transit-like as anything that does not have three periodic, box- or v-shaped events. Primarily we try to eliminate TCEs caused by instrumental or data-reduction-pipeline effects (like Sudden Pixel Sensitivity Drop Outs or detrending artifacts) and smoothly varying variable stars (pulsators, contact binaries and ellipsoidal binaries) with this high level flag.   These individual metrics are as follows: Marshall, Skye, Chases, and Rubble. The Robovetter also recalculates the MES based on the good transits and counts the number of good transits to decide which TCEs should be considered False Positives. 
-
-%\input{individualMetrics.tex}
-
-
-%\begin{enumerate}
-%\item Marshall
-%\input{marshall.tex}
-%\item Skye
-%\item ChASES
-%\item Rubble
-%\item Rocky
-%\item Grouping single transit failures and recalculating MES and counting the number of transits.
-%\end{enumerate}
-
-%Other metrics operate on data gathered using all the photometric data to determine if the transit signal is transit-like.  These metrics are as follows:
-
-%\begin{enumerate}
-%\item LPP retrained
-%\item Model Shift Uniqueness
-%\item SWEET -- for N flag
-%\item Grouped ChASES
-%\item Model Shift DMM
-%\item Model Shift Shape Metric
-%\item MES/SES
-
-%\end{enumerate}
-
-%\paragraph{Significant Secondary Metrics}
-%Some metrics look for evidence that a transit-like signal is actually due to %an eclipsing binary (foreground or background).  It primarily looks for %evidence of a secondary eclipse, but there are also metrics to look for %ellipsoidal
-
-%\begin{enumerate}
-%\item Model Shift Secondary
-%\item Model Shift Odd-Even
-%\item Simple Odd-Even
-%\item SWEET -- for S flag (we might need to combine N and S for this reason)
-%\end{enumerate}
-
-
-%\paragraph{Centroid Offset} We vet the catalog for evidence that the the target is a false positive because of a background eclipsing binary. The Centroid Robovetter us run on the pixel level data to determine if this is the case.  This is unchanged from the previous two catalogs.  The \textbf{Ghostbuster metric} is also used to determine if the TCE signal is from pixels other than the star.
-
-%\paragraph{Ephemeris Matching} We also look for evidence that 
