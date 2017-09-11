@@ -14,11 +14,11 @@ We try to avoid unnecessary acronyms and abbreviations, but a few are required t
 \item[] \textbf{DV}: Data Validation. Named after the module of the \Kepler\ Pipeline which characterizes the transits and outputs the \Kepler\ Pipeline's light curve detrending. DV is also used to refer to two sets of transit fits: original and supplemental \citep{JenkinsKDPH}.
 \item[] \textbf{ALT}: Alternative. An alternative detrending, based on the methods of \citet{Garcia2010}, is utilized by several Robovetter metrics. The \Kepler{} Pipeline performs a trapezoidal fit to the folded transit on the ALT detrended light curves.
 \item[] \textbf{MES}: Multiple Event Statistic. A statistic that measures the combined significance of all of the observed transits in the detrended, whitened light curve assuming a linear ephemeris \citep[][]{Jenkins2002b}.
-\item[] \textbf{SPSD}: Sudden Pixel Sensitivity Dropout.  A pixel can suddenly lose sensitivity after a cosmic ray hit and gradually regain sensitivity over a few hours.
-\item[] \textbf{KOI}: Kepler Object of Interest. Periodic, transit-like events that are significant enough to warrant further review. A KOI is identified with a KOI number and can be dispositioned as a planet candidate or a false positive.d  The DR25 KOIs are a subset of the DR25 \opstce{s}.
-\item[] \textbf{PC}: Planet Candidate. A TCE or KOI that passes all of the Robovetter tests and metrics. 
-\item[] \textbf{FP}: False Positive. A TCE or KOI that fails one or more of the Robovetter tests and metrics. Notice that the term includes all types of signals found in the TCE lists that are not caused by a transiting exoplanet, including eclipsing binaries and false alarms.
-\item[] \textbf{MCMC}: Markov chain Monte Carlo. This refers to transit fits which employ a MCMC algorithm in order to provide errors for fitted model parameters for all KOIs
+\item[] \textbf{SPSD}: Sudden Pixel Sensitivity Dropout.  A sudden decrease in pixel sensitivity, followed by a gradual return to normal levels over a few hours, caused by a cosmic ray hit.
+\item[] \textbf{KOI}: Kepler Object of Interest. Periodic, transit-like events that are significant enough to warrant further review. A KOI is identified with a KOI number and can be dispositioned as a planet candidate or a false positive. The DR25 KOIs are a subset of the DR25 \opstce{s}.
+\item[] \textbf{PC}: Planet Candidate. A TCE or KOI that passes all of the Robovetter false positive identification tests. 
+\item[] \textbf{FP}: False Positive. A TCE or KOI that fails one or more of the Robovetter tests. Notice that the term includes all types of signals found in the TCE lists that are not caused by a transiting exoplanet, including eclipsing binaries and false alarms.
+\item[] \textbf{MCMC}: Markov chain Monte Carlo. This refers to transit fits which employ a MCMC algorithm in order to provide robust errors for fitted model parameters for all KOIs
  \citep{Hoffman2017}.
 
 
