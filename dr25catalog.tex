@@ -42,6 +42,7 @@
 \def \ninvtces {14953} %number of inverted TCEs after cleaning and no rogue. (SET)
 \def \ninjtces {45377} %number of injected and recovered TCEs, no rogue
 \def \ninjecttargs {146,294} % number of targets that received an on-target planet transit injection
+\def \nkoisdr {8054} %Number of KOIs in the DR25 catalog.
 
 
 \lccode`1=`1
@@ -65,6 +66,8 @@
 \hyphenation{inj1TCEs}   % Makes it so that "inj1TCEs" is never hyphenated to break a line
 \hyphenation{inj2TCEs}   % Makes it so that "inj2TCEs" is never hyphenated to break a line
 \hyphenation{inj3TCEs}   % Makes it so that "inj3TCEs" is never hyphenated to break a line
+
+
 
 % using aastex version 6
 
@@ -98,6 +101,7 @@
 %%
 %% \documentclass[twocolumn,twocolappendix,linenumbers,trackchanges]{aastex6}
 
+\usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{url}
 \usepackage{color}
@@ -107,8 +111,10 @@
 %% If you want to create your own macros, you can do so
 %% using \newcommand. Your macros should appear before
 %% the \begin{document} command.
-\newcommand{\spcell}[2][c]{
-  \begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}  %Creates line breaks in tables with left justification. 
+\usepackage{multirow}
+% \newcommand{\spcell}[2][c]{
+%   \begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}  %Creates line breaks in tables with left justification. 
+
 
 \newcommand{\vdag}{(v)^\dagger}
 \newcommand\aastex{AAS\TeX}
@@ -140,10 +146,9 @@ A Fully Automated Catalog With Measured Completeness and Reliability\\Based on D
 \input{authors}
 
 \begin{abstract}
-We present the Kepler Object of Interest (KOI) catalog based on searching four years of \Kepler{} time series photometry (Data Release 25, Q1--Q17) for transiting exoplanets. This catalog contains 4034 candidates with periods between 0.25 and 632 days and is created using entirely automated methods. Additionally, using simulated transits and simulated noise, we measure the vetting completeness and catalog reliability in order for the catalog to be used to calculate more accurate planetary occurrence rates --- even for the terrestrial-sized planets with orbital periods of hundreds of days, which is right at the detection limit for \Kepler{} data. At low signal-to-noise, instrumental and stellar noise are easily mistaken for astrophysical transits. By quantifying the reliability of declared candidates, this catalog can be used to accurately count the frequency of temperate, super-Earth planets around Sun-like stars in our Galaxy.
+We present the Kepler Object of Interest (KOI) catalog of transiting exoplanets based on searching four years of \Kepler{} time series photometry (Data Release 25, Q1--Q17). The catalog contains \nkoisdr{} KOIs of which 4034 are planet candidates (219 of which are new to this catalog) with periods between 0.25 and 632~days.  At low signal-to-noise, instrumental and stellar noise are easily mistaken for astrophysical transits. To account for this bias when measuring planetary occurrence rates, we provide measurements of how well we separate planet transit signals from the various false positive signals. With this bias accounted for, we fully expect that this catalog can be used to accurately count the frequency of planets out to \Kepler{'s} detection limit, which includes a handful of temperate, super-Earth size planets around Sun-like stars in our Galaxy.
 
-
-This paper discusses the vetting methods used by a tool called the Robovetter to determine which of the \ntces{} Threshold Crossing Events (TCEs) found by the \Kepler{} Pipeline \citep{Twicken2016} are most likely caused by exoplanet transits.  The Robovetter was also used to vet simulated transits, simulated systematic noise, and simulated astrophysical false positives in order to measure its performance and to characterize the properties of the final catalog. In addition, each of the 8054 KOIs in the catalog is provided with a fit that provides a robust set of planetary parameters and Markov chain Monte Carlo error bars. This final search of the four years of \Kepler{} data yielded 219 new planet candidates, 10 of which are highly reliable, super-Earth-sized planets in a wide habitable zone of their star. For orbital periods less than 100\,d the Robovetter completeness across all observed stars, or the fraction of injections that are determined to be planet candidates, is greater than 85\%. For the same period range the catalog reliability, or the fraction of candidates that are not due to instrumental or stellar noise, is greater than 98\%.  However, for low signal-to-noise candidates found between 200 and 500 days our measurements indicate that the Robovetter is 73\% complete and 37\% reliable. We describe how the measured completeness and reliability varies with period, signal-to-noise, number of transits, and stellar type. We also discuss a value called the disposition score which provides an easy way to select a more reliable, albeit less complete, sample of candidates. The entire KOI catalog and all of the simulated data used to characterize this catalog are available at the NASA Exoplanet Archive.
+The DR25 KOI catalog was created using entirely automated methods. This paper discusses in depth the the Robovetter, a vetting tool that determines which of the \ntces{} Threshold Crossing Events found by the \Kepler{} Pipeline \citep{Twicken2016} are caused by exoplanet transits.  The Robovetter was also used to vet simulated transits, simulated systematic noise, and simulated astrophysical false positives in order to measure its performance and to characterize the properties of the final catalog. For orbital periods less than 100\,d the Robovetter completeness across all observed stars, or the fraction of injections that are determined to be planet candidates, is greater than 85\%. For the same period range the catalog reliability, or the fraction of candidates that are not due to instrumental or stellar noise, is greater than 98\%.  However, for low signal-to-noise candidates found between 200 and 500 days, our measurements indicate that the Robovetter is 73\% complete and 37\% reliable. We describe how the measured completeness and reliability varies with period, signal-to-noise, number of transits, and stellar type.  Also, we discuss a value called the disposition score which provides an easy way to select a more reliable, albeit less complete, sample of candidates. The entire KOI catalog, the transit fits using Markov chain Monte Carlo methods, and all of the simulated data used to characterize this catalog are available at the NASA Exoplanet Archive.
 
 
 \end{abstract}
@@ -161,7 +166,6 @@ This paper discusses the vetting methods used by a tool called the Robovetter to
 \input{section-dr25TCEs.tex}
 \input{section-InjInvSS1Tces.tex}
 \input{section-DVTransitFits.tex}
-
 
 %The ROBOVETTER
 \section{The Robovetter: Vetting Methods and Metrics}
@@ -203,7 +207,7 @@ This paper discusses the vetting methods used by a tool called the Robovetter to
 
 
 \acknowledgments
-This paper includes data collected by the \Kepler{} mission. Funding for the \Kepler{} mission is provided by the NASA Science Mission directorate. The authors acknowledge the efforts of the \Kepler{} Mission team for obtaining the calibrated pixel, light curve, and data validation reports used in this publication, which were generated by the \Kepler{} Mission science pipeline through the efforts of the Kepler Science Operations Center and Science Office. The Kepler Mission is led by the project office at NASA Ames Research Center. Ball Aerospace built the Kepler photometer and spacecraft which is operated by the mission operations center at LASP.  This research has made use of NASA's Astrophysics Data System.  Thanks to GNU parallel for enabling rapid running of the Robovetter \citep{Tange2011a}. We thank Paw Patrol and P.P. Mullally for inspiring the naming of certain algorithms. Thank you to \citet{Turbo-King2017} for a spirited discussion. These data products are archived at the NASA Exoplanet Science Institute, which is operated by the California Institute of Technology, under contract with the National Aeronautics and Space Administration under the Exoplanet Exploration Program. Some of the data presented in this paper were obtained from the Mikulski Archive for Space Telescopes (MAST). STScI is operated by the Association of Universities for Research in Astronomy, Inc., under NASA contract NAS5-26555. Support for MAST for non-HST data is provided by the NASA Office of Space Science via grant NNX09AF08G and by other grants and contracts.  Support from NASA grant NNX14AB82G issued through the Kepler Participating Scientist Program is acknowledged. This research was undertaken, in part, thanks to funding from the Canada Research Chairs program. This research was enabled, in part, by support provided by Calcul Qu\'{e}bec (www.calculquebec.ca) and Compute Canada (www.computecanada.ca). 
+This paper includes data collected by the \Kepler{} mission. Funding for the \Kepler{} mission is provided by the NASA Science Mission directorate. The authors acknowledge the efforts of the \Kepler{} Mission team for obtaining the calibrated pixel, light curve, and data validation reports used in this publication, which were generated by the \Kepler{} Mission science pipeline through the efforts of the Kepler Science Operations Center and Science Office. The Kepler Mission is led by the project office at NASA Ames Research Center. Ball Aerospace built the Kepler photometer and spacecraft which is operated by the mission operations center at LASP.  This research has made use of NASA's Astrophysics Data System.  Thanks to GNU parallel for enabling rapid running of the Robovetter input metrics \citep{Tange2011a}. We thank Paw Patrol and P.P. Mullally for inspiring the naming of certain algorithms. Thank you to \citet{Turbo-King2017} for a spirited discussion. These data products are archived at the NASA Exoplanet Science Institute, which is operated by the California Institute of Technology, under contract with the National Aeronautics and Space Administration under the Exoplanet Exploration Program. Some of the data presented in this paper were obtained from the Mikulski Archive for Space Telescopes (MAST). STScI is operated by the Association of Universities for Research in Astronomy, Inc., under NASA contract NAS5-26555. Support for MAST for non-HST data is provided by the NASA Office of Space Science via grant NNX09AF08G and by other grants and contracts.  Support from NASA grant NNX14AB82G issued through the Kepler Participating Scientist Program is acknowledged. This research was undertaken, in part, thanks to funding from the Canada Research Chairs program. This research was enabled, in part, by support provided by Calcul Qu\'{e}bec (www.calculquebec.ca) and Compute Canada (www.computecanada.ca). 
 D.H. and S.M. acknowledge support by the National Aeronautics and Space Administration under Grant NNX14AB92G issued through the Kepler Participating Scientist Program.
 Funding for the Stellar Astrophysics Centre is provided by The Danish National Research Foundation (Grant DNRF106). The research was supported by the ASTERISK project (ASTERoseismic Investigations with SONG and Kepler) funded by the European Research Council (Grant agreement no.: 267864).
 %\appendix
@@ -213,10 +217,9 @@ Funding for the Stellar Astrophysics Centre is provided by The Danish National R
 \bibliographystyle{aasjournal}
 \bibliography{References.bib,KSCI-Refs.bib}
 
-\clearpage
 \appendix
-\input{section-robovetterMetrics.tex}
 
+\input{section-robovetterMetrics.tex}
 
 \input{section-minorflags.tex}
 
