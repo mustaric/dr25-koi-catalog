@@ -12,9 +12,9 @@ Because most of the Robovetter tests and metrics changed between DR24 and DR25, 
 In Figure~\ref{robovetter-overview-fig} we present a flowchart that outlines our robotic vetting procedure. Each TCE is subjected to a series of ``yes'' or ``no'' questions (represented by diamonds) that either disposition it into one or more of the four FP categories, or else disposition it as a PC. Behind each question is a series of more specific questions, each answered by quantitative tests. 
 
 
-\begin{figure*}[htbp]
+\begin{figure*}[htb]
 \centering
-\includegraphics[width=0.9\linewidth]{RoboVetter-Diagram-V4-Overview.pdf}
+\includegraphics[width=\linewidth]{RoboVetter-Diagram-V4-Overview.pdf}
 \caption{Overview flowchart of the Robovetter. Diamonds represent ``yes'' or ``no'' decisions that are made with quantitative metrics. A TCE is dispositioned as a FP if it fails any test (a ``yes'' decision) and is placed in one or more of the FP categories. (A TCE that is identified as being the secondary eclipse of a system is placed in both the `Not Transit-Like' and 'Stellar Eclipse' categories.) If a TCE passes all tests (a ``no'' decision for all tests) it is dispositioned as a PC. The section numbers on each component correspond to the sections in this paper where these tests are discussed. More in-depth flowcharts are provided for the not transit-like and significant secondary modules in Figures~\ref{robovetter-transitlike-fig} and \ref{robovetter-sigsec-fig}.}
 \label{robovetter-overview-fig}
 \end{figure*}
@@ -54,9 +54,9 @@ To compute the asymmetric Gaussian distribution for each metric, we examined the
 
 An example is shown in Figure~\ref{score-fig-1} for the LPP metric (Locality Preserving Projections, see \S\ref{s:lpp}) using the DV detrending. The top-left plot shows the LPP values of all on-target injected planets on FGK dwarf targets as a function of period, and the top-right shows them as a function of MES. The middle-left plot shows the measured positive 1$\sigma$ deviation (in the same units as the LPP metric) as a function of MES and period, and the middle-right plot shows the resulting best-fit model. The bottom plots show the same thing but for the negative 1$\sigma$ deviation. As can be seen, the scatter in the LPP metric has a weak period dependence, but a strong MES dependence, due to the fact it is easier to measure the overall shape of the light curve (LPP's goal) with higher MES (signal-to-noise). Also seen is that because LPP is bounded by zero on one side, LPP can scatter to very high values, especially for low MES events. 
 
-Most, but not all, of the Robovetter metrics were amenable to this approach. Specifically, the list of metrics that were perturbed in the manner above to generate the score values were: LPP (both DV and ALT), all the Model-shift metrics (both DV and ALT), TCE Chases, max-SES-to-MES, the two odd/even metrics (both DV and ALT), Ghost Diagnostic, and the recomputed MES using only good transits left after the individual transit metrics.
+Most, but not all, of the Robovetter metrics were amenable to this approach. Specifically, the list of metrics that were perturbed in the manner above to generate the score values were: LPP (both DV and ALT), all the Model-shift metrics (MS$_1$,MS$_2$,MS$_3$, and MS Secondary, both DV and ALT), TCE Chases, max-SES-to-MES, the two odd/even metrics (both DV and ALT), Ghost Diagnostic, and the recomputed MES using only good transits left after the individual transit metrics.
 
-\begin{figure*}[hbtp]
+\begin{figure*}[hp]
 \centering
 \begin{tabular}{cc}
 \includegraphics[width=0.5\linewidth]{ScoreFig-1.png} &

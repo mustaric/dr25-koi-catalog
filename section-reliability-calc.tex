@@ -13,7 +13,7 @@
 \newcommand{\sfatce}{sfaTCE}
 
 
-We use the \injtce, \scrtce, and \invtce\ data sets to determine the performance of the Robovetter and to measure the completeness and the reliability of the catalog. 
+We use the \injtce, \scrtce, and \invtce\ data sets to determine the performance of the Robovetter and to measure the completeness and the reliability of the catalog. As a reminder, the reliability we are attempting to measure is only the reliability of the catalog against false alarms and does not address the astrophysical reliability (see \S\ref{s:occurates}. As discussed in \S\ref{s:tces}, the long-period \opstces\ are dominated by false alarms and so this measurement is crucial to understand the reliability of some of the most interesting candidates in our catalog.
 
 {\color{blue}
 Robovetter completeness, $C$, is the fraction of injected transits detected by the \Kepler\ Pipeline that are passed by the Robovetter as PCs.  As long as the \injtce{s} are representative of the observed PCs, completeness tells us what fraction of the true planets are missing from the final catalog.  Completeness is calculated by dividing the number of on-target \injtce{s} that are dispositioned as PCs (N$_{\rm PC_{\rm inj}}$) by the total number of \injtce{s} (N$_{\rm inj}$).
@@ -55,8 +55,9 @@ If the simulated false alarm TCEs accurately reflect the \opstce\ false alarms, 
 %assuming $E$~$\leq$~1.
 \begin{equation}
 \label{effect2}
-E \approx \frac{N_{\rm FP_{\rm inv}}}{N_{\rm inv}}
+E \approx E_{\rm inv} \equiv \frac{N_{\rm FP_{\rm inv}}}{N_{\rm inv}}
 \end{equation}
+
 
 For ease of notation we are using inversion to represent the false alarm TCEs, but the same calculation applies when using the combination of both inversion and scrambling, as we do later in the paper. 
 
@@ -112,7 +113,7 @@ This method to calculate reliability depends sensitively on the measured effecti
 \label{s:simularity}
 In order to use the \scrtce\ and \invtce\ sets to determine the reliability of our catalog we must assume that the properties of these simulated false alarms are similar to those of the false alarms in the \opstce\ set.  Specifically, this simulated data should mimic the observed not transit-like FPs, e.g., instrumental noise and stellar spots. For instance, our assumptions break down if all of the simulated false alarms were long-duration rolling-band false positives, but only a small fraction of the observed false positives were caused by this mechanism.  Stated another way, the method we use to measure reliability, hinges on the assumption that for a certain parameter space the fraction of a particular type of FP TCEs is the same between the simulated and observed data sets.  This is the reason we removed the TCEs caused by KOIs and eclipsing binaries in the simulated data sets (see \S\ref{s:clean}). Inverted eclipsing binaries and transits are not the type of false positive found in the \opstce\ data set.  Since the Robovetter is very good at eliminating inverted transits, if they were included, we would have an inflated value for the effectiveness, and thus incorrectly measure a higher reliability. 
 
-Figure\,\ref{f:simtces} demonstrates that the number of TCEs from inversion and scrambling individually is smaller than the number of FPs in the \opstce\ set. This is partly due to removing the stars that contain eclipsing binaries and KOIs from the sample, causing us to search a significantly smaller number of stars for instances of false alarms. The deficit is also caused by the fact that all types of false alarms are not accounted for in these simulations. For instance, the \invtce\ set will not reproduce false alarms caused by sudden dropouts in pixel sensitivity caused by cosmic rays (i.e., SPSDs). The \scrtce\ set will not reproduce the image artifacts from rolling band because the artifacts are not as likely to line-up at exactly one \Kepler -year.  However despite these complications, the period distribution of false alarms in these simulated data sets basically resembles the same period distribution as the \opstce\ FP population once the two simulated data sets are combined. And since reliability is calculated using the fraction of false alarms that are identified (effectiveness), the overabundance that results from combining the sets is not a problem.
+Figure\,\ref{f:simtces} demonstrates that the number of TCEs from inversion and scrambling individually is smaller than the number of \opstces. At periods less than $\approx$100 days this difference is dominated by the lack of planets and eclipsing binaries in the simulated false alarm data sets.  At longer periods, where the TCEs appear to be dominated by false alarms, this difference is dominated by the cleaning (\S\ref{s:clean}). Effectively, we search a significantly smaller number of stars for instances of false alarms. The deficit is also caused by the fact that all types of false alarms are not accounted for in these simulations. For instance, the \invtce\ set will not reproduce false alarms caused by sudden dropouts in pixel sensitivity caused by cosmic rays (i.e., SPSDs). The \scrtce\ set will not reproduce the image artifacts from rolling band because the artifacts are not as likely to line-up at exactly one \Kepler -year.  However despite these complications, the period distribution of false alarms in these simulated data sets basically resembles the same period distribution as the \opstce\ FP population once the two simulated data sets are combined. And since reliability is calculated using the fraction of false alarms that are identified (effectiveness), the overabundance that results from combining the sets is not a problem.
 
 Another way to judge how well the simulated data sets match the type of FP in the \opstce s is to look at some of the Robovetter metrics.  Each metric measures some aspect of the TCEs. For example, the LPP Metric measures whether the folded and binned light curves are transit shaped, and Skye measures whether the individual transits are likely due to rolling band noise.  If the simulated TCEs can be used to measure reliability in the way described above, then the fraction of false alarms in any period bin caused by any particular metric should match between the two sets.  In Figure~\ref{f:fractionFailMetric} we show that this is basically true for both \invtce s and \scrtce s, especially for periods longer than 100 days or MES less than 15.  Keep in mind that more than one metric can fail any particular TCE, so the sum of the fractions across all metrics will be greater than one.  The deviations between TCE sets is as large as 40\% for certain period ranges and such differences may cause systematic errors in our measurements of reliability.  But, since the types of false positives overlap, it is not clear how to propagate this information into a formal systematic error bar on the reliability.  
 
@@ -122,7 +123,7 @@ For our discussion of the reliability estimate, we are cautiously satisfied with
 %Both \scrtce\ and \invtce\ sets, their Robovetter dispositions and metrics are available at the NASA Exoplanet Archive.
 %users may chose to redo this analysis with a different set of simulated false alarms to improve upon our estimates or to get a handle on accurate error bars.   
 
-\begin{figure*}[htbp]
+\begin{figure*}[hp]
     \centering
     \includegraphics[width=0.9\linewidth]{fig-fractionFailsByMetric.png}
     \includegraphics[width=0.9\linewidth]{fig-fractionFailsByMetricMes.png}

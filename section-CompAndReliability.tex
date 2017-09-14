@@ -3,11 +3,13 @@
 
 To evaluate the performance of the Robovetter and to measure the catalog completeness and reliability, we run the Robovetter on the \injtce{s}, \invtce{s}, and \scrtce{s}. As a high level summary, Figure~\ref{f:scoregrid} provides the completeness, in-effectiveness ($1-E$), and reliability for a 3 by 3 grid across period and MES. If the same figure is made for only the FGK dwarf type stars (\logg~$\ge$~4.0 and 4000~K~$\ge$~\tstar~$<$~7000~K), the long period, low MES bin improves substantially. Giant stars are inherently noisy on time scales of planet transits \citep[see Figure~9 of][]{Christiansen2012} causing more FPs and also causing more real transits to be distorted by the noise. For FGK dwarf stars and only considering candidates with periods between 200--500~d and MES~<~10, $C=76.7\%$, $1-E=1.1\%$, and $R=50.3\%$, which is a 13.1 percentage point improvement in reliability and 3 percentage point improvement in completeness compared to all stars in the same period and MES range.
 
-\begin{figure}[htb]
+\begin{figure}[hp]
 \begin{center}
-\includegraphics[width=\linewidth]{fig-AllCompletePmes.png}
-\includegraphics[width=\linewidth]{fig-AllEffect-Pmes.png}
-\includegraphics[width=\linewidth]{fig-AllReliabilityPmes.png}
+\begin{tabular}{c}
+\includegraphics[width=0.94\linewidth]{fig-AllCompletePmes-trimmed.png} \\[12pt]
+\includegraphics[width=0.94\linewidth]{fig-AllEffect-Pmes-trimmed.png} \\[12pt]
+\includegraphics[width=0.94\linewidth]{fig-AllReliabilityPmes-trimmed.png}
+\end{tabular}
 %\includegraphics[width=0.48\linewidth]{fig-FgkReliabilityPmes.png}
 %\includegraphics[width=0.48\linewidth]{fig-FgkCompletePmes.png}
 \caption{A coarse binning of the completeness ($C$), ineffectiveness (1-$E$), and reliability ($R$) for different period and MES bins (shown from top to bottom, respectively). The effectiveness and reliability are based on the combined \invtce{} and \scrtce{} data sets. Notice that the Robovetter effectiveness at removing these false alarms is incredibly high, but for long periods and low MES the resulting reliability is lower because of the large number of false alarms and small number of true planets.}
@@ -22,9 +24,9 @@ To evaluate the performance of the Robovetter and to measure the catalog complet
 The completeness of the vetting is the fraction of \injtce{s} that are dispositioned as PCs. We discuss here the detection efficiency of the Robovetter, not the Kepler Pipeline (see \S\ref{s:occurates} for a discussion of the Pipeline completeness). Across the entire set of recovered \injtce{s} which have periods ranging from 0.5--500\,d, the robovetter dispositioned \completeness{}\% as PC. As expected, the vetting completeness is higher for transits at shorter periods and higher MES, and lower for longer periods and lower MES. The right hand column of Figure~\ref{f:1dcompare} shows how the completeness varies with period, expected MES, number of transits, and transit duration. Note that expected MES is the MES that the injected transit signal should have been detected at, given the measured photometric noise and the injected depth --- see \citealt{Christiansen2017} for more details. The small drop in completeness just short of 90\,days is likely caused by the odd-even metric (\S\ref{s:oddeven}), which only operates out to 90\,days, confusing true transits for binary eclipses.  
 
 
-\begin{figure*}[htb]
+\begin{figure*}[hp]
  \begin{center}
-  \includegraphics[width=0.95\linewidth]{fig-compRel1D-PerMes.png}
+  \includegraphics[width=0.9\linewidth]{fig-compRel1D-PerMes.png}
   \caption{The reliability (left) and completeness (right)  of the DR25 catalog plotted as a function of period, MES, number of transits, and transit duration. In each case the blue line is for those with MES~$\leq$~10 or periods~$\leq$~100\,d. The orange line shows the completeness or reliability for the rest of the population (see the legend for each plot). EXP\_MES is the expected MES (see \citealt{Christiansen2017} and \S\ref{s:candr}).}
   \label{f:1dcompare}
  \end{center}
@@ -33,18 +35,6 @@ The completeness of the vetting is the fraction of \injtce{s} that are dispositi
 
 Because most planet occurrence rate calculations are performed using period and radius \citep[e.g.,][]{Burke2015}, we show the measured completeness binned by period and radius in Figure~\ref{f:prCompleteness}. The plot is linear in period and radius in order to emphasize the long period planets. Planetary radius is not a natural unit to understand the performance of the Robovetter since it combines the depth of the transit, the noise level of the light curve, and the stellar radius.  At the longest periods the Robovetter more often fails the largest planets, though the trend is reduced when only considering the FGK dwarf stars. The large radii planets are primarily around giant stars, which are notoriously noisy. Thus, these planets are more likely to be dispositioned incorrectly. Also, even when only considering the dwarf stars, a larger fraction of the bigger planets will be around larger, more massive stars. This results in planets with longer transit durations. The Robovetter performs less well for long transit durations (see Figure~\ref{f:1dcompare}). For more figures showing the effectiveness across different parameters, see \citet{Coughlin2017a}.
 %For example, the probability of a planet's single transit overlapping a cadence impacted by image artifacts is higher (\S\ref{s:skye}) or the fit performed by Mars 
-
-
-\begin{figure*}[htb]
-\begin{center}
-\begin{tabular}{cc}
-\includegraphics[width=0.48\linewidth]{fig-AllCompletePR.png} &
-\includegraphics[width=0.48\linewidth]{fig-FgkCompletePR.png}
-\end{tabular}
-\caption{The Robovetter completeness binned by period and planet radius for all stars (left) and for only FGK dwarf stars (right). Bins with fewer than 10 \injtce{s} are not plotted.}
-\label{f:prCompleteness}
-\end{center}
-\end{figure*}
 
 
 \subsubsection{Effectiveness}
@@ -56,11 +46,23 @@ The effectiveness of the Robovetter at identifying instrumental and stellar nois
 The reliability is measured according to the method described in \S\ref{s:relcalc} using the effectiveness measured from the combined \scrtce{} and \invtce{} data sets and the number of observed PCs.  If one bins over the entire data set, the overall reliability of the catalog is 97\%. However, as Figure~\ref{f:1dcompare} demonstrates, the reliability for long period, and especially low MES planets, is significantly smaller.  For periods longer than 200\,d and MES less than 10, the reliability of the catalog is approximately 37\%, i.e., 6 out of 10 PCs are caused by noise. As with completeness, we plot the reliability as a function of period and planet radius in Figure~\ref{f:prReliability}. As expected, the least reliable planets are at long periods and have radii less than 4\re. 
 
 
+\begin{figure*}[ht]
+\begin{center}
+\begin{tabular}{cc}
+\includegraphics[width=0.5\linewidth]{fig-AllCompletePR-trimmed.png} &
+\includegraphics[width=0.5\linewidth]{fig-FgkCompletePR-trimmed.png}
+\end{tabular}
+\caption{The Robovetter completeness binned by period and planet radius for all stars (left) and for only FGK dwarf stars (right). Bins with fewer than 10 \injtce{s} are not plotted.}
+\label{f:prCompleteness}
+\end{center}
+\end{figure*}
+
+
 \begin{figure*}[htb]
 \begin{center}
 \begin{tabular}{cc}
-\includegraphics[width=0.48\linewidth]{fig-AllReliabilityPR.png} &
-\includegraphics[width=0.48\linewidth]{fig-FgkReliabilityPR.png}
+\includegraphics[width=0.5\linewidth]{fig-AllReliabilityPR-trimmed.png} &
+\includegraphics[width=0.5\linewidth]{fig-FgkReliabilityPR-trimmed.png}
 \end{tabular}
 \caption{A 2D binning of the candidate catalog reliability for period and planet radius for all stars (left) and for the FGK dwarf stars (right). Bins with fewer than 3 candidates or fewer than 20 simulated false alarms (from \invtce{} and \scrtce{}) are not plotted.}
 \label{f:prReliability}
@@ -99,8 +101,8 @@ It is interesting to note that the number of inferred candidates, i.e., the numb
 \begin{figure}[htb]
  \begin{center}
  \begin{tabular}{c}
-  \includegraphics[width=\linewidth]{fig-CRadjustScore-DR25.png} \\
-  \includegraphics[width=\linewidth]{fig-varyScoreNcandidatesBox2.png}
+  \includegraphics[width=\linewidth]{fig-CRadjustScore-DR25-trimmed.png} \\[12pt]
+  \includegraphics[width=\linewidth]{fig-varyScoreNcandidatesBox2-trimmed.png}
   \end{tabular}
   \caption{\label{f:adjscore}[Top] The reliability (red) and effectiveness (blue) of the DR25 catalog as a function of Completeness for MES~$\leq$~10 and periods between 200 and 500\,d PCs that result when using different disposition score thresholds (shown as black numbers) to select the PCs. Higher disposition score thresholds result in higher reliability but lower completeness. [Bottom] The number of PCs (in red) in the same period and MES space when making a cut on different disposition scores.  The blue line corrects the number of candidates for the completeness and reliability. The error bars only reflect a Poisson error based on the number of observed planet candidates.}
  \end{center}
