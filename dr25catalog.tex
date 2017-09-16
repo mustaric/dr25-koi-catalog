@@ -1,48 +1,48 @@
 % Common commands
-\def \logg {$\log{g}$}
-\def \rsun {$R_{\sun}$}
-\def \msun {$M_{\sun}$}
-\def \lsun {$L_{\sun}$}
-\def \rstar {$R_{\star}$}
-\def \mstar {$M_{\star}$}
-\def \tstar {$T_{\star}$}
-\def \rp {$R_{p}$}
-\def \mp {$M_{p}$}
-\def \sp {$S_{p}$}
-\def \teq {T$_{\rm eq}$}
-\def \rj {$R_{J}$}
-\def \mj {$M_{J}$}
-\def \re {$R_{\earth}$}
-\def \Rearth {$R_{\earth}$}
-\def \me {$M_{\earth}$}
-\def \se {$S_{\earth}$}
-\def \kepler {\emph{Kepler}}
-\def \KEPLER {\emph{KEPLER}}
-\def \keplers {\emph{Kepler's}}
-\def \Ktwo {\emph{K2}}
-\def \th {$^{\rm th}$}
-\def \injtce {injTCE}
-\def \scrtce {scrTCE}
-\def \invtce {invTCE}
-\def \opstce {obsTCE}
-\def \injtces {injTCEs}
-\def \scrtces {scrTCEs}
-\def \invtces {invTCEs}
-\def \opstces {obsTCEs}
+\newcommand{ \logg} {$\log{g}$}
+\newcommand{ \rsun }{$R_{\sun}$}
+\newcommand{ \msun }{$M_{\sun}$}
+\newcommand{ \lsun }{$L_{\sun}$}
+\newcommand{ \rstar }{$R_{\star}$}
+\newcommand{ \mstar}{$M_{\star}$}
+\newcommand{ \tstar}{$T_{\star}$}
+\newcommand{ \rp}{$R_{p}$}
+\newcommand{ \massp}{$M_{p}$}
+\newcommand{ \Splanet}{$S_{p}$}
+\newcommand{ \teq}{T$_{\rm eq}$}
+\newcommand{ \rj}{$R_{J}$}
+\newcommand{ \mj}{$M_{J}$}
+\newcommand{ \re}{$R_{\earth}$}
+\newcommand{ \Rearth}{$R_{\earth}$}
+\newcommand{ \me}{$M_{\earth}$}
+\newcommand{ \se}{$S_{\earth}$}
+\newcommand{ \kepler}{\emph{Kepler}}
+\newcommand{ \KEPLER}{\emph{KEPLER}}
+\newcommand{ \keplers}{\emph{Kepler's}}
+\newcommand{ \Ktwo}{\emph{K2}}
+%\newcommand{ \th}{$^{\rm th}$}
+\newcommand{ \injtce}{injTCE}
+\newcommand{ \scrtce}{scrTCE}
+\newcommand{ \invtce}{invTCE}
+\newcommand{ \opstce}{obsTCE}
+\newcommand{ \injtces}{injTCEs}
+\newcommand{ \scrtces}{scrTCEs}
+\newcommand{ \invtces}{invTCEs}
+\newcommand{ \opstces}{obsTCEs}
 
 % Important numbers
-\def \ntces {34,032}        % Number of DR25 TCEs, includes rogue
-\def \ntcesnorogue {32,534}        % Number of DR25 TCEs, no rogue
-\def \npredrtwentyfourkois {7,348}  % Number of KOIS pre-DR24.
-\def \npredrtwentyfivekois {8,826}  % Number of KOIs pre-DR25
-\def \nkebs {2,605}         % Number of EBWG True EBs used in ephem matching.
-\def \nephemmatch {1,859}   % Number of TCEs ruled as FPs due to ephemeris matching in DR24.
-\def \nonlyephemmatch {106} % Number of TCEs ruled as FPs ONLY due to ephemeris matching in DR24.
-\def \nscrtces {13782} %number of scrambled TCEs after cleaning and no rogue (SET)
-\def \ninvtces {14953} %number of inverted TCEs after cleaning and no rogue. (SET)
-\def \ninjtces {45377} %number of injected and recovered TCEs, no rogue
-\def \ninjecttargs {146,294} % number of targets that received an on-target planet transit injection
-\def \nkoisdr {8054} %Number of KOIs in the DR25 catalog.
+\newcommand{ \ntces}{34,032}        % Number of DR25 TCEs, includes rogue
+\newcommand{ \ntcesnorogue}{32,534}        % Number of DR25 TCEs, no rogue
+\newcommand{ \npredrtwentyfourkois}{7,348}  % Number of KOIS pre-DR24.
+\newcommand{ \npredrtwentyfivekois}{8,826}  % Number of KOIs pre-DR25
+\newcommand{ \nkebs}{2,605}         % Number of EBWG True EBs used in ephem matching.
+\newcommand{ \nephemmatch}{1,859}   % Number of TCEs ruled as FPs due to ephemeris matching in DR24.
+\newcommand{ \nonlyephemmatch}{106} % Number of TCEs ruled as FPs ONLY due to ephemeris matching in DR24.
+\newcommand{ \nscrtces}{13782} %number of scrambled TCEs after cleaning and no rogue (SET)
+\newcommand{ \ninvtces}{14953} %number of inverted TCEs after cleaning and no rogue. (SET)
+\newcommand{ \ninjtces}{45377} %number of injected and recovered TCEs, no rogue
+\newcommand{ \ninjecttargs}{146,294} % number of targets that received an on-target planet transit injection
+\newcommand{ \nkoisdr}{8054} %Number of KOIs in the DR25 catalog.
 
 
 \lccode`1=`1
@@ -69,39 +69,15 @@
 
 
 
-% using aastex version 6
-
-% \documentclass[onecolumn]{aastex6}
-
-%\documentclass[twocolumn,tighten,twocolappendix,numberedappendix]{aastex61}
-
-\documentclass[apj,twocolappendix,numberedappendix]{emulateapj}
+% using aastex version 6.1
+%\documentclass[apj,twocolappendix,numberedappendix]{emulateapj}
+\documentclass[twocolumn,tighten]{aastex61}
 
 \setcounter{secnumdepth}{4}  % Required to get section headers like  4.1.2.1 as required by AAS journal style guide
 
 \let\underscore\_
 \renewcommand{\_}{\discretionary{\underscore}{}{\underscore}}  % This and the previous line lets the mneonic flags gracefully line wrap
 
-
-% These are the available options:
-%   manuscript  : onecolumn, doublespace, 12pt fonts
-%   preprint    : onecolumn, single space, 10pt fonts
-%   preprint2   : twocolumn, single space, 10pt fonts
-%   twocolumn   : a two column article. Probably not needed, but here just in case.
-%   onecolumn   : a one column article; default option.
-%   twocolappendix: make 2 column appendix
-%   onecolappendix: make 1 column appendix is the default.
-%   astrosymb   : Loads Astrosymb font and define \astrocommands.
-%   tighten     : Makes baselineskip slightly smaller
-%   times       : uses times font instead of the default
-%   linenumbers : turn on lineno package.
-%   trackchanges : required to see the revision mark up and print output
-%   numberedappendix: Labels appendix sections A, B, ... This is the default.
-%   appendixfloats: Needed. Resets figure and table counters to zero
-
-%% these can be used in any combination, e.g.
-%%
-%% \documentclass[twocolumn,twocolappendix,linenumbers,trackchanges]{aastex6}
 
 \usepackage{hyperref}
 \usepackage{amsmath}
@@ -110,10 +86,11 @@
 \usepackage{soul}
 \usepackage{marginnote}
 \usepackage[T1]{fontenc}  %Gives you pipes for minor flags
+\usepackage{makecell}  %For metrics table
 %% If you want to create your own macros, you can do so
 %% using \newcommand. Your macros should appear before
 %% the \begin{document} command.
-\usepackage{multirow}
+%\usepackage{multirow}
 % \newcommand{\spcell}[2][c]{
 %   \begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}  %Creates line breaks in tables with left justification. 
 
@@ -125,15 +102,13 @@
 \newcommand\red{\textcolor{red}}
 \newcommand\blue{\textcolor{blue}}
 %% You can insert a short comment on the title page using the command below.
-\slugcomment{Fourth Draft. \today}
+%\watermark{Fifth Draft. \today}
 %%
 %% If you wish, you may supply running head information, although
 %% this information may be modified by the editorial offices.
 %%\shorttitle{\aastex sample article}
 
-\shortauthors{Thompson et al.}
-
-
+%\shortauthors{Thompson et al.}
 
 
 \begin{document}
@@ -188,9 +163,7 @@ The DR25 KOI catalog was created using entirely automated methods. This paper di
 \subsection{KOI Transit Model Fits}
 \input{section-MCMC.tex}
 
-
 %Analysis of the Catalog
-
 \section{Analysis of the DR25 KOI Catalog}
 
 \input{section-catalogsummary.tex}
@@ -219,18 +192,17 @@ Funding for the Stellar Astrophysics Centre is provided by The Danish National R
 \bibliographystyle{aasjournal}
 \bibliography{References.bib,KSCI-Refs.bib}
 
-$ $  % This is necessary for clearpage to actually work
-\clearpage
+%$ $  % This is necessary for clearpage to actually work
+%\clearpage
 
 \appendix
-
+\twocolumngrid
 \input{section-robovetterMetrics.tex}
-
 \input{section-minorflags.tex}
 
 
 \clearpage
-\tableofcontents
+%\tableofcontents
 
 \end{document}
 
