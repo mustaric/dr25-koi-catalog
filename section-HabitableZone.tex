@@ -23,15 +23,15 @@ S_{p} = \frac{R_{\star}^{2} \cdot (T_{\star}/5777)^{4}}{a^{2}} ,
 
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=\linewidth]{fig-hzTstarInsol-trimmed.png}
+    %\includegraphics[width=\linewidth]{fig-hzTstarInsol-trimmed.png}
+    \includegraphics[width=\linewidth]{f14.pdf}
     \caption{DR25, eta-Earth sample of Planet Candidates plotted as stellar effective temperature against insolation flux using the values reported in the DR25 KOI catalog (which uses stellar properties from the DR25 stellar catalog \citep{Mathur2017ApJS}.) The size of the exoplanet is indicated by the size of the circle.  The color indicates the disposition score. Only those with disposition score greater than 0.5 are plotted.  Only objects whose error bars indicate that they could be in the habitable zone and have a radius less than 1.8~\re\ are shown. Those with a red ring are new to the DR25 catalog. }
     \label{f:hzPlot}
 \end{figure}
 
 
-Finally, we include only those candidates that satisfy the size constraint \rp~$- \sigma_{{R_p}\rm,low} < 1.8$~\re.  The purpose of the size constraint is to identify candidates likely to have a bulk composition similar to terrestrial planets in the solar system.  The 1.8~\re\ upper limit is taken from \citet{Fulton2017} who report a distinct gap in the radius distribution of exoplanets for planets in orbital periods of less than 100\,d.  The authors argue that the gap is the result of two (possibly overlapping) population distributions: the rocky terrestrials and the mini-Neptune size planets characterized by their volatile-rich envelopes.  Within this framework, the center of the gap marks a probabilistic boundary between having a higher likelihood of a terrestrial composition versus a higher likelihood of a volatile-rich envelope.  
-{\color{blue}  However, this boundary was identified using planets in orbital periods of less than 100\,days and it may not exist for planets in longer period orbits. Also it is not entirely clear that planets on the small side of this gap are all terrestrial. \citet{Rogers2015} examined small planets with density measurements with periods less than $\approx$50\,d and showed that less than half of planets with a radii of 1.62\,\re\ have densities consistent with a body primarily composed of iron and silicates.  For our purposes of highlighting the smallest planets in this catalog, we chose to be inclusive and set the threshold at 1.8\,\re.
-}
+Finally, we include only those candidates that satisfy the size constraint \rp~$- \sigma_{{R_p}\rm,low} < 1.8$~\re.  The purpose of the size constraint is to identify candidates likely to have a bulk composition similar to terrestrial planets in the solar system.  The 1.8~\re\ upper limit is taken from \citet{Fulton2017} who report a distinct gap in the radius distribution of exoplanets for planets in orbital periods of less than 100\,d.  The authors argue that the gap is the result of two (possibly overlapping) population distributions: the rocky terrestrials and the mini-Neptune size planets characterized by their volatile-rich envelopes.  Within this framework, the center of the gap marks a probabilistic boundary between having a higher likelihood of a terrestrial composition versus a higher likelihood of a volatile-rich envelope.  However, this boundary was identified using planets in orbital periods of less than 100\,days and it may not exist for planets in longer period orbits. Also it is not entirely clear that planets on the small side of this gap are all terrestrial. \citet{Rogers2015} examined small planets with density measurements with periods less than $\approx$50\,d and showed that less than half of planets with a radii of 1.62\,\re\ have densities consistent with a body primarily composed of iron and silicates.  For our purposes of highlighting the smallest planets in this catalog, we chose to be inclusive and set the threshold at 1.8\,\re.
+
 
 To summarize, Table~\ref{t:hz} lists those candidates with scores greater than 0.5 and whose error bars indicate that they could be smaller than 1.8 \re{} and lie in the habitable zone. The table also includes KOI~2184.02 because the erratum to \citet{Mathur2017ApJS} (see \S\ref{s:stars} of this paper) reduces the stellar and planet radii so that the PC now lies in our sample. Note, the same erratum also reduces the planet radii of KOI~4460.01 and KOI~4550.01 to 2.0\,\re{} and 1.65\,\re{} respectively. The values reported in Table~\ref{t:hz} are consistent with the KOI table at the exoplanet archive and do not include the values reported in the erratum to \citet{Mathur2017ApJS}. Also, in order to make Table~\ref{t:hz} complete we include any \Kepler{} terrestrial-sized confirmed planet that falls in the habitable zone of its star according to the confirmed planet table at NExScI (downloaded on 2017-05-15). The objects are included even if the DR25 catalog dispositions them as FPs, or if the DR25 planetary parameters place them outside the habitable zone. However, note that statistical inferences like occurrence rates should be based on a uniform sample drawn exclusively from the DR25 catalog and its self-consistent completeness and reliability measurements (see \S\ref{s:occurates}).  
 
@@ -42,14 +42,14 @@ To summarize, Table~\ref{t:hz} lists those candidates with scores greater than 0
 
 
 \subsubsection{Notes on the Eta-Earth Sample}
-We plot the eta-Earth sample candidates in Figure~\ref{f:hzPlot}, using only the information in the DR25 KOI catalog.  Forty-six candidates have a score greater than 0.5 and fall in this eta-Earth sample; 10 of these are new to this catalog (KOI numbers greater than 7621.01 and KOI~238.03).  A manual review of the 10 new high-score candidates indicates that they are all low signal-to-noise with very few transits, and show no obvious reason to be called false positives. However, our reliability measurements indicate that $\approx$20\% of these targets are not caused by a transiting/eclipsing system. As an example, the candidate most similar to the size and temperature of the Earth is KOI~7711.01 (KIC~004940203), with four transits that all cleanly pass the individual transit metrics. It orbits a 5734\,K star, has an insolation flux slightly less than that of Earth, and is about 30\% larger.  Plots showing visualizations of the transit data and its quality are available at the Exoplanet Archive for this object\footnote{\url{https://exoplanetarchive.ipac.caltech.edu/data/KeplerData/004/004940/004940203/tcert/kplr004940203\_q1\_q17\_dr25\_obs\_tcert.pdf}} and for all of the \opstce{s}, \injtce{s}, \scrtce{s}, and \invtce{s}.
+We plot the eta-Earth sample candidates in Figure~\ref{f:hzPlot}, using only the information in the DR25 KOI catalog.  Forty-seven candidates have a score greater than 0.5 and fall in this eta-Earth sample; 10 of these are new to this catalog (KOI numbers greater than 7621.01 and KOI~238.03).  A manual review of the 10 new high-score candidates indicates that they are all low signal-to-noise with very few transits, and show no obvious reason to be called false positives. However, our reliability measurements indicate that $\approx$20\% of these targets are not caused by a transiting/eclipsing system. As an example, the candidate most similar to the size and temperature of the Earth is KOI~7711.01 (KIC~004940203), with four transits that all cleanly pass the individual transit metrics. It orbits a 5734\,K star, has an insolation flux slightly less than that of Earth, and is about 30\% larger.  Plots showing visualizations of the transit data and its quality are available at the Exoplanet Archive for this object\footnote{\url{https://exoplanetarchive.ipac.caltech.edu/data/KeplerData/004/004940/004940203/tcert/kplr004940203\_q1\_q17\_dr25\_obs\_tcert.pdf}} and for all of the \opstce{s}, \injtce{s}, \scrtce{s}, and \invtce{s}.
 
 %\subsubsection{Notes on the Small Confirmed Planets in the Eta-Earth Sample}
 Several confirmed planets fall in our eta-Earth sample.  Kepler-186f (KOI~571.05), Kepler-439b (KOI~4005.01) and Kepler-1593b (KOI~4356.01) move into the habitable zone according to the confirmed planet properties. They are included in Table~\ref{t:hz} with a footnote indicating they would not otherwise be listed. Kepler-296d (KOI~1422.02) and Kepler-1649b (KOI~3138.01), on the other hand, move outside the HZ according to the updated properties and are noted accordingly. Note, the default properties in the confirmed planets table at the Exoplanet Archive are selected for completeness and precision. Additional values may be available from other references that represent the best, current state of our knowledge.
 
-{\color{blue}
+
 When examining this eta-Earth sample, notice that this final search of the \Kepler{} data not only identified previously discovered candidates around the M dwarf stars, it also yielded a handful of highly reliable candidates around the GK dwarf stars. These GK dwarf candidates have fewer transits and shallower depths, making them much more difficult to find.  Despite their lower signal-to-noise, because we provide a measure of the reliability against false alarms (along with the completeness), these candidates are available to further study the occurrence rates of small planets in the habitable zone of GK dwarf stars.
-}
+
 Kepler-560b (KOI~463.01) is a confirmed planet that failed the score cut but is included for awareness and annotated accordingly.  The low score is caused by the Centroid Robovetter (\S\ref{s:centroidrv}) detecting a possible offset from the star's cataloged position, likely due to proper motion \citep{Mann2017}.  
 %This target is assigned a minor flag (CENT_KIC_POS) alerting the user to the possibility of large errors in the source position from the Kepler Input Catalog.  A recent study (Mann et al 2017) yields …[TODO]
 
@@ -60,40 +60,13 @@ Kepler-283c (KOI~1298.02) fails the shape metric.  Its phase-folded transit appe
 
 
 \subsection{Caveats}
-{\color{blue}
+%{\color{blue}
 When selecting candidates from the KOI catalog for further study, as we did for the eta-Earth sample (\S\ref{s:hz}), it is important to remember a few caveats. First, even with a high cut on disposition score, the reliability against false alarms is not 100\%. Some candidates may still be caused by false alarms, especially those around the larger, hotter stars. Also, this reliability number does not include the astrophysical reliability. Many of our tools to detect astrophysical false positives do not work for long-period, low MES candidates. For example, it is nearly impossible to detect the centroid offset created from a background eclipsing binary and secondary eclipses are not deep enough to detect for these stars. 
 
 Second, the measured radius and semi-major axis of each planet depends on the stellar catalog.   As discussed in \S\ref{s:stars} and \citet{Mathur2017ApJS}, the stellar radii and masses are only known to a certain precision and the quality of the data used to derive these stellar properties varies between targets. These unknowns are reflected in the 1-sigma error bars shown in Figure~\ref{f:hzPlot} and listed in the KOI table. The uncertainty in the stellar information limits our knowledge of these planets.  As an example, for Kepler-452 (KIC~8311864), the DR25 stellar catalog lists a temperature of 5579$\pm150$\,K and stellar radius of 0.798$^{+0.150}_{-0.075}$\,\rsun, while the values in the confirmation paper \citep{Jenkins2015} after extensive follow-up are 5757$\pm85$\,K for the effective temperature and 1.11$^{+0.15}_{-0.09}$ for the stellar radius.  As a result, the planet Kepler-452b is given as 1.6$\pm0.2$\,\re\ in \citet{Jenkins2015} and 1.09$^{+0.2}_{-0.1}$\,\re\ in the DR25 catalog. The radii and stellar temperature differ by less than 2-sigma, but those differences change the interpretation of the planet from a super-Earth in the middle of the habitable zone of an early G dwarf host to an Earth-sized planet receiving about half the amount of flux from a late K star.  As follow-up observations of each candidate star is obtained and errors on the stellar parameters decrease, we expect this population to change in significant ways.  
 
 Third, high-resolution imaging has proven crucial for identifying light from background and bound stars which added flux to the \Kepler{} photometric time series \citep{Furlan2017}. When this occurs, unaccounted for extra light dilutes the transit, causing the radii \citep{Ciardi2015}, and thus the inferred density \citep{Furlan2017densities}, to be significantly underestimated.  As a result, we fully expect that once follow-up observations are obtained for these stars, several of the PCs in this catalog, including those listed in the eta-Earth sample, will be found to have radii larger than reported in this catalog. 
 
-}
+%}
 
 
-
-
-
-%A List of all the new ones woudl be nice here...but not required. I'm not sure I completely see the point. They are all very questionable.
-
-%See Figure~\ref{f:hzPlot} for a plot of planet radius against insolation flux at the small, cool end of the DR25 catalog. On this figure the color indicates the stellar temperature and the size of the point indicates the disposition score.  Notice that this part of the catalog is dominated by K and M stars despite the fact that the exoplanet search targets G stars \citet{Batalha2010}.
-
-%\begin{figure*}
-%    \centering
-%    \includegraphics[width=1.1\linewidth]{fig-CatalogRadiusInsolScore.png}
-%    \caption{DR25 Exoplanet Candidates plotted as planet radius against Insolation Flux, %in units of the flux that the Earth receives from the Sun. The stellar temperature is given by the color of the circle and the size of the circle indicates the Disposition Score. The planet radii are derived from the MCMC fits. }
-%    \label{f:hzPlot}
-%\end{figure*}
-
-
-
-%We select these stars to be any candidate whose one sigma error bars indicate the radius could be smaller than 1.8 \re, and the insolation flux is within the optimistic habitable zone defined by the wide habitable zone of \citet{Kopparapu2013}.  We also only show those with a disposition score above 0.5.  We chose this disposition score threshold because estimates of the reliability of these candidates is greater than 80 per cent, even when considering just the population orbiting G dwarf stars.  This produces 46 candidates in the DR25 catalog. Of these, 10 are new to the DR25 catalog. We plot these candidates in Figure~\ref{f:hzNarrow}.  A manual review of the 10 new high-score candidates indicates that they are primarily low signal-to-noise, with very few transits, but show no obvious reason to be called a false positive. In order to make Table~\ref{t:hz} complete we also include any terrestrial-sized confirmed planet that falls in the habitable zone of its star according to the confirmed planet table at NExScI, see the footnotes. The objects are included even if the DR25 catalog calls it a false positive or if the DR25 planetary parameters place it outside the habitable zone. Table~\ref{t:hz} and Figure~\ref{f:hzNarrow} give the DR25 catalog planetary values.
-
-
-
-%The reliability measurements for this catalog indicate that for long period, low MES objects (which applies to all those on this plot found on a star with a temperature above 5000\,K) and a disposition score cut greater than 0.5, the reliability is $\approx$80XX per cent, see \S\ref{s:reliability}. 
-
-
-%-- a value often referred to as \eta_\earth.  
-%We use the concept of a habitable zone to cull such a sample as described below and highlight the results in Table 6 and Figure 14.  
-%In order for this catalog to be used to understand the occurrence of rocky exoplanets in the habitable zone of sun-like stars, it needs to identify small, temperate candidates around G-dwarf stars.  
-%In Table~\ref{t:hz} we highlight the DR25 catalog candidates that are potentially terrestrial and fall in or near the habitable zone of their star.

@@ -7,7 +7,6 @@ As mentioned in \S\ref{abbrev}, for all of the Robovetter tests that require a p
 
 In the \kepler{} Pipeline, the DV module produces a harmonic-removed, median-detrended, phased flux light curve, along with a transit model fit \citep{JenkinsKDPH,Wu2010}. However, the harmonic removal software is known to suppress or distort short-period ($\lesssim$ 3 days) signals causing short-period eclipsing binaries with visible secondaries to appear as transiting planets with no visible secondaries \citep{Christiansen2013b}. It can also make variable stars with semi-coherent variability, such as star spots or pulsations, appear as transit-like signals. As an alternative, we implement the ALT detrending method that utilizes the pre-search data conditioned (PDC) time-series light curves and the non-parametric penalized least squares detrending method of \citet{Garcia2010} which includes only the out-of-transit points when computing the filter. This ALT detrending technique is effective at accurately detrending short-period eclipsing binaries and variable stars, i.e., preserving their astrophysical signal.  These ALT detrended light curves are phased and fit with a simple trapezoidal transit model. 
 
-%Thus, we create phased flux light curves via an alternate detrending method that utilizes the pre-search data conditioned (PDC) time-series light curves and the non-parametric penalized least squares detrending method of \citet{Garcia2010}, which includes only the out-of-transit points when computing the filter. These alternately (ALT) detrended light curves are then phased and fit with a simple trapezoidal transit model. This alternate detrending technique is effective at accurately detrending short-period eclipsing binaries and variable stars, i.e., preserving their astrophysical signal. Every test that is applied to the DV phased light curves is also applied to the alternate detrending, albeit with different thresholds for failure. Failing a test using either detrending results in the TCE being classified as an FP.
 
 
 \subsection{The TCE is the Secondary of an Eclipsing Binary}
@@ -134,7 +133,6 @@ The depths of individual transits of planet candidates should be equal to each o
 
 In the Robovetter, for TCEs with periods greater than 90 days, if ${{\rm SES}_{\rm Max} / {\rm MES} > 0.8}$ it is dispositioned as a not transit-like FP. The period cutoff of 90 days is applied because short-period TCEs can have a large number of individual transit events, which dramatically increases the chance of one event coinciding with a large systematic feature, thus producing a large ${{\rm SES}_{\rm Max} / {\rm MES}}$ value despite being a valid planetary signal.
 
-% The value of 0.8 was empirically chosen based on the results of transit injection (\S\ref{injectsec}) to reject a minimal number of valid planetary candidates, accounting for natural deviations of SES values due to light curve systematics and changes in local noise levels. 
 
 
 \subsubsection{Previous TCE With Same Period}
@@ -226,19 +224,19 @@ A value of $C_{i}=1$ indicates that there is no comparable peak/trough in the SE
 For each TCE with five or fewer transit events contributing to the signal, $Ch_{i}$ is calculated for every transit event.  With more than five transit events, the individual transit events are not expected to be statistically significant, and the assumptions of the Chases metric no longer apply. The individual transit event $Ch_{i}$ values were used to recalculate the MES (see \S\ref{s:indivtrans}). Transit events with $Ch_{i}<0.01$ were excluded from the Robovetter's MES calculation.
 
 \begin{figure}[htb]
-\includegraphics[width=0.5\textwidth]{kic11911580_cleanhighsnr.png}
+\includegraphics[width=0.5\textwidth]{kic11911580_cleanhighsnr.pdf}
 \caption{Upper panel: flux time series for a single transit event contributing to the TCE for KOI 3900.01 on target KIC~11911580 (black points).  The cadences in transit (orange points) show a significant flux decrement relative to the baseline flux level.  Lower panel: SES time series of the transit event show in the upper panel, representing the archetypal shape of a transit signal displaying a strong central peak with two low-amplitude, symmetric side troughs. There are no other events as strong as the transit nearby in time so this signal has an individual transit event Chases metric, $Ch_{i}=1$.}
 \label{fig:chases1}
 \end{figure}
 
 \begin{figure}[htb]
-\includegraphics[width=0.5\textwidth]{kic11449918_rb.png}
+\includegraphics[width=0.5\textwidth]{kic11449918_rb.pdf}
 \caption{Upper panel: flux time series for a single transit event contributing to the TCE on target KIC~11449918 (black points).  The cadences in transit (orange points) show a flux decrement, but there are numerous other flux decrements of similar depth and shape.  The instrumental ``rolling band'' pattern noise contributes systematics to the flux time series of target KIC 11449918 causing numerous signal detections.  Lower panel: SES time series of the transit event shown in the upper panel, representing the non-unique nature of the SES peak relative to surrounding data. The neighboring peak of comparable strength in the SES time series would result in $Ch_{i}=.016$ and the transit would be considered "bad" by Chases. }
 \label{fig:chases2}
 \end{figure}
 
 \begin{figure}[htb]
-\includegraphics[width=0.5\textwidth]{kic12357074_spsd.png}
+\includegraphics[width=0.5\textwidth]{kic12357074_spsd.pdf}
 \caption{Upper panel: flux time series for a single transit event contributing to the TCE on target KIC 12357074 (black points).  The cadences in transit (orange points) show a flux decrement, but the sudden drop in flux followed by the gradual return to the baseline is archetypal of the SPSD instrumental signature.  Lower panel: SES time series for the transit event shown in the upper panel, illustrating the strongly asymmetric SES peak having a comparable amplitude negative SES trough preceding the SES peak. The neighboring trough of comparable absolute strength to the transit's peak would result in $Ch_{i}=.005$ and the transit would be considered "bad" by Chases.}
 \label{fig:chases3}
 \end{figure}
@@ -295,6 +293,12 @@ Due to the method of data gapping employed in TPS, sometimes the \kepler{} Pipel
 We thus measure the number of individual transit events that actually contain data. Specifically, we compute the fraction of individual events with either SES~$\ne$~0 or Rubble~$>$~0.75, which indicate there is sufficient in-cadence data present. If the fraction of transits meeting these criteria is~$\le$~0.5, we fail the TCE as not transit-like.
 
 
+\subsubsection{No Data Available}
+\label{s:nofits}
+
+In a very small number of cases, neither the DV nor the ALT detrending produces a light curve and model fit for a TCE. This happens when the TCE is extremely not transit-like, usually due to a combination of severe systematics and a lack of substantial in-transit data. As a result, if no data from either detrending is available, the Robovetter fails a TCE as not transit-like.
+
+
 \subsection{Stellar Eclipse}
 \label{sigsecsec}
 
@@ -303,7 +307,6 @@ However, many of these KOIs are FPs due to eclipsing binaries and contamination 
 
 %In order to produce a uniform catalog, we do not designate any TCE an FP on the basis of its transit depth or inferred radius --- see \S7 item 6 of \citet{Mullally2015cat} for more detail. 
 
-% us, being agnostic to stellar parameters, the only way to definitively detect an EB via a \kepler{} light curve is by detecting a significant secondary eclipse. 
 
 %MENTION THE WHOLE FLAG SECONDARY -> STELLAR CHANGE, OR NOT? (Jeff translation: We used to call the S flag 'Significant Secondary' but now S is 'Stellar Eclipse', so do we want to explicitly mention that we made this change?)
 
@@ -392,6 +395,7 @@ In this catalog, we attempt to strike a balance between identifying these binary
 
 
 \subsection{Centroid Offset}
+\label{s:centroids}
 \subsubsection{Centroid Robovetter}
 \label{s:centroidrv}
 The Robovetter relies on a piece of code called the Centroid Robovetter\footnote{\url{https://sourceforge.net/projects/keplercentroidrobovetter/}} \citep{Mullally2017} to detect when a transit signal originates from a background or nearby star instead of from the target star. The Centroid Robovetter has not changed since its implementation for the DR24 KOI catalog; we summarize it below for completeness. 
@@ -430,10 +434,10 @@ We modified the matching criteria used in previous catalogs to improve performan
 \begin{figure*}[ht]
 \centering
 \begin{tabular}{cc}
-\includegraphics[width=0.5\linewidth]{INJ1-Ephem-Recovery-1.png} &
-\includegraphics[width=0.5\linewidth]{INJ1-Ephem-Recovery-2.png} \\
-\includegraphics[width=0.5\linewidth]{INJ1-Ephem-Recovery-3.png} &
-\includegraphics[width=0.5\linewidth]{INJ1-Ephem-Recovery-4.png}
+\includegraphics[width=0.5\linewidth]{INJ1-Ephem-Recovery-1.pdf} &
+\includegraphics[width=0.5\linewidth]{INJ1-Ephem-Recovery-2.pdf} \\
+\includegraphics[width=0.5\linewidth]{INJ1-Ephem-Recovery-3.pdf} &
+\includegraphics[width=0.5\linewidth]{INJ1-Ephem-Recovery-4.pdf}
 \end{tabular}
 \caption{A plot of injected versus recovered periods and epochs of injected on-target planets. The top plots shows the difference between the injected and recovered periods (top) and epochs (right) as a function of period. The bottom plots show the measured standard deviation of the differences in period (left) and epoch (right) in logarithmic space. The red line shows the best-fit power-law in each case.}
 \label{injephemfig}
@@ -538,20 +542,58 @@ Via ephemeris matching, we identify \nephemmatch{} Q1--Q17~DR25 TCEs as FPs. Of 
 Since \kepler{} does not observe every star in its field of view, it can often be the case that a match is found between two objects, but given their relative magnitude, distance, and depths it is clear that neither is the parent of the other, so these are classified as ``bastards'' \citep{Coughlin2014a}. To identify the bastards due to direct PRF contamination, we performed a robust fit of the Kepler PRF model described by equations~9~and~10 of \citet{Coughlin2014a} to the depth ratio, magnitude difference, and distance between each object identified as due to direct PRF contamination and its most likely parent. After iteratively rejecting outliers greater than 4.0 times the standard deviation, the fit converged with values of $\alpha$ = 6.93\arcsec and $\gamma$ = 0.358\arcsec. Outliers greater than 4.0 times the standard deviation of the final iteration, with these resulting fit parameters, were labeled as bastards. For the mechanism of column anomaly and reflection, if the depth ratio of the two objects is between 0.01 and 100, then it is labeled as a bastard, as these mechanisms should produce depth ratios of at least 1E-3 or 1E3. All bastards are identified with a flag of 1 in Table~\ref{ephemmatchtab}. Additionally, it can sometimes be the case that objects are matched via the column anomaly, but are on different outputs of the same module --- these cases likely involve the column anomaly working in conjunction with cross-talk, and thus are complicated, and given a flag of 2 in Table~\ref{ephemmatchtab}. Finally, a flag of 3 indicates a combination of flags 1 and 2. 
 
 
-%Begin Jeff's words.
-%Many short-period false positives are due to variable stars that exhibit a quasi-sinusoidal phased light curve. \citet{Matijevic2012} used a technique known as Local Linear Embedding (LLE), a dimensionality reduction algorithm, to classify the ``detachedness'' of \kepler{} eclipsing binary light curves on a scale of 0 to 1, where 0 represented fully detached systems with well-separated, narrow eclipses and 1 represented contact binaries with completely sinusoidal light curves. We use a similar technique, known as Local Preserving Projections \citep[][LPP]{He2004}, to distinguish transit-like signals from not transit-like signals \citep{Thompson2015b}. LPP returns a single number that represents the similarity of a TCE's shape to that of known transits. Unlike LLE, LPP can be applied to any TCE, not just those that lie within the parameter space of the training set. Thus, LPP is more suitable for separating transit-like TCEs from all other not transit-like TCEs, and can be run on artificially injected transits.
+
+\subsection{Informational Only Tests}
+\label{s:infoonly}
+
+There are a couple tests that the Robovetter performs that do not influence the disposition of a TCE. While failing one of these tests indicates a likely FP, it is not reliable enough to declare a TCE an FP. Instead, TCEs that fail these tests are given information only flags (see \S\ref{s:minorflags}) as a way to notify users that a manual inspection of the TCE and the Robovetter results is likely warranted.
 
 
-%We then fold and bin each light curve into 141 points, ensuring adequate coverage of both the in- and out-of-transit portions of the light curve. We exclude points near a phase of 0.5, as the presence of a secondary eclipse in a short-period binary may unduly influence the LPP value, and we seek to classify detached eclipsing binaries as transit-like. These 141 points act as the initial number of dimensions that describe each TCE. Using a subset of known transit-like TCEs, we create a map from the initial 141 dimensions down to 20 dimensions. We apply this map to all TCEs and measure the average Euclidean distance of each to the 15 nearest known transit-like TCEs. This average distance is the value of the LPP metric. When small, it means other transit-like TCEs are nearby in the 20 dimensional space and thus is likely to be shaped like a transit. We calculate this LPP transit metric for all TCEs using both the DV and the alternate detrending, as described in \S\ref{nottransitlikesec}.
+\subsubsection{Planet In Star}
+\label{s:planetinstar}
 
-%SUSAN - DESCRIBE HERE HOW YOU NORMALIZED THE LPP VALUES W.R.T. PERIOD, etc. 
+In some cases, the DV fit returns a semi-major axis of the planetary orbit that is smaller than the radius of the host star. Such a fit is unphysical, as the planet would be orbiting inside the star; this is usually indicative of an FP. However, since many of the stellar parameters have large errors and their accuracy can vary, this situation does not guarantee the TCE is an FP. Thus, if a TCE is dispositioned as transit-like (the NT flag is not set), and if the semi-major axis from the DV fit is less than the stellar radius from the DR25 stellar properties catalog \citep{Mathur2017ApJS}, the TCE is flagged as PLANET\_IN\_STAR.
 
-% OLD TEXT DESCRIBING THE CHOICE OF THRESHOLD. Now we just adjust.
-%
-% In order to quantitatively determine a threshold between transit-like and not transit-like, we run the LPP classifier on both detrendings of the injected transits (see \S\ref{injectsec}), which we know a priori are all transit-shaped, barring any light curve distortion due to detrending. We then fit a Gaussian to the resulting distribution, computing its median and standard deviation. We then select a maximum LPP cutoff such that we expect less than one false negative in \ntces{} TCEs, via 
 
-% \begin{equation}
-% \sigma_{\rm LPP} = \sqrt{2}\cdot \textrm{erfcinv}(1/N_{\rm TCEs})
-% \end{equation}
+\subsubsection{Seasonal Depth Differences}
+\label{s:seasonaldiff}
 
-% \noindent where $N_{TCEs}$ = \ntces{}, yielding $\sigma_{\rm LPP}$ = 4.06. Any TCE with a LPP value greater than the median plus 4.06 times the standard deviation, using either detrending, is considered not transit-like.
+Due to the \kepler{} spacecraft's rotation every $\approx$90~days, each target and the surrounding stars will fall on a new CCD every quarter, and return to the same CCD once every four quarters. All of the quarters that correspond to the same CCD are labeled as being in a given season (e.g., Q2, Q6, Q10, and Q14 belong to Season 0, Q3, Q7, Q11, and Q15 belong to Season 1, etc., \citealt{Thompson2016KAM}). The shape and size of the optimal aperture for a given star is seasonally dependant and can change significantly season-to-season. As a result, a target will have differing amounts of third light in its optimal aperture from nearby stars. If the source of the signal that triggers a TCE is not from the target star, but rather from another source (as just discussed in \S\ref{s:centroids} and \S\ref{s:ephemmatch}), the level of contamination, and thus observed depth of the TCE, will have significant seasonal variation. Observation of seasonal depth differences is usually a good indication that the target is contaminated and a centroid offset is likely. However, depth differences can also arise when the signal is truly coming from the target, but significant third light exists in the aperture and the seasonal variations are not sufficiently corrected.
+
+In order to automatically detect seasonal depth differences, if a TCE has been dispositioned as transit-like (the NT flag is not set), we measure the depth and associated error of the primary event in each season utilizing the first method described in the second paragraph of \S\ref{s:oddeven}, i.e., we compute the median and standard deviation of all the points within $\pm$15 minutes of the center of transit. We then obtain an average depth over all seasons, $D_{a}$, by computing the mean of the depths of all four seasons. 
+
+The significance of the seasonal depth differences, $S_{\rm Diff}$, is then computed via,
+
+\begin{equation}
+    S_{\rm Diff} = \frac{\sum_{n=0}^{3} \left|D_{n} - D_{a}\right|}{\sqrt{\sum_{n=0}^3 \sigma_{n}^{2} + N\cdot\sigma_{a}^{2}}}
+\end{equation}
+
+\noindent where $n$ denotes a particular season (0, 1, 2, or 3), N is the total number of seasons with a measured depth and uncertainty, $D_{n}$ is the measured depth in a given season, $\sigma_{n}$ is the measured error on the depth in a given season, $D_{a}$ is the measured averaged depth, and $\sigma_{a}$ is the measured error of the average depth, given by,
+
+\begin{equation}
+    \sigma_{a} = \frac{\sqrt{\sum_{n=0}^{3}\sigma_{n}^2}}{N}
+\end{equation}
+
+\noindent For either the DV or ALT detrending, if $S_{\rm Diff}$~$>$~3.6 then the TCE is flagged as having significant seasonal depth differences via the flag SEASONAL\_DEPTH\_(ALT|DV).
+
+
+\subsubsection{Period Aliasing}
+\label{s:periodalias}
+
+In some cases, the \kepler{} Pipeline detects a signal (and produces a TCE) that is at an integer multiple of the signal's true period. In most cases, this is due to the presence of seasonal depth differences, as the Pipeline ends up only locking onto events in the quarters with the strongest (deepest) signal. While this usually indicates an FP due to a centroid offset, as discussed in \ref{s:seasonaldiff}, it is not a definitive measure. Also, the Pipeline will detect real planets with significant TTVs at longer (near integer multiple) periods.
+
+In order to detect a period alias, we utilize the Model-shift results --- if the TCE's period is an integer multiple of the signal's true period, then several, equally spaced events should be visible in the phased light curve. If the TCE has been dispositioned as transit-like (the NT flag is not set), the Robovetter first checks if Model-shift detected significant secondary and tertiary events, by ensuring that $\sigma_{\rm Sec}/F_{\rm Red} > FA_{1}$ and $\sigma_{\rm Ter}/F_{\rm Red} > FA_{1}$. If so, the phases of the secondary and tertiary events, $\phi_{\rm Sec}$ and $\phi_{\rm Ter}$, are then expressed as the absolute value of the their distance in phase from the primary event, i.e., constrained to be between 0.0 and 0.5. (For example, if secondary and tertiary events were initially detected at phases of 0.1 and 0.7, then $\phi_{\rm Sec} = 0.1$ and $\phi_{\rm Ter} = 0.3$.) If period aliasing is present, then $\phi_{\rm Sec}$ and $\phi_{\rm Ter}$ should be $\approx$~$n / N$, where $N$ is the integer multiple of the true signal that the Pipeline detected it at, and $n$ is an integer between 1 and $N-1$ that is different for the secondary and tertiary events. (E.g., in the case of $\phi_{\rm Sec} = 0.1$ and $\phi_{\rm Ter} = 0.3$, this implies $N = 10$, $n = 1$ for $\phi_{\rm Sec}$, and $n = 3$ for $\phi_{\rm Ter}$). 
+
+We derive metrics to measure how close $\phi_{\rm Sec}$ and $\phi_{\rm Ter}$ each are to an exact integer period alias, called $S_{\rm Sec}$ and $S_{\rm Ter}$. Specifically,
+
+\begin{equation}
+\begin{aligned}
+S_{\rm Sec} = \sqrt{2}\cdot\textrm{erfcinv}\left(\left|\frac{1}{\phi_{\rm Sec}} - {\textrm{rint}\left(\frac{1}{\phi_{Sec}}\right)}\right|\right) \\[1em]
+S_{\rm Ter} = \sqrt{2}\cdot\textrm{erfcinv}\left(\left|\frac{1}{\phi_{\rm Ter}} - {\textrm{rint}\left(\frac{1}{\phi_{Ter}}\right)}\right|\right)
+\end{aligned}
+\end{equation}
+
+
+
+\noindent where erfcinv() is the inverse complementary error function, and rint() rounds a number to the nearest integer. The higher the values of $S_{\rm Sec}$ and $S_{\rm Ter}$, the more closely the measured phases of the significant secondary and tertiary events correspond to an integer period ratio. These computations are performed independently for the DV and ALT detrendings. If $S_{\rm Sec} > 2.0$ and $S_{\rm Ter} > 2.0$, for either detrending, the Robovetter considers a period alias detected, and the TCE is flagged as PERIOD\_ALIAS\_(ALT|DV).
+

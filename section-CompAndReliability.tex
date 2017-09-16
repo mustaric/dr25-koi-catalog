@@ -6,9 +6,9 @@ To evaluate the performance of the Robovetter and to measure the catalog complet
 \begin{figure}[hp]
 \begin{center}
 \begin{tabular}{c}
-\includegraphics[width=0.94\linewidth]{fig-AllCompletePmes-trimmed.png} \\[12pt]
-\includegraphics[width=0.94\linewidth]{fig-AllEffect-Pmes-trimmed.png} \\[12pt]
-\includegraphics[width=0.94\linewidth]{fig-AllReliabilityPmes-trimmed.png}
+\includegraphics[width=.99\linewidth]{f8-top.pdf} \\[1pt]
+\includegraphics[width=.99\linewidth]{f8-middle.pdf} \\[1pt]
+\includegraphics[width=.99\linewidth]{f8-bottom.pdf}
 \end{tabular}
 %\includegraphics[width=0.48\linewidth]{fig-FgkReliabilityPmes.png}
 %\includegraphics[width=0.48\linewidth]{fig-FgkCompletePmes.png}
@@ -26,7 +26,8 @@ The completeness of the vetting is the fraction of \injtce{s} that are dispositi
 
 \begin{figure*}[hp]
  \begin{center}
-  \includegraphics[width=0.9\linewidth]{fig-compRel1D-PerMes.png}
+  %\includegraphics[width=0.9\linewidth]{fig-compRel1D-PerMes.png}
+  \includegraphics[width=0.94\linewidth]{f9.pdf}
   \caption{The reliability (left) and completeness (right)  of the DR25 catalog plotted as a function of period, MES, number of transits, and transit duration. In each case the blue line is for those with MES~$\leq$~10 or periods~$\leq$~100\,d. The orange line shows the completeness or reliability for the rest of the population (see the legend for each plot). EXP\_MES is the expected MES (see \citealt{Christiansen2017} and \S\ref{s:candr}).}
   \label{f:1dcompare}
  \end{center}
@@ -49,8 +50,10 @@ The reliability is measured according to the method described in \S\ref{s:relcal
 \begin{figure*}[ht]
 \begin{center}
 \begin{tabular}{cc}
-\includegraphics[width=0.5\linewidth]{fig-AllCompletePR-trimmed.png} &
-\includegraphics[width=0.5\linewidth]{fig-FgkCompletePR-trimmed.png}
+%\includegraphics[width=0.5\linewidth]{fig-AllCompletePR-trimmed.png} &
+%\includegraphics[width=0.5\linewidth]{fig-FgkCompletePR-trimmed.png}
+\includegraphics[width=0.5\linewidth]{f10-left.pdf} &
+\includegraphics[width=0.5\linewidth]{f10-right.pdf}
 \end{tabular}
 \caption{The Robovetter completeness binned by period and planet radius for all stars (left) and for only FGK dwarf stars (right). Bins with fewer than 10 \injtce{s} are not plotted.}
 \label{f:prCompleteness}
@@ -61,8 +64,10 @@ The reliability is measured according to the method described in \S\ref{s:relcal
 \begin{figure*}[htb]
 \begin{center}
 \begin{tabular}{cc}
-\includegraphics[width=0.5\linewidth]{fig-AllReliabilityPR-trimmed.png} &
-\includegraphics[width=0.5\linewidth]{fig-FgkReliabilityPR-trimmed.png}
+%\includegraphics[width=0.5\linewidth]{fig-AllReliabilityPR-trimmed.png} &
+%\includegraphics[width=0.5\linewidth]{fig-FgkReliabilityPR-trimmed.png}
+\includegraphics[width=0.5\linewidth]{f11-left.pdf} &
+\includegraphics[width=0.5\linewidth]{f11-right.pdf}
 \end{tabular}
 \caption{A 2D binning of the candidate catalog reliability for period and planet radius for all stars (left) and for the FGK dwarf stars (right). Bins with fewer than 3 candidates or fewer than 20 simulated false alarms (from \invtce{} and \scrtce{}) are not plotted.}
 \label{f:prReliability}
@@ -85,10 +90,10 @@ The disposition scores discussed in \S\ref{s:scores} can be used to select a mor
 \begin{figure*}[htb]
 \centering
 \begin{tabular}{cc}
-\includegraphics[width=0.5\linewidth]{Scores-OBS.png} &
-\includegraphics[width=0.5\linewidth]{Scores-INJ1.png} \\
-\includegraphics[width=0.5\linewidth]{Scores-INV.png} &
-\includegraphics[width=0.5\linewidth]{Scores-SCR1.png} \\
+\includegraphics[width=0.5\linewidth]{Scores-OBS.pdf} &
+\includegraphics[width=0.5\linewidth]{Scores-INJ1.pdf} \\
+\includegraphics[width=0.5\linewidth]{Scores-INV.pdf} &
+\includegraphics[width=0.5\linewidth]{Scores-SCR1.pdf} \\
 \end{tabular}
 \caption{Plots of the score distribution of PCs (thick lines, right y-axis) and FPs (thin lines, left y-axis, logarithmic scaling) for the observed (top-left), on-target planet injections (top-right), inverted (bottom-left), and scrambled (bottom-right) TCEs.}
 \label{score-fig-2}
@@ -101,8 +106,10 @@ It is interesting to note that the number of inferred candidates, i.e., the numb
 \begin{figure}[htb]
  \begin{center}
  \begin{tabular}{c}
-  \includegraphics[width=\linewidth]{fig-CRadjustScore-DR25-trimmed.png} \\[12pt]
-  \includegraphics[width=\linewidth]{fig-varyScoreNcandidatesBox2-trimmed.png}
+  %\includegraphics[width=\linewidth]{fig-CRadjustScore-DR25-trimmed.png} \\[12pt]
+  %\includegraphics[width=\linewidth]{fig-varyScoreNcandidatesBox2-trimmed.png}
+   \includegraphics[width=\linewidth]{f13-top.pdf} \\[2pt]
+  \includegraphics[width=\linewidth]{f13-bottom.pdf}
   \end{tabular}
   \caption{\label{f:adjscore}[Top] The reliability (red) and effectiveness (blue) of the DR25 catalog as a function of Completeness for MES~$\leq$~10 and periods between 200 and 500\,d PCs that result when using different disposition score thresholds (shown as black numbers) to select the PCs. Higher disposition score thresholds result in higher reliability but lower completeness. [Bottom] The number of PCs (in red) in the same period and MES space when making a cut on different disposition scores.  The blue line corrects the number of candidates for the completeness and reliability. The error bars only reflect a Poisson error based on the number of observed planet candidates.}
  \end{center}
