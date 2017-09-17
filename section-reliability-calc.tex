@@ -15,7 +15,7 @@
 
 We use the \injtce, \scrtce, and \invtce\ data sets to determine the performance of the Robovetter and to measure the completeness and the reliability of the catalog. As a reminder, the reliability we are attempting to measure is only the reliability of the catalog against false alarms and does not address the astrophysical reliability (see \S\ref{s:occurates}. As discussed in \S\ref{s:tces}, the long-period \opstces\ are dominated by false alarms and so this measurement is crucial to understand the reliability of some of the most interesting candidates in our catalog.
 
-{\color{blue}
+
 Robovetter completeness, $C$, is the fraction of injected transits detected by the \Kepler\ Pipeline that are passed by the Robovetter as PCs.  As long as the \injtce{s} are representative of the observed PCs, completeness tells us what fraction of the true planets are missing from the final catalog.  Completeness is calculated by dividing the number of on-target \injtce{s} that are dispositioned as PCs (N$_{\rm PC_{\rm inj}}$) by the total number of \injtce{s} (N$_{\rm inj}$).
 
 \begin{equation}
@@ -26,7 +26,7 @@ C \approx \frac{N_{\rm PC_{\rm inj}}}{N_{\rm inj}}
 \noindent If the parameter space under consideration becomes too large and there are gradients in the actual completeness, differences between the \injtce and the \opstce{} populations will prevent the completeness measured with Equation~\ref{e:comp} from matching the actual Robovetter completeness. For example, there are more long-period \injtce{s} than short-period ones, which is not representative of the \opstce{s}, the true fraction of candidates correctly dispositioned by the Robovetter is not accurately represented by binning over all periods. With this caveat in mind, we use $C$ in this paper to indicate the value we can measure, as shown in Equation~\ref{e:comp}.
 
 %If the parameter space under consideration does not contain a significant number of injections to be adequately sampled, the measured completeness may not be a good measure of the actual Robovetter completeness. For example, there are a lot more long-period \injtce{s} than short-period ones, there are not many injections at short periods, and thus that region of parameter space may not be well-measured enough, which may be a concern since most \opstces\ are at short periods. With this caveat in mind, we use $C$ in this paper to indicate the value we can measure, as shown in Equation~\ref{e:comp}.
-}
+
 
 The candidate catalog reliability, $R$, is defined as the ratio of the number of PCs which are truly exoplanets (\trueopspc) to the total number of PCs (\opspc) from the \opstce{} data set. 
 \begin{equation}
@@ -61,9 +61,8 @@ E \approx E_{\rm inv} \equiv \frac{N_{\rm FP_{\rm inv}}}{N_{\rm inv}}
 
 For ease of notation we are using inversion to represent the false alarm TCEs, but the same calculation applies when using the combination of both inversion and scrambling, as we do later in the paper. 
 
-{\color{blue}
 Recall that the Robovetter makes a binary decision, and TCEs are either PCs or FPs. For this derivation we do not take into consideration the reason the Robovetter calls a TCE an FP (i.e., some false alarms fail because the Robovetter indicates there is a stellar eclipse or centroid offset). For most of parameter space, an overwhelming fraction of FPs are false alarms in the \opstce{} data set. Future studies will look into separating out the effectiveness for different types of FPs using the set of injected astrophysical FPs (see \S\ref{s:simulated}).
-}
+
 
 At this point we drop the \textit{obs} and \textit{inv} designations in subsequent equations, as the inversion quantities are all used to calculate $E$. The $N$ values shown below refer entirely to the number of PCs or FPs in the \opstce\ set so that $N$ = $N_{\rm PC}$ + $N_{\rm FP}$ = $T_{\rm PC}$ + $T_{\rm FP}$. We rewrite the definition for reliability (Eq.~\ref{eq:rel}) in terms of the number of true false alarms in \opstce, $T_{\rm FP}$,
 
