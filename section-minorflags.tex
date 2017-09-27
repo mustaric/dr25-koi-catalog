@@ -2,7 +2,7 @@
 % \clearpage
 \section{Minor False Positive Flag Definitions}
 \label{s:minorflags}
-The Robovetter produces a flag each time it gives a disposition of FP, and sometimes when it gives a disposition of PC.  Here we give a definition for each flag.   These flags are available for the KOIs through the comment column in the KOI table at the Exoplanet Archive. See the Robovetter output files\footnote{The Robovetter output files have the format kplr\_dr25\_XXX\_robovetter\_output.txt (XXX represents the data set name) and can be found in the Robovetter github repository, \url{https://github.com/nasa/kepler-robovetter}} for the flags for all the \opstce{s}, \injtce{s}, \invtce{s}, \scrtce{s}. A summary of the Robovetter metrics is given in Table~\ref{t:metrics}.
+The Robovetter produces a flag each time it gives a disposition of FP, and sometimes when it gives a disposition of PC.   Here we give a definition for each flag.  Table~ref{t:minorstats} shows the number and percentage of \opstce{s} (not including rogue and banned) that were flagged with each minor flag. These flags are available for the KOIs through the comment column in the KOI table at the Exoplanet Archive. See the Robovetter output files\footnote{The Robovetter output files have the format kplr\_dr25\_XXX\_robovetter\_output.txt (XXX represents the data set name) and can be found in the Robovetter github repository, \url{https://github.com/nasa/kepler-robovetter}} for the flags for all the \opstce{s}, \injtce{s}, \invtce{s}, \scrtce{s}. A summary of the Robovetter metrics is given in Table~\ref{t:metrics}.
 
 
 \textbf{ALL\_TRANS\_CHASES}: This flag is set when the per TCE Chases metric is above threshold. This indicates that the shapes of the individual transits are generally not reliable and the TCE is dispositioned as an FP with the not transit-like major flag set. See \S\ref{s:tcechases}.
@@ -98,3 +98,5 @@ The Robovetter produces a flag each time it gives a disposition of FP, and somet
 \textbf{SWEET\_NTL}: The sine wave event evaluation test (SWEET) is above threshold, the detected signal has an amplitude greater than the TCE's depth, and the TCE period is less than 5 days. This flag indicates that there is a significant sinusoidal variability in the PDC data at the same period as the TCE, and the detected event is due to stellar variability and not a transit. The TCE is dispositioned as an FP with the not transit-like major flag set. See \S\ref{s:sweetntl}.
 
 \textbf{TRANS\_GAPPED}: The fraction of gapped transit events is above threshold. This flag indicates that a large number of observable transits had insufficient in-cadence data. The TCE is dispositioned as an FP with the not transit-like major flag set. See \S\ref{s:rocky}.
+
+\input{Table-minorFlagStats.tex}
