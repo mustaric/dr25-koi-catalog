@@ -7,12 +7,12 @@
 \def \effectiveness {99.6}
 %For above numbers see script-playPublicData
 \label{s:summary}
+\vspace{-0.1em}
 \subsection{Summary of the KOI Catalog}
-The final DR25 KOI catalog, available at the NASA Exoplanet Archive, contains all TCEs that pass the not transit-like tests (\S\ref{nottransitlikesec}) and those that fail as not transit-like with a disposition score $\ge$ 0.1. 
-
-
-Some overall statistics of the DR25 KOI catalog are as follows:
+The final DR25 KOI catalog, available at the NASA Exoplanet Archive, contains all TCEs that pass the not transit-like tests (\S\ref{nottransitlikesec}) and those that fail as not transit-like with a disposition score $\ge$ 0.1. Some overall statistics of the DR25 KOI catalog are as follows:
+\vspace{-0.9em}
 \begin{itemize}
+\itemsep0em
     \item \nkois{}~KOIs
     \item \ncand{}~PCs
     \item \newkois{}~new KOIs
@@ -21,7 +21,7 @@ Some overall statistics of the DR25 KOI catalog are as follows:
     \item \effectiveness{}\% of \invtce{s} and \scrtce{s} are FPs
 \end{itemize}
 
-A plot of the planetary periods and radii is shown in Figure~\ref{f:catalogPlot}, with the color indicating the disposition score. The distribution of the periods and planetary radii of the planet candidates in this catalog is shown along the x- and y-axis. A clear excess of candidates exists with periods near 370\,d;  this excess disappears if we only consider those with a disposition score $>$~0.7. While the disposition score provides an easy way to make an additional cut on the PC population at long periods, when discussing the catalog PCs below we are using the pure dispositions of the Robovetter unless otherwise stated. The slight deficit of planets with radii just below 2.0\,R$_{\oplus}$ is consistent with the study of \citet{Fulton2017} where they report a natural gap in the abundance of planets between super-Earths and mini-Neptunes by applying precise stellar parameters to a subset of the \kepler\ transiting candidates \citep{CKS2,CKS1}. The new KOIs with a disposition of PC are found at all periods, but only 10 have MES~$\geq$~10.
+A plot of the planetary periods and radii is shown in Figure~\ref{f:catalogPlot}, with the color indicating the disposition score. The distribution of the periods and planetary radii of the planet candidates in this catalog is shown along the x- and y-axis. A clear excess of candidates exists with periods near 370\,d;  this excess disappears if we only consider those with a disposition score $>$~0.7. While the disposition score provides an easy way to make an additional cut on the PC population at long periods, when discussing the catalog PCs below we are using the pure dispositions of the Robovetter unless otherwise stated. The slight deficit of planets with radii just below 2.0\,R$_{\oplus}$ is consistent with the study of \citet{Fulton2017} where they report a natural gap in the abundance of planets between super-Earths and mini-Neptunes by applying precise stellar parameters to a subset of the \kepler\ transiting candidates \citep{CKS2,CKS1}. The new KOIs with a disposition of PC are found at all periods, but only ten have MES~$\geq$~10.
 
 \begin{figure*}[htb]
     \centering
@@ -32,7 +32,7 @@ A plot of the planetary periods and radii is shown in Figure~\ref{f:catalogPlot}
 \end{figure*}
 
 \subsection{Comparison of Dispositions to Other Catalogs}
-We compare the DR25 KOI catalog to two sets of \Kepler\ exoplanets: the confirmed exoplanets and the certified false positives.  In both of these cases, additional observations and careful vetting are used to verify the signal as either a confirmed exoplanet or a certified FP \citep{Bryson2017c}. It is worth comparing the Robovetter to these catalogs as a sanity check.  
+We compare the DR25 KOI catalog to two sets of \Kepler\ exoplanets: the confirmed exoplanets and the certified FPs.  In both of these cases, additional observations and careful vetting are used to verify the signal as either a confirmed exoplanet or a certified FP \citep{Bryson2017c}. It is worth comparing the Robovetter to these catalogs as a sanity check.  
 
 We use the confirmed exoplanet list from the Exoplanet Archive\footnote{\url{https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls\&config=planets}} on 2017-05-24.  2279 confirmed planets are in the DR25 KOI catalog.  The DR25 Robovetter fails 44 of these confirmed planets, or less than 2\%. Half of these FPs are not transit-like fails, 16 are stellar eclipse fails, six are centroid offsets, and one is an ephemeris match. Twelve fail due to the LPP metric; all of these twelve have periods less than 50 days.  The LPP metric threshold was set to improve the reliability of the long period KOIs, an act which sacrificed some of the short period KOIs.  The reason the Robovetter failed each confirmed planet is given in the ``koi\_comment'' column at the Exoplanet Archive (see \S\ref{s:minorflags}). 
 
@@ -46,5 +46,5 @@ It is also worth noting that none of the confirmed circumbinary planets \citep[e
 
 % state what the accuracy of the statistical validation.
 
-We use the Certified False Positive table\footnote{\url{https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls\&config=fpwg}} downloaded from the Exoplanet Archive on 2017-07-11 to evaluate the performance of the Robovetter at removing known FPs. This table contains objects known to be FPs based on all available data, including ground-based follow-up information.  The Robovetter passes 106 of the 2713 certified false positives known at the time, only 3.9 per cent.  Most of those called PCs by the Robovetter are high signal-to-noise and more than half have periods less than 5 days.  The most common reason they are certified FPs is that there is evidence they are eclipsing binaries. In some cases, external information, like radial velocity measurements, provide a mass which determines that the KOI is actually a binary system. The other main reason for the discrepancy between the tables is that the certified FPs often show evidence of significant centroid offsets. In crowded fields the Centroid Robovetter (\S\ref{s:centroidrv}) will not fail observed offsets because of the potential for confusion. For the Certified False Positive table, individual cases are examined by a team of scientists who determines when there is sufficient proof that the signal is indeed caused by a background eclipsing binary.  
+We use the Certified False Positive table\footnote{\url{https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls\&config=fpwg}} downloaded from the Exoplanet Archive on 2017-07-11 to evaluate the performance of the Robovetter at removing known FPs. This table contains objects known to be FPs based on all available data, including ground-based follow-up information.  The Robovetter passes 106 of the 2713 certified FPs known at the time, only 3.9 per cent.  Most of those called PCs by the Robovetter are high signal-to-noise and more than half have periods less than 5 days.  The most common reason they are certified FPs is that there is evidence they are eclipsing binaries. In some cases, external information, like radial velocity measurements, provide a mass which determines that the KOI is actually a binary system. The other main reason for the discrepancy between the tables is that the certified FPs often show evidence of significant centroid offsets. In crowded fields the Centroid Robovetter (\S\ref{s:centroidrv}) will not fail observed offsets because of the potential for confusion. For the Certified False Positive table, individual cases are examined by a team of scientists who determines when there is sufficient proof that the signal is indeed caused by a background eclipsing binary.  
 
