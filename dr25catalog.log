@@ -1,0 +1,1286 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Fink) (preloaded format=pdflatex 2016.10.29)  13 OCT 2017 14:53
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**dr25catalog.tex
+(./dr25catalog.tex
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 78 languages loaded.
+(./aastex61.cls
+Document Class: aastex61 2016/04/16 Version 6.1/AAS markup document class
+Class aastex Info: 
+ 
+ Original \LaTeX2.09 style by Chris Biemesderfer (chris@seagoat.com). 
+ Adapted to \LaTeXe by A. Ogawa (ogawa@teleport.com)
+ emulateapj.cls included, Copyright 2000-2015 Alexey Vikhlinin 
+ Rewrite and update of emulateapj.cls, revised and enhanced with table macros, 
+gridlines, draft watermark,
+ track changes, new `modern' style and much more, by Amy Hendrickson,
+ (amyh@texnology.com, http://www.texnology.com) 
+ 
+  on input line 106.
+\bibbaselineskip=\skip41
+(/sw/share/texmf-dist/tex/latex/revtex/revtex4-1.cls
+Document Class: revtex4-1 2010/07/25/20:33:00 4.1r (http://publish.aps.org/revt
+ex4/ for documentation)
+ Copyright (c) 2009 The American Physical Society.
+ mailto:revtex@aps.org
+ Licensed under the LPPL:
+http://www.ctan.org/tex-archive/macros/latex/base/lppl.txt
+ Arthur Ogawa <arthur_ogawa at sbcglobal dot net>
+ Based on work by David Carlisle <david at dcarlisle.demon.co.uk>.
+ltxutil[2010/07/25/20:33:00 4.1r utilities package (portions licensed from W. E
+. Baxter web at superscript.com)]
+LaTeX Info: Redefining \@centercr on input line 308.
+Class revtex4-1 Info: Repairing broken LaTeX eqnarray on input line 358.
+\eqncolsep=\skip42
+Class revtex4-1 Info: Repairing hyperref-unfriendly LaTeX definition of \mpfoot
+note on input line 433.
+Class revtex4-1 Info: Repairing broken LateX \@sect on input line 755.
+\intertabularlinepenalty=\count79
+\@tbpen=\count80
+\@arstrutbox@hline=\box26
+Class revtex4-1 Info: Repairing broken LaTeX \@xbitor on input line 1786.
+Class revtex4-1 Info: Making \typeout \long on input line 2046.
+ltxfront[2010/07/25/20:33:00 4.1r frontmatter package (AO,DPC)]
+\c@affil=\count81
+\c@collab=\count82
+\absbox=\box27
+ltxgrid[2010/07/25/20:33:00 4.1r page grid package (portions licensed from W. E
+. Baxter web at superscript.com)]
+\c@linecount=\count83
+\output@latex=\toks14
+\box@size@1=\box28
+\box@size@2=\box29
+\@protection@box=\box30
+\@topmark@saved=\toks15
+\footins@saved=\box31
+\footins@recovered=\box32
+\column@recovered=\box33
+\pagesofar=\box34
+\footsofar=\box35
+\pagegrid@col=\count84
+Class revtex4-1 Info: Overriding \@vspace, \@vspacer, \@no@pgbk, \@newline, and
+ \\  on input line 5578.
+\c@part=\count85
+\c@section=\count86
+\c@subsection=\count87
+\c@subsubsection=\count88
+\c@paragraph=\count89
+\c@subparagraph=\count90
+\abovecaptionskip=\skip43
+\belowcaptionskip=\skip44
+\c@figure=\count91
+\fbox@1=\box36
+\c@table=\count92
+\fbox@2=\box37
+\c@video=\count93
+\fbox@4=\box38
+\@bibdataout=\write3
+\widetext@top=\box39
+\widetext@bot=\box40
+Class revtex4-1 Info: Selecting society aps on input line 7542.
+(/sw/share/texmf-dist/tex/latex/revtex/aps4-1.rtx
+File: aps4-1 2010/07/25/20:33:00 4.1r (http://publish.aps.org/revtex4/ for docu
+mentation)
+Class revtex4-1 Info: RevTeX society APS selected on input line 31.
+)
+Class revtex4-1 Info: Selecting journal pra on input line 7544.
+Class revtex4-1 Info: APS journal PRA selected on input line 7545.
+
+(/sw/share/texmf-dist/tex/latex/revtex/aps10pt4-1.rtx
+File: aps10pt4-1 2010/07/25/20:33:00 4.1r (http://publish.aps.org/revtex4/ for 
+documentation)
+Class revtex4-1 Info: RevTeX pointsize 10pt selected on input line 30.
+)
+(/sw/share/texmf-dist/tex/latex/textcase/textcase.sty
+Package: textcase 2004/10/07 v0.07 Text only upper/lower case changing (DPC)
+)
+(/sw/share/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+(/sw/share/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip45
+\bibsep=\skip46
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count94
+)
+Class revtex4-1 Info: Repairing natbib's \BibitemShut on input line 7549.
+
+(/sw/share/texmf-dist/tex/latex/revtex/revsymb4-1.sty
+Package: revsymb4-1 2010/07/25/20:33:00 4.1r (http://publish.aps.org/revtex4/ f
+or documentation)
+LaTeX Info: Redefining \REV@mathfrak on input line 119.
+))
+(/sw/share/texmf-dist/tex/latex/base/latexsym.sty
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
+)
+(/sw/share/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/sw/share/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+(/sw/share/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/sw/share/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/sw/share/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(/sw/share/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/sw/share/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/sw/share/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count95
+))
+\Gin@req@height=\dimen102
+\Gin@req@width=\dimen103
+)
+(/sw/share/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/sw/share/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks17
+\symAMSa=\mathgroup5
+\symAMSb=\mathgroup6
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+LaTeX Info: Redefining \frak on input line 111.
+LaTeX Info: Redefining \Bbb on input line 113.
+))
+(/sw/share/texmf-dist/tex/generic/epsf/epsf.sty
+This is `epsf.tex' v2.7.4 <14 February 2011>
+\epsffilein=\read1
+\epsfframemargin=\dimen104
+\epsfframethickness=\dimen105
+\epsfrsize=\dimen106
+\epsftmp=\dimen107
+\epsftsize=\dimen108
+\epsfxsize=\dimen109
+\epsfysize=\dimen110
+\pspoints=\dimen111
+)
+\fncount=\count96
+\endfncount=\count97
+\c@front@matter@foot@note=\count98
+\keys@width=\skip47
+\c@lastfootnote=\count99
+\c@remember@figure@num=\count100
+\c@remember@table@num=\count101
+\bibskip=\skip48
+\bibindent=\dimen112
+\plot@width=\skip49
+\c@table@save=\count102
+\@abovenoteskip=\dimen113
+\table@note@skip=\skip50
+\deluxe@table@width=\skip51
+\@d@t@a=\skip52
+\c@deluxe@table@num=\count103
+\LTcapwidth=\dimen114
+\abovedeluxetableskip=\skip53
+\belowdeluxetableskip=\skip54
+\lastrowheight=\dimen115
+\DT@p@ftn=\toks18
+\pt@column=\count104
+\pt@ncol=\count105
+ (/sw/share/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip55
+\LTright=\skip56
+\LTpre=\skip57
+\LTpost=\skip58
+\LTchunksize=\count106
+\LTcapwidth=\dimen116
+\LT@head=\box41
+\LT@firsthead=\box42
+\LT@foot=\box43
+\LT@lastfoot=\box44
+\LT@cols=\count107
+\LT@rows=\count108
+\c@LT@tables=\count109
+\c@LT@chunks=\count110
+\LT@p@ftn=\toks19
+)
+(/sw/share/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+(/sw/share/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+)
+(/sw/share/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
+
+(/sw/share/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+
+
+(/sw/share/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2012/05/28 v1.13 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
+)
+Package: bitset 2011/01/30 v1.1 Handle bit-vector datatype (HO)
+Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+Package: hopatch 2012/05/28 v1.2 Wrapper for package hooks (HO)
+Package: xcolor-patch 2011/01/30 xcolor patch
+Package: atveryend 2011/06/30 v1.8 Hooks at the very end of document (HO)
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
+Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+)
+(/sw/share/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+(/sw/share/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
+)
+(/sw/share/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+)
+\@linkdim=\dimen117
+\Hy@linkcounter=\count111
+\Hy@pagecounter=\count112
+
+(/sw/share/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count113
+
+(/sw/share/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Option `bookmarks' set `false' on input line 4319.
+Package hyperref Info: Option `pdfnewwindow' set `true' on input line 4319.
+Package hyperref Info: Option `colorlinks' set `true' on input line 4319.
+Package hyperref Info: Option `final' set `true' on input line 4319.
+Package hyperref Info: Hyper figures OFF on input line 4443.
+Package hyperref Info: Link nesting OFF on input line 4448.
+Package hyperref Info: Hyper index ON on input line 4451.
+Package hyperref Info: Plain pages OFF on input line 4458.
+Package hyperref Info: Backreferencing OFF on input line 4463.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks OFF on input line 4694.
+LaTeX Info: Redefining \href on input line 4952.
+\c@Hy@tempcnt=\count114
+LaTeX Info: Redefining \url on input line 5041.
+\XeTeXLinkMargin=\dimen118
+\Fld@menulength=\count115
+\Field@Width=\dimen119
+\Fld@charsize=\dimen120
+Package hyperref Info: Hyper figures OFF on input line 6295.
+Package hyperref Info: Link nesting OFF on input line 6300.
+Package hyperref Info: Hyper index ON on input line 6303.
+Package hyperref Info: backreferencing OFF on input line 6310.
+Package hyperref Info: Link coloring ON on input line 6313.
+Package hyperref Info: Link coloring with OCG OFF on input line 6320.
+Package hyperref Info: PDF/A mode OFF on input line 6325.
+LaTeX Info: Redefining \ref on input line 6365.
+LaTeX Info: Redefining \pageref on input line 6369.
+\Hy@abspage=\count116
+\c@Item=\count117
+\c@Hfootnote=\count118
+)
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/sw/share/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
+\Fld@listcount=\count119
+\c@bookmark@seq@number=\count120
+
+(/sw/share/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip59
+)
+(/sw/share/texmf-dist/tex/latex/tools/array.sty
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen121
+\extrarowheight=\dimen122
+\NC@list=\toks20
+\extratabsurround=\skip60
+\backup@length=\skip61
+)
+\colcount=\count121
+\firstcolcount=\count122
+\secondcolcount=\count123
+\thirdcolcount=\count124
+\columncount=\count125
+\howmanyDs=\count126
+\firsthowmanyDs=\count127
+\secondhowmanyDs=\count128
+\PartsOfTable=\count129
+\columnoneandtwo=\count130
+\colnumsused=\count131
+\loopnum=\count132
+\totalcolumncount=\count133
+\totalcolumns=\count134
+\firsttablebox=\box45
+\secondtablebox=\box46
+\thirdtablebox=\box47
+\longtablebox=\box48
+\splitbox=\box49
+\movetabledown=\dimen123
+\maxtablewidth=\dimen124
+\savetabskip=\dimen125
+\tempcounter=\count135
+\colheadcount=\count136
+\rotatetablebox=\box50
+\colorcount=\count137
+\refchangenumber=\count138
+\listchangenum=\count139
+
+(/sw/share/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box51
+\UL@hyphenbox=\box52
+\UL@skip=\skip62
+\UL@hook=\toks21
+\UL@height=\dimen126
+\UL@pe=\count140
+\UL@pixel=\dimen127
+\ULC@box=\box53
+Package: ulem 2012/05/18
+\ULdepth=\dimen128
+)
+\AuthorCollaborationLimit=\count141
+\largestAffilNum=\count142
+\countauthors=\count143
+\c@affilcount=\count144
+)
+(/sw/share/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip63
+
+For additional information on amsmath, use the `?' option.
+(/sw/share/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/sw/share/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks22
+\ex@=\dimen129
+)
+LaTeX Info: Redefining \text on input line 39.
+)
+(/sw/share/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen130
+)
+(/sw/share/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count145
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count146
+\leftroot@=\count147
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count148
+\DOTSCASE@=\count149
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box54
+\strutbox@=\box55
+\big@size=\dimen131
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count150
+\c@MaxMatrixCols=\count151
+\dotsspace@=\muskip11
+\c@parentequation=\count152
+\dspbrk@lvl=\count153
+\tag@help=\toks23
+\row@=\count154
+\column@=\count155
+\maxfields@=\count156
+\andhelp@=\toks24
+\eqnshift@=\dimen132
+\alignsep@=\dimen133
+\tagshift@=\dimen134
+\tagwidth@=\dimen135
+\totwidth@=\dimen136
+\lineht@=\dimen137
+\@envbody=\toks25
+\multlinegap=\skip64
+\multlinetaggap=\skip65
+\mathdisplay@stack=\toks26
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+(/sw/share/texmf-dist/tex/latex/soul/soul.sty
+Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
+\SOUL@word=\toks27
+\SOUL@lasttoken=\toks28
+\SOUL@cmds=\toks29
+\SOUL@buffer=\toks30
+\SOUL@token=\toks31
+\SOUL@spaceskip=\skip66
+\SOUL@ttwidth=\dimen138
+\SOUL@uldp=\dimen139
+\SOUL@ulht=\dimen140
+)
+(/sw/share/texmf-dist/tex/latex/marginnote/marginnote.sty
+Package: marginnote 2012/03/29 v1.1i non floating margin notes for LaTeX
+\c@mn@abspage=\count157
+)
+(/sw/share/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/sw/share/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+))
+(/sw/share/texmf-dist/tex/latex/makecell/makecell.sty
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
+\rotheadsize=\dimen141
+\c@nlinenum=\count158
+\TeXr@lab=\toks32
+)
+Class revtex4-1 Info: Unrecognized array package. Please update this document c
+lass! (Proceeding with fingers crossed.) on input line 114.
+Class revtex4-1 Info: Patching unrecognized longtable package. (Proceeding with
+ fingers crossed) on input line 114.
+Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 114
+.
+Class revtex4-1 Info: cite was not loaded (OK!) on input line 114.
+Class revtex4-1 Info: mcite was not loaded (OK!) on input line 114.
+Class revtex4-1 Info: multicol was not loaded (OK!) on input line 114.
+ (./dr25catalog.aux
+
+LaTeX Warning: Label `t:invclean' multiply defined.
+
+)
+\openout1 = `dr25catalog.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+ (/sw/share/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count159
+\scratchdimen=\dimen142
+\scratchbox=\box56
+\nofMPsegments=\count160
+\nofMParguments=\count161
+\everyMPshowfont=\toks33
+\MPscratchCnt=\count162
+\MPscratchDim=\dimen143
+\MPnumerator=\count163
+\makeMPintoPDFobject=\count164
+\everyMPtoPDFconversion=\toks34
+) (/sw/share/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/sw/share/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+)
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/sw/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+\AtBeginShipoutBox=\box57
+Package hyperref Info: Link coloring ON on input line 114.
+
+(/sw/share/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
+
+(/sw/share/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+)
+\c@section@level=\count165
+)
+LaTeX Info: Redefining \ref on input line 114.
+LaTeX Info: Redefining \pageref on input line 114.
+LaTeX Info: Redefining \nameref on input line 114.
+Package marginnote Info: \pdfoutput not 0 and \pdflastxpos available.
+(marginnote)             Extended position detection mode activated.
+\openout3 = `dr25catalogNotes.bib'.
+
+ (./authors.tex)
+LaTeX Font Info:    Try loading font information for U+lasy on input line 136.
+(/sw/share/texmf-dist/tex/latex/base/ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 136.
+
+(/sw/share/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 136.
+
+(/sw/share/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1{/sw/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] (./section-intr
+oduction.tex
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 9.
+
+(/sw/share/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+Underfull \hbox (badness 10000) in paragraph at lines 11--11
+[][]| [] [][][][]$\T1/cmtt/m/n/8 https : / / exoplanetarchive . ipac . caltech 
+. edu / cgi-[]bin /
+ []
+
+[3] [4] (./abbrev.tex
+Underfull \hbox (badness 1259) in paragraph at lines 9--10
+[]\T1/cmr/bx/n/10 obsTCE\T1/cmr/m/n/10 : Ob-served TCEs. TCEs found by
+ []
+
+[5])) [6] (./section-dr25TCEs.tex
+Underfull \hbox (badness 1769) in paragraph at lines 8--9
+[]\T1/cmr/m/n/10 We have plot-ted the dis-tri-bu-tion of the 32,534
+ []
+
+<f1.pdf, id=412, 544.21758pt x 289.85591pt>
+File: f1.pdf Graphic file (type pdf)
+ <use f1.pdf>
+Package pdftex.def Info: f1.pdf used on input line 18.
+(pdftex.def)             Requested size: 513.11743pt x 273.30492pt.
+)
+(./section-InjInvSS1Tces.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--3
+[][]| [] [][][][][]$\T1/cmtt/m/n/8 https : / / exoplanetarchive . ipac . caltec
+h . edu / docs /
+ []
+
+[7] [8 <./f1.pdf>] <f2.pdf, id=522, 544.21758pt x 600.86984pt>
+File: f2.pdf Graphic file (type pdf)
+ <use f2.pdf>
+Package pdftex.def Info: f2.pdf used on input line 28.
+(pdftex.def)             Requested size: 500.29262pt x 552.39436pt.
+
+
+LaTeX Warning: Float too large for page by 11.82504pt on input line 32.
+
+(./Table-invclean.tex) (./Table-scrclean.tex)) (./section-DVTransitFits.tex
+[9] [10 <./f2.pdf>]
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 2.
+
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 2.
+
+
+Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 6--6
+[][]| [] [][][][]$\T1/cmtt/m/n/8 https : / / exoplanetarchive . ipac . caltech 
+. edu / docs /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 6--6
+[][]| [] [][][][]$\T1/cmtt/m/n/8 https : / / exoplanetarchive . ipac . caltech 
+. edu / cgi-[]bin /
+ []
+
+[11] <f3-top.pdf, id=631, 537.88925pt x 505.42607pt>
+File: f3-top.pdf Graphic file (type pdf)
+ <use f3-top.pdf>
+Package pdftex.def Info: f3-top.pdf used on input line 11.
+(pdftex.def)             Requested size: 242.26653pt x 227.64786pt.
+
+<f3-bottom.pdf, id=632, 564.76309pt x 509.04115pt>
+File: f3-bottom.pdf Graphic file (type pdf)
+ <use f3-bottom.pdf>
+Package pdftex.def Info: f3-bottom.pdf used on input line 12.
+(pdftex.def)             Requested size: 242.26653pt x 218.363pt.
+
+Overfull \hbox (10.0pt too wide) in paragraph at lines 10--14
+ []$[]$ 
+ []
+
+) [12 <./f3-top.pdf> <./f3-bottom.pdf
+
+pdfTeX warning: pdflatex (file ./f3-bottom.pdf): PDF inclusion: multiple pdfs w
+ith page group included in a single page
+>] (./section-robovetter.tex
+<RoboVetter-Diagram-V4-Overview.pdf, id=744, 2062.70625pt x 1218.5525pt>
+File: RoboVetter-Diagram-V4-Overview.pdf Graphic file (type pdf)
+
+<use RoboVetter-Diagram-V4-Overview.pdf>
+Package pdftex.def Info: RoboVetter-Diagram-V4-Overview.pdf used on input line 
+17.
+(pdftex.def)             Requested size: 513.11743pt x 303.1127pt.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 30.
+
+(/sw/share/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 30.
+ [13] (./table-metrics.tex
+Overfull \hbox (7.39369pt too wide) detected at line 63
+$\OML/cmm/m/it/7 PC$
+ []
+
+
+LaTeX Warning: Float too large for page by 64.25955pt on input line 64.
+
+) [14 <./RoboVetter-Diagram-V4-Overview.pdf>] [15]
+<ScoreFig-1.pdf, id=899, 525.40291pt x 414.1071pt>
+File: ScoreFig-1.pdf Graphic file (type pdf)
+ <use ScoreFig-1.pdf>
+Package pdftex.def Info: ScoreFig-1.pdf used on input line 63.
+(pdftex.def)             Requested size: 248.86226pt x 196.14685pt.
+
+<ScoreFig-2.pdf, id=900, 535.76161pt x 414.1071pt>
+File: ScoreFig-2.pdf Graphic file (type pdf)
+ <use ScoreFig-2.pdf>
+Package pdftex.def Info: ScoreFig-2.pdf used on input line 64.
+(pdftex.def)             Requested size: 248.86226pt x 192.3556pt.
+
+<ScoreFig-3.pdf, id=901, 549.01112pt x 414.34799pt>
+File: ScoreFig-3.pdf Graphic file (type pdf)
+ <use ScoreFig-3.pdf>
+Package pdftex.def Info: ScoreFig-3.pdf used on input line 65.
+(pdftex.def)             Requested size: 248.86226pt x 187.82051pt.
+
+<ScoreFig-4.pdf, id=902, 548.28839pt x 414.34799pt>
+File: ScoreFig-4.pdf Graphic file (type pdf)
+ <use ScoreFig-4.pdf>
+Package pdftex.def Info: ScoreFig-4.pdf used on input line 66.
+(pdftex.def)             Requested size: 248.86226pt x 188.06708pt.
+
+<ScoreFig-5.pdf, id=903, 549.25201pt x 414.34799pt>
+File: ScoreFig-5.pdf Graphic file (type pdf)
+ <use ScoreFig-5.pdf>
+Package pdftex.def Info: ScoreFig-5.pdf used on input line 67.
+(pdftex.def)             Requested size: 248.86226pt x 187.73831pt.
+
+<ScoreFig-6.pdf, id=904, 549.25201pt x 414.34799pt>
+File: ScoreFig-6.pdf Graphic file (type pdf)
+ <use ScoreFig-6.pdf>
+Package pdftex.def Info: ScoreFig-6.pdf used on input line 68.
+(pdftex.def)             Requested size: 248.86226pt x 187.73831pt.
+
+Overfull \hbox (4.60709pt too wide) in paragraph at lines 62--70
+ []$[]$ 
+ []
+
+) (./section-reliability-calc.tex [16] [17 <./ScoreFig-1.pdf> <./ScoreFig-2.pdf
+> <./ScoreFig-3.pdf> <./ScoreFig-4.pdf> <./ScoreFig-5.pdf> <./ScoreFig-6.pdf>]
+[18] <f6-top.pdf, id=962, 606.55043pt x 387.13226pt>
+File: f6-top.pdf Graphic file (type pdf)
+ <use f6-top.pdf>
+Package pdftex.def Info: f6-top.pdf used on input line 132.
+(pdftex.def)             Requested size: 436.15294pt x 278.38057pt.
+
+<f6-bottom.pdf, id=963, 606.53474pt x 393.22534pt>
+File: f6-bottom.pdf Graphic file (type pdf)
+ <use f6-bottom.pdf>
+Package pdftex.def Info: f6-bottom.pdf used on input line 133.
+(pdftex.def)             Requested size: 436.15294pt x 282.76201pt.
+)
+(./section-tuning.tex [19] [20 <./f6-top.pdf> <./f6-bottom.pdf
+
+pdfTeX warning: pdflatex (file ./f6-bottom.pdf): PDF inclusion: multiple pdfs w
+ith page group included in a single page
+>] (./Table-RV-thresh.tex)) (./section-assembleCatalog.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--3
+[][]| [] [][][][]$\T1/cmtt/m/n/8 https : / / exoplanetarchive . ipac . caltech 
+. edu / cgi-[]bin /
+ []
+
+[21] (./Table-banned.tex
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+[]\T1/cmr/bx/n/9 Table 5.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+[]\T1/cmr/m/n/9 obsTCEs
+ []
+
+
+Underfull \hbox (badness 8075) in paragraph at lines 29--29
+\T1/cmr/m/n/9 Banned from
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+\T1/cmr/m/n/9 Be-com-ing
+ []
+
+)) [22] (./section-MCMC.tex (./ttv-short.tex)) (./section-catalogsummary.tex
+[23] <f7.pdf, id=1158, 545.29344pt x 408.92398pt>
+File: f7.pdf Graphic file (type pdf)
+ <use f7.pdf>
+Package pdftex.def Info: f7.pdf used on input line 28.
+(pdftex.def)             Requested size: 513.11743pt x 384.81912pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+[][]| [] [][][][]$\T1/cmtt/m/n/8 https : / / exoplanetarchive . ipac . caltech 
+. edu / cgi-[]bin /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 49--49
+[][]| [] [][][][]$\T1/cmtt/m/n/8 https : / / exoplanetarchive . ipac . caltech 
+. edu / cgi-[]bin /
+ []
+
+) (./section-CompAndReliability.tex [24]
+<f8-top.pdf, id=1210, 351.53783pt x 287.64903pt>
+File: f8-top.pdf Graphic file (type pdf)
+ <use f8-top.pdf>
+Package pdftex.def Info: f8-top.pdf used on input line 9.
+(pdftex.def)             Requested size: 218.03839pt x 178.41077pt.
+
+<f8-middle.pdf, id=1211, 351.53783pt x 287.64903pt>
+File: f8-middle.pdf Graphic file (type pdf)
+ <use f8-middle.pdf>
+Package pdftex.def Info: f8-middle.pdf used on input line 10.
+(pdftex.def)             Requested size: 218.03839pt x 178.41077pt.
+
+<f8-bottom.pdf, id=1212, 351.53783pt x 287.64903pt>
+File: f8-bottom.pdf Graphic file (type pdf)
+ <use f8-bottom.pdf>
+Package pdftex.def Info: f8-bottom.pdf used on input line 11.
+(pdftex.def)             Requested size: 218.03839pt x 178.41077pt.
+
+
+LaTeX Warning: Float too large for page by 39.3714pt on input line 18.
+
+[25 <./f7.pdf>]
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 26.
+
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 26.
+
+
+Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
+
+<f9.pdf, id=1269, 570.60277pt x 745.35146pt>
+File: f9.pdf Graphic file (type pdf)
+ <use f9.pdf>
+Package pdftex.def Info: f9.pdf used on input line 31.
+(pdftex.def)             Requested size: 448.97775pt x 586.47833pt.
+ [26 <./f8-top.pdf> <./f8-middle.pdf
+
+pdfTeX warning: pdflatex (file ./f8-middle.pdf): PDF inclusion: multiple pdfs w
+ith page group included in a single page
+> <./f8-bottom.pdf
+
+pdfTeX warning: pdflatex (file ./f8-bottom.pdf): PDF inclusion: multiple pdfs w
+ith page group included in a single page
+>] [27 <./f9.pdf>] <f10-left.pdf, id=1513, 299.05537pt x 257.18658pt>
+File: f10-left.pdf Graphic file (type pdf)
+
+<use f10-left.pdf>
+Package pdftex.def Info: f10-left.pdf used on input line 56.
+(pdftex.def)             Requested size: 256.55872pt x 220.6542pt.
+ <f10-right.pdf, id=1514, 336.12085pt x 287.64903pt>
+File: f10-right.pdf Graphic file (type pdf)
+
+<use f10-right.pdf>
+Package pdftex.def Info: f10-right.pdf used on input line 57.
+(pdftex.def)             Requested size: 256.55872pt x 219.57675pt.
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 53--59
+ []$ 
+ []
+
+<f11-left.pdf, id=1515, 334.11336pt x 287.64903pt>
+File: f11-left.pdf Graphic file (type pdf)
+ <use f11-left.pdf>
+Package pdftex.def Info: f11-left.pdf used on input line 70.
+(pdftex.def)             Requested size: 256.55872pt x 220.88911pt.
+
+<f11-right.pdf, id=1516, 334.11336pt x 287.64903pt>
+File: f11-right.pdf Graphic file (type pdf)
+ <use f11-right.pdf>
+Package pdftex.def Info: f11-right.pdf used on input line 71.
+(pdftex.def)             Requested size: 256.55872pt x 220.88911pt.
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 67--73
+ []$ 
+ []
+
+<Scores-OBS.pdf, id=1521, 1541.76pt x 1156.32pt>
+File: Scores-OBS.pdf Graphic file (type pdf)
+ <use Scores-OBS.pdf>
+Package pdftex.def Info: Scores-OBS.pdf used on input line 94.
+(pdftex.def)             Requested size: 256.55872pt x 192.4078pt.
+
+<Scores-INJ1.pdf, id=1522, 1541.76pt x 1156.32pt>
+File: Scores-INJ1.pdf Graphic file (type pdf)
+ <use Scores-INJ1.pdf>
+Package pdftex.def Info: Scores-INJ1.pdf used on input line 95.
+(pdftex.def)             Requested size: 256.55872pt x 192.4078pt.
+
+<Scores-INV.pdf, id=1523, 1541.76pt x 1156.32pt>
+File: Scores-INV.pdf Graphic file (type pdf)
+ <use Scores-INV.pdf>
+Package pdftex.def Info: Scores-INV.pdf used on input line 96.
+(pdftex.def)             Requested size: 256.55872pt x 192.4078pt.
+
+<Scores-SCR1.pdf, id=1524, 1541.76pt x 1156.32pt>
+File: Scores-SCR1.pdf Graphic file (type pdf)
+ <use Scores-SCR1.pdf>
+Package pdftex.def Info: Scores-SCR1.pdf used on input line 97.
+(pdftex.def)             Requested size: 256.55872pt x 192.4078pt.
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 93--99
+ []$[]$ 
+ []
+
+<f13-top.pdf, id=1528, 412.18993pt x 348.90375pt>
+File: f13-top.pdf Graphic file (type pdf)
+ <use f13-top.pdf>
+Package pdftex.def Info: f13-top.pdf used on input line 112.
+(pdftex.def)             Requested size: 237.42015pt x 200.96414pt.
+
+<f13-bottom.pdf, id=1529, 339.88857pt x 325.13345pt>
+File: f13-bottom.pdf Graphic file (type pdf)
+ <use f13-bottom.pdf>
+Package pdftex.def Info: f13-bottom.pdf used on input line 113.
+(pdftex.def)             Requested size: 237.42015pt x 227.12056pt.
+
+Overfull \hbox (5.15363pt too wide) in paragraph at lines 109--115
+ []$ 
+ []
+
+) (./section-multis.tex) (./section-HabitableZone.tex [28] [29 <./f10-left.pdf>
+ <./f10-right.pdf
+
+pdfTeX warning: pdflatex (file ./f10-right.pdf): PDF inclusion: multiple pdfs w
+ith page group included in a single page
+> <./f11-left.pdf
+
+pdfTeX warning: pdflatex (file ./f11-left.pdf): PDF inclusion: multiple pdfs wi
+th page group included in a single page
+> <./f11-right.pdf
+
+pdfTeX warning: pdflatex (file ./f11-right.pdf): PDF inclusion: multiple pdfs w
+ith page group included in a single page
+>] [30 <./Scores-OBS.pdf> <./Scores-INJ1.pdf> <./Scores-INV.pdf> <./Scores-SCR1
+.pdf>]
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 20.
+
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 20.
+
+
+Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
+
+(./Table-hz4.tex
+Underfull \hbox (badness 10000) detected at line 83
+$\OML/cmm/m/it/7 a$
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 85
+$\OML/cmm/m/it/7 b$
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 87
+$\OML/cmm/m/it/7 c$
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 89
+$\OML/cmm/m/it/7 d$
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 91
+$\OML/cmm/m/it/7 e$
+ []
+
+
+LaTeX Warning: Float too large for page by 91.0651pt on input line 92.
+
+) <f14.pdf, id=1834, 412.53008pt x 543.13792pt>
+File: f14.pdf Graphic file (type pdf)
+ <use f14.pdf>
+Package pdftex.def Info: f14.pdf used on input line 27.
+(pdftex.def)             Requested size: 242.26653pt x 318.9734pt.
+ [31 <./f13-top.pdf> <./f13-bottom.pdf
+
+pdfTeX warning: pdflatex (file ./f13-bottom.pdf): PDF inclusion: multiple pdfs 
+with page group included in a single page
+> <./f14.pdf
+
+pdfTeX warning: pdflatex (file ./f14.pdf): PDF inclusion: multiple pdfs with pa
+ge group included in a single page
+>] [32]
+Underfull \hbox (badness 10000) in paragraph at lines 45--45
+[][]| [] [][][][]$\T1/cmtt/m/n/8 https : / / exoplanetarchive . ipac . caltech 
+. edu / data /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 45--45
+\T1/cmtt/m/n/8 KeplerData / \penalty \ z @ 004 / 004940 / 004940203 / tcert /
+ []
+
+[33]) (./section-occurRateCalc.tex
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+[][]| [] [][][][]$\T1/cmtt/m/n/8 https : / / exoplanetarchive . ipac . caltech 
+. edu / docs /
+ []
+
+[34] <f15-left.pdf, id=2064, 732.57692pt x 534.5571pt>
+File: f15-left.pdf Graphic file (type pdf)
+ <use f15-left.pdf>
+Package pdftex.def Info: f15-left.pdf used on input line 20.
+(pdftex.def)             Requested size: 256.55872pt x 187.21198pt.
+
+<f15-right.pdf, id=2065, 732.57692pt x 534.5571pt>
+File: f15-right.pdf Graphic file (type pdf)
+ <use f15-right.pdf>
+Package pdftex.def Info: f15-right.pdf used on input line 21.
+(pdftex.def)             Requested size: 256.55872pt x 187.21198pt.
+
+Overfull \hbox (13.08258pt too wide) in paragraph at lines 19--23
+ []$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+[][]| [] [][][][]$\T1/cmtt/m/n/8 https : / / exoplanetarchive . ipac . caltech 
+. edu / cgi-[]bin /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+[][]| [] [][][][]$\T1/cmtt/m/n/8 https : / / exoplanetarchive . ipac . caltech 
+. edu / cgi-[]bin /
+ []
+
+) (./section-conclusions.tex [35]) [36 <./f15-left.pdf> <./f15-right.pdf>]
+(./dr25catalog.bbl [37] [38] [39]) [40] (./section-robovetterMetrics.tex
+<RoboVetter-Diagram-V4-TransitLike.pdf, id=2217, 2982.14125pt x 1432.35126pt>
+File: RoboVetter-Diagram-V4-TransitLike.pdf Graphic file (type pdf)
+
+<use RoboVetter-Diagram-V4-TransitLike.pdf>
+Package pdftex.def Info: RoboVetter-Diagram-V4-TransitLike.pdf used on input li
+ne 45.
+(pdftex.def)             Requested size: 513.11743pt x 246.44704pt.
+ [41]
+Underfull \hbox (badness 10000) in paragraph at lines 61--61
+[][]| [] [][]\T1/cmr/m/n/8 The code is avail-able here
+ []
+
+[42 <./RoboVetter-Diagram-V4-TransitLike.pdf>] [43] [44] [45]
+<kic11911580_cleanhighsnr.pdf, id=2354, 578.16pt x 434.58359pt>
+File: kic11911580_cleanhighsnr.pdf Graphic file (type pdf)
+
+<use kic11911580_cleanhighsnr.pdf>
+Package pdftex.def Info: kic11911580_cleanhighsnr.pdf used on input line 227.
+(pdftex.def)             Requested size: 256.55872pt x 192.84201pt.
+
+Overfull \hbox (14.29219pt too wide) in paragraph at lines 227--228
+[][] 
+ []
+
+<kic11449918_rb.pdf, id=2355, 578.16pt x 434.58359pt>
+File: kic11449918_rb.pdf Graphic file (type pdf)
+ <use kic11449918_rb.pdf>
+Package pdftex.def Info: kic11449918_rb.pdf used on input line 233.
+(pdftex.def)             Requested size: 256.55872pt x 192.84201pt.
+
+Overfull \hbox (14.29219pt too wide) in paragraph at lines 233--234
+[][] 
+ []
+
+<kic12357074_spsd.pdf, id=2356, 578.16pt x 434.58359pt>
+File: kic12357074_spsd.pdf Graphic file (type pdf)
+
+<use kic12357074_spsd.pdf>
+Package pdftex.def Info: kic12357074_spsd.pdf used on input line 239.
+(pdftex.def)             Requested size: 256.55872pt x 192.84201pt.
+
+Overfull \hbox (14.29219pt too wide) in paragraph at lines 239--240
+[][] 
+ []
+
+[46 <./kic11911580_cleanhighsnr.pdf>]
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 257.
+
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 257.
+
+
+Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
+
+<Skye-Paper-Plot-55.pdf, id=2371, 794.97pt x 614.295pt>
+File: Skye-Paper-Plot-55.pdf Graphic file (type pdf)
+
+<use Skye-Paper-Plot-55.pdf>
+Package pdftex.def Info: Skye-Paper-Plot-55.pdf used on input line 266.
+(pdftex.def)             Requested size: 242.26653pt x 187.20503pt.
+
+<Skye-Paper-Plot-58.pdf, id=2372, 794.97pt x 614.295pt>
+File: Skye-Paper-Plot-58.pdf Graphic file (type pdf)
+
+<use Skye-Paper-Plot-58.pdf>
+Package pdftex.def Info: Skye-Paper-Plot-58.pdf used on input line 267.
+(pdftex.def)             Requested size: 242.26653pt x 187.20503pt.
+
+Overfull \hbox (10.0pt too wide) in paragraph at lines 265--269
+ []$[]$ 
+ []
+
+[47 <./kic11449918_rb.pdf> <./kic12357074_spsd.pdf>]
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 295.
+
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 295.
+
+
+Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
+
+<RoboVetter-Diagram-V4-SigSec.pdf, id=2387, 2280.52pt x 1621.05624pt>
+File: RoboVetter-Diagram-V4-SigSec.pdf Graphic file (type pdf)
+
+<use RoboVetter-Diagram-V4-SigSec.pdf>
+Package pdftex.def Info: RoboVetter-Diagram-V4-SigSec.pdf used on input line 32
+0.
+(pdftex.def)             Requested size: 513.11743pt x 364.72192pt.
+ [48 <./Skye-Paper-Plot-55.pdf> <./Skye-Paper-Plot-58.pdf
+
+pdfTeX warning: pdflatex (file ./Skye-Paper-Plot-58.pdf): PDF inclusion: multip
+le pdfs with page group included in a single page
+>] [49 <./RoboVetter-Diagram-V4-SigSec.pdf>] [50]
+Underfull \hbox (badness 10000) in paragraph at lines 403--403
+[][]| [] [][][][]$\T1/cmtt/m/n/8 https : / / sourceforge . net / projects /
+ []
+
+[51] <INJ1-Ephem-Recovery-1.pdf, id=2593, 441.56972pt x 325.69681pt>
+File: INJ1-Ephem-Recovery-1.pdf Graphic file (type pdf)
+
+<use INJ1-Ephem-Recovery-1.pdf>
+Package pdftex.def Info: INJ1-Ephem-Recovery-1.pdf used on input line 439.
+(pdftex.def)             Requested size: 256.55872pt x 189.23724pt.
+
+<INJ1-Ephem-Recovery-2.pdf, id=2594, 432.41548pt x 325.69681pt>
+File: INJ1-Ephem-Recovery-2.pdf Graphic file (type pdf)
+
+<use INJ1-Ephem-Recovery-2.pdf>
+Package pdftex.def Info: INJ1-Ephem-Recovery-2.pdf used on input line 440.
+(pdftex.def)             Requested size: 256.55872pt x 193.24284pt.
+
+<INJ1-Ephem-Recovery-3.pdf, id=2595, 430.9701pt x 321.11972pt>
+File: INJ1-Ephem-Recovery-3.pdf Graphic file (type pdf)
+
+<use INJ1-Ephem-Recovery-3.pdf>
+Package pdftex.def Info: INJ1-Ephem-Recovery-3.pdf used on input line 441.
+(pdftex.def)             Requested size: 256.55872pt x 191.16414pt.
+
+<INJ1-Ephem-Recovery-4.pdf, id=2596, 431.45189pt x 321.11972pt>
+File: INJ1-Ephem-Recovery-4.pdf Graphic file (type pdf)
+
+<use INJ1-Ephem-Recovery-4.pdf>
+Package pdftex.def Info: INJ1-Ephem-Recovery-4.pdf used on input line 442.
+(pdftex.def)             Requested size: 256.55872pt x 190.95345pt.
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 438--444
+ []$[]$ 
+ []
+
+[52]
+Overfull \hbox (10.12445pt too wide) in paragraph at lines 504--505
+[]\T1/cmr/m/n/10 In this Q1--Q17 DR25 cat-a-log, we match the ephemerides
+ []
+
+
+Underfull \hbox (badness 1648) in paragraph at lines 520--521
+[]\T1/cmr/m/n/10 Via ephemeris match-ing, we iden-tify 1,859 Q1--
+ []
+
+[53 <./INJ1-Ephem-Recovery-1.pdf> <./INJ1-Ephem-Recovery-2.pdf> <./INJ1-Ephem-R
+ecovery-3.pdf> <./INJ1-Ephem-Recovery-4.pdf>] (./ephemmatch-stub.tex)
+(./ephemmatch-stub.tex) <CCDPlot.pdf, id=2651, 433.62pt x 433.62pt>
+File: CCDPlot.pdf Graphic file (type pdf)
+
+<use CCDPlot.pdf>
+Package pdftex.def Info: CCDPlot.pdf used on input line 539.
+(pdftex.def)             Requested size: 513.11743pt x 513.18234pt.
+
+Overfull \hbox (3.33772pt too wide) in paragraph at lines 564--565
+[]\T1/cmr/m/n/10 Due to the \T1/cmr/m/it/10 Ke-pler \T1/cmr/m/n/10 space-craft'
+s ro-ta-tion ev-ery $\OMS/cmsy/m/n/10 ^^Y$\T1/cmr/m/n/10 90 days,
+ []
+
+[54] [55]
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 602.
+
+[56 <./CCDPlot.pdf>]) (./section-minorflags.tex
+Underfull \hbox (badness 10000) in paragraph at lines 32--33
+[]\T1/cmr/bx/n/10 DEPTH_ODDEVEN_(ALT|DV)\T1/cmr/m/n/10 : The TCE
+ []
+
+[57]
+Underfull \hbox (badness 2229) in paragraph at lines 42--43
+[]\T1/cmr/bx/n/10 INCONSISTENT_TRANS\T1/cmr/m/n/10 : The ra-tio of the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
+\T1/cmr/bx/n/10 SKYE|ZUMA|TRACKER|RUBBLE)\T1/cmr/m/n/10 : One or
+ []
+
+
+Underfull \hbox (badness 1629) in paragraph at lines 56--57
+[]\T1/cmr/bx/n/10 MOD_ODDEVEN_(ALT|DV)\T1/cmr/m/n/10 : The odd/even
+ []
+
+[58]
+Underfull \hbox (badness 10000) in paragraph at lines 84--85
+[]\T1/cmr/bx/n/10 PLANET_PERIOD_IS_HALF_(ALT|DV)\T1/cmr/m/n/10 :
+ []
+
+
+Underfull \hbox (badness 3568) in paragraph at lines 92--93
+[]\T1/cmr/bx/n/10 SEASONAL_DEPTH_(ALT|DV)\T1/cmr/m/n/10 : There ap-
+ []
+
+(./Table-minorFlagStats.tex
+
+LaTeX Warning: Float too large for page by 71.21994pt on input line 65.
+
+)) [59]
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 210.
+
+
+Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
+
+[60]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 211.
+ (./dr25catalog.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 211.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 211.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 11327 strings out of 493117
+ 156025 string characters out of 6141649
+ 413156 words of memory out of 5000000
+ 14118 multiletter control sequences out of 15000+600000
+ 25201 words of font info for 68 fonts, out of 8000000 for 9000
+ 1157 hyphenation exceptions out of 8191
+ 36i,16n,37p,2931b,873s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/sw/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</sw/share/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></sw/share/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi10.pfb></sw/share/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmi5.pfb></sw/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.p
+fb></sw/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></sw/share/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></sw/share/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr10.pfb></sw/share/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr5.pfb></sw/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb>
+</sw/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></sw/share/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></sw/share/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmsy10.pfb></sw/share/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy5.pfb></sw/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></
+sw/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></sw/share/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></sw/share/texmf-dist/fonts/type1/
+public/amsfonts/symbols/msam10.pfb></sw/share/texmf-dist/fonts/type1/public/cm-
+super/sfbx0800.pfb></sw/share/texmf-dist/fonts/type1/public/cm-super/sfbx0900.p
+fb></sw/share/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></sw/share/te
+xmf-dist/fonts/type1/public/cm-super/sfcc0600.pfb></sw/share/texmf-dist/fonts/t
+ype1/public/cm-super/sfcc0700.pfb></sw/share/texmf-dist/fonts/type1/public/cm-s
+uper/sfcc0800.pfb></sw/share/texmf-dist/fonts/type1/public/cm-super/sfcc0900.pf
+b></sw/share/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></sw/share/tex
+mf-dist/fonts/type1/public/cm-super/sfrm0500.pfb></sw/share/texmf-dist/fonts/ty
+pe1/public/cm-super/sfrm0600.pfb></sw/share/texmf-dist/fonts/type1/public/cm-su
+per/sfrm0700.pfb></sw/share/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb
+></sw/share/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></sw/share/texm
+f-dist/fonts/type1/public/cm-super/sfrm1000.pfb></sw/share/texmf-dist/fonts/typ
+e1/public/cm-super/sfti0700.pfb></sw/share/texmf-dist/fonts/type1/public/cm-sup
+er/sfti0800.pfb></sw/share/texmf-dist/fonts/type1/public/cm-super/sfti0900.pfb>
+</sw/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></sw/share/texmf
+-dist/fonts/type1/public/cm-super/sftt0800.pfb></sw/share/texmf-dist/fonts/type
+1/public/cm-super/sftt0900.pfb>
+Output written on dr25catalog.pdf (60 pages, 5199504 bytes).
+PDF statistics:
+ 2963 PDF objects out of 2984 (max. 8388607)
+ 1933 compressed objects within 20 object streams
+ 382 named destinations out of 1000 (max. 500000)
+ 216 words of extra memory for PDF output out of 10000 (max. 10000000)
+
