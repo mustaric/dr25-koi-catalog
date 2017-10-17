@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Fink) (preloaded format=pdflatex 2016.10.29)  13 OCT 2017 21:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Fink) (preloaded format=pdflatex 2016.10.29)  17 OCT 2017 10:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -493,31 +493,31 @@ Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 \TeXr@lab=\toks32
 )
 Class revtex4-1 Info: Unrecognized array package. Please update this document c
-lass! (Proceeding with fingers crossed.) on input line 114.
+lass! (Proceeding with fingers crossed.) on input line 131.
 Class revtex4-1 Info: Patching unrecognized longtable package. (Proceeding with
- fingers crossed) on input line 114.
-Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 114
+ fingers crossed) on input line 131.
+Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 131
 .
-Class revtex4-1 Info: cite was not loaded (OK!) on input line 114.
-Class revtex4-1 Info: mcite was not loaded (OK!) on input line 114.
-Class revtex4-1 Info: multicol was not loaded (OK!) on input line 114.
+Class revtex4-1 Info: cite was not loaded (OK!) on input line 131.
+Class revtex4-1 Info: mcite was not loaded (OK!) on input line 131.
+Class revtex4-1 Info: multicol was not loaded (OK!) on input line 131.
  (./dr25catalog.aux)
 \openout1 = `dr25catalog.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 114.
-LaTeX Font Info:    ... okay on input line 114.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 114.
-LaTeX Font Info:    ... okay on input line 114.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 114.
-LaTeX Font Info:    ... okay on input line 114.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 114.
-LaTeX Font Info:    ... okay on input line 114.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 114.
-LaTeX Font Info:    ... okay on input line 114.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 114.
-LaTeX Font Info:    ... okay on input line 114.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 114.
-LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 131.
+LaTeX Font Info:    ... okay on input line 131.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 131.
+LaTeX Font Info:    ... okay on input line 131.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 131.
+LaTeX Font Info:    ... okay on input line 131.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 131.
+LaTeX Font Info:    ... okay on input line 131.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 131.
+LaTeX Font Info:    ... okay on input line 131.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 131.
+LaTeX Font Info:    ... okay on input line 131.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 131.
+LaTeX Font Info:    ... okay on input line 131.
 
 (/sw/share/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -548,7 +548,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box57
-Package hyperref Info: Link coloring ON on input line 114.
+Package hyperref Info: Link coloring ON on input line 131.
 
 (/sw/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -558,35 +558,35 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count165
 )
-LaTeX Info: Redefining \ref on input line 114.
-LaTeX Info: Redefining \pageref on input line 114.
-LaTeX Info: Redefining \nameref on input line 114.
+LaTeX Info: Redefining \ref on input line 131.
+LaTeX Info: Redefining \pageref on input line 131.
+LaTeX Info: Redefining \nameref on input line 131.
 Package marginnote Info: \pdfoutput not 0 and \pdflastxpos available.
 (marginnote)             Extended position detection mode activated.
 \openout3 = `dr25catalogNotes.bib'.
 
- (./authors.tex)
-LaTeX Font Info:    Try loading font information for U+lasy on input line 136.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 381.
+
 (/sw/share/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 136.
+LaTeX Font Info:    Try loading font information for U+msa on input line 381.
 
 (/sw/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 136.
+LaTeX Font Info:    Try loading font information for U+msb on input line 381.
 
 (/sw/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1{/sw/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] (./section-intr
 oduction.tex
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 9.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 8.
 
 (/sw/share/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-Underfull \hbox (badness 10000) in paragraph at lines 11--11
+Underfull \hbox (badness 10000) in paragraph at lines 10--10
 [][]| [] [][][][]$\T1/cmtt/m/n/8 https : / / exoplanetarchive . ipac . caltech 
 . edu / cgi-[]bin /
  []
@@ -601,7 +601,7 @@ Underfull \hbox (badness 1769) in paragraph at lines 8--9
 []\T1/cmr/m/n/10 We have plot-ted the dis-tri-bu-tion of the 32,534
  []
 
-<f1.pdf, id=418, 544.21758pt x 289.85591pt>
+<f1.pdf, id=426, 544.21758pt x 289.85591pt>
 File: f1.pdf Graphic file (type pdf)
  <use f1.pdf>
 Package pdftex.def Info: f1.pdf used on input line 18.
@@ -613,7 +613,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--3
 h . edu / docs /
  []
 
-[7] [8 <./f1.pdf>] <f2.pdf, id=528, 544.21758pt x 600.86984pt>
+[7] [8 <./f1.pdf>] <f2.pdf, id=536, 544.21758pt x 600.86984pt>
 File: f2.pdf Graphic file (type pdf)
  <use f2.pdf>
 Package pdftex.def Info: f2.pdf used on input line 28.
@@ -645,13 +645,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 6--6
 . edu / cgi-[]bin /
  []
 
-[11] <f3-top.pdf, id=638, 537.88925pt x 505.42607pt>
+[11] <f3-top.pdf, id=646, 537.88925pt x 505.42607pt>
 File: f3-top.pdf Graphic file (type pdf)
  <use f3-top.pdf>
 Package pdftex.def Info: f3-top.pdf used on input line 11.
 (pdftex.def)             Requested size: 242.26653pt x 227.64786pt.
 
-<f3-bottom.pdf, id=639, 564.76309pt x 509.04115pt>
+<f3-bottom.pdf, id=647, 564.76309pt x 509.04115pt>
 File: f3-bottom.pdf Graphic file (type pdf)
  <use f3-bottom.pdf>
 Package pdftex.def Info: f3-bottom.pdf used on input line 12.
@@ -666,7 +666,7 @@ Overfull \hbox (10.0pt too wide) in paragraph at lines 10--14
 pdfTeX warning: pdflatex (file ./f3-bottom.pdf): PDF inclusion: multiple pdfs w
 ith page group included in a single page
 >] (./section-robovetter.tex
-<RoboVetter-Diagram-V4-Overview.pdf, id=750, 2062.70625pt x 1218.5525pt>
+<RoboVetter-Diagram-V4-Overview.pdf, id=758, 2062.70625pt x 1218.5525pt>
 File: RoboVetter-Diagram-V4-Overview.pdf Graphic file (type pdf)
 
 <use RoboVetter-Diagram-V4-Overview.pdf>
@@ -689,37 +689,37 @@ $\OML/cmm/m/it/7 PC$
 LaTeX Warning: Float too large for page by 64.25955pt on input line 64.
 
 ) [14 <./RoboVetter-Diagram-V4-Overview.pdf>] [15]
-<ScoreFig-1.pdf, id=905, 525.40291pt x 414.1071pt>
+<ScoreFig-1.pdf, id=913, 525.40291pt x 414.1071pt>
 File: ScoreFig-1.pdf Graphic file (type pdf)
  <use ScoreFig-1.pdf>
 Package pdftex.def Info: ScoreFig-1.pdf used on input line 63.
 (pdftex.def)             Requested size: 248.86226pt x 196.14685pt.
 
-<ScoreFig-2.pdf, id=906, 535.76161pt x 414.1071pt>
+<ScoreFig-2.pdf, id=914, 535.76161pt x 414.1071pt>
 File: ScoreFig-2.pdf Graphic file (type pdf)
  <use ScoreFig-2.pdf>
 Package pdftex.def Info: ScoreFig-2.pdf used on input line 64.
 (pdftex.def)             Requested size: 248.86226pt x 192.3556pt.
 
-<ScoreFig-3.pdf, id=907, 549.01112pt x 414.34799pt>
+<ScoreFig-3.pdf, id=915, 549.01112pt x 414.34799pt>
 File: ScoreFig-3.pdf Graphic file (type pdf)
  <use ScoreFig-3.pdf>
 Package pdftex.def Info: ScoreFig-3.pdf used on input line 65.
 (pdftex.def)             Requested size: 248.86226pt x 187.82051pt.
 
-<ScoreFig-4.pdf, id=908, 548.28839pt x 414.34799pt>
+<ScoreFig-4.pdf, id=916, 548.28839pt x 414.34799pt>
 File: ScoreFig-4.pdf Graphic file (type pdf)
  <use ScoreFig-4.pdf>
 Package pdftex.def Info: ScoreFig-4.pdf used on input line 66.
 (pdftex.def)             Requested size: 248.86226pt x 188.06708pt.
 
-<ScoreFig-5.pdf, id=909, 549.25201pt x 414.34799pt>
+<ScoreFig-5.pdf, id=917, 549.25201pt x 414.34799pt>
 File: ScoreFig-5.pdf Graphic file (type pdf)
  <use ScoreFig-5.pdf>
 Package pdftex.def Info: ScoreFig-5.pdf used on input line 67.
 (pdftex.def)             Requested size: 248.86226pt x 187.73831pt.
 
-<ScoreFig-6.pdf, id=910, 549.25201pt x 414.34799pt>
+<ScoreFig-6.pdf, id=918, 549.25201pt x 414.34799pt>
 File: ScoreFig-6.pdf Graphic file (type pdf)
  <use ScoreFig-6.pdf>
 Package pdftex.def Info: ScoreFig-6.pdf used on input line 68.
@@ -731,13 +731,13 @@ Overfull \hbox (4.60709pt too wide) in paragraph at lines 62--70
 
 ) (./section-reliability-calc.tex [16] [17 <./ScoreFig-1.pdf> <./ScoreFig-2.pdf
 > <./ScoreFig-3.pdf> <./ScoreFig-4.pdf> <./ScoreFig-5.pdf> <./ScoreFig-6.pdf>]
-[18] <f6-top.pdf, id=968, 606.55043pt x 387.13226pt>
+[18] <f6-top.pdf, id=977, 606.55043pt x 387.13226pt>
 File: f6-top.pdf Graphic file (type pdf)
  <use f6-top.pdf>
 Package pdftex.def Info: f6-top.pdf used on input line 132.
 (pdftex.def)             Requested size: 436.15294pt x 278.38057pt.
 
-<f6-bottom.pdf, id=969, 606.53474pt x 393.22534pt>
+<f6-bottom.pdf, id=978, 606.53474pt x 393.22534pt>
 File: f6-bottom.pdf Graphic file (type pdf)
  <use f6-bottom.pdf>
 Package pdftex.def Info: f6-bottom.pdf used on input line 133.
@@ -774,7 +774,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 29--29
  []
 
 )) [22] (./section-MCMC.tex (./ttv-short.tex)) (./section-catalogsummary.tex
-[23] <f7.pdf, id=1164, 545.29344pt x 408.92398pt>
+[23] <f7.pdf, id=1172, 545.29344pt x 408.92398pt>
 File: f7.pdf Graphic file (type pdf)
  <use f7.pdf>
 Package pdftex.def Info: f7.pdf used on input line 28.
@@ -786,25 +786,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 37--37
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 49--49
+Underfull \hbox (badness 10000) in paragraph at lines 46--46
 [][]| [] [][][][]$\T1/cmtt/m/n/8 https : / / exoplanetarchive . ipac . caltech 
 . edu / cgi-[]bin /
  []
 
 ) (./section-CompAndReliability.tex [24]
-<f8-top.pdf, id=1216, 351.53783pt x 287.64903pt>
+<f8-top.pdf, id=1224, 351.53783pt x 287.64903pt>
 File: f8-top.pdf Graphic file (type pdf)
  <use f8-top.pdf>
 Package pdftex.def Info: f8-top.pdf used on input line 9.
 (pdftex.def)             Requested size: 218.03839pt x 178.41077pt.
 
-<f8-middle.pdf, id=1217, 351.53783pt x 287.64903pt>
+<f8-middle.pdf, id=1225, 351.53783pt x 287.64903pt>
 File: f8-middle.pdf Graphic file (type pdf)
  <use f8-middle.pdf>
 Package pdftex.def Info: f8-middle.pdf used on input line 10.
 (pdftex.def)             Requested size: 218.03839pt x 178.41077pt.
 
-<f8-bottom.pdf, id=1218, 351.53783pt x 287.64903pt>
+<f8-bottom.pdf, id=1226, 351.53783pt x 287.64903pt>
 File: f8-bottom.pdf Graphic file (type pdf)
  <use f8-bottom.pdf>
 Package pdftex.def Info: f8-bottom.pdf used on input line 11.
@@ -823,7 +823,7 @@ LaTeX Warning: A float is stuck (cannot be placed) on input line 26.
 
 Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
 
-<f9.pdf, id=1275, 570.60277pt x 745.35146pt>
+<f9.pdf, id=1283, 570.60277pt x 745.35146pt>
 File: f9.pdf Graphic file (type pdf)
  <use f9.pdf>
 Package pdftex.def Info: f9.pdf used on input line 31.
@@ -836,13 +836,13 @@ ith page group included in a single page
 
 pdfTeX warning: pdflatex (file ./f8-bottom.pdf): PDF inclusion: multiple pdfs w
 ith page group included in a single page
->] [27 <./f9.pdf>] <f10-left.pdf, id=1519, 299.05537pt x 257.18658pt>
+>] [27 <./f9.pdf>] <f10-left.pdf, id=1527, 299.05537pt x 257.18658pt>
 File: f10-left.pdf Graphic file (type pdf)
 
 <use f10-left.pdf>
 Package pdftex.def Info: f10-left.pdf used on input line 56.
 (pdftex.def)             Requested size: 256.55872pt x 220.6542pt.
- <f10-right.pdf, id=1520, 336.12085pt x 287.64903pt>
+ <f10-right.pdf, id=1528, 336.12085pt x 287.64903pt>
 File: f10-right.pdf Graphic file (type pdf)
 
 <use f10-right.pdf>
@@ -853,13 +853,13 @@ Overfull \hbox (20.0pt too wide) in paragraph at lines 53--59
  []$ 
  []
 
-<f11-left.pdf, id=1521, 334.11336pt x 287.64903pt>
+<f11-left.pdf, id=1529, 334.11336pt x 287.64903pt>
 File: f11-left.pdf Graphic file (type pdf)
  <use f11-left.pdf>
 Package pdftex.def Info: f11-left.pdf used on input line 70.
 (pdftex.def)             Requested size: 256.55872pt x 220.88911pt.
 
-<f11-right.pdf, id=1522, 334.11336pt x 287.64903pt>
+<f11-right.pdf, id=1530, 334.11336pt x 287.64903pt>
 File: f11-right.pdf Graphic file (type pdf)
  <use f11-right.pdf>
 Package pdftex.def Info: f11-right.pdf used on input line 71.
@@ -869,25 +869,25 @@ Overfull \hbox (20.0pt too wide) in paragraph at lines 67--73
  []$ 
  []
 
-<Scores-OBS.pdf, id=1527, 1541.76pt x 1156.32pt>
+<Scores-OBS.pdf, id=1535, 1541.76pt x 1156.32pt>
 File: Scores-OBS.pdf Graphic file (type pdf)
  <use Scores-OBS.pdf>
 Package pdftex.def Info: Scores-OBS.pdf used on input line 94.
 (pdftex.def)             Requested size: 256.55872pt x 192.4078pt.
 
-<Scores-INJ1.pdf, id=1528, 1541.76pt x 1156.32pt>
+<Scores-INJ1.pdf, id=1536, 1541.76pt x 1156.32pt>
 File: Scores-INJ1.pdf Graphic file (type pdf)
  <use Scores-INJ1.pdf>
 Package pdftex.def Info: Scores-INJ1.pdf used on input line 95.
 (pdftex.def)             Requested size: 256.55872pt x 192.4078pt.
 
-<Scores-INV.pdf, id=1529, 1541.76pt x 1156.32pt>
+<Scores-INV.pdf, id=1537, 1541.76pt x 1156.32pt>
 File: Scores-INV.pdf Graphic file (type pdf)
  <use Scores-INV.pdf>
 Package pdftex.def Info: Scores-INV.pdf used on input line 96.
 (pdftex.def)             Requested size: 256.55872pt x 192.4078pt.
 
-<Scores-SCR1.pdf, id=1530, 1541.76pt x 1156.32pt>
+<Scores-SCR1.pdf, id=1538, 1541.76pt x 1156.32pt>
 File: Scores-SCR1.pdf Graphic file (type pdf)
  <use Scores-SCR1.pdf>
 Package pdftex.def Info: Scores-SCR1.pdf used on input line 97.
@@ -897,13 +897,13 @@ Overfull \hbox (20.0pt too wide) in paragraph at lines 93--99
  []$[]$ 
  []
 
-<f13-top.pdf, id=1534, 412.18993pt x 348.90375pt>
+<f13-top.pdf, id=1542, 412.18993pt x 348.90375pt>
 File: f13-top.pdf Graphic file (type pdf)
  <use f13-top.pdf>
 Package pdftex.def Info: f13-top.pdf used on input line 112.
 (pdftex.def)             Requested size: 237.42015pt x 200.96414pt.
 
-<f13-bottom.pdf, id=1535, 339.88857pt x 325.13345pt>
+<f13-bottom.pdf, id=1543, 339.88857pt x 325.13345pt>
 File: f13-bottom.pdf Graphic file (type pdf)
  <use f13-bottom.pdf>
 Package pdftex.def Info: f13-bottom.pdf used on input line 113.
@@ -965,7 +965,7 @@ $\OML/cmm/m/it/7 e$
 
 LaTeX Warning: Float too large for page by 91.0651pt on input line 92.
 
-) <f14.pdf, id=1840, 412.53008pt x 543.13792pt>
+) <f14.pdf, id=1848, 412.53008pt x 543.13792pt>
 File: f14.pdf Graphic file (type pdf)
  <use f14.pdf>
 Package pdftex.def Info: f14.pdf used on input line 27.
@@ -995,13 +995,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 14--14
 . edu / docs /
  []
 
-[34] <f15-left.pdf, id=2070, 732.57692pt x 534.5571pt>
+[34] <f15-left.pdf, id=2078, 732.57692pt x 534.5571pt>
 File: f15-left.pdf Graphic file (type pdf)
  <use f15-left.pdf>
 Package pdftex.def Info: f15-left.pdf used on input line 20.
 (pdftex.def)             Requested size: 256.55872pt x 187.21198pt.
 
-<f15-right.pdf, id=2071, 732.57692pt x 534.5571pt>
+<f15-right.pdf, id=2079, 732.57692pt x 534.5571pt>
 File: f15-right.pdf Graphic file (type pdf)
  <use f15-right.pdf>
 Package pdftex.def Info: f15-right.pdf used on input line 21.
@@ -1025,7 +1025,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 33--33
 
 ) (./section-conclusions.tex [35]) [36 <./f15-left.pdf> <./f15-right.pdf>]
 (./dr25catalog.bbl [37] [38] [39]) [40] (./section-robovetterMetrics.tex
-<RoboVetter-Diagram-V4-TransitLike.pdf, id=2223, 2982.14125pt x 1432.35126pt>
+<RoboVetter-Diagram-V4-TransitLike.pdf, id=2231, 2982.14125pt x 1432.35126pt>
 File: RoboVetter-Diagram-V4-TransitLike.pdf Graphic file (type pdf)
 
 <use RoboVetter-Diagram-V4-TransitLike.pdf>
@@ -1038,7 +1038,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 61--61
  []
 
 [42 <./RoboVetter-Diagram-V4-TransitLike.pdf>] [43] [44] [45]
-<kic11911580_cleanhighsnr.pdf, id=2360, 578.16pt x 434.58359pt>
+<kic11911580_cleanhighsnr.pdf, id=2368, 578.16pt x 434.58359pt>
 File: kic11911580_cleanhighsnr.pdf Graphic file (type pdf)
 
 <use kic11911580_cleanhighsnr.pdf>
@@ -1049,7 +1049,7 @@ Overfull \hbox (14.29219pt too wide) in paragraph at lines 227--228
 [][] 
  []
 
-<kic11449918_rb.pdf, id=2361, 578.16pt x 434.58359pt>
+<kic11449918_rb.pdf, id=2369, 578.16pt x 434.58359pt>
 File: kic11449918_rb.pdf Graphic file (type pdf)
  <use kic11449918_rb.pdf>
 Package pdftex.def Info: kic11449918_rb.pdf used on input line 233.
@@ -1059,7 +1059,7 @@ Overfull \hbox (14.29219pt too wide) in paragraph at lines 233--234
 [][] 
  []
 
-<kic12357074_spsd.pdf, id=2362, 578.16pt x 434.58359pt>
+<kic12357074_spsd.pdf, id=2370, 578.16pt x 434.58359pt>
 File: kic12357074_spsd.pdf Graphic file (type pdf)
 
 <use kic12357074_spsd.pdf>
@@ -1080,14 +1080,14 @@ LaTeX Warning: A float is stuck (cannot be placed) on input line 257.
 
 Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
 
-<Skye-Paper-Plot-55.pdf, id=2377, 794.97pt x 614.295pt>
+<Skye-Paper-Plot-55.pdf, id=2385, 794.97pt x 614.295pt>
 File: Skye-Paper-Plot-55.pdf Graphic file (type pdf)
 
 <use Skye-Paper-Plot-55.pdf>
 Package pdftex.def Info: Skye-Paper-Plot-55.pdf used on input line 266.
 (pdftex.def)             Requested size: 242.26653pt x 187.20503pt.
 
-<Skye-Paper-Plot-58.pdf, id=2378, 794.97pt x 614.295pt>
+<Skye-Paper-Plot-58.pdf, id=2386, 794.97pt x 614.295pt>
 File: Skye-Paper-Plot-58.pdf Graphic file (type pdf)
 
 <use Skye-Paper-Plot-58.pdf>
@@ -1108,7 +1108,7 @@ LaTeX Warning: A float is stuck (cannot be placed) on input line 295.
 
 Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
 
-<RoboVetter-Diagram-V4-SigSec.pdf, id=2393, 2280.52pt x 1621.05624pt>
+<RoboVetter-Diagram-V4-SigSec.pdf, id=2401, 2280.52pt x 1621.05624pt>
 File: RoboVetter-Diagram-V4-SigSec.pdf Graphic file (type pdf)
 
 <use RoboVetter-Diagram-V4-SigSec.pdf>
@@ -1124,28 +1124,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 403--403
 [][]| [] [][][][]$\T1/cmtt/m/n/8 https : / / sourceforge . net / projects /
  []
 
-[51] <INJ1-Ephem-Recovery-1.pdf, id=2599, 441.56972pt x 325.69681pt>
+[51] <INJ1-Ephem-Recovery-1.pdf, id=2607, 441.56972pt x 325.69681pt>
 File: INJ1-Ephem-Recovery-1.pdf Graphic file (type pdf)
 
 <use INJ1-Ephem-Recovery-1.pdf>
 Package pdftex.def Info: INJ1-Ephem-Recovery-1.pdf used on input line 439.
 (pdftex.def)             Requested size: 256.55872pt x 189.23724pt.
 
-<INJ1-Ephem-Recovery-2.pdf, id=2600, 432.41548pt x 325.69681pt>
+<INJ1-Ephem-Recovery-2.pdf, id=2608, 432.41548pt x 325.69681pt>
 File: INJ1-Ephem-Recovery-2.pdf Graphic file (type pdf)
 
 <use INJ1-Ephem-Recovery-2.pdf>
 Package pdftex.def Info: INJ1-Ephem-Recovery-2.pdf used on input line 440.
 (pdftex.def)             Requested size: 256.55872pt x 193.24284pt.
 
-<INJ1-Ephem-Recovery-3.pdf, id=2601, 430.9701pt x 321.11972pt>
+<INJ1-Ephem-Recovery-3.pdf, id=2609, 430.9701pt x 321.11972pt>
 File: INJ1-Ephem-Recovery-3.pdf Graphic file (type pdf)
 
 <use INJ1-Ephem-Recovery-3.pdf>
 Package pdftex.def Info: INJ1-Ephem-Recovery-3.pdf used on input line 441.
 (pdftex.def)             Requested size: 256.55872pt x 191.16414pt.
 
-<INJ1-Ephem-Recovery-4.pdf, id=2602, 431.45189pt x 321.11972pt>
+<INJ1-Ephem-Recovery-4.pdf, id=2610, 431.45189pt x 321.11972pt>
 File: INJ1-Ephem-Recovery-4.pdf Graphic file (type pdf)
 
 <use INJ1-Ephem-Recovery-4.pdf>
@@ -1168,7 +1168,7 @@ Underfull \hbox (badness 1648) in paragraph at lines 520--521
 
 [53 <./INJ1-Ephem-Recovery-1.pdf> <./INJ1-Ephem-Recovery-2.pdf> <./INJ1-Ephem-R
 ecovery-3.pdf> <./INJ1-Ephem-Recovery-4.pdf>] (./ephemmatch-stub.tex)
-(./ephemmatch-stub.tex) <CCDPlot.pdf, id=2657, 433.62pt x 433.62pt>
+(./ephemmatch-stub.tex) <CCDPlot.pdf, id=2665, 433.62pt x 433.62pt>
 File: CCDPlot.pdf Graphic file (type pdf)
 
 <use CCDPlot.pdf>
@@ -1220,21 +1220,21 @@ LaTeX Warning: Float too large for page by 71.21994pt on input line 65.
 
 )) [59]
 
-LaTeX Warning: A float is stuck (cannot be placed) on input line 210.
+LaTeX Warning: A float is stuck (cannot be placed) on input line 448.
 
 
 Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
 
 [60]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 211.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 449.
  (./dr25catalog.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 211.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 211.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 449.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 449.
  ) 
 Here is how much of TeX's memory you used:
- 11328 strings out of 493117
- 156046 string characters out of 6141649
- 413456 words of memory out of 5000000
+ 11325 strings out of 493117
+ 156015 string characters out of 6141649
+ 414112 words of memory out of 5000000
  14118 multiletter control sequences out of 15000+600000
  25201 words of font info for 68 fonts, out of 8000000 for 9000
  1157 hyphenation exceptions out of 8191
@@ -1270,10 +1270,10 @@ er/sfti0800.pfb></sw/share/texmf-dist/fonts/type1/public/cm-super/sfti0900.pfb>
 </sw/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></sw/share/texmf
 -dist/fonts/type1/public/cm-super/sftt0800.pfb></sw/share/texmf-dist/fonts/type
 1/public/cm-super/sftt0900.pfb>
-Output written on dr25catalog.pdf (60 pages, 5200643 bytes).
+Output written on dr25catalog.pdf (60 pages, 5200684 bytes).
 PDF statistics:
- 2969 PDF objects out of 2984 (max. 8388607)
- 1939 compressed objects within 20 object streams
+ 2977 PDF objects out of 2984 (max. 8388607)
+ 1947 compressed objects within 20 object streams
  383 named destinations out of 1000 (max. 500000)
  216 words of extra memory for PDF output out of 10000 (max. 10000000)
 
