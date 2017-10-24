@@ -1,0 +1,14 @@
+From Nick Law. Improve section on follow-up observations to include some of the non-funded, non-KFOP observations.
+
+I do have a request/correction: in the introduction, you mention "the Kepler mission benefited from an active, funded, follow-up observing program”, and say "The followup program obtained high-resolution imaging of ≈90% of known KOIs”, and then cite only Furlan et al. 2017. This isn’t quite correct — in fact, more than 2,000 of the KOIs have *only* been observed by our Robo-AO follow-up program, which was separately funded by NASA under the XRP program (no Kepler/KFOP funding was offered). This is confirmed in Furlan et al. (e.g. "of the 3665 stars that host at least one KOI planet candidate or confirmed planet, Robo-AO observed 3093”).
+
+Our grad students would be very grateful if you’d be willing to cite the Robo-AO papers that describe this work (listed below). If you’d like to also list the various other teams that also performed follow-up work separately from KFOP but were compiled by Furlan et al., we’d be happy to provide bibtex cites for them (Adam Kraus’s Keck aperture-masking program, for example, has covered more than 500 of the KOIs).
+
+The Robo-AO papers are:
+
+http://adsabs.harvard.edu/abs/2017AJ....153...66Z
+http://adsabs.harvard.edu/abs/2016AJ....152...18B
+http://adsabs.harvard.edu/abs/2014ApJ...791...35L
+
+----------
+nlaw@unc.edu
