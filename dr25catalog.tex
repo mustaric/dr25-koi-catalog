@@ -60,7 +60,8 @@
 \newcommand{\wyle}{KRBwyle, 2400 Nasa Parkway, Houston, TX 77058 USA}
 \newcommand{\pennstate}{Dept. of Astronomy \& Astrophysics, 525 Davey Laboratory, The Pennsylvania State University, University Park, PA, 16802, USA} 
 \newcommand{\habworlds}{Center for Exoplanets and Habitable Worlds, 525 Davey Laboratory, The Pennsylvania State University, University Park, PA, 16802, USA} 
-
+%Command to Bold Changes, easy to turn off here
+%\newcommand{\mybold}[1]{\textbf{#1}}
 
 \lccode`1=`1
 \lccode`2=`2
@@ -88,7 +89,7 @@
 
 % using aastex version 6.1
 %\documentclass[apj,twocolappendix,numberedappendix]{emulateapj}
-\documentclass[twocolumn,tighten]{aastex61}
+\documentclass[twocolumn,tighten,trackchanges]{aastex61}
 
 \setcounter{secnumdepth}{4}  % Required to get section headers like  4.1.2.1 as required by AAS journal style guide
 
@@ -430,6 +431,7 @@ Some of the data products used in this paper are archived at the NASA Exoplanet 
 D.H. and S.M. acknowledge support by the National Aeronautics and Space Administration under Grant NNX14AB92G issued through the Kepler Participating Scientist Program. J.L.C. is supported by NASA under award No. GRNASM99G000001. J.S. is supported by the NASA \Kepler\ Participating Scientist Program NNX16AK32G.  W.F.W. gratefully acknowledges support from NASA via the \Kepler{} Participating Scientist Program grant NNX14AB91G. V.S.A. acknowledges support from VILLUM FONDEN (research grant 10118).
 Funding for the Stellar Astrophysics Centre is provided by The Danish National Research Foundation (Grant DNRF106). The research was supported by the ASTERISK project (ASTERoseismic Investigations with SONG and Kepler) funded by the European Research Council (Grant agreement no.: 267864).
 
+\software{George \citep{Ambikasaran14}, Kepler Pipeline (Jenkins 2017b), Robovetter (https://github.com/nasa/kepler-robovetter), Marshall (https://sourceforge.net/projects/marshall/), Centroid Robovetter \citep{Mullally2017}, LPP Metric \citep{Thompson2015a}, Model-Shift Uniqueness Test \citep{Rowe2015cat}, Scipy package (https://www.scipy.org) }
 
 %\input{RV-minorFlags}
 \bibliographystyle{aasjournal}

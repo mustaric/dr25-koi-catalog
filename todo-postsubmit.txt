@@ -10,22 +10,23 @@ http://adsabs.harvard.edu/abs/2017AJ....153...66Z
 http://adsabs.harvard.edu/abs/2016AJ....152...18B
 http://adsabs.harvard.edu/abs/2014ApJ...791...35L
 
-----------
-nlaw@unc.edu
 
 -------
 Eric Mamajeck
-Sec 7.5.1, par. 1: "reliablilty" => reliability
+
+DONE 1)Sec 7.5.1, par. 1: "reliablilty" => reliability
  
-Sec 7.5.1, par. 1, end: "Kepler was not designed to reach the
+DONE 2) Sec 7.5.1, par. 1, end: "Kepler was not designed to reach the
 habitable zones of F-type stars, nor did the target list include many
 such stars."  The first half is OK, but the 2nd half seems odd.
 The Mathur et al. 2017 stellar catalog contains 197k stars, and
 approximately 65k of these have Teff between ~6000K and ~7200K, that
 are likely to be F-stars (i.e. about a third are F stars!).
 Or by "F-type stars", do you mean "F-type dwarf stars" in particular?
+
+ -- Eric is correct. Even if you only consider the dwarf stars, a third of the stellar catalog is made up of stars with Eff Temp 6000-8000K. I changed the sentence to indicate that all the HZ small planets around A-F stars are low reliability, because there are a few in the catalog. 
  
-Sec 7.5.1, equation 9: very minor nit - there is now a nominal solar
+NOT DOING 3) Sec 7.5.1, equation 9: very minor nit - there is now a nominal solar
 effective temperature from IAU Resolution 2015 B2: Teff = 5772K (see
 Prsa et al 2016; see justification and discussion in
 http://adsabs.harvard.edu/abs/2016AJ....152...41P,
@@ -34,7 +35,123 @@ Minor, but one of the motivations was for Kepler eclipsing binaries(!)
 when system parameters were being so well defined that the assumed
 solar parameters mattered at several significant figures (although not
 the case here where uncertainties are typically of order ~10% or more).
- 
-Sec 8.2, par. 1: italicize "vespa"?
 
-Rubble in section A.3.7.1 Change the threshold from 0.5 to 0.75
+-- I'm ignoring this. It doesn't seem like it really needs to be noted. 
+ 
+DONE 4) Sec 8.2, par. 1: italicize "vespa"?
+
+
+
+DONE 5) Rubble in section A.3.7.1 Change the threshold from 0.5 to 0.75
+
+6) Add Megan Shabram??
+
+7)  Put out request for ORC-Ids
+--------
+Referee's list
+
+1)
+Data/software Editor Comments:
+Per the new AAS software policy, http://journals.aas.org/policy/software.html, the authors should modify their AASTeX v6.1 manuscript to highlight the code they used (both cited and unmentioned in the current text) with the new \software command, e.g.
+
+\software{George (Ambikasaran et al. 2014), Kepler Pipeline (Jenkins 2017b), Robovetter (https://github.com/nasa/kepler-robovetter), Marshall (https://sourceforge.net/projects/marshall/), Centroid Robovetter (Mullally 2017)}
+
+2) My largest concern is the decision to neglect photometric dilution.
+The text notes that undetected dilution means that the reported planet
+radii are systematically underestimated. It would be extremely useful
+to know which of the targets identified in this work already have such
+data. It seems odd to incorporate spectroscopically-derived stellar
+parameters when deriving planet radii, but to ignore all
+high-resolution imaging follow-up data. The value of the reported
+planet candidates (including that of the possible HZ candidates) would
+be significantly enhanced by a more complete treatment of this
+dilution effect.
+
+3) Sec. 1, Introduction:
+The authors note that "exoplanets with ... radii <= 1.2 R_Earth are
+only found around the brightest, most photometrically quiet stars." In
+or near this paragraph, the authors might clarify that this discussion
+mainly applies to approximately Sun-like stars (and not so much to
+smaller, cooler dwarfs).
+
+4) Sec. 1.2:
+When introducing the list of acronyms, it would be useful to add
+relevant section numbers to more of the terms defined (as is done for,
+e.g., the Data Validation entry).
+
+5) Sec. 2.2:
+The authors should define the term "Rogue TCE," whose meaning I was
+not able to infer from the discussion in this subsection.
+
+6) General plotting issue: many of the plots included with the manuscript
+have no ticks on the top or right-hand-side of the axes. I strongly
+encourage the authors to add tick marks on all four sides of their
+plots, in order to allow the reader to more easily estimate the values
+of particular features.
+
+
+7) Sec. 2.4:
+The authors write that "supplemental DV fits would only change a few
+of the Robovetter decisions." They must specify which of these
+decisions would be changed.
+
+A few lines below, the authors state that only a "minimal improvement"
+would result from re-running the analyses described here. They must
+justify the claim that the improvement would be only minimal.
+
+8) Sec. 4.2:
+The phrase "... mimic the observed not transit-like FPs ..." is
+awkward and must be re-worded for clarity.
+
+9) Sec. 5.1 and later:
+Here and at multiple subsequent points in the text, the authors switch
+from describing "effectiveness" to its complement, "ineffectiveness."
+To make the discussion more clear throughout, I recommend that the
+authors rework the text to describe their work in terms of
+effectiveness (e.g., "maximizes effectiveness" rather than "minimizes
+ineffectiveness," Fig. 8, and other instances).
+
+10) Sec. 6.2:
+The authors write that KOIs "with significant overlap are considered
+federated," but they must also state what level of overlap is deemed
+significant (and why).
+
+11) The phrasing "the banned TCEs is..." is awkward (if not gramatically incorrect) and must be reworded for clarity.
+
+Section 7:
+
+12) Figure 8: It would be useful to know how many objects are in each of
+these bins. Either a smaller number below the percentage values, or a
+plot similar to Fig. 7 (but for MES vs. Period) would help convey this
+information.
+
+Figure 8: the caption quotes the reliability and completeness for FGK
+stars; the authors should also note the effectiveness for those stars.
+
+13) Sec. 7.3.1 and Figures 10-11: The figure shows that at long periods, large
+planets are the least complete while small planets are the least
+reliable. The text states that "Robovetter more often fails the
+largest planets," but the text should be reworded to make it clear
+whether this means that Robovetter returns the wrong answer, or always
+returns 'False Positive,' or always misses these types of injected
+signals, or ... something else.
+
+There have also been a number of observational papers attempting to
+measure Kepler's False Positive rate for large planets; it would be
+useful to know whether the challenges described here in this
+manuscript bear any relation to the measured FP rate.
+
+14) Figure 10: the color bar for panel (a) overlaps the X axis labels.
+
+15) Sec. 7.3.3:
+The text "they are the difficult" is likely a typo and must be fixed.
+
+
+16) Appendix:
+I applaud the authors for releasing the algorithmic code for some of
+their RoboVetter metrics. I encourage them to not stop halfway, but to
+make the code of all algorithms described here freely available for
+future use.
+
+17) A.3.3:
+"We describe a individual transit" contains a typo that should be fixed.
