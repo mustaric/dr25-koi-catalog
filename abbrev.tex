@@ -6,20 +6,20 @@ We try to avoid unnecessary acronyms and abbreviations, but a few are required t
 \begin{itemize}
 
 \item[] \textbf{TCE}: Threshold Crossing Event. Periodic signals identified by the transiting planet search (TPS) module of the \Kepler{} Pipeline \citep{JenkinsKDPH}.
-\item[] \textbf{\opstce}: Observed TCEs. TCEs found by searching the observed DR25 \Kepler\ data and reported in \citet{Twicken2016}.
-\item[] \textbf{\injtce}: Injected TCEs. TCEs found that match a known, injected transit signal \citep{Christiansen2017}.
-\item[] \textbf{\invtce}: Inverted TCEs. TCEs found when searching the inverted data set in order to simulate instrumental false alarms \citep{Coughlin2017a}.
-\item[] \textbf{\scrtce}: Scrambled TCEs. TCEs found when searching the scrambled data set in order to simulate instrumental false alarms \citep{Coughlin2017a}.
+\item[] \textbf{\opstce}: Observed TCEs. TCEs found by searching the observed DR25 \Kepler\ data and reported in \citet{Twicken2016}. \added{See \S\ref{s:tces}.}
+\item[] \textbf{\injtce}: Injected TCEs. TCEs found that match a known, injected transit signal \citep{Christiansen2017}. See \S\ref{s:injecttce}.
+\item[] \textbf{\invtce}: Inverted TCEs. TCEs found when searching the inverted data set in order to simulate instrumental false alarms \citep{Coughlin2017a}. \added{See \S\ref{s:tcefalsealarms}.}
+\item[] \textbf{\scrtce}: Scrambled TCEs. TCEs found when searching the scrambled data set in order to simulate instrumental false alarms \citep{Coughlin2017a}. \added{\S\ref{s:tcefalsealarms}.}
 \item[] \textbf{TPS}: Transiting Planet Search module. This module of the \Kepler{} Pipeline performs the search for planet candidates. Significant, periodic events are identified by TPS and turned into TCEs.
 \item[] \textbf{DV}: Data Validation. Named after the module of the \Kepler\ Pipeline \citep{JenkinsKDPH} which characterizes the transits and outputs one of the detrended light curves used by the Robovetter metrics.  DV also created two sets of transit fits: original and supplemental (\S\ref{s:fits}).
-\item[] \textbf{ALT}: Alternative. As an alternative to the DV detrending, the \Kepler\ Pipeline implements a detrending method that uses the methods of \citet{Garcia2010} and the out-of-transit points in the pre-search data conditioned (PDC) light curves to detrend the data. The \Kepler{} Pipeline performs a trapezoidal fit to the folded transit on the ALT detrended light curves.
+\item[] \textbf{ALT}: Alternative. As an alternative to the DV detrending, the \Kepler\ Pipeline implements a detrending method that uses the methods of \citet{Garcia2010} and the out-of-transit points in the pre-search data conditioned (PDC) light curves to detrend the data. The \Kepler{} Pipeline performs a trapezoidal fit to the folded transit on the ALT detrended light curves (\S\ref{s:fits}).
 \item[] \textbf{MES}: Multiple Event Statistic. A statistic that measures the combined significance of all of the observed transits in the detrended, whitened light curve assuming a linear ephemeris \citep[][]{Jenkins2002b}.
 %\item[] \textbf{SPSD}: Sudden Pixel Sensitivity Dropout.  A sudden decrease in pixel sensitivity, followed by a gradual return to normal levels over a few hours, caused by a cosmic ray hit.
-\item[] \textbf{KOI}: Kepler Object of Interest. Periodic, transit-like events that are significant enough to warrant further review. A KOI is identified with a KOI number and can be dispositioned as a planet candidate or a false positive. The DR25 KOIs are a subset of the DR25 \opstce{s}.
-\item[] \textbf{PC}: Planet Candidate. A TCE or KOI that passes all of the Robovetter false positive identification tests. Planet candidates should not be confused with confirmed planets where further analysis has shown that the transiting planet model is overwhelmingly the most likely astrophysical cause for the periodic dips in the \Kepler{} light curve.
-\item[] \textbf{FP}: False Positive. A TCE or KOI that fails one or more of the Robovetter tests. Notice that the term includes all types of signals found in the TCE lists that are not caused by a transiting exoplanet, including eclipsing binaries and false alarms.
+\item[] \textbf{KOI}: Kepler Object of Interest. Periodic, transit-like events that are significant enough to warrant further review. A KOI is identified with a KOI number and can be dispositioned as a planet candidate or a false positive. The DR25 KOIs are a subset of the DR25 \opstce{s}. \added{See \S\ref{s:assemble}.}
+\item[] \textbf{PC}: Planet Candidate. A TCE or KOI that passes all of the Robovetter false positive identification tests. Planet candidates should not be confused with confirmed planets where further analysis has shown that the transiting planet model is overwhelmingly the most likely astrophysical cause for the periodic dips in the \Kepler{} light curve.\added{See \S\ref{s:robovetter}.}
+\item[] \textbf{FP}: False Positive. A TCE or KOI that fails one or more of the Robovetter tests. Notice that the term includes all types of signals found in the TCE lists that are not caused by a transiting exoplanet, including eclipsing binaries and false alarms.\added{See \S\ref{s:robovetter}.}
 \item[] \textbf{MCMC}: Markov chain Monte Carlo. This refers to transit fits which employ a MCMC algorithm in order to provide robust errors for fitted model parameters for all KOIs
- \citep{Hoffman2017}.
+ \citep{Hoffman2017}. \added{See \S\ref{s:mcmc}.}
 
 
 

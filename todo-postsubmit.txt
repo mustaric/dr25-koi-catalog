@@ -1,4 +1,4 @@
-From Nick Law. Improve section on follow-up observations to include some of the non-funded, non-KFOP observations.
+DONE From Nick Law. Improve section on follow-up observations to include some of the non-funded, non-KFOP observations.
 
 I do have a request/correction: in the introduction, you mention "the Kepler mission benefited from an active, funded, follow-up observing program”, and say "The followup program obtained high-resolution imaging of ≈90% of known KOIs”, and then cite only Furlan et al. 2017. This isn’t quite correct — in fact, more than 2,000 of the KOIs have *only* been observed by our Robo-AO follow-up program, which was separately funded by NASA under the XRP program (no Kepler/KFOP funding was offered). This is confirmed in Furlan et al. (e.g. "of the 3665 stars that host at least one KOI planet candidate or confirmed planet, Robo-AO observed 3093”).
 
@@ -10,6 +10,7 @@ http://adsabs.harvard.edu/abs/2017AJ....153...66Z
 http://adsabs.harvard.edu/abs/2016AJ....152...18B
 http://adsabs.harvard.edu/abs/2014ApJ...791...35L
 
+--- I referenced these papers.
 
 -------
 Eric Mamajeck
@@ -50,13 +51,15 @@ DONE 5) Rubble in section A.3.7.1 Change the threshold from 0.5 to 0.75
 --------
 Referee's list
 
-1)
+Almost Done1)
 Data/software Editor Comments:
 Per the new AAS software policy, http://journals.aas.org/policy/software.html, the authors should modify their AASTeX v6.1 manuscript to highlight the code they used (both cited and unmentioned in the current text) with the new \software command, e.g.
 
 \software{George (Ambikasaran et al. 2014), Kepler Pipeline (Jenkins 2017b), Robovetter (https://github.com/nasa/kepler-robovetter), Marshall (https://sourceforge.net/projects/marshall/), Centroid Robovetter (Mullally 2017)}
 
-2) My largest concern is the decision to neglect photometric dilution.
+-- I added this, but I fear it isn't complete. Someone needs to go through and make sure we aren't missing some code. 
+
+REVIEW NEEDED 2) My largest concern is the decision to neglect photometric dilution.
 The text notes that undetected dilution means that the reported planet
 radii are systematically underestimated. It would be extremely useful
 to know which of the targets identified in this work already have such
@@ -66,18 +69,33 @@ high-resolution imaging follow-up data. The value of the reported
 planet candidates (including that of the possible HZ candidates) would
 be significantly enhanced by a more complete treatment of this
 dilution effect.
+-- I added words to the introduction indicating that for occurrence rates reasons, we did not include all the high resolution imaging in this catalog.
 
-3) Sec. 1, Introduction:
+-- Response to referee:  
+While we agree with the referee that planet radii would be improved if the high resolution imaging were taken into account, we intentionally did not include them in this catalog for two reasons 1) we believe that what is best depends on the science case of the one using the catalog and 2) the catalog of high-resolution imaging has been growing and changing continually over the past few years and was not complete enough to include when we settled on the stellar information for the DR25 catalog.   
+
+The first point is addressed in Section 8.3.  When doing occurrence rates, dilution must be accounted for across the entire sample and unfortunately, most high-resolution imaging is around only the KOIs.  We added this point to the introduction as well to enhance awareness of this issue. While those who are trying to find the best candidates will want to adjust for this dilution, it is not clear that those working on occurrence rates will want to do this without being able to apply it across the set of searched stars in a consistent manner (i.e. to the same depth and angular resolution). And since this catalog was made with occurrence rates in mind, we have chosen not to include the dilution results. 
+
+For the second point, we have delivered an internally consistent set of products all based on the same stellar information. The stellar information in the TCE table (Twicken et al 2016) is the same as this catalog and all its associated products. This work was delivered to the project in 2015. Only a limited number of high resolution imaging results were available at that time and has grown considerably over the last two years.  So even if we had included them, the catalog would still be incomplete and out-of-date. And the resulting catalog would also be inconsistent.
+
+Finally the paper is largely a vetting paper (selecting the best signals from the search) which also provides transit fits. Including the results of these high-resolution imaging studies merits its own paper and we highly anticipate that the very active imaging community will do so. We will happily support any efforts along those lines if we can.  
+
+
+DONE 3) Sec. 1, Introduction:
 The authors note that "exoplanets with ... radii <= 1.2 R_Earth are
 only found around the brightest, most photometrically quiet stars." In
 or near this paragraph, the authors might clarify that this discussion
 mainly applies to approximately Sun-like stars (and not so much to
 smaller, cooler dwarfs).
 
-4) Sec. 1.2:
+-- Note added to the introduction to this affect.
+
+DONE 4) Sec. 1.2:
 When introducing the list of acronyms, it would be useful to add
 relevant section numbers to more of the terms defined (as is done for,
 e.g., the Data Validation entry).
+
+--Thank you for this suggestion. We added them where appropriate.
 
 5) Sec. 2.2:
 The authors should define the term "Rogue TCE," whose meaning I was
