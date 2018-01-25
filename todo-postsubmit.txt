@@ -97,15 +97,19 @@ e.g., the Data Validation entry).
 
 --Thank you for this suggestion. We added them where appropriate.
 
-5) Sec. 2.2:
+DONE 5) Sec. 2.2:
 The authors should define the term "Rogue TCE," whose meaning I was
 not able to infer from the discussion in this subsection.
+ -- I have clarified the meaning of rogue TCEs.
 
 6) General plotting issue: many of the plots included with the manuscript
 have no ticks on the top or right-hand-side of the axes. I strongly
 encourage the authors to add tick marks on all four sides of their
 plots, in order to allow the reader to more easily estimate the values
 of particular features.
+--Done for Fig1, Fig2, Fig3  (fig4 and fig 5 don't need it)
+--Done for Fig7,9,13,14
+  Figure 6 Remains...but honestly it will be hard to remake that one. 
 
 
 7) Sec. 2.4:
@@ -117,9 +121,11 @@ A few lines below, the authors state that only a "minimal improvement"
 would result from re-running the analyses described here. They must
 justify the claim that the improvement would be only minimal.
 
-8) Sec. 4.2:
+DONE 8) Sec. 4.2:
 The phrase "... mimic the observed not transit-like FPs ..." is
 awkward and must be re-worded for clarity.
+
+  -- Attempted to improve clarity.
 
 9) Sec. 5.1 and later:
 Here and at multiple subsequent points in the text, the authors switch
@@ -142,6 +148,7 @@ Section 7:
 these bins. Either a smaller number below the percentage values, or a
 plot similar to Fig. 7 (but for MES vs. Period) would help convey this
 information.
+ -- This change has been made and needs to be incorporated
 
 Figure 8: the caption quotes the reliability and completeness for FGK
 stars; the authors should also note the effectiveness for those stars.
@@ -170,6 +177,10 @@ I applaud the authors for releasing the algorithmic code for some of
 their RoboVetter metrics. I encourage them to not stop halfway, but to
 make the code of all algorithms described here freely available for
 future use.
+  -- Waiting on LPP and Rubble and Ephemeris Match
+ -- Our code is unfortunately very piecemeal, written by different people in different languages. However, we now believe all the code that vetted the TCEs in this catalog is released and noted in this paper. 
 
-17) A.3.3:
+DONE 17) A.3.3:
 "We describe a individual transit" contains a typo that should be fixed.
+
+  -- Thank you for catching this typo. 
