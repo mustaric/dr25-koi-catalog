@@ -102,7 +102,7 @@ The authors should define the term "Rogue TCE," whose meaning I was
 not able to infer from the discussion in this subsection.
  -- I have clarified the meaning of rogue TCEs.
 
-6) General plotting issue: many of the plots included with the manuscript
+DONE 6) General plotting issue: many of the plots included with the manuscript
 have no ticks on the top or right-hand-side of the axes. I strongly
 encourage the authors to add tick marks on all four sides of their
 plots, in order to allow the reader to more easily estimate the values
@@ -112,7 +112,7 @@ of particular features.
   Figure 6 Remains...but honestly it will be hard to remake that one. 
 
 
-7) Sec. 2.4:
+DONE 7) Sec. 2.4:
 The authors write that "supplemental DV fits would only change a few
 of the Robovetter decisions." They must specify which of these
 decisions would be changed.
@@ -120,6 +120,8 @@ decisions would be changed.
 A few lines below, the authors state that only a "minimal improvement"
 would result from re-running the analyses described here. They must
 justify the claim that the improvement would be only minimal.
+
+ -- Jeff added text to section 2.4 clarifying why we believe the changes would be minimal and specify how they only really affect the V-shaped metric and the Model-Shift Tests.
 
 DONE 8) Sec. 4.2:
 The phrase "... mimic the observed not transit-like FPs ..." is
@@ -140,17 +142,17 @@ The authors write that KOIs "with significant overlap are considered
 federated," but they must also state what level of overlap is deemed
 significant (and why).
 
-11) The phrasing "the banned TCEs is..." is awkward (if not gramatically incorrect) and must be reworded for clarity.
+DONE 11) The phrasing "the banned TCEs is..." is awkward (if not gramatically incorrect) and must be reworded for clarity.
 
 Section 7:
 
-12) Figure 8: It would be useful to know how many objects are in each of
+DONE 12) Figure 8: It would be useful to know how many objects are in each of
 these bins. Either a smaller number below the percentage values, or a
 plot similar to Fig. 7 (but for MES vs. Period) would help convey this
 information.
- -- This change has been made and needs to be incorporated
 
-Figure 8: the caption quotes the reliability and completeness for FGK
+
+DONE Figure 8: the caption quotes the reliability and completeness for FGK
 stars; the authors should also note the effectiveness for those stars.
 
 13) Sec. 7.3.1 and Figures 10-11: The figure shows that at long periods, large
@@ -177,8 +179,9 @@ I applaud the authors for releasing the algorithmic code for some of
 their RoboVetter metrics. I encourage them to not stop halfway, but to
 make the code of all algorithms described here freely available for
 future use.
-  -- Waiting on LPP and Rubble and Ephemeris Match
- -- Our code is unfortunately very piecemeal, written by different people in different languages. However, we now believe all the code that vetted the TCEs in this catalog is released and noted in this paper. 
+  -- Waiting on LPP and Rubble
+  -- Modshift, Skye, and Ephemeris Matching have been cleaned up and put on GitHub and are now mentioned as such in the text along with footnotes containing the GitHub links.
+  -- Our code is unfortunately very piecemeal, written by different people in different languages. However, we now believe all the code that vetted the TCEs in this catalog is released and noted in this paper. 
 
 DONE 17) A.3.3:
 "We describe a individual transit" contains a typo that should be fixed.

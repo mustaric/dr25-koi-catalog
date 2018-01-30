@@ -1,18 +1,18 @@
 \subsection{Catalog Completeness, Effectiveness, and Reliability}
 \label{s:candr}
 
-To evaluate the performance of the Robovetter and to measure the catalog completeness and reliability, we run the Robovetter on the \injtce{s}, \invtce{s}, and \scrtce{s}. As a high level summary, Figure~\ref{f:scoregrid} provides the completeness, in-effectiveness ($1-E$), and reliability for a 3 by 3 grid across period and MES. If the same figure is made for only the FGK dwarf type stars (\logg~$\ge$~4.0 and 4000~K~$\ge$~\tstar~$<$~7000~K), the long period, low MES bin improves substantially. Giant stars are inherently noisy on time scales of planet transits \citep[see Figure~9 of][]{Christiansen2012} causing more FPs and also causing more real transits to be distorted by the noise. For FGK dwarf stars and only considering candidates with periods between 200~d and 500~d and MES~<~10, $C=76.7\%$, $1-E=1.1\%$, and $R=50.3\%$, which is a 13.1 percentage point improvement in reliability and 3 percentage point improvement in completeness compared to all stars in the same period and MES range.
+To evaluate the performance of the Robovetter and to measure the catalog completeness and reliability, we run the Robovetter on the \injtce{s}, \invtce{s}, and \scrtce{s}. As a high level summary, Figure~\ref{f:scoregrid} provides the completeness, effectiveness ($E$), and reliability for a 3 by 3 grid across period and MES. If the same figure is made for only the FGK dwarf type stars (\logg~$\ge$~4.0 and 4000~K~$\ge$~\tstar~$<$~7000~K), the long period, low MES bin improves substantially. Giant stars are inherently noisy on time scales of planet transits \citep[see Figure~9 of][]{Christiansen2012} causing more FPs and also causing more real transits to be distorted by the noise. For FGK dwarf stars and only considering candidates with periods between 200~d and 500~d and MES~<~10, $C=76.7\%$, $1-E=1.1\%$, and $R=50.3\%$, which is a 13.1 percentage point improvement in reliability and 3 percentage point improvement in completeness compared to all stars in the same period and MES range.
 
 \begin{figure}[hp]
 \begin{center}
 \begin{tabular}{c}
-\includegraphics[width=0.9\linewidth]{f8-top.pdf} \\
-\includegraphics[width=0.9\linewidth]{f8-middle.pdf} \\
-\includegraphics[width=0.9\linewidth]{f8-bottom.pdf}
+\includegraphics[width=0.92\linewidth]{f8-top.pdf} \\
+\includegraphics[width=0.92\linewidth]{f8-middle.pdf} \\
+\includegraphics[width=0.92\linewidth]{f8-bottom.pdf}
 \end{tabular}
 %\includegraphics[width=0.48\linewidth]{fig-FgkReliabilityPmes.png}
 %\includegraphics[width=0.48\linewidth]{fig-FgkCompletePmes.png}
-\caption{A coarse binning of the completeness ($C$), ineffectiveness (1-$E$), and reliability ($R$) for different period and MES bins (shown from top to bottom, respectively). The effectiveness and reliability are based on the combined \invtce{} and \scrtce{} data sets. Notice that the Robovetter effectiveness at removing these false alarms is incredibly high, but for long periods and low MES the resulting reliability is lower because of the large number of false alarms and small number of true planets. For FGK dwarf stars only, the reliability is 50.3\% and the completeness is 76.7\% for planets in the longest period, lowest MES box. }
+\caption{A coarse binning of the completeness, effectiveness, and reliability for different period and MES bins (shown from top to bottom, respectively). \added{(The number of TCEs in the box is shown below the percentage for completeness and effectiveness. The number of PCs is given below the reliability.)}The effectiveness and reliability are based on the combined \invtce{} and \scrtce{} data sets. Notice that the Robovetter effectiveness at removing these false alarms is incredibly high, but for long periods and low MES the resulting reliability is lower because of the large number of false alarms and small number of true planets. For FGK dwarf stars only, the reliability is 50.3\%,\added{ the effectiveness is 98.9\%, and }the completeness is 76.7\% for planets in the longest period, lowest MES box. }
 \label{f:scoregrid}
 \end{center}
 \end{figure}
