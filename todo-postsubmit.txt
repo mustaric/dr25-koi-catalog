@@ -107,9 +107,8 @@ have no ticks on the top or right-hand-side of the axes. I strongly
 encourage the authors to add tick marks on all four sides of their
 plots, in order to allow the reader to more easily estimate the values
 of particular features.
---Done for Fig1, Fig2, Fig3  (fig4 and fig 5 don't need it)
---Done for Fig7,9,13,14
-  Figure 6 Remains...but honestly it will be hard to remake that one. 
+
+We have included tick marks for all plots now. 
 
 
 DONE 7) Sec. 2.4:
@@ -129,13 +128,15 @@ awkward and must be re-worded for clarity.
 
   -- Attempted to improve clarity.
 
-9) Sec. 5.1 and later:
+DONE 9) Sec. 5.1 and later:
 Here and at multiple subsequent points in the text, the authors switch
 from describing "effectiveness" to its complement, "ineffectiveness."
 To make the discussion more clear throughout, I recommend that the
 authors rework the text to describe their work in terms of
 effectiveness (e.g., "maximizes effectiveness" rather than "minimizes
 ineffectiveness," Fig. 8, and other instances).
+
+  -- We have attempted to do this without invalidating the description of the work that was actually done to optimize the Robovetter. 
 
 10) Sec. 6.2:
 The authors write that KOIs "with significant overlap are considered
@@ -155,26 +156,30 @@ information.
 DONE Figure 8: the caption quotes the reliability and completeness for FGK
 stars; the authors should also note the effectiveness for those stars.
 
-13) Sec. 7.3.1 and Figures 10-11: The figure shows that at long periods, large
+DONE 13) Sec. 7.3.1 and Figures 10-11: The figure shows that at long periods, large
 planets are the least complete while small planets are the least
 reliable. The text states that "Robovetter more often fails the
 largest planets," but the text should be reworded to make it clear
 whether this means that Robovetter returns the wrong answer, or always
 returns 'False Positive,' or always misses these types of injected
 signals, or ... something else.
+ -- I have tried to clarify the language here, but it is not entirely clear what is causing the confusion. The paragraph after these sentences describe why more large injected planets are failed by the Robovetter, than small injected planets. By the mere fact that they are injected we know the Robovetter is returning a wrong response. As clearly stated in the Robovetter section the code follows a logic based on measured parameters and cannot just by fiat fail large radii planets. 
 
-There have also been a number of observational papers attempting to
+
+DONE There have also been a number of observational papers attempting to
 measure Kepler's False Positive rate for large planets; it would be
 useful to know whether the challenges described here in this
 manuscript bear any relation to the measured FP rate.
 
-14) Figure 10: the color bar for panel (a) overlaps the X axis labels.
+-- The papers that the referee refers to are all trying to find candidates from the KOI list that are actually caused by Eclipsing binaries by doing RV follow-up.  The reliability we discuss here refers to the false alarm reliability. The reliability from these papers concerns mostly planets with large radii, while the reliability we discuss here concerns mostly the small radii planets.   I have added text to remind the reader of what reliability we are measuring in this section.
 
-15) Sec. 7.3.3:
+DONE 14) Figure 10: the color bar for panel (a) overlaps the X axis labels.
+
+DONE15) Sec. 7.3.3:
 The text "they are the difficult" is likely a typo and must be fixed.
 
 
-16) Appendix:
+DONE 16) Appendix:
 I applaud the authors for releasing the algorithmic code for some of
 their RoboVetter metrics. I encourage them to not stop halfway, but to
 make the code of all algorithms described here freely available for
